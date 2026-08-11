@@ -1,0 +1,42 @@
+{{ header }}
+<main id="checkout-cart-empty" class="container cart-empty-page">
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+    {% else %}
+      {% set class = 'col-sm-12' %}
+    {% endif %}
+
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <section class="cart-empty-page__message">
+        <h1>{{ heading_title }}</h1>
+        <p>{{ text_error }}</p>
+        <a href="{{ continue }}" class="btn cart-empty-page__action">Alışverişe Başla</a>
+      </section>
+
+      {% if recently_viewed_products %}
+        <section class="cart-page__recent cart-empty-page__recent" aria-labelledby="empty-recently-viewed-title">
+          <header class="cart-page__recent-heading">
+            <h2 id="empty-recently-viewed-title">Son Ziyaret Edilenler</h2>
+          </header>
+          <div class="uannes-row-grid cart-page__recent-grid">
+            {% for product in recently_viewed_products %}
+              <a href="{{ product.href }}" class="uannes-row-card cart-page__recent-card">
+                <div class="uannes-row-media">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}" class="uannes-row-img main-img" />
+                  {% if product.thumb2 %}<img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img hover-img" />{% endif %}
+                </div>
+                <div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</main>
+{{ footer }}

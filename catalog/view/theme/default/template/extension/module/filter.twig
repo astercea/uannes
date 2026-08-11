@@ -1,0 +1,96 @@
+<div class="panel panel-default">
+  <div class="list-group">
+    {% for filter_group in filter_groups %}
+      <a href="javascript:void(0);" class="list-group-item filter-toggle">
+        {{ filter_group.name }}
+        <span class="dropdown-arrow">&#9662;</span>
+      </a>
+      <div class="list-group-item filter-content" style="display:block;">
+        <div id="filter-group{{ filter_group.filter_group_id }}">
+          {% for filter in filter_group.filter %}
+            <div class="checkbox">
+              <label>
+                {% if filter.filter_id in filter_category %}
+                  <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" checked="checked" />
+                  {{ filter.name }}
+                {% else %}
+                  <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" />
+                  {{ filter.name }}
+                {% endif %}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="panel-footer text-center">
+    <button type="button" id="button-filter">{{ button_filter }}</button>
+    <button type="button" id="button-clear">Temizle</button>
+  </div>
+</div>
+
+<style>
+.filter-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s;
+    font-size: 22px;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+#button-filter {
+    background-color: #28a745 ;
+    border: none ;
+    color: #fff ;
+    font-size: 18px ;
+    padding: 12px 25px ;
+    border-radius: 10px ;
+    cursor: pointer ;
+    margin: 5px;
+}
+#button-filter:hover {
+    background-color: #218838 ;
+}
+#button-clear {
+    background-color: #e74c3c ;
+    border: none ;
+    color: #fff ;
+    font-size: 18px ;
+    padding: 12px 25px ;
+    border-radius: 10px ;
+    cursor: pointer ;
+    margin: 5px;
+}
+#button-clear:hover {
+    background-color: #c0392b ;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.filter-toggle').on('click', function() {
+        $(this).next('.filter-content').slideToggle();
+        $(this).find('.dropdown-arrow').toggleClass('open');
+    });
+
+    $('#button-filter').on('click', function() {
+        var filter = [];
+        $('input[name^="filter"]:checked').each(function() {
+            filter.push(this.value);
+        });
+        location = '{{ action|escape('js') }}&filter=' + filter.join(',');
+    });
+
+    $('#button-clear').on('click', function() {
+        $('input[name^="filter"]').prop('checked', false);
+        location = '{{ action|escape('js') }}';
+    });
+});
+</script>

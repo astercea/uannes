@@ -1,0 +1,39 @@
+{{ header }}
+<style>
+  body { background-color: #f8f6f2; }
+  footer { margin-top: 0; }
+</style>
+<div id="account-forgotten" class="login-page">
+  <div class="container">
+    <div class="login-page__container">
+    
+    {% if error_warning %}
+    <div class="login-alert login-alert--error">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M8 5v4M8 11h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span>{{ error_warning }}</span>
+    </div>
+    {% endif %}
+
+    <h1 class="login-page__title">Şifreni mi unuttun?</h1>
+    <p class="login-page__subtitle" style="margin: 0 auto 2.5rem; max-width: 95%;">Sıfırlama bağlantısı için kayıtlı e-posta adresinizi giriniz.</p>
+
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" class="login-page__form" autocomplete="off">
+      <div class="login-field">
+        <input type="email" name="email" value="{{ email }}" id="input-email" class="login-field__input" placeholder=" " required autocomplete="email" />
+        <label for="input-email" class="login-field__label">E-posta Adresi *</label>
+        <span class="login-field__line"></span>
+      </div>
+
+      <button type="submit" class="login-page__submit" style="margin-top: 1rem;">
+        <span>Gönder</span>
+      </button>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="{{ back }}" class="login-page__forgot-link" style="font-size: 13.5px; border-bottom: none; letter-spacing: 0.05em;">Giriş Sayfasına Dön</a>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+{{ footer }}

@@ -1,0 +1,52 @@
+<link type="text/css" href="view/stylesheet/tami/widget.css" rel="stylesheet"/>
+<div id="tami_opencart_order_widget">
+    <div class="tami-widget-head">
+        <img src="view/image/tami/tami-white.svg" width="50" alt="tami"/>
+    </div>
+    <div class="tami-widget-content">
+        {% if order_meta.test_environment_payment == '1' %}
+            <span class="tami-text-paid-with-tami"><i
+                        class="fa fa-exclamation-circle"></i> {{ lang.text_ordertab_test_payment }}</span>
+        {% else %}
+            <span class="tami-text-paid-with-tami">
+                {{ lang.text_ordertab_paid_with_tami }}
+            </span>
+        {% endif %}
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+            {% for row in widget_table %}
+                <tr class="tami-widget-content-row">
+                    <th class="tami-widget-content-title">{{ row.label }}</th>
+                    <td title="{{ row.value }}" class="tami-widget-content-value">{{ row.value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="refund-section">
+            <h4>{{ lang.text_ordertab_refund_title }}</h4>
+            <form data-orderId="{{ orderId }}" action="{{ refund_url }}" method="post" id="tami-refund-form">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <th><label for="tami-refund-amount">{{ lang.text_ordertab_refund_amount }}</label></th>
+                        <td>
+                        <span class="tami-price-input">
+                            <input autocomplete="off" id="tami-refund-amount" class="tami-input-only-decimal"
+                                   name="amount" type="tel" value="0.00"/>
+                            <span class="addon">{{ currency_symbol }}</span>
+                        </span>
+                        </td>
+                        <td>
+                            <button class="tami-refund-button" type="submit">{{ lang.text_ordertab_refund_button }} <i
+                                        class="fa fa-undo"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<script>var tamiAdminPanelGlobals = {}</script>
+<script type="text/javascript" src="view/javascript/tami/widget.js"></script>
+<script type="text/javascript" src="view/javascript/tami/main.js"></script>

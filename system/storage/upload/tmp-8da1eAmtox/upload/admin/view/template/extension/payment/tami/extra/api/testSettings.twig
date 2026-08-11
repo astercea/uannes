@@ -1,0 +1,110 @@
+<table class="tami-table tami-table-striped tami-table-borderless">
+    <tbody>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-0-Test">{{ lang_text_security_method }}</label>
+        </th>
+        <td>
+            <select
+                    style="max-width: 25rem"
+                    class="tami-form-select"
+                    name="api_settings[payment_method_test]"
+                    autocomplete="off"
+                    type="select"
+                    id="form-ApiSettings-0-Test"
+            >
+                <option value="3D"{% if api_settings.payment_method_test == "3D" %} selected{% endif %}>
+                    {{ lang_text_security_method_3d }}
+                </option>
+                <option value="Nonsecure"{% if api_settings.payment_method_test == "Nonsecure" %} selected{% endif %}>
+                    {{ lang_text_security_method_non_secure }}
+                </option>
+                <option value="HostedPayment"{% if api_settings.payment_method_test == "HostedPayment" %} selected{% endif %}>
+                    {{ lang_text_security_method_hosted_payment }}
+                </option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-1-Test">{{ lang_text_merchant_id }}</label>
+        </th>
+        <td>
+            <input
+                    class="tami-form-control"
+                    type="tel"
+                    name="api_settings[merchant_id_test]"
+                    autocomplete="off"
+                    id="form-ApiSettings-1-Test"
+                    value="{{ api_settings.merchant_id_test }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-2-Test">{{ lang_text_terminal_id }}</label>
+        </th>
+        <td>
+            <input
+                    class="tami-form-control"
+                    type="tel"
+                    name="api_settings[terminal_id_test]"
+                    autocomplete="off"
+                    id="form-ApiSettings-2-Test"
+                    value="{{ api_settings.terminal_id_test }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-3-Test">{{ lang_text_secret_key }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[secret_key_test]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-3-Test"
+                    value="{{ api_settings.secret_key_test }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-4-Test">{{ lang_text_fixed_kid_value }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[fixed_kid_value_test]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-4-Test"
+                    value="{{ api_settings.fixed_kid_value_test }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-5-Test">{{ lang_text_fixed_k_value }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[fixed_k_value_test]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-5-Test"
+                    value="{{ api_settings.fixed_k_value_test }}"
+            />
+        </td>
+    </tr>
+    </tbody>
+</table>

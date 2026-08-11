@@ -1,0 +1,145 @@
+/*
+tami-payment-modules
+_variables.scss
+2023
+*/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
+#tami_opencart_order_widget {
+  font-family: "DM Sans", sans-serif;
+  background-color: #9efb8b;
+  background-image: url("../../image/tami/wave-only/beyaz-dalga.svg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  max-width: 480px;
+  border-radius: 8px;
+  border: 3px solid #44318b;
+  margin: 0 auto;
+}
+#tami_opencart_order_widget .accordion-section-title::after, #tami_opencart_order_widget .handlediv, #tami_opencart_order_widget .item-edit, #tami_opencart_order_widget .postbox .handlediv.button-link, #tami_opencart_order_widget .toggle-indicator {
+  color: #ffffff;
+}
+#tami_opencart_order_widget .handle-order-higher, #tami_opencart_order_widget .handle-order-lower {
+  color: rgba(255, 255, 255, 0.9);
+}
+#tami_opencart_order_widget .handle-order-higher[aria-disabled=true], #tami_opencart_order_widget .handle-order-lower[aria-disabled=true] {
+  color: rgba(255, 255, 255, 0.5);
+}
+#tami_opencart_order_widget .inside {
+  position: relative;
+  margin-top: 0;
+  padding-top: 6px;
+}
+#tami_opencart_order_widget .inside > * {
+  z-index: 1;
+  position: relative;
+}
+#tami_opencart_order_widget .inside:before {
+  content: " ";
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #9efb8b;
+  opacity: 0.8;
+}
+#tami_opencart_order_widget .postbox-header {
+  background-color: #44318b;
+  background-image: url("../images/tami-white.svg");
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: 10px center;
+}
+#tami_opencart_order_widget .postbox-header h2 {
+  text-indent: -9999px;
+}
+#tami_opencart_order_widget .tami-text-paid-with-tami {
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+#tami_opencart_order_widget .tami-widget-content table {
+  margin-top: 10px;
+}
+#tami_opencart_order_widget .tami-widget-content table .tami-widget-content-row {
+  vertical-align: top;
+}
+#tami_opencart_order_widget .tami-widget-content table .tami-widget-content-row .tami-widget-content-title {
+  font-size: 15px;
+  text-align: right;
+  font-weight: 700;
+  width: 120px;
+  padding-right: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  /*border-bottom: 1px dashed $tami-grey;*/
+}
+#tami_opencart_order_widget .tami-widget-content table .tami-widget-content-row .tami-widget-content-value {
+  font-size: 14px;
+  /*border-bottom: 1px dashed $tami-grey;*/
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#tami_opencart_order_widget .tami-widget-content table .tami-widget-content-row:last-child .tami-widget-content-title,
+#tami_opencart_order_widget .tami-widget-content table .tami-widget-content-row:last-child .tami-widget-content-value {
+  border-bottom-width: 0;
+}
+#tami_opencart_order_widget .tami-widget-head {
+  background-color: #44318b;
+  padding: 8px 10px;
+  height: 38px;
+}
+#tami_opencart_order_widget .refund-section {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid #CCC;
+  margin-top: 5px;
+}
+#tami_opencart_order_widget .refund-section h4 {
+  font-size: 18px;
+}
+#tami_opencart_order_widget .refund-section table .tami-price-input {
+  float: left;
+  position: relative;
+}
+#tami_opencart_order_widget .refund-section table .tami-price-input input {
+  max-width: 110px;
+  border-radius: 4px 0 0 4px;
+  height: 32px;
+  color: #44318b;
+  line-height: 32px;
+  font-size: 17px;
+  border: 1px solid rgba(68, 49, 139, 0.85);
+  border-right-width: 0;
+  padding: 0 4px;
+}
+#tami_opencart_order_widget .refund-section table .tami-price-input input:focus {
+  border-color: lightblue;
+  box-shadow: 0 0 3px #ddd;
+}
+#tami_opencart_order_widget .refund-section table .tami-price-input span.addon {
+  position: absolute;
+  padding: 4.5px 5px;
+  background: rgba(68, 49, 139, 0.85);
+  border-radius: 0 4px 4px 0;
+  color: #fff;
+  border: 1px solid rgba(68, 49, 139, 0.85);
+  border-left-width: 0;
+}
+#tami_opencart_order_widget .refund-section table button.tami-refund-button {
+  background: #44318b;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  padding: 7px 12px;
+  border: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+#tami_opencart_order_widget .refund-section table button.tami-refund-button:hover {
+  opacity: 0.85;
+}
+
+/*# sourceMappingURL=widget.css.map */

@@ -1,0 +1,121 @@
+<!-- Uannes Motto Alanı -->
+<div class="uannes-motto-section">
+  <div class="uannes-motto-container">
+    <div class="uannes-motto-title-wrap">
+      <span class="uannes-motto-line"></span>
+      <h3 class="uannes-motto-title">Zamansız Zarafetin İzinde</h3>
+      <span class="uannes-motto-line"></span>
+    </div>
+    <p class="uannes-motto-quote">
+      “Hayalimiz, doğaya ve insan emeğine saygı duyan saf dokularla zamansız bir zarafet yaratmaktır. Her detayda geleceğe ilham veren mirasa yakışır dokunuşlar sunuyoruz.”
+    </p>
+  </div>
+</div>
+
+{% if banners %}
+<div class="uannes-slider-section" style="margin-bottom: 1.5rem; padding-bottom: 0px; height: auto;">
+  <div class="uannes-slider-container" style="padding: 10px 0; margin: 0; height: auto;">
+    <div class="swiper-container uannes-swiper" style="margin-bottom: 0px; height: auto;">
+      <div class="swiper-wrapper" style="height: auto;">
+        {% for banner in banners %}
+        <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+            {% set card_img = loop.first ? 'image/catalog/marka_hikayesi_card1.png' : banner.image %}
+            {% if banner.link %}
+            <a href="{{ banner.link }}"><img src="{{ card_img }}" alt="{{ banner.title }}" class="uannes-card-img" /></a>
+            {% else %}
+            <img src="{{ card_img }}" alt="{{ banner.title }}" class="uannes-card-img" />
+            {% endif %}
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Uannes'i Keşfet Bölümü (Hermès Stilinde 3'lü Kare Grid) -->
+<div class="uannes-discover-section">
+  <div class="uannes-discover-container">
+    <div class="uannes-discover-header">
+      <h2 class="uannes-discover-title">Uannes'i Keşfet</h2>
+    </div>
+    
+    <div class="uannes-discover-grid">
+      <div class="uannes-discover-card">
+        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9418.jpg" alt="Uannes'in Hikayesi" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Uannes'in Hikayesi</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="uannes-discover-card">
+        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9426.jpg" alt="Özel Üretim" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Özel Üretim</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="uannes-discover-card">
+        <a href="index.php?route=product/category&path=67" class="uannes-discover-link">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9443.jpg" alt="Giyim" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Giyim</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  if (!$('.uannes-swiper').length) return;
+
+  var uannesSwiper = new Swiper('.uannes-swiper', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 24,
+    loop: true,
+    autoHeight: true,
+    autoplay: 4000,
+    autoplayDisableOnInteraction: false,
+    breakpoints: {
+      767: {
+        slidesPerView: 1.5,
+        spaceBetween: 12
+      }
+    }
+  });
+
+  $(document).on('click', '.uannes-card-arrow-left', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uannesSwiper.slidePrev();
+  });
+
+  $(document).on('click', '.uannes-card-arrow-right', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uannesSwiper.slideNext();
+  });
+});
+--></script>
+

@@ -1,0 +1,371 @@
+{{ header }}
+<style>
+  body { background-color: #f8f6f2; }
+  footer { margin-top: 0; }
+</style>
+
+<div id="account-register" class="login-page">
+  <div class="container">
+    <div class="login-page__container">
+
+      {% if error_warning %}
+      <div class="login-alert login-alert--error">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M8 5v4M8 11h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span>{{ error_warning }}</span>
+      </div>
+      {% endif %}
+
+      <h1 class="login-page__title" style="margin-bottom: 2.5rem;">{{ heading_title }}</h1>
+
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="login-page__form" autocomplete="off">
+        <fieldset id="account" style="border:none; padding:0; margin:0;">
+          
+          <div class="login-field" style="display: {% if customer_groups|length > 1 %} block {% else %} none {% endif %};">
+            <label class="login-field__label" style="position:static; transform:none; margin-bottom:8px; display:block;">{{ entry_customer_group }}</label>
+            <div>
+              {% for customer_group in customer_groups %}
+              {% if customer_group.customer_group_id == customer_group_id %}
+              <label style="margin-right: 15px; font-size:13.5px; color:#1a1a50; cursor:pointer;">
+                <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" checked="checked" />
+                {{ customer_group.name }}
+              </label>
+              {% else %}
+              <label style="margin-right: 15px; font-size:13.5px; color:#1a1a50; cursor:pointer;">
+                <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" />
+                {{ customer_group.name }}
+              </label>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="login-field required">
+            <input type="text" name="firstname" value="{{ firstname }}" placeholder=" " id="input-firstname" class="login-field__input" />
+            <label for="input-firstname" class="login-field__label">{{ entry_firstname }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_firstname %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_firstname }}</div>
+            {% endif %}
+          </div>
+
+          <div class="login-field required">
+            <input type="text" name="lastname" value="{{ lastname }}" placeholder=" " id="input-lastname" class="login-field__input" />
+            <label for="input-lastname" class="login-field__label">{{ entry_lastname }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_lastname %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_lastname }}</div>
+            {% endif %}
+          </div>
+
+          <div class="login-field required">
+            <input type="email" name="email" value="{{ email }}" placeholder=" " id="input-email" class="login-field__input" />
+            <label for="input-email" class="login-field__label">{{ entry_email }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_email %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_email }}</div>
+            {% endif %}
+          </div>
+
+          <div class="login-field required">
+            <input type="tel" name="telephone" value="{{ telephone }}" placeholder=" " id="input-telephone" class="login-field__input" />
+            <label for="input-telephone" class="login-field__label">{{ entry_telephone }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_telephone %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_telephone }}</div>
+            {% endif %}
+          </div>
+
+          {% for custom_field in custom_fields %}
+          <!-- Custom fields logic kept identical but styled slightly for the new form layout -->
+          {% if custom_field.type == 'select' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <label class="login-field__label" style="position:static; transform:none; margin-bottom:8px; display:block;" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <select name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" style="padding: 10px 0;">
+              <option value="">{{ text_select }}</option>
+              {% for custom_field_value in custom_field.custom_field_value %}
+              {% if register_custom_field[custom_field.location][custom_field.custom_field_id] and custom_field_value.custom_field_value_id == register_custom_field[custom_field.custom_field_id] %}
+              <option value="{{ custom_field_value.custom_field_value_id }}" selected="selected">{{ custom_field_value.name }}</option>
+              {% else %}
+              <option value="{{ custom_field_value.custom_field_value_id }}">{{ custom_field_value.name }}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'radio' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <label class="login-field__label" style="position:static; transform:none; margin-bottom:8px; display:block;">{{ custom_field.name }}</label>
+            <div>
+              {% for custom_field_value in custom_field.custom_field_value %}
+              <label style="margin-right: 15px; font-size:13.5px; color:#1a1a50; cursor:pointer;">
+                {% if register_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == register_custom_field[custom_field.custom_field_id] %}
+                <input type="radio" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
+                {% else %}
+                <input type="radio" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{{ custom_field_value.custom_field_value_id }}" />
+                {% endif %}
+                {{ custom_field_value.name }}
+              </label>
+              {% endfor %}
+            </div>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'checkbox' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <label class="login-field__label" style="position:static; transform:none; margin-bottom:8px; display:block;">{{ custom_field.name }}</label>
+            <div>
+              {% for custom_field_value in custom_field.custom_field_value %}
+              <label style="margin-right: 15px; font-size:13.5px; color:#1a1a50; cursor:pointer; display:block; margin-bottom:4px;">
+                {% if register_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id in register_custom_field[custom_field.custom_field_id] %}
+                <input type="checkbox" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
+                {% else %}
+                <input type="checkbox" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" />
+                {% endif %}
+                {{ custom_field_value.name }}
+              </label>
+              {% endfor %}
+            </div>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'text' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <input type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if register_custom_field[custom_field.custom_field_id] %}{{ register_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder=" " id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" />
+            <label class="login-field__label" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'textarea' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <textarea name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" rows="2" placeholder=" " id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" style="padding-top:14px; resize:vertical;">{% if register_custom_field[custom_field.custom_field_id] %}{{ register_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}</textarea>
+            <label class="login-field__label" style="top:14px; transform:none;" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'file' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field" data-sort="{{ custom_field.sort_order }}">
+            <label class="login-field__label" style="position:static; transform:none; margin-bottom:8px; display:block;">{{ custom_field.name }}</label>
+            <button type="button" id="button-custom-field{{ custom_field.custom_field_id }}" data-loading-text="{{ text_loading }}" class="login-page__submit" style="padding:10px 15px; font-size:12px; display:inline-block; width:auto; border-radius:0;">{{ button_upload }}</button>
+            <input type="hidden" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if register_custom_field[custom_field.custom_field_id] %}  {{ register_custom_field[custom_field.custom_field_id] }} {% endif %}" />
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'date' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field date" data-sort="{{ custom_field.sort_order }}">
+            <input type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if register_custom_field[custom_field.custom_field_id] %}{{ register_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder=" " data-date-format="YYYY-MM-DD" id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" />
+            <label class="login-field__label" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'time' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field time" data-sort="{{ custom_field.sort_order }}">
+            <input type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if register_custom_field[custom_field.custom_field_id] %}{{ register_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder=" " data-date-format="HH:mm" id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" />
+            <label class="login-field__label" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if custom_field.type == 'datetime' %}
+          <div id="custom-field{{ custom_field.custom_field_id }}" class="login-field custom-field datetime" data-sort="{{ custom_field.sort_order }}">
+            <input type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if register_custom_field[custom_field.custom_field_id] %}{{ register_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder=" " data-date-format="YYYY-MM-DD HH:mm" id="input-custom-field{{ custom_field.custom_field_id }}" class="login-field__input" />
+            <label class="login-field__label" for="input-custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+            <span class="login-field__line"></span>
+            {% if error_custom_field[custom_field.custom_field_id] %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_custom_field[custom_field.custom_field_id] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          {% endfor %}
+
+        </fieldset>
+
+        <fieldset style="border:none; padding:0; margin:0;">
+          <div class="login-field required">
+            <input type="password" name="password" value="{{ password }}" placeholder=" " id="input-password" class="login-field__input" />
+            <label for="input-password" class="login-field__label">{{ entry_password }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_password %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_password }}</div>
+            {% endif %}
+          </div>
+
+          <div class="login-field required">
+            <input type="password" name="confirm" value="{{ confirm }}" placeholder=" " id="input-confirm" class="login-field__input" />
+            <label for="input-confirm" class="login-field__label">{{ entry_confirm }} *</label>
+            <span class="login-field__line"></span>
+            {% if error_confirm %}
+            <div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">{{ error_confirm }}</div>
+            {% endif %}
+          </div>
+        </fieldset>
+
+        <!-- Newsletter gizlendi, varsayılan 0 olarak gönderiliyor -->
+        <input type="hidden" name="newsletter" value="0" />
+
+        {{ captcha }}
+        
+        {% if text_agree %}
+        <div style="margin-top: 1rem; margin-bottom: 3.5rem; margin-left: 6px; display:flex; align-items:flex-start; gap:8px;">
+          {% if agree %}
+          <input type="checkbox" name="agree" value="1" checked="checked" id="agree-checkbox" style="accent-color: #1a1a50; margin: 0; margin-top: 3px; position: relative;" />
+          {% else %}
+          <input type="checkbox" name="agree" value="1" id="agree-checkbox" style="accent-color: #1a1a50; margin: 0; margin-top: 3px; position: relative;" />
+          {% endif %}
+          <label for="agree-checkbox" style="font-size:13px; color:#555; cursor:pointer; margin:0;">
+            {{ text_agree }}
+          </label>
+        </div>
+        {% endif %}
+
+        <button type="submit" class="login-page__submit">
+          <span>Devam Et</span>
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"><!--
+// Sort the custom fields
+$('#account .login-field[data-sort]').detach().each(function() {
+	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#account .login-field').length) {
+		$('#account .login-field').eq($(this).attr('data-sort')).before(this);
+	}
+	if ($(this).attr('data-sort') > $('#account .login-field').length) {
+		$('#account .login-field:last').after(this);
+	}
+	if ($(this).attr('data-sort') == $('#account .login-field').length) {
+		$('#account .login-field:last').after(this);
+	}
+	if ($(this).attr('data-sort') < -$('#account .login-field').length) {
+		$('#account .login-field:first').before(this);
+	}
+});
+
+$('input[name=\'customer_group_id\']').on('change', function() {
+	$.ajax({
+		url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
+		dataType: 'json',
+		success: function(json) {
+			$('.custom-field').hide();
+			$('.custom-field').removeClass('required');
+
+			for (i = 0; i < json.length; i++) {
+				custom_field = json[i];
+
+				$('#custom-field' + custom_field['custom_field_id']).show();
+
+				if (custom_field['required']) {
+					$('#custom-field' + custom_field['custom_field_id']).addClass('required');
+				}
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$('input[name=\'customer_group_id\']:checked').trigger('change');
+//--></script> 
+<script type="text/javascript"><!--
+$('button[id^=\'button-custom-field\']').on('click', function() {
+	var element = this;
+
+	$('#form-upload').remove();
+
+	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+	$('#form-upload input[name=\'file\']').trigger('click');
+
+	if (typeof timer != 'undefined') {
+    	clearInterval(timer);
+	}
+
+	timer = setInterval(function() {
+		if ($('#form-upload input[name=\'file\']').val() != '') {
+			clearInterval(timer);
+
+			$.ajax({
+				url: 'index.php?route=tool/upload',
+				type: 'post',
+				dataType: 'json',
+				data: new FormData($('#form-upload')[0]),
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+					$(element).button('loading');
+				},
+				complete: function() {
+					$(element).button('reset');
+				},
+				success: function(json) {
+					$(element).parent().find('.text-danger').remove();
+
+					if (json['error']) {
+						$(node).parent().find('input').after('<div class="text-danger" style="font-size:11px; color:#d9534f; margin-top:4px;">' + json['error'] + '</div>');
+					}
+
+					if (json['success']) {
+						alert(json['success']);
+
+						$(element).parent().find('input').val(json['code']);
+					}
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		}
+	}, 500);
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('.date').datetimepicker({
+	language: '{{ datepicker }}',
+	pickTime: false
+});
+
+$('.time').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: false
+});
+
+$('.datetime').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: true,
+	pickTime: true
+});
+//--></script> 
+{{ footer }}

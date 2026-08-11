@@ -1,0 +1,7 @@
+@import "../../../../../../../common/assets/scss/app_global";
+html {
+  font-size: 14px;
+}
+.tami-form-check-input:checked[type="checkbox"]{
+  content: "" !important;
+}

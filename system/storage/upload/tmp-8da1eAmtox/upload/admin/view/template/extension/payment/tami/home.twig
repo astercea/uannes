@@ -1,0 +1,11 @@
+<div class="tami-mb-3 tami-p-3 tami-my-3">
+    <div class="tami-m-auto">
+        {% if module_extra.application_dismiss != '1' %}
+            {{ applicationBanner }}
+        {% endif %}
+        <div class="tami-row">
+            {{ lastCompletedOrder }}
+            {{ installationStatus }}
+        </div>
+    </div>
+</div>

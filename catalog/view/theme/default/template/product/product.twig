@@ -1,0 +1,547 @@
+{{ header }}
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+<link
+rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+<!-- Owl Carousel (jQuery header'da zaten yüklü; ikinci jQuery eklentileri sıfırlar) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<div
+	class="main-container">
+	<!-- Sol Taraf: Carousel + Content -->
+	<div
+		class="left-content order-1 order-lg-1">
+		<!-- Carousel -->
+		<div class="carousel-section position-relative">
+			{% include 'common/product_badges.twig' with { badges: badges } only %}
+			<div class="owl-carousel owl-theme carousel-image">
+				{% if thumb %}
+					<div class="item">
+						<img src="{{ thumb }}" class="img-fluid w-100"/>
+					</div>
+				{% endif %}
+				{% if images %}
+					{% for image in images %}
+						<div class="item">
+							<img src="{{ image.popup }}" class="img-fluid w-100"/>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+
+			<!-- Küçük Resimler -->
+			<div class="thumbnails">
+				{% if thumb %}
+					<img src="{{ thumb }}" class="active"/>
+				{% endif %}
+				{% if images %}
+					{% for image in images %}
+						<img src="{{ image.thumb }}"/>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+
+		<!-- Alt İçerik -->
+		<div class="content-section order-3 order-lg-2">
+			<div class="container py-5">
+				<div class="row">
+					<div
+						class="col-12">
+						<!-- ÜST KUTU -->
+						{% if story_info %}
+							<div class="information product-story content w-100">
+								<div class="product-story__card">
+									<span class="product-story__label">Arkasındaki hikaye</span>
+									<div class="product-story__text information-text">{{ story_info|raw }}</div>
+								</div>
+							</div>
+						{% endif %}
+
+						<!-- ALT BAŞLIK + ÜRÜNLER -->
+						{% if products %}
+							<div class="container py-5">
+								<div class="d-flex justify-content-between align-items-center mb-4 section-header" style="padding-bottom:30px;">
+									<h3 class="fw-normal m-0">{{ text_related }}</h3>
+								</div>
+								<div class="row g-3">
+									{% for product in products %}
+										<div class="col-6 col-md-3">
+											<div class="product-card text-center{% if product.in_stock is defined and not product.in_stock %} product-card--out-of-stock{% endif %}">
+												<div class="product-image-container position-relative">
+													{% include 'common/product_badges.twig' with { badges: product.badges } only %}
+													<a href="{{ product.href }}">
+														<img src="{{ product.thumb }}" class="product-image main-img img-fluid" alt="{{ product.name }}">
+														{% if product.thumb2 %}
+															<img src="{{ product.thumb2 }}" class="product-image hover-img img-fluid" alt="{{ product.name }} hover">
+														{% else %}
+															<img src="{{ product.thumb }}" class="product-image hover-img img-fluid" alt="{{ product.name }}">
+														{% endif %}
+													</a>
+												</div>
+
+												<h6 class="fw-normal" style="font-size:18px;">{{ product.name }}</h6>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Sağ Taraf: Sticky Product Details -->
+	<div class="right-sidebar order-2 order-lg-3">
+		<div
+			class="product-details-sticky">
+			<!-- ÜST KUTU -->
+			<div class="transparent-box content w-100">
+				<form id="product">
+				<input type="hidden" name="product_id" value="{{ product_id }}" />
+				<input type="hidden" name="quantity" value="{{ minimum }}" />
+				<h2 class="fs-5 mb-2">{{ heading_title }}</h2>
+				<div class="product-detail-badges mb-2">
+					{% include 'common/product_badges.twig' with { badges: badges } only %}
+				</div>
+			<p class="fs-5 mb-2" style="font-size:2.25rem;">
+			{% if special %}
+				<span class="text-muted" style="text-decoration: line-through; font-size:1.25rem; opacity:0.7; color:#ff3131">
+				{{ price }}
+				</span><br>
+				<span class="fw-bold text-dark" style="font-size:2.25rem;">
+				{{ special }}
+				</span>
+			{% else %}
+				<span class="fw-bold text-dark">
+				{{ price }}
+				</span>
+			{% endif %}
+			</p>
+
+				{% if attribute_groups %}
+				<div class="product-attributes mb-3">
+					{% for group in attribute_groups %}
+					<div class="attribute-group mb-2">
+						<ul class=" ps-3 mb-0">
+						{% for attribute in group.attribute %}
+							<li>{{ group.name }}: {{ attribute.name }}</li>
+						{% endfor %}
+						</ul>
+					</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+
+				{% if options %}
+					{% for option in options %}
+						{% if option.type == 'select' %}
+							<div class="d-flex justify-content-between align-items-center mb-2 product-option-row">
+								<span>{{ option.name }}</span>
+								<select name="option[{{ option.product_option_id }}]" class="form-control w-auto">
+									{% for value in option.product_option_value %}
+										<option value="{{ value.product_option_value_id }}">{{ value.name }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+
+				<p class="small mb-2">{{ description }}</p>
+
+				{% if not in_stock %}
+				<p class="product-stock-status mb-2"><strong>{{ text_stock }}</strong> {{ stock }}</p>
+				{% endif %}
+
+				<div class="d-flex justify-content-center mb-2 product-action">
+					{% if in_stock %}
+					<button type="button" id="button-cart" class="btn btn-warning text-white">
+						Sepete Ekle
+					</button>
+					{% else %}
+					<button type="button" class="btn btn-secondary text-white" disabled="disabled">
+						Sepete Ekle
+					</button>
+					{% endif %}
+				</div>
+				</form>
+			</div>
+
+			<!-- ALT KUTU -->
+			<div class="transparent-box bg-white bg-opacity-95 p-3 w-100" style="--bs-bg-opacity: 0.7">
+				<div
+					class="accordion" id="productAccordion">
+					{% if maintenance_info %}
+						<style>
+						
+							.custom-accordion {
+								border-radius: 8px;
+								margin-bottom: 15px;
+								overflow: hidden;
+							}
+							.custom-accordion-header {
+								cursor: pointer;
+								padding: 12px 15px;
+								font-weight: 600;
+								color: #1a1a50;
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								transition: background 0.2s;
+							}
+
+							.custom-accordion-header i {
+								transition: transform 0.3s ease;
+							}
+							.custom-accordion-header.active i {
+								transform: rotate(180deg);
+							}
+							.custom-accordion-content {
+								display: none;
+								padding: 15px;
+								border-top: 1px solid #e2e2e2;
+								color: #555;
+								background-color: #fff;
+								animation: fadeIn 0.3s ease-in-out;
+							}
+							@keyframes fadeIn {
+								from {
+									opacity: 0;
+									transform: translateY(-5px);
+								}
+								to {
+									opacity: 1;
+									transform: translateY(0);
+								}
+							}
+						</style>
+						<div class="custom-accordion" id="careSection">
+							<div class="custom-accordion-header">
+								<span>BAKIM</span>
+								<i class="fa fa-chevron-down"></i>
+							</div>
+							<div class="custom-accordion-content">
+								{{ maintenance_info|raw }}
+							</div>
+						</div>
+					{% endif %}
+					<!-- TESLİMAT VE İADELER -->
+					<div class="custom-accordion" id="deliveryReturnsSection">
+						<div class="custom-accordion-header">
+							<span>TESLİMAT VE İADELER</span>
+							<i class="fa fa-chevron-down"></i>
+						</div>
+						<div class="custom-accordion-content">
+							<p>
+								Siparişiniz 2-3 iş günü içinde kargoya verilir.<br>
+								Ürün iadeleri 14 gün içinde kabul edilir.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<style>
+	.carousel-section .owl-carousel .item img {
+		width: 100%;
+		display: block;
+	}
+
+	.owl-carousel.carousel-image .owl-stage {
+		display: flex;
+	}
+	.transparent-box {
+		background: rgba(255, 255, 255, 0.85);
+		padding: 15px;
+		border-radius: 15px;
+		margin: 0 0 5px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+		border: 1px solid #e0e0e0;
+	}
+	.product-details-sticky .transparent-box + .transparent-box {
+		margin-top: 0;
+	}
+	@media (max-width: 992px) {
+		.main-container {
+			flex-direction: column;
+		}
+
+		.product-details-sticky {
+			position: relative;
+			top: auto;
+			margin-top: 20px;
+		}
+
+		.right-sidebar {
+			width: 100%;
+		}
+
+		.left-content,
+		.content-section {
+			width: 100%;
+		}
+	}
+
+</style>
+<script>
+$(document).ready(function(){
+  $(".owl-carousel.carousel-image").owlCarousel({
+    items:2,
+    loop:true,
+    margin:0,
+    nav:true,
+    dots:true,
+    autoplay:true,
+    autoplayTimeout:5000,
+    responsive:{
+      0:{items:1},
+      600:{items:2},
+      1000:{items:2}
+    }
+  });
+
+  // Thumbnail tıklayınca slider değişimi
+  $('.thumbnails img').click(function(){
+    var index = $(this).index();
+    $(".owl-carousel.carousel-image").trigger('to.owl.carousel',[index,300]);
+    $('.thumbnails img').removeClass('active');
+    $(this).addClass('active');
+  });
+});
+
+</script>
+<script type="text/javascript"><!--
+$('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
+	$.ajax({
+		url: 'index.php?route=product/product/getRecurringDescription',
+		type: 'post',
+		data: $('input[name=\'product_id\'], input[name=\'quantity\'], select[name=\'recurring_id\']'),
+		dataType: 'json',
+		beforeSend: function() {
+			$('#recurring-description').html('');
+		},
+		success: function(json) {
+			$('.alert-dismissible, .text-danger').remove();
+
+			if (json['success']) {
+				$('#recurring-description').html(json['success']);
+			}
+		}
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#button-cart').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/add',
+		type: 'post',
+		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-cart').button('loading');
+		},
+		complete: function() {
+			$('#button-cart').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible, .text-danger').remove();
+			$('.form-group').removeClass('has-error');
+
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						var element = $('#input-option' + i.replace('_', '-'));
+
+						if (element.length) {
+							if (element.parent().hasClass('input-group')) {
+								element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+							} else {
+								element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+							}
+						} else {
+							var optSelect = $('select[name="option[' + i + ']"]');
+							if (optSelect.length) {
+								optSelect.closest('.d-flex').after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+							}
+						}
+					}
+				}
+
+				if (json['error']['recurring']) {
+					$('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+				}
+
+				if (json['error']['stock']) {
+					window.uannesShowCartResponse(json);
+				}
+
+				// Highlight any found errors
+				$('.text-danger').parent().addClass('has-error');
+			}
+
+			if (json['success']) {
+				window.uannesShowCartResponse(json);
+
+				var qtyMatch = json['total'] && String(json['total']).match(/(\d+)/);
+				var cartBadge = document.querySelector('#cart #cart-total');
+				if (cartBadge && qtyMatch) {
+					cartBadge.textContent = qtyMatch[1];
+				}
+
+				$(document).trigger('uannes:cartUpdated');
+			}
+		},
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('.date').datetimepicker({
+	language: '{{ datepicker }}',
+	pickTime: false
+});
+
+$('.datetime').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: true,
+	pickTime: true
+});
+
+$('.time').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: false
+});
+
+$('button[id^=\'button-upload\']').on('click', function() {
+	var node = this;
+
+	$('#form-upload').remove();
+
+	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+	$('#form-upload input[name=\'file\']').trigger('click');
+
+	if (typeof timer != 'undefined') {
+    	clearInterval(timer);
+	}
+
+	timer = setInterval(function() {
+		if ($('#form-upload input[name=\'file\']').val() != '') {
+			clearInterval(timer);
+
+			$.ajax({
+				url: 'index.php?route=tool/upload',
+				type: 'post',
+				dataType: 'json',
+				data: new FormData($('#form-upload')[0]),
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+					$(node).button('loading');
+				},
+				complete: function() {
+					$(node).button('reset');
+				},
+				success: function(json) {
+					$('.text-danger').remove();
+
+					if (json['error']) {
+						$(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
+					}
+
+					if (json['success']) {
+						alert(json['success']);
+
+						$(node).parent().find('input').val(json['code']);
+					}
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		}
+	}, 500);
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#review').delegate('.pagination a', 'click', function(e) {
+    e.preventDefault();
+
+    $('#review').fadeOut('slow');
+
+    $('#review').load(this.href);
+
+    $('#review').fadeIn('slow');
+});
+
+$('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
+
+$('#button-review').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id={{ product_id }}',
+		type: 'post',
+		dataType: 'json',
+		data: $("#form-review").serialize(),
+		beforeSend: function() {
+			$('#button-review').button('loading');
+		},
+		complete: function() {
+			$('#button-review').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('input[name=\'name\']').val('');
+				$('textarea[name=\'text\']').val('');
+				$('input[name=\'rating\']:checked').prop('checked', false);
+			}
+		}
+	});
+});
+
+$(document).ready(function() {
+	$('.thumbnails').magnificPopup({
+		type:'image',
+		delegate: 'a',
+		gallery: {
+			enabled: true
+		}
+	});
+});
+//--></script> 
+<script>
+	$(document).ready(function(){
+	$('.custom-accordion-header').on('click', function(){
+		var $content = $(this).next('.custom-accordion-content');
+		$(this).toggleClass('active');
+		$content.slideToggle(250);
+		$(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+	});
+	});
+</script>
+<script>
+$(document).ready(function(){
+  if ($(window).width() <= 992) {
+    var productDetails = $('.right-sidebar');
+
+    $('.carousel-section').after(productDetails);
+  }
+});
+</script>
+{{ footer }}

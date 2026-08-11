@@ -1,0 +1,101 @@
+{{ header }}
+
+{% if landing_code == 'made_to_order' or landing_code == 'fabrics' or landing_code == 'brand_story' or landing_code == 'brand_story_detail' %}
+  <div id="information-landing" class="content-landing-page content-landing-page--{{ landing_code }}">
+  </div>
+{% else %}
+  <div id="information-landing" class="container content-landing-page content-landing-page--{{ landing_code }}{% if display_mode == 'hub' %} content-landing-page--hub{% endif %}">
+    <ul class="breadcrumb">
+      {% for breadcrumb in breadcrumbs %}
+      <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="row">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+      {% else %}
+      {% set class = 'col-sm-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+
+        {% if display_mode == 'hub' %}
+        <div class="collection-hub">
+          <header class="collection-hub__header">
+            <p class="collection-hub__eyebrow">{{ heading_title }}</p>
+            <h1 class="collection-hub__title">{{ text_topics }}</h1>
+          </header>
+          {% if sections %}
+          <div class="collection-grid">
+            {% for section in sections %}
+            {% set card_href = section.link ? section.link : '#' %}
+            <a href="{{ card_href }}" class="collection-grid__card">
+              <span class="collection-grid__media">
+                {% if section.image %}
+                <img src="{{ section.image }}" alt="{{ section.title }}" class="collection-grid__img" />
+                {% endif %}
+              </span>
+              <span class="collection-grid__name">{{ section.title }}</span>
+              {% if section.button_text %}
+              <span class="collection-grid__cta">{{ section.button_text }}</span>
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% else %}
+
+        {% set hero_img = (hero and hero.image) ? hero.image : 'image/catalog/282A9426.jpg' %}
+        {% set hero_title = (hero and hero.title) ? hero.title : heading_title %}
+        {% set hero_desc = (hero and hero.description) ? hero.description : '' %}
+
+        <div class="home-banner-stack home-banner-stack--page-hero mto-hero-section">
+          <div class="home-banner-stack__item">
+            <div class="home-banner-stack__media mto-hero-media">
+              <img src="{{ hero_img }}" alt="{{ hero_title }}" class="img-responsive home-banner-stack__img mto-hero-img">
+              <div class="home-banner-stack__overlay mto-hero-overlay">
+                <h1 class="home-banner-stack__title mto-hero-title">{{ hero_title }}</h1>
+                {% if hero_desc %}
+                  <p class="home-banner-stack__desc mto-hero-desc">{{ hero_desc }}</p>
+                {% endif %}
+                {% if hero and hero.button_text and hero.link %}
+                  <a href="{{ hero.link }}" class="home-banner-stack__btn">{{ hero.button_text }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-landing-page__sections">
+          {% if sections %}
+            {% for section in sections %}
+              <div class="content-landing-row{% if loop.index0 is odd %} content-landing-row--text-right{% endif %}">
+                <div class="content-landing-row__content">
+                  {% if section.title %}
+                    <h2 class="content-landing-row__title">{{ section.title }}</h2>
+                  {% endif %}
+                  {% if section.description %}
+                    <div class="content-landing-row__desc">{{ section.description|e|nl2br }}</div>
+                  {% endif %}
+                  {% if section.button_text and section.link %}
+                    <p class="content-landing-row__action"><a href="{{ section.link }}" class="home-banner-stack__btn">{{ section.button_text }}</a></p>
+                  {% endif %}
+                </div>
+                <div class="content-landing-row__media">
+                  {% if section.image %}
+                    <img src="{{ section.image }}" alt="{{ section.title }}" class="img-responsive content-landing-row__img">
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {{ content_bottom }}</div>
+      {{ column_right }}</div>
+  </div>
+{% endif %}
+{{ footer }}

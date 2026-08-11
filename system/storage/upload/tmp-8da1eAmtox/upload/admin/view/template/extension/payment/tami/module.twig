@@ -1,0 +1,211 @@
+<form
+        method="post"
+        action="{{ apiFormSaveUrl }}"
+        name="tami-module-settings-form"
+        id="tami-module-settings-form"
+        class="tami-lead tami-text-tami tami-ajax-form"
+>
+    <input type="hidden" name="module_settings[enabled]" value="0"/>
+    <input type="hidden" name="module_settings[debug_mode]" value="0"/>
+    <input type="hidden" name="module_settings[save_failed_transactions]" value="0"/>
+    <div class="tami-m-0">
+        <div class="tami-card tami-rounded-4 tami-bg-white tami-m-3 tami-overflow-hidden">
+            <div class="tami-card-body">
+                <table class="tami-table tami-table-striped tami-table-borderless">
+                    <tbody>
+                    <tr>
+                        <th width="40%">
+                            <label
+                                   class="tami-text-tami tami-fw-normal tami-w-100"
+                                   for="form-ModuleSettings-Enabled"
+                            >
+                                <span data-tamibs-toggle="tooltip"
+                                      data-tamibs-original-title="{{ lang_desc_module_enable_disable }}"
+                                >
+                                {{ lang_text_module_enable_disable }} <i class="fa fa-info-circle"></i>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="user-select-none">
+                            <div class="tami-checkbox-custom">
+                                <input id="tami-installment-switch" value="1" type="checkbox"
+                                       name="module_settings[enabled]"
+                                       autocomplete="off"
+                                       class="tami-custom-switch"
+                                        {% if module_settings.enabled == '1' %}
+                                            checked
+                                        {% endif %}
+                                >
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th width="40%">
+                            <label
+                                    class="tami-text-tami tami-fw-normal tami-w-100"
+                                    for="form-ModuleSettings-1"
+                            >
+                                <span
+                                        data-tamibs-toggle="tooltip"
+                                        data-tamibs-original-title="{{ lang_desc_enable_debug|format(debug_dir) }}"
+                                >
+                                {{ lang_text_enable_debug }} <i class="fa fa-info-circle"></i>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="user-select-none">
+                            <div class="tami-checkbox-custom">
+                                <input id="tami-installment-switch" value="1" type="checkbox"
+                                       name="module_settings[debug_mode]"
+                                       autocomplete="off"
+                                       class="tami-custom-switch"
+                                        {% if module_settings.debug_mode == '1' %}
+                                            checked
+                                        {% endif %}
+                                >
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th width="40%">
+                            <label class="tami-text-tami tami-fw-normal tami-w-100"
+                                   for="form-ModuleSettings-2">{{ lang_text_store_failed_transactions }}</label>
+
+                        </th>
+                        <td class="user-select-none">
+                            <div class="tami-checkbox-custom">
+                                <input id="tami-installment-switch" value="1" type="checkbox"
+                                       name="module_settings[save_failed_transactions]"
+                                       autocomplete="off"
+                                       class="tami-custom-switch"
+                                        {% if module_settings.save_failed_transactions == '1' %}
+                                            checked
+                                        {% endif %}
+                                >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="40%">
+                            <label
+                                    class="tami-text-tami tami-fw-normal tami-w-100"
+                                    for="form-ModuleSettings-Title"
+                            >
+                                <span
+                                        data-tamibs-toggle="tooltip"
+                                        data-tamibs-original-title="{{ lang_desc_method_name }}"
+                                >
+                                    {{ lang_text_method_name }} <i class="fa fa-info-circle"></i>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="user-select-none">
+                            <input name="module_settings[title]" class="tami-form-control" type="text"
+                                   style="max-width: 25rem;"
+                                   value="{{ module_settings.title }}" id="form-ModuleSettings-Title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="40%">
+                            <label
+                                    class="tami-text-tami tami-fw-normal tami-w-100"
+                                    for="form-ModuleSettings-Order"
+                            >
+                                <span
+                                        data-tamibs-original-title="{{ lang_desc_checkout_order }}"
+                                        data-tamibs-toggle="tooltip"
+                                >
+                                {{ lang_text_checkout_order }} <i class="fa fa-info-circle"></i>
+                                </span>
+                            </label>
+                        </th>
+                        <td class="user-select-none">
+                            <input name="module_settings[checkout_order]" class="tami-form-control" type="text"
+                                   style="max-width: 25rem;"
+                                   autocomplete="off"
+                                    {% if module_settings.checkout_order is defined %}
+                                        value="{{ module_settings.checkout_order }}"
+                                    {% else %}
+                                        value="1"
+                                    {% endif %}
+                                   id="form-ModuleSettings-Order"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="40%">
+                            <label class="tami-text-tami tami-fw-normal tami-w-100"
+                                   for="form-ModuleSettings-0">{{ lang_text_order_status_after_payment }}</label>
+                        </th>
+                        <td>
+                            <select name="module_settings[order_status]" type="select" class="tami-form-select"
+                                    style="max-width: 25rem"
+                                    autocomplete="off" id="form-ModuleSettings-0">
+                                {% for order_status in order_statuses %}
+                                    {% if order_status.order_status_id == module_settings.order_status %}
+                                        <option value="{{ order_status.order_status_id }}"
+                                                selected="selected">{{ order_status.name }}</option>
+                                    {% else %}
+                                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="40%">
+                            <label class="tami-text-tami tami-fw-normal tami-w-100"
+                                   for="form-ModuleSettings-0">{{ lang_text_order_status_after_refund }}</label>
+                        </th>
+                        <td>
+                            <select name="module_settings[order_status_refund]" type="select" class="tami-form-select"
+                                    style="max-width: 25rem"
+                                    autocomplete="off" id="form-ModuleSettings-0">
+                                <option value="">{{ lang_text_refund_status_no_change }}</option>
+                                {% for order_status in order_statuses %}
+                                    {% if order_status.order_status_id == module_settings.order_status_refund %}
+                                        <option value="{{ order_status.order_status_id }}"
+                                                selected="selected">{{ order_status.name }}</option>
+                                    {% else %}
+                                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="tami-failed-payment-status-row"
+                        style="display: {% if module_settings.save_failed_transactions == '1' %}table-row{% else %}none{% endif %};"
+                    >
+                        <th width="40%">
+                            <label class="tami-text-tami tami-fw-normal tami-w-100"
+                                   for="form-ModuleSettings-Failed">{{ lang_text_failed_orders_status }}</label>
+                        </th>
+                        <td class="user-select-none">
+                            <select name="module_settings[order_status_failed]" type="select" class="tami-form-select"
+                                    style="max-width: 25rem"
+                                    autocomplete="off" id="form-ModuleSettings-Failed">
+                                {% for order_status in order_statuses %}
+                                    {% if order_status.order_status_id == module_settings.order_status_failed %}
+                                        <option value="{{ order_status.order_status_id }}"
+                                                selected="selected">{{ order_status.name }}</option>
+                                    {% else %}
+                                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tami-text-end">
+                    <button type="submit" class="tami-btn tami-btn tami-btn-primary" form="tami-module-settings-form">
+                        <span style="display: none"
+                              class="tami--button-loader tami-spinner-border tami-spinner-border-sm"></span>
+                        {{ lang_text_save_changes }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

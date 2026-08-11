@@ -1,0 +1,408 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* default/template/common/footer.twig */
+class __TwigTemplate_0fee49dc0b4c5fa7acf2d4f408fc5c22 extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        // line 1
+        echo "<style>
+/* Footer layout is kept with the component so it cannot depend on a cached theme CSS file. */
+.site-footer {
+  width: 100%;
+  margin: 0;
+  padding: 50px 0;
+  overflow: visible !important;
+  color: #fff;
+  background: #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  clear: both;
+  position: relative;
+  z-index: 99;
+  display: block;
+  height: auto;
+  max-height: none;
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    height: 750px !important; /* Test amacli statik yukseklik */
+  }
+}
+.site-footer *, .site-footer *::before, .site-footer *::after { box-sizing: border-box; }
+.site-footer__container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 25px; overflow: visible; }
+.site-footer__main, .site-footer__grid, .site-footer__nav-container, .site-footer__nav, .site-footer__nav-col, .site-footer__bar { min-width: 0; }
+.site-footer__grid { display: grid; grid-template-columns: clamp(250px, 26vw, 360px) minmax(0, 1fr); align-items: start; gap: clamp(32px, 5vw, 80px); }
+.site-footer__brand { display: flex; align-self: stretch; align-items: center; min-width: 0; }
+.site-footer__logo-link, .site-footer__logo-link:hover, .site-footer__logo-link:focus { display: inline-block; color: #fff; text-decoration: none; }
+.site-footer__logo-text { display: block; max-width: 100%; color: #fff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size: clamp(3rem, 4.8vw, 6rem); font-weight: 800; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
+.site-footer__nav-container { width: 100%; }
+.site-footer__nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3.75vw, 60px); width: 100%; }
+.site-footer__nav-title { margin: 0 0 1.25rem; color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: .08em; line-height: 1.3; text-transform: uppercase; }
+.site-footer__nav-list { margin: 0; padding: 0; list-style: none; }
+.site-footer__nav-link, .site-footer__nav-link:visited, .site-footer__legal-link, .site-footer__legal-link:visited { position: relative; display: inline-block; text-decoration: none; }
+.site-footer__nav-link, .site-footer__nav-link:visited { margin-bottom: 1.1rem; color: rgba(255,255,255,.9); font-size: 12.5px; }
+.site-footer__nav-link::after, .site-footer__legal-link::after { position: absolute; right: 0; bottom: -3px; left: 0; height: 1px; content: ''; background: currentColor; transform: scaleX(0); transform-origin: center; transition: transform .35s cubic-bezier(.25, .8, .25, 1); }
+.site-footer__nav-link:hover, .site-footer__nav-link:focus, .site-footer__legal-link:hover, .site-footer__legal-link:focus { color: #fff; text-decoration: none; }
+.site-footer__nav-link:hover::after, .site-footer__nav-link:focus::after, .site-footer__legal-link:hover::after, .site-footer__legal-link:focus::after { transform: scaleX(1); }
+.site-footer__nav-list li:last-child .site-footer__nav-link { margin-bottom: 0; }
+.site-footer__newsletter { min-width: 0; }
+.site-footer__newsletter-text { margin: 0 0 1.5rem; color: rgba(255,255,255,.88); font-size: 13.5px; line-height: 1.65; }
+.site-footer__newsletter-form { display: flex; padding-bottom: .25rem; border-bottom: 1px solid rgba(255,255,255,.25); }
+.site-footer__newsletter-input { flex: 1 1 auto; min-width: 0; padding: 0; color: #fff; background: transparent; border: 0; outline: 0; }
+.site-footer__newsletter-btn { padding: 0; color: #fff; background: transparent; border: 0; cursor: pointer; }
+.site-footer__newsletter-message { margin-top: 10px; font-size: 14.5px; }
+.site-footer__divider { display: block; width: 100%; height: 1px; margin: 40px 0; border: 0; background: rgba(255,255,255,.15); }
+.site-footer__bar { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 24px; width: 100%; }
+.site-footer__social { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.site-footer__social-label, .site-footer__copyright { color: rgba(255,255,255,.9); font-family: 'Cormorant Garamond', Georgia, serif; }
+.site-footer__social-label { font-size: 1.45rem; }
+.site-footer__social-icons, .site-footer__legal { display: flex; gap: 1rem; }
+.site-footer__social-link { color: #fff; font-size: 1.875rem; }
+.site-footer__copyright { font-size: 1.3rem; text-align: center; }
+.site-footer__copyright p { margin: 0; }
+.site-footer__legal { justify-content: flex-end; flex-wrap: wrap; }
+.site-footer__legal-link { margin: 0; color: rgba(255,255,255,.9); font-size: 1.1rem; }
+
+.site-footer__container,
+.site-footer__main,
+.site-footer__grid,
+.site-footer__nav-container,
+.site-footer__nav,
+.site-footer__bar { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .site-footer { padding: 32px 0 28px; }
+  .site-footer__container { padding: 0 28px; }
+  .site-footer__grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .site-footer__brand, .site-footer__logo-link { width: 100%; text-align: center; }
+  .site-footer__logo-text { font-size: clamp(2.4rem, 7vw, 3.5rem); }
+  .site-footer__nav { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+  .site-footer__nav-title { margin-bottom: .7rem; font-size: 1.05rem; }
+  .site-footer__nav-title::after { display: none !important; }
+  .site-footer__nav-link { margin-bottom: .7rem; font-size: 11px; }
+  .site-footer__nav-list,
+  .site-footer__newsletter-text,
+  .site-footer__newsletter-form,
+  .site-footer__newsletter-message {
+    max-height: none !important;
+    margin-top: 0 !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+  }
+  .site-footer__newsletter-text { margin-bottom: .75rem; font-size: 11.5px; line-height: 1.45; }
+  .site-footer__newsletter-form { margin-bottom: 0 !important; }
+  .site-footer__divider { margin: 24px 0; }
+  .site-footer__bar { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .site-footer__social { flex-direction: row; align-items: center; gap: 10px; }
+  .site-footer__social-label { font-size: 1.05rem; }
+  .site-footer__social-icons { gap: 8px; }
+  .site-footer__social-link { font-size: 1.5rem; }
+  .site-footer__copyright { font-size: 1rem; }
+  .site-footer__legal { gap: 8px; }
+  .site-footer__legal-link { font-size: .84rem; }
+}
+
+@media (max-width: 767px) {
+  .site-footer { padding: 20px 0 max(18px, env(safe-area-inset-bottom)); }
+  .site-footer__container { padding: 0 22px; }
+  .site-footer__grid, .site-footer__nav-container, .site-footer__nav { display: block; width: 100%; }
+  .site-footer__brand, .site-footer__logo-link { width: 100%; text-align: center; }
+  .site-footer__brand { margin-bottom: 10px; }
+  .site-footer__logo-text { font-size: clamp(2.2rem, 10vw, 3.1rem); }
+  .site-footer__nav-col { width: 100%; margin: 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .site-footer__nav-col:last-child { border-bottom: none; }
+  .site-footer__nav-title { position: relative; display: flex; align-items: center; min-height: 40px; margin: 0; padding: 6px 28px 6px 0; font-size: .98rem; cursor: pointer; }
+  .site-footer__nav-title::after { position: absolute; right: 2px; content: '+'; font-family: 'DM Sans', sans-serif; font-size: 1.25rem; font-weight: 300; transition: transform .2s ease; }
+  .site-footer__nav-col.is-open .site-footer__nav-title::after { transform: rotate(45deg); }
+  .site-footer__nav-list, .site-footer__newsletter-text, .site-footer__newsletter-form, .site-footer__newsletter-message { max-height: 0; margin-top: 0; margin-bottom: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, margin .3s ease, opacity .2s ease; }
+  .site-footer__nav-col.is-open .site-footer__nav-list { max-height: 320px; padding-bottom: 14px; opacity: 1; }
+  .site-footer__newsletter .site-footer__nav-title { cursor: default; }
+  .site-footer__newsletter .site-footer__nav-title::after { display: none; }
+  .site-footer__newsletter .site-footer__newsletter-text { max-height: 72px; margin-bottom: 4px; overflow: visible; opacity: 1; font-size: 11px; line-height: 1.35; }
+  .site-footer__newsletter .site-footer__newsletter-form { max-height: 32px; margin-bottom: 7px; overflow: visible; opacity: 1; font-size: 11px; }
+  .site-footer__newsletter .site-footer__newsletter-message:not(:empty) { max-height: 36px; margin-bottom: 7px; overflow: visible; opacity: 1; }
+  .site-footer__divider { margin: 16px 0 24px 0; }
+  .site-footer__bar { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0; }
+  .site-footer__social { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; order: 1; }
+  .site-footer__social-label { font-size: 0.95rem; color: rgba(255,255,255,0.9); }
+  .site-footer__social-icons { display: flex; gap: 16px; align-items: center; }
+  .site-footer__social-link { font-size: 1.4rem; }
+  .site-footer__legal { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(255,255,255,0.15); order: 2; margin: 4px 0; }
+  .site-footer__legal-link { font-size: 0.85rem; color: rgba(255,255,255,0.9); text-decoration: none; }
+  .site-footer__copyright { width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); order: 3; padding-bottom: 8px; }
+}
+
+</style>
+
+<footer class=\"site-footer\">
+  <div class=\"site-footer__container\">
+    <div class=\"site-footer__main\">
+      <div class=\"site-footer__grid\">
+        <div class=\"site-footer__brand\">
+          <a href=\"";
+        // line 135
+        echo ($context["home"] ?? null);
+        echo "\" class=\"site-footer__logo-link\" title=\"";
+        echo ((array_key_exists("name", $context)) ? (_twig_default_filter(($context["name"] ?? null), "UANNES")) : ("UANNES"));
+        echo "\">
+            <span class=\"site-footer__logo-text\">";
+        // line 136
+        echo ((array_key_exists("name", $context)) ? (_twig_default_filter(($context["name"] ?? null), "UANNES")) : ("UANNES"));
+        echo "</span>
+          </a>
+        </div>
+
+        <div class=\"site-footer__nav-container\">
+          <div class=\"site-footer__nav\">
+            <div class=\"site-footer__nav-col\">
+              <h2 class=\"site-footer__nav-title\">İLETİŞİM</h2>
+              <ul class=\"site-footer__nav-list\">
+                <li><a href=\"#!\" class=\"site-footer__nav-link\">Bizi Takip Edin</a></li>
+                <li><a href=\"";
+        // line 146
+        echo ($context["contact"] ?? null);
+        echo "\" class=\"site-footer__nav-link\">Bize Ulaşın</a></li>
+                <li><a href=\"index.php?route=information/information&information_id=7\" class=\"site-footer__nav-link\">Sıkça Sorulan Sorular</a></li>
+                <li><a href=\"";
+        // line 148
+        echo ((array_key_exists("blog", $context)) ? (_twig_default_filter(($context["blog"] ?? null), "#")) : ("#"));
+        echo "\" class=\"site-footer__nav-link\">Blog</a></li>
+              </ul>
+            </div>
+            <div class=\"site-footer__nav-col\">
+              <h2 class=\"site-footer__nav-title\">HAKKIMIZDA</h2>
+              <ul class=\"site-footer__nav-list\">
+                <li><a href=\"#!\" class=\"site-footer__nav-link\">Şirket</a></li>
+                <li><a href=\"index.php?route=information/information&information_id=4\" class=\"site-footer__nav-link\">Uannes Hakkında</a></li>
+                <li><a href=\"#!\" class=\"site-footer__nav-link\">Uannes'in Hikayesi</a></li>
+                <li><a href=\"index.php?route=information/information&information_id=9\" class=\"site-footer__nav-link\">Sertifikalar</a></li>
+              </ul>
+            </div>
+            <div class=\"site-footer__nav-col\">
+              <h2 class=\"site-footer__nav-title\">SİPARİŞ</h2>
+              <ul class=\"site-footer__nav-list\">
+                <li><a href=\"#!\" class=\"site-footer__nav-link\">Ödeme</a></li>
+                <li><a href=\"#!\" class=\"site-footer__nav-link\">Teslimat</a></li>
+                <li><a href=\"";
+        // line 165
+        echo ($context["return"] ?? null);
+        echo "\" class=\"site-footer__nav-link\">İade / Değişim</a></li>
+                <li><a href=\"";
+        // line 166
+        echo ($context["order"] ?? null);
+        echo "\" class=\"site-footer__nav-link\">Sipariş Takibi</a></li>
+              </ul>
+            </div>
+            <div class=\"site-footer__nav-col site-footer__newsletter\">
+              <h2 class=\"site-footer__nav-title\">BÜLTEN</h2>
+              <p class=\"site-footer__newsletter-text\">Özellikler ve sürümler hakkında güncel kalmak için bültenimize katılın.</p>
+              <div class=\"site-footer__newsletter-form\">
+                <input type=\"email\" id=\"newsletter-email\" placeholder=\"E-posta adresiniz\" class=\"site-footer__newsletter-input\" autocomplete=\"email\">
+                <button id=\"newsletter-submit\" type=\"button\" class=\"site-footer__newsletter-btn\" aria-label=\"Gönder\">
+                  <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18l6-6-6-6\"/></svg>
+                </button>
+              </div>
+              <div id=\"newsletter-message\" class=\"site-footer__newsletter-message\"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class=\"site-footer__divider\">
+
+    <div class=\"site-footer__bar\">
+      <div class=\"site-footer__social\">
+        <span class=\"site-footer__social-label\">Bizi Takip Edin</span>
+        <div class=\"site-footer__social-icons\">
+          <a href=\"#\" class=\"site-footer__social-link\" aria-label=\"Instagram\"><i class=\"fa fa-instagram\"></i></a>
+          <a href=\"#\" class=\"site-footer__social-link\" aria-label=\"WhatsApp\"><i class=\"fa fa-whatsapp\"></i></a>
+          <a href=\"#\" class=\"site-footer__social-link\" aria-label=\"Facebook\"><i class=\"fa fa-facebook\"></i></a>
+        </div>
+      </div>
+      <div class=\"site-footer__copyright\">
+        ";
+        // line 197
+        echo ($context["powered"] ?? null);
+        echo "
+      </div>
+      <div class=\"site-footer__legal\">
+        <a href=\"index.php?route=information/information&information_id=10\" class=\"site-footer__legal-link\">KVKK</a>
+        <a href=\"index.php?route=information/information&information_id=11\" class=\"site-footer__legal-link\">Gizlilik ve Çerez Politikası</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+";
+        // line 207
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["styles"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["style"]) {
+            // line 208
+            echo "\t<link href=\"";
+            echo twig_get_attribute($this->env, $this->source, $context["style"], "href", [], "any", false, false, false, 208);
+            echo "\" type=\"text/css\" rel=\"";
+            echo twig_get_attribute($this->env, $this->source, $context["style"], "rel", [], "any", false, false, false, 208);
+            echo "\" media=\"";
+            echo twig_get_attribute($this->env, $this->source, $context["style"], "media", [], "any", false, false, false, 208);
+            echo "\"/>
+";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['style'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 210
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["scripts"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["script"]) {
+            // line 211
+            echo "\t<script src=\"";
+            echo $context["script"];
+            echo "\" type=\"text/javascript\"></script>
+";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['script'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 213
+        echo "<script>
+document.addEventListener(\"DOMContentLoaded\", function() {
+  const emailInput = document.getElementById(\"newsletter-email\");
+  const button = document.getElementById(\"newsletter-submit\");
+  const messageBox = document.getElementById(\"newsletter-message\");
+
+  if (!button || !emailInput || !messageBox) return;
+
+  button.addEventListener(\"click\", function() {
+    const email = emailInput.value.trim();
+    messageBox.textContent = \"\";
+
+    if (!email) {
+      messageBox.textContent = \"Lütfen e-posta adresinizi girin!\";
+      messageBox.style.color = \"#f5b8be\";
+      return;
+    }
+
+    fetch(\"index.php?route=extension/module/newsletter/subscribe\", {
+      method: \"POST\",
+      headers: { \"Content-Type\": \"application/x-www-form-urlencoded\" },
+      body: \"email=\" + encodeURIComponent(email)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === \"success\") {
+        messageBox.textContent = data.message;
+        messageBox.style.color = \"#b8e6c8\";
+        emailInput.value = \"\";
+      } else {
+        messageBox.textContent = data.message || \"Bir hata oluştu!\";
+        messageBox.style.color = \"#f5b8be\";
+      }
+    })
+    .catch(() => {
+      messageBox.textContent = \"Bağlantı hatası oluştu.\";
+      messageBox.style.color = \"#f5b8be\";
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileQuery = window.matchMedia('(max-width: 767px)');
+  var columns = document.querySelectorAll('.site-footer__nav-col');
+
+  columns.forEach(function(column) {
+    var title = column.querySelector('.site-footer__nav-title');
+    if (!title) return;
+
+    /* Bülten her zaman görünür; mobil akordeon davranışına katılmaz. */
+    if (column.classList.contains('site-footer__newsletter')) {
+      column.classList.add('is-open');
+      title.setAttribute('aria-expanded', 'true');
+      return;
+    }
+
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    title.setAttribute('aria-expanded', 'false');
+
+    function toggleColumn() {
+      if (!mobileQuery.matches) return;
+      var isOpen = !column.classList.contains('is-open');
+      column.classList.toggle('is-open', isOpen);
+      title.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    title.addEventListener('click', toggleColumn);
+    title.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleColumn();
+      }
+    });
+  });
+});
+</script>
+</body></html>
+";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName()
+    {
+        return "default/template/common/footer.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo()
+    {
+        return array (  298 => 213,  289 => 211,  285 => 210,  272 => 208,  268 => 207,  255 => 197,  221 => 166,  217 => 165,  197 => 148,  192 => 146,  179 => 136,  173 => 135,  37 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("", "default/template/common/footer.twig", "C:\\xampp\\htdocs\\uannes.dijicrea.net\\catalog\\view\\theme\\default\\template\\common\\footer.twig");
+    }
+}

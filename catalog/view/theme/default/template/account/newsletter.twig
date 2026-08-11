@@ -1,0 +1,64 @@
+{{ header }}
+<main id="account-newsletter" class="container account-page">
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+    {% else %}
+      {% set class = 'col-sm-12' %}
+    {% endif %}
+
+    <div id="content" class="{{ class }}">{{ content_top }}
+      {% if success %}
+        <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+      {% endif %}
+
+      <header class="account-page__heading">
+        <span>BİLDİRİMLER</span>
+        <p>Yeni ürünleri, özel fırsatları ve UANNES haberlerini e-posta adresine almak için tercihini düzenle.</p>
+      </header>
+
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="newsletter-form account-page__form">
+        <fieldset class="newsletter-toggle">
+          <h1 class="newsletter-toggle__title">{{ heading_title }}</h1>
+          <div class="newsletter-toggle__control">
+            <div>
+              <strong>E-posta bildirimleri</strong>
+              <p>Tercihini dilediğin zaman değiştirebilirsin.</p>
+            </div>
+            <div class="toggle-wrapper">
+              <input type="hidden" name="newsletter" value="0" />
+              <label class="toggle-switch" for="input-newsletter">
+                <input type="checkbox" name="newsletter" value="1" id="input-newsletter" {% if newsletter %}checked{% endif %}>
+                <span class="slider"></span>
+                <span class="sr-only">{{ entry_newsletter }}</span>
+              </label>
+              <span class="toggle-status-text" id="toggle-status-text">{% if newsletter %}Aktif{% else %}Kapalı{% endif %}</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="buttons clearfix">
+          <div class="pull-left"><a href="{{ back }}" class="btn btn-default">{{ button_back }}</a></div>
+          <div class="pull-right"><input type="submit" value="{{ button_continue }}" class="btn btn-primary" /></div>
+        </div>
+      </form>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const checkbox = document.getElementById('input-newsletter');
+  const statusText = document.getElementById('toggle-status-text');
+  if (checkbox && statusText) {
+    checkbox.addEventListener('change', function() {
+      statusText.textContent = this.checked ? 'Aktif' : 'Kapalı';
+    });
+  }
+});
+</script>
+{{ footer }}

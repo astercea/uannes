@@ -1,0 +1,101 @@
+{{ header }}
+{{ column_left }}
+
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>Bülten Aboneleri</h1>
+			<ul class="breadcrumb">
+				{% for breadcrumb in breadcrumbs %}
+					<li>
+						<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<div class="pull-right">
+					{% if subscribers %}
+						<button id="delete-selected" type="button" class="btn btn-danger btn-sm">
+							<i class="fa fa-trash"></i>
+							Seçilenleri Sil
+						</button>
+					{% endif %}
+				</div>
+				<h3 class="panel-title" style="line-height:32px; margin-right:140px;">
+					<i class="fa fa-envelope"></i>
+					Aboneler
+					{% if total_subscribers %}
+						<small style="color:#777;">({{ total_subscribers }})</small>
+					{% endif %}
+				</h3>
+
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="panel-body">
+				{% if subscribers %}
+					<form id="form-subscribers" method="post" action="{{ delete }}">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th style="width:1px" class="text-center">
+										<input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"/>
+									</th>
+									<th>#</th>
+									<th>E-posta</th>
+									<th>Durum</th>
+									<th>IP</th>
+									<th>Kayıt Tarihi</th>
+									<th class="text-center" style="width:80px;">İşlem</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for s in subscribers %}
+									<tr>
+										<td class="text-center">
+											<input type="checkbox" name="selected[]" value="{{ s.subscriber_id }}"/>
+										</td>
+										<td>{{ loop.index }}</td>
+										<td>{{ s.email }}</td>
+										<td>
+											{% if s.status %}
+												<span class="label label-success">Aktif</span>
+											{% else %}
+												<span class="label label-danger">Pasif</span>
+											{% endif %}
+										</td>
+										<td>{{ s.ip ?: '-' }}</td>
+										<td>{{ s.date_added }}</td>
+										<td class="text-center">
+											<a href="{{ delete_one ~ '&subscriber_id=' ~ s.subscriber_id }}" class="btn btn-danger btn-sm" onclick="return confirm('Bu aboneyi silmek istiyor musun?')">
+												<i class="fa fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</form>
+				{% else %}
+					<p>Henüz abone bulunmuyor.</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#delete-selected').on('click', function () {
+if (confirm('Seçilen aboneleri silmek istiyor musun?')) {
+$('#form-subscribers').submit();
+}
+});
+</script>
+
+{{ footer }}

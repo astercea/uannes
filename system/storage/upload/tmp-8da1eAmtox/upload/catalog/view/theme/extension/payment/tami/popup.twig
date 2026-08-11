@@ -1,0 +1,20 @@
+<div id="tamiCheckoutPaymentFormPopupContainer">
+    <div class="tami-card-popup">
+        <div class="tami-card-popup-inner" id="tami-card-popup-inner">
+            <div>
+                <button type="button" class="tami-card-popup-close-btn" id="tami-card-popup-close-btn">
+                    <span>&times;</span>
+                </button>
+                <iframe
+                        id="tami-card-popup-iframe"
+                        class="tami-card-popup-iframe"
+                        width="100%" height="100%" frameborder="0">
+                </iframe>
+            </div>
+            <div class="tami-card-popup-loading">
+                <p>{{ popup_lang.contacting }}</p>
+                <p><strong>{{ popup_lang.please_wait }}</strong></p>
+            </div>
+        </div>
+    </div>
+</div>

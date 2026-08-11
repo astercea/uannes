@@ -1,0 +1,12 @@
+{{ module_header }}
+<div class="tami-card-body tami-card-minheight">
+    {% for key, menu_item in module_menu %}
+        <div class="tami-bg-default tami--tab-container tami-p-3"
+             id="tab-tami-{{ menu_item.slug }}-tab" {{ key != 0 ? ' style="display:none"' }}>
+            {% if menu_item.content is defined %}
+                {{ menu_item.content }}
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{{ module_footer }}

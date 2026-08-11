@@ -1,0 +1,127 @@
+{{ header }}
+<div id="account-order" class="container account-page">
+
+  <style>
+    .status-badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      min-width: 100px;
+      text-align: center;
+    }
+    .status-pending   { background:#fff4cc; color:#7a5b00; border:1px solid #e6c200; }
+    .status-processing{ background:#fff1e6; color:#a65a00; border:1px solid #ffb347; }
+    .status-shipped   { background:#dff4ff; color:#004d61; border:1px solid #66c2e3; }
+    .status-complete  { background:#e8ffe8; color:#1e7a1e; border:1px solid #51c451; }
+    .status-canceled  { background:#ffe5e5; color:#8a0000; border:1px solid #ff5c5c; }
+    .status-refunded  { background:#f2e6ff; color:#4b0082; border:1px solid #b980ff; }
+    .status-hold      { background:#e0e0e0; color:#333; border:1px solid #ccc; }
+    .status-default   { background:#eee; color:#555; border:1px solid #bbb; }
+  </style>
+
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+    {% else %}
+      {% set class = 'col-sm-12' %}
+    {% endif %}
+
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+
+      {% if orders %}
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td class="text-left">{{ column_order_id }}</td>
+              <td class="text-left">Görsel</td>
+              <td class="text-left">{{ column_customer }}</td>
+              <td class="text-left">{{ column_product }}</td>
+              <td class="text-left">{{ column_status }}</td>
+              <td class="text-left">{{ column_total }}</td>
+              <td class="text-left">{{ column_date_added }}</td>
+              <td>Detay</td>
+            </tr>
+          </thead>
+          <tbody>
+          {% for order in orders %}
+            {% set status_tr = order.status %}
+            {% set status_class = 'status-default' %}
+
+            {% if order.status in ['Pending','Beklemede','On Hold','Bekliyor','Pending Payment','Pending Verification'] %}
+              {% set status_tr = 'Beklemede' %}
+              {% set status_class = 'status-pending' %}
+            {% elseif order.status in ['Processing','Processed','Processing Payment','İşleniyor','Hazırlanıyor'] %}
+              {% set status_tr = 'İşleniyor' %}
+              {% set status_class = 'status-processing' %}
+            {% elseif order.status in ['Shipped','Kargoda','Gönderildi','Kargoya Verildi'] %}
+              {% set status_tr = 'Kargoya Verildi' %}
+              {% set status_class = 'status-shipped' %}
+            {% elseif order.status in ['Delivered','Teslim Edildi'] %}
+              {% set status_tr = 'Teslim Edildi' %}
+              {% set status_class = 'status-shipped' %}
+            {% elseif order.status in ['Completed','Complete','Tamamlandı','Bitti'] %}
+              {% set status_tr = 'Tamamlandı' %}
+              {% set status_class = 'status-complete' %}
+            {% elseif order.status in ['Canceled','Cancelled','İptal Edildi','İptal'] %}
+              {% set status_tr = 'İptal Edildi' %}
+              {% set status_class = 'status-canceled' %}
+            {% elseif order.status in ['Refunded','İade Edildi','Returned'] %}
+              {% set status_tr = 'İade Edildi' %}
+              {% set status_class = 'status-refunded' %}
+            {% elseif order.status in ['On Hold','Hold','Bekletiliyor'] %}
+              {% set status_tr = 'Bekletiliyor' %}
+              {% set status_class = 'status-hold' %}
+            {% endif %}
+
+            <tr>
+              <td class="text-left">#{{ order.order_id }}</td>
+
+              <td class="text-center">
+                {% if order.thumb %}
+                  <img src="{{ order.thumb }}" alt="{{ order.name }}" class="img-thumbnail" style="width:60px; height:60px; object-fit:cover;">
+                {% endif %}
+              </td>
+
+              <td class="text-left">{{ order.name }}</td>
+              <td class="text-left">{{ order.products }}</td>
+
+              <td class="text-left">
+                <span class="status-badge {{ status_class }}">{{ status_tr }}</span>
+              </td>
+
+              <td class="text-left">{{ order.total }}</td>
+              <td class="text-left">{{ order.date_added }}</td>
+              <td class="text-center">
+                <a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+        <div class="col-sm-6 text-right">{{ results }}</div>
+      </div>
+
+      {% else %}
+        <p>{{ text_empty }}</p>
+      {% endif %}
+
+      {{ content_bottom }}
+    </div>
+
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}

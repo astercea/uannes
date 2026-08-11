@@ -1,0 +1,251 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-landing-page" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ text_form }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}<div class="alert alert-danger">{{ error_warning }}</div>{% endif %}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" id="form-landing-page" class="form-horizontal">
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="{{ name }}" id="input-name" class="form-control" />
+              {% if error_name %}<div class="text-danger">{{ error_name }}</div>{% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-parent">{{ entry_parent }}</label>
+            <div class="col-sm-10">
+              <select name="parent_landing_page_id" id="input-parent" class="form-control">
+                <option value="0">{{ text_none }}</option>
+                {% for parent in hub_parents %}
+                  <option value="{{ parent.landing_page_id }}" {% if parent_landing_page_id == parent.landing_page_id %}selected="selected"{% endif %}>{{ parent.name }}</option>
+                {% endfor %}
+              </select>
+              <p class="help-block">{{ help_parent }}</p>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-code">{{ entry_code }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="code" value="{{ code }}" id="input-code" class="form-control" {% if code_readonly %}readonly="readonly"{% endif %} />
+              <p class="help-block">{{ help_code }}</p>
+              {% if error_code %}<div class="text-danger">{{ error_code }}</div>{% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_card_image }}</label>
+            <div class="col-sm-10">
+              <a href="" id="thumb-card-image" data-toggle="image" class="img-thumbnail"><img src="{{ thumb }}" alt="" data-placeholder="{{ placeholder }}" /></a>
+              <input type="hidden" name="image" value="{{ image }}" id="input-card-image" />
+              <p class="help-block">{{ help_card_image }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-seo-keyword">{{ entry_seo_keyword }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="seo_keyword" value="{{ seo_keyword }}" id="input-seo-keyword" class="form-control" placeholder="ornek-sayfa" />
+              <p class="help-block">{{ help_seo_keyword }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-information">{{ entry_information_id }}</label>
+            <div class="col-sm-10">
+              <select name="information_id" id="input-information" class="form-control">
+                <option value="0">{{ text_auto_information }}</option>
+                {% for information in informations %}
+                  <option value="{{ information.information_id }}" {% if information_id == information.information_id %}selected="selected"{% endif %}>{{ information.title }}</option>
+                {% endfor %}
+              </select>
+              <p class="help-block">{{ help_information }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-hero-banner">{{ entry_hero_banner }}</label>
+            <div class="col-sm-10">
+              <select name="hero_banner_id" id="input-hero-banner" class="form-control">
+                <option value="0">--</option>
+                {% for banner in banners %}
+                  <option value="{{ banner.banner_id }}" {% if hero_banner_id == banner.banner_id %}selected="selected"{% endif %}>{{ banner.name }}</option>
+                {% endfor %}
+              </select>
+              <p class="help-block">{{ help_hero }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-hero-image">{{ entry_hero_image }}</label>
+            <div class="col-sm-10">
+              <select name="hero_banner_image_id" id="input-hero-image" class="form-control">
+                <option value="0">--</option>
+                {% for banner_image in banner_images %}
+                  <option value="{{ banner_image.banner_image_id }}" {% if hero_banner_image_id == banner_image.banner_image_id %}selected="selected"{% endif %}>{{ banner_image.title }} ({{ banner_image.sort_order }})</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="sort_order" value="{{ sort_order }}" id="input-sort-order" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group" id="display-mode-group">
+            <label class="col-sm-2 control-label" for="input-display-mode">{{ entry_display_mode }}</label>
+            <div class="col-sm-10">
+              <select name="display_mode" id="input-display-mode" class="form-control">
+                <option value="content" {% if display_mode != 'hub' %}selected="selected"{% endif %}>{{ text_mode_content }}</option>
+                <option value="hub" {% if display_mode == 'hub' %}selected="selected"{% endif %}>{{ text_mode_hub }}</option>
+              </select>
+              <p class="help-block">{{ help_display_mode }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+            <div class="col-sm-10">
+              <select name="status" id="input-status" class="form-control">
+                <option value="1" {% if status %}selected="selected"{% endif %}>{{ text_enabled }}</option>
+                <option value="0" {% if not status %}selected="selected"{% endif %}>{{ text_disabled }}</option>
+              </select>
+            </div>
+          </div>
+          <div id="hub-children-note" class="alert alert-info" style="display:none;">{{ help_hub_children }}</div>
+          <div id="landing-sections-panel">
+            <hr />
+            <p class="help-block">{{ help_zigzag }}</p>
+            <ul class="nav nav-tabs" id="language">
+              {% for language in languages %}
+              <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" /> {{ language.name }}</a></li>
+              {% endfor %}
+            </ul>
+            <div class="tab-content">
+              {% set thumb_row = 0 %}
+              {% for language in languages %}
+              <div class="tab-pane" id="language{{ language.language_id }}">
+                <table id="sections{{ language.language_id }}" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">{{ entry_title }}</td>
+                      <td class="text-left">{{ entry_description }}</td>
+                      <td class="text-center">{{ entry_image }}</td>
+                      <td class="text-right">{{ entry_sort_order }}</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if landing_sections[language.language_id] %}
+                    {% for section in landing_sections[language.language_id] %}
+                    <tr id="section-row-{{ language.language_id }}-{{ loop.index0 }}" data-section-index="{{ loop.index0 }}">
+                      <td><input type="text" name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][title]" value="{{ section.title }}" class="form-control" placeholder="{{ entry_title }}" />
+                        {% if error_section[language.language_id][loop.index0] is defined %}<div class="text-danger">{{ error_section[language.language_id][loop.index0] }}</div>{% endif %}
+                      </td>
+                      <td><textarea name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][description]" rows="4" class="form-control" placeholder="{{ entry_description }}">{{ section.description }}</textarea></td>
+                      <td class="text-center">
+                        <a href="" id="thumb-landing{{ thumb_row }}" data-toggle="image" class="img-thumbnail"><img src="{{ section.thumb }}" alt="" data-placeholder="{{ placeholder }}" /></a>
+                        <input type="hidden" name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][image]" value="{{ section.image }}" id="input-landing{{ thumb_row }}" />
+                      </td>
+                      <td>
+                        <input type="hidden" name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][button_text]" value="{{ section.button_text }}" />
+                        <input type="hidden" name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][link]" value="{{ section.link }}" />
+                        <input type="text" name="landing_section[{{ language.language_id }}][{{ loop.index0 }}][sort_order]" value="{{ section.sort_order }}" class="form-control" />
+                      </td>
+                      <td><button type="button" onclick="removeSection({{ loop.index0 }});" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                      {% set thumb_row = thumb_row + 1 %}
+                    {% endfor %}
+                    {% endif %}
+                  </tbody>
+                </table>
+              </div>
+              {% endfor %}
+            </div>
+            <p class="text-right">
+              <button type="button" onclick="addSection();" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{ button_section_add }}</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+var section_row = {{ section_row_count }};
+var thumb_row = {{ thumb_row }};
+var landing_language_ids = [{% for language in languages %}{{ language.language_id }}{% if not loop.last %}, {% endif %}{% endfor %}];
+
+function buildSectionRowHtml(language_id, index) {
+  var html = '';
+  html += '<tr id="section-row-' + language_id + '-' + index + '" data-section-index="' + index + '">';
+  html += '<td><input type="text" name="landing_section[' + language_id + '][' + index + '][title]" class="form-control" /></td>';
+  html += '<td><textarea name="landing_section[' + language_id + '][' + index + '][description]" rows="4" class="form-control"></textarea></td>';
+  html += '<td class="text-center"><a href="" id="thumb-landing' + thumb_row + '" data-toggle="image" class="img-thumbnail"><img src="{{ placeholder }}" data-placeholder="{{ placeholder }}" /></a>';
+  html += '<input type="hidden" name="landing_section[' + language_id + '][' + index + '][image]" value="" id="input-landing' + thumb_row + '" /></td>';
+  thumb_row++;
+  html += '<td><input type="hidden" name="landing_section[' + language_id + '][' + index + '][button_text]" value="" />';
+  html += '<input type="hidden" name="landing_section[' + language_id + '][' + index + '][link]" value="" />';
+  html += '<input type="text" name="landing_section[' + language_id + '][' + index + '][sort_order]" value="' + index + '" class="form-control" /></td>';
+  html += '<td><button type="button" onclick="removeSection(' + index + ');" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+  html += '</tr>';
+  return html;
+}
+
+function addSection() {
+  var index = section_row;
+
+  for (var i = 0; i < landing_language_ids.length; i++) {
+    $('#sections' + landing_language_ids[i] + ' tbody').append(buildSectionRowHtml(landing_language_ids[i], index));
+  }
+
+  section_row++;
+}
+
+function removeSection(index) {
+  for (var i = 0; i < landing_language_ids.length; i++) {
+    $('#section-row-' + landing_language_ids[i] + '-' + index).remove();
+  }
+}
+
+function syncLandingMode() {
+  var parentId = parseInt($('#input-parent').val(), 10) || 0;
+  var $mode = $('#input-display-mode');
+
+  if (parentId > 0) {
+    $mode.val('content').prop('disabled', true);
+    if (!$('#input-display-mode-hidden').length) {
+      $mode.after('<input type="hidden" name="display_mode" id="input-display-mode-hidden" value="content" />');
+    } else {
+      $('#input-display-mode-hidden').val('content');
+    }
+  } else {
+    $mode.prop('disabled', false);
+    $('#input-display-mode-hidden').remove();
+  }
+
+  var mode = $mode.val();
+
+  if (mode === 'hub') {
+    $('#landing-sections-panel').hide();
+    $('#hub-children-note').show();
+  } else {
+    $('#landing-sections-panel').show();
+    $('#hub-children-note').hide();
+  }
+}
+
+$('#input-parent, #input-display-mode').on('change', syncLandingMode);
+syncLandingMode();
+$('#language a:first').tab('show');
+//--></script>
+</div>
+{{ footer }}

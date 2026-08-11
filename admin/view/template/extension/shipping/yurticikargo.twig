@@ -1,0 +1,112 @@
+{{ header }}{{ column_left }}
+
+<div class="container">
+	<h3>Yurtiçi Kargo Entegrasyon Ayarları</h3>
+	<form action="{{ action }}" method="post">
+
+		<div class="alert alert-info">
+			<b>Ortam Bilgisi:</b>
+			<small>
+				Test ortamı = <code>http://testwebservices.yurticikargo.com:9090</code> •
+				Canlı ortam = <code>http://webservices.yurticikargo.com:8080</code>
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>Ortam Seçimi</label>
+			<select name="shipping_yurticikargo_mode" class="form-control" id="modeSelect">
+				<option value="test" {% if shipping_yurticikargo_mode == 'test' %}selected{% endif %}>Test Ortamı</option>
+				<option value="live" {% if shipping_yurticikargo_mode == 'live' %}selected{% endif %}>Canlı Ortam</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Dry Run (Gerçek Çağrı Yapma)</label>
+			<select name="shipping_yurticikargo_dry_run" class="form-control">
+				<option value="1" {% if shipping_yurticikargo_dry_run|default('1') == '1' %}selected{% endif %}>Evet (Simülasyon)</option>
+				<option value="0" {% if shipping_yurticikargo_dry_run|default('1') == '0' %}selected{% endif %}>Hayır (Gerçek Çağrı)</option>
+			</select>
+			<small class="text-muted">
+				Eğer canlı ortamda test ediyorsan <b>"Evet"</b> seçili kalsın. Böylece Yurtiçi'ne gerçek gönderi gitmez.
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>API Kullanıcı Adı</label>
+			<input type="text" name="shipping_yurticikargo_username" value="{{ shipping_yurticikargo_username }}" class="form-control" placeholder="Örn: 4025G1214079117"/>
+		</div>
+
+		<div class="form-group">
+			<label>API Şifre</label>
+			<input type="password" name="shipping_yurticikargo_password" value="{{ shipping_yurticikargo_password }}" class="form-control"/>
+		</div>
+
+		<div class="form-group">
+			<label>Müşteri Kodu</label>
+			<input type="text" name="shipping_yurticikargo_customer" value="{{ shipping_yurticikargo_customer }}" class="form-control" placeholder="Örn: 1214079117"/>
+		</div>
+
+		<div class="form-group">
+			<label>Çıkış Birim (Şube) Kodu</label>
+			<input type="text" name="shipping_yurticikargo_branch" value="{{ shipping_yurticikargo_branch }}" class="form-control" placeholder="Örn: 4025"/>
+		</div>
+
+		<div class="form-group">
+			<label>API URL</label>
+			<input type="text" id="apiUrl" name="shipping_yurticikargo_api_url" value="{{ shipping_yurticikargo_api_url }}" class="form-control" placeholder="http://webservices.yurticikargo.com:8080/KOPSWebServices/AwbServices?wsdl"/>
+			<small class="text-muted">
+				Test: <code>http://testwebservices.yurticikargo.com:9090/KOPSWebServices/AwbServices?wsdl</code><br>
+				Canlı: <code>http://webservices.yurticikargo.com:8080/KOPSWebServices/AwbServices?wsdl</code>
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>Ödeme Tipi</label>
+			<select name="shipping_yurticikargo_payment_type" class="form-control">
+				<option value="GÖ" {% if shipping_yurticikargo_payment_type == 'GÖ' %} selected {% endif %}>Gönderici Ödemeli</option>
+				<option value="AÖ" {% if shipping_yurticikargo_payment_type == 'AÖ' %} selected {% endif %}>Alıcı Ödemeli</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Coğrafi Bölge</label>
+			<select name="shipping_yurticikargo_geo_zone_id" class="form-control">
+				<option value="0">Tümü</option>
+				{% for geo_zone in geo_zones %}
+					<option value="{{ geo_zone.geo_zone_id }}" {% if geo_zone.geo_zone_id == shipping_yurticikargo_geo_zone_id %} selected {% endif %}>{{ geo_zone.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Durum</label>
+			<select name="shipping_yurticikargo_status" class="form-control">
+				<option value="1" {% if shipping_yurticikargo_status %} selected {% endif %}>Açık</option>
+				<option value="0" {% if not shipping_yurticikargo_status %} selected {% endif %}>Kapalı</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Sıralama</label>
+			<input type="text" name="shipping_yurticikargo_sort_order" value="{{ shipping_yurticikargo_sort_order }}" class="form-control"/>
+		</div>
+
+		<button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+		<a href="{{ cancel }}" class="btn btn-default mt-3">İptal</a>
+	</form>
+</div>
+
+<script>
+// 🔄 Ortam seçimine göre API URL otomatik değiştir
+document.getElementById('modeSelect').addEventListener('change', function() {
+	const mode = this.value;
+	const apiUrlInput = document.getElementById('apiUrl');
+	if (mode === 'test') {
+		apiUrlInput.value = 'http://testwebservices.yurticikargo.com:9090/KOPSWebServices/AwbServices?wsdl';
+	} else {
+		apiUrlInput.value = 'http://webservices.yurticikargo.com:8080/KOPSWebServices/AwbServices?wsdl';
+	}
+});
+</script>
+
+{{ footer }}

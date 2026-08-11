@@ -1,0 +1,41 @@
+{{ header }}
+<div id="common-success" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <div class="row">
+    {{ column_left }}
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+    {% else %}
+      {% set class = 'col-sm-12' %}
+    {% endif %}
+    
+    <div id="content" class="{{ class }} text-center">
+      {{ content_top }}
+
+      <div class="success-icon mb-4">
+        <i style="font-size:110px;" class="fa fa-check-circle"></i>
+      </div>
+
+      <h1 class="fw-bold mb-3">{{ heading_title }}</h1>
+      <p class="lead text-muted mb-4">{{ text_message }}</p>
+
+      <div class="buttons mt-4">
+        <a href="{{ continue }}" class="btn btn-primary px-5 py-2 rounded-pill fw-semibold">
+          {{ button_continue }}
+        </a>
+      </div>
+
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}
+

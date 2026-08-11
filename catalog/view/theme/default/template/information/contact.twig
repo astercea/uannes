@@ -1,0 +1,210 @@
+{{ header }}
+<style>
+form .form-control {
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background-color: #fdfdfd;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  height: 45px;
+
+}
+
+form .form-control:focus {
+  border-color: #1a1a50; 
+  box-shadow: 0 0 8px rgba(122, 90, 245, 0.3);
+  background-color: #fff;
+}
+
+form textarea.form-control {
+  resize: none;
+  min-height: 140px;
+}
+
+form .mb-3 {
+  margin-bottom: 22px;
+}
+
+</style>
+<div id="information-contact" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <div class="container contact-container shadow-sm">
+        <div class="text-center mb-4">
+          <h2>{{ heading_title }}</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <form action="{{ action }}" method="post" enctype="multipart/form-data">
+              {# İletişim formunun başlangıcı #}
+              {% if error_warning %}
+              <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+              {% endif %}
+              <div class="mb-3 required">
+                {# İsim Soyisim Alanı #}
+                <input
+                  type="text"
+                  name="name"
+                  value="{{ name }}"
+                  placeholder="{{ entry_name }}"
+                  id="input-name"
+                  class="form-control"
+                  required
+                />
+                {% if error_name %}
+                <div class="text-danger">{{ error_name }}</div>
+                {% endif %}
+              </div>
+              <div class="mb-3 required">
+                {# E-Posta Alanı #}
+                <input
+                  type="email"
+                  name="email"
+                  value="{{ email }}"
+                  placeholder="{{ entry_email }}"
+                  id="input-email"
+                  class="form-control"
+                  required
+                />
+                {% if error_email %}
+                <div class="text-danger">{{ error_email }}</div>
+                {% endif %}
+              </div>
+              <div class="mb-3 required">
+                {# Mesaj Alanı #}
+                <textarea
+                  name="enquiry"
+                  rows="5"
+                  placeholder="{{ entry_enquiry }}" {# OpenCart'ta enquiry = Mesaj/Sorgu anlamına gelir #}
+                  id="input-enquiry"
+                  class="form-control"
+                  required
+                >{{ enquiry }}</textarea>
+                {% if error_enquiry %}
+                <div class="text-danger">{{ error_enquiry }}</div>
+                {% endif %}
+              </div>
+              {# reCAPTCHA veya diğer captcha'lar buraya gelir #}
+              {{ captcha }}
+              <div class="col-md-5 mx-auto d-flex justify-content-center" style="padding-bottom:25px;">
+                <button type="submit" class="btn btn-custom btn-login btn-giris">
+                  {{ button_submit }}
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="contact-info">
+              <h5>{{ text_location }}</h5> {# "Mağaza Konumumuz" gibi çevrilir #}
+              {# Mağaza Adı #}
+              {# <p><strong>{{ store }}</strong></p> #}
+              {# Adres #}
+              {% if address %}
+              <p><strong>Adres:</strong><br/> {{ address }}</p>
+              {% endif %}
+              {# Telefon #}
+              {% if telephone %}
+              <p><strong>{{ text_telephone }}</strong> {{ telephone }}</p>
+              {% endif %}
+              {# Store Mail #}
+              {% if store_email %}
+              <p><strong>E-Posta:</strong> <a href="mailto:{{ store_email }}">{{ store_email }}</a></p>
+              {% endif %}
+              {# Çalışma Saatleri (Açılış Saatleri) #}
+              {% if open %}
+              <p>
+                <strong>{{ text_open }}:</strong><br />{{ open }}
+              </p>
+              {% endif %}
+              {# Diğer yorumlar/notlar #}
+              {# {% if comment %}
+              <p>
+                <strong>{{ text_comment }}:</strong><br />{{ comment }}
+              </p>
+              {% endif %} #}
+              {# Haritada Göster butonu #}
+              {% if geocode %}
+              <div class="mt-3">
+                  <a href="http://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn btn-info btn-block"><i class="fa fa-map-marker"></i> {{ button_map }}</a>
+              </div>
+              {% endif %}
+              {# Fax Bilgisi (İhtiyaç duyulursa) #}
+              {# {% if fax %}
+              <p class="mt-3"><strong>{{ text_fax }}:</strong> {{ fax }}</p>
+              {% endif %} #}
+            </div>
+          </div>
+        </div>
+      </div>
+      {# OpenCart'ın çoklu mağaza/konum listeleme kısmı (İsteğe bağlı olarak korundu) #}
+      {% if locations %}
+      <h3>{{ text_store }}</h3>
+      <div class="panel-group" id="accordion">
+        {% for location in locations %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#collapse-location{{ location.location_id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ location.name }} <i class="fa fa-caret-down"></i></a></h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapse-location{{ location.location_id }}">
+            <div class="panel-body">
+              <div class="row">
+                {% if location.image %}
+                <div class="col-sm-3"><img src="{{ location.image }}" alt="{{ location.name }}" title="{{ location.name }}" class="img-thumbnail" /></div>
+                {% endif %}
+                <div class="col-sm-3"><strong>{{ location.name }}</strong><br/>
+                  <address>
+                  {{ location.address }}
+                  </address>
+                  {% if location.geocode %}
+                  <a href="http://maps.google.com/maps?q={{ location.geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn btn-info"><i class="fa fa-map-marker"></i> {{ button_map }}</a>
+                  {% endif %}
+                </div>
+                <div class="col-sm-3"> <strong>{{ text_telephone }}</strong><br/>
+                  {{ location.telephone }}<br/>
+                  <br/>
+                  {% if location.fax %}
+                  <strong>{{ text_fax }}</strong><br/>
+                  {{ location.fax }}
+                  {% endif %}
+                </div>
+                <div class="col-sm-3">
+                  {% if location.open %}
+                  <strong>{{ text_open }}</strong><br/>
+                  {{ location.open }}<br/>
+                  <br/>
+                  {% endif %}
+                  {% if location.comment %}
+                  <strong>{{ text_comment }}</strong><br/>
+                  {{ location.comment }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {# OpenCart'ın varsayılan form yapısı (Kaldırıldı veya yukarı taşındı) #}
+      {# 
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        ... (form içeriği)
+      </form>
+      #}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

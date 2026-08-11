@@ -1,0 +1,246 @@
+{{ header }}
+<style>
+footer {
+  background-color: #1a1a50;
+  margin-top: 50px;
+}
+@media (max-width: 767px) {
+  .grid-buttons {
+    display: none;
+  }
+}
+#product-search h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #1a1a50;
+}
+.category-list-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.category-list-toolbar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+.category-view-btn {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+.category-view-btn:hover {
+  opacity: 0.7;
+}
+.category-view-btn.active {
+  opacity: 1;
+}
+#product-search .category-sort .dropdown-menu > li > a {
+  padding: 0.55rem 1.2rem;
+  font-size: 13px;
+  color: #1a1a50;
+}
+#product-search .category-sort .dropdown-menu > li > a:hover,
+#product-search .category-sort .dropdown-menu > li.active > a {
+  background: rgba(26, 26, 80, 0.04);
+}
+#product-search .pagination > .active > span,
+#product-search .pagination > .active > a {
+  background-color: #1a1a50;
+  border-color: #1a1a50;
+  color: #fff;
+}
+#product-search .pagination > li > a,
+#product-search .pagination > li > span {
+  color: #1a1a50;
+  padding: 8px 15px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+}
+</style>
+<div id="product-search" class="container">
+  <!-- Breadcrumb kaldirildi -->
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <!-- h1 kaldirildi -->
+
+            {% if products %}
+      <div class="category-list-toolbar" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 40px;">
+        <div class="category-list-toolbar__actions" style="width: 100%; justify-content: space-between;">
+          <div style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #888; font-weight: 300;">
+             {{ results }}
+          </div>
+          <div class="dropdown category-sort" style="display:flex; align-items:center; gap:20px;">
+            <div class="category-view-toggle grid-buttons" role="group" aria-label="Görünüm" style="background:transparent; border:none; gap:15px; display:flex;">
+              <button type="button" id="grid-view-4" class="category-view-btn active" data-toggle="tooltip" title="4'lü Görünüm" style="background:transparent; padding:0; color:#1a1a50; border:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </button>
+              <button type="button" id="grid-view-6" class="category-view-btn" data-toggle="tooltip" title="6'lı Görünüm" style="background:transparent; padding:0; color:#1a1a50; border:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="4" height="4"></rect><rect x="10" y="3" width="4" height="4"></rect><rect x="17" y="3" width="4" height="4"></rect><rect x="3" y="10" width="4" height="4"></rect><rect x="10" y="10" width="4" height="4"></rect><rect x="17" y="10" width="4" height="4"></rect><rect x="3" y="17" width="4" height="4"></rect><rect x="10" y="17" width="4" height="4"></rect><rect x="17" y="17" width="4" height="4"></rect></svg>
+              </button>
+            </div>
+            <button class="btn dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background:transparent; color:#1a1a50; box-shadow:none; padding:0; border:none; font-weight:300; font-size:14px;">
+              <span>{{ text_sort }}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-left:5px;"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="border-radius:0; border:1px solid #eee; box-shadow:0 10px 30px rgba(0,0,0,0.05); margin-top:10px;">
+              {% for sorts in sorts %}
+              <li {% if sorts.value == '%s-%s'|format(sort, order) %} class="active" {% endif %}>
+                <a href="{{ sorts.href }}" style="font-size:13px; font-weight:300;">{{ sorts.text }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="product-list">
+        {% for product in products %}
+        <div class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-6">
+          <div class="product-card text-center{% if product.in_stock is defined and not product.in_stock %} product-card--out-of-stock{% endif %}">
+            <div class="transparent-box w-100 mt-0">
+              <div class="product-image-container position-relative">
+                {% include 'common/product_badges.twig' with { badges: product.badges } only %}
+                <a href="{{ product.href }}">
+                  <img src="{{ product.thumb }}" class="product-image img-fluid mb-3 main-img" alt="{{ product.name }}" title="{{ product.name }}"/>
+                  {% if product.thumb2 %}
+                  <img src="{{ product.thumb2 }}" class="product-image img-fluid hover-img" alt="{{ product.name }} Hover"/>
+                  {% else %}
+                  <img src="{{ product.thumb }}" class="product-image img-fluid hover-img" alt="{{ product.name }} Hover"/>
+                  {% endif %}
+                </a>
+              </div>
+              <h6 class="fw-normal" style="font-size:16px;">{{ product.name }}</h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+        <div class="col-sm-6 text-right">{{ results }}</div>
+      </div>
+      {% elseif search %}
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh; text-align: center; font-family: 'DM Sans', sans-serif; padding-bottom: 50px;">
+        <h3 style="font-weight: 400; color: #1a1a50; font-size: 24px; margin-bottom: 15px; font-family: 'Cormorant Garamond', 'Georgia', serif; letter-spacing: 0.08em;">Üzgünüz, sonuç bulunamadı.</h3>
+        <p style="color: #888; font-size: 13px; margin-bottom: 30px;">"{{ search }}" için eşleşen bir ürünümüz yok. Başka bir arama terimiyle tekrar deneyebilirsiniz.</p>
+        
+        <div class="mega-search-wrapper" style="width: 100%; max-width: 400px; text-align: left;">
+          <div class="mega-search-form" style="display: flex; align-items: center; border-bottom: 1px solid #1a1a50; width: 100%;">
+            <button type="button" id="button-search" class="search-icon-btn" style="margin-right: 12px; color: #1a1a50; background: transparent; border: none; cursor: pointer; padding: 5px 0; display: flex; align-items: center;">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <input type="text" name="search" value="" placeholder="Search..." id="input-search" class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
+          </div>
+          <input type="hidden" name="category_id" value="0" />
+          <input type="hidden" name="sub_category" value="1" />
+          <input type="hidden" name="description" value="1" />
+        </div>
+      </div>
+      {% else %}
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh; text-align: center; font-family: 'DM Sans', sans-serif; padding-bottom: 50px;">
+        <div class="mega-search-wrapper" style="width: 100%; max-width: 400px; text-align: left;">
+          <div class="mega-search-form" style="display: flex; align-items: center; border-bottom: 1px solid #1a1a50; width: 100%;">
+            <button type="button" id="button-search" class="search-icon-btn" style="margin-right: 12px; color: #1a1a50; background: transparent; border: none; cursor: pointer; padding: 5px 0; display: flex; align-items: center;">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <input type="text" name="search" value="" placeholder="Search..." id="input-search" class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
+          </div>
+          <input type="hidden" name="category_id" value="0" />
+          <input type="hidden" name="sub_category" value="1" />
+          <input type="hidden" name="description" value="1" />
+        </div>
+      </div>
+      {% endif %}
+
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+<script type="text/javascript"><!--
+$('#button-search').bind('click', function() {
+	url = 'index.php?route=product/search';
+
+	var search = $('#content input[name=\'search\']').prop('value');
+
+	if (search) {
+		url += '&search=' + encodeURIComponent(search);
+	}
+
+	var category_id = $('#content select[name=\'category_id\']').prop('value');
+
+	if (category_id > 0) {
+		url += '&category_id=' + encodeURIComponent(category_id);
+	}
+
+	var sub_category = $('#content input[name=\'sub_category\']:checked').prop('value');
+
+	if (sub_category) {
+		url += '&sub_category=true';
+	}
+
+	var filter_description = $('#content input[name=\'description\']:checked').prop('value');
+
+	if (filter_description) {
+		url += '&description=true';
+	}
+
+	location = url;
+});
+
+$('#content input[name=\'search\']').bind('keydown', function(e) {
+	if (e.keyCode == 13) {
+		$('#button-search').trigger('click');
+	}
+});
+
+$('select[name=\'category_id\']').on('change', function() {
+	if (this.value == '0') {
+		$('input[name=\'sub_category\']').prop('disabled', true);
+	} else {
+		$('input[name=\'sub_category\']').prop('disabled', false);
+	}
+});
+
+$('select[name=\'category_id\']').trigger('change');
+--></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#grid-view-4').click(function() {
+    $('#product-list .product-layout').attr('class', 'product-layout col-lg-3 col-md-4 col-sm-6 col-xs-6');
+    $('#grid-view-4').addClass('active');
+    $('#grid-view-6').removeClass('active');
+    localStorage.setItem('display', 'grid-4');
+  });
+
+  $('#grid-view-6').click(function() {
+    $('#product-list .product-layout').attr('class', 'product-layout col-lg-2 col-md-3 col-sm-4 col-xs-6');
+    $('#grid-view-6').addClass('active');
+    $('#grid-view-4').removeClass('active');
+    localStorage.setItem('display', 'grid-6');
+  });
+
+  var display = localStorage.getItem('display');
+  if (display == 'grid-6') {
+    $('#grid-view-6').trigger('click');
+  } else {
+    $('#grid-view-4').addClass('active');
+  }
+});
+</script>
+{{ footer }}

@@ -1,0 +1,27 @@
+<style>
+/* Hide 3rd slideshow banner on homepage because it's replaced by Tri-Grid */
+.is-homepage .home-banner-stack__item--3 {
+  display: none;
+}
+
+
+
+</style>
+{{ header }}
+<div id="common-home">
+  <div class="home-fullwidth-top">{{ content_top }}</div>
+  <div class="container">
+    <div class="row">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+      {% else %}
+      {% set class = 'col-sm-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+      {{ content_bottom }}</div>
+      {{ column_right }}</div>
+  </div>
+</div>
+{{ footer }}

@@ -1,0 +1,48 @@
+<script>
+    var tamiCheckoutSwal_i18n = {},
+        tamiCheckoutFields = {
+            paymentUrl: "{{ tamiCheckoutPaymentUrl }}",
+            installmentUrl: "{{ tamiCheckoutInstallmentUrl }}",
+            assetsPublicPath: "catalog/view/theme/extension/payment/tami/",
+            successRedirectUrl: "{{ tamiOrderSuccessUrl }}",
+            paymentAmount: "{{ orderDetails.total }}",
+        },
+        tamiCheckoutApp_i18n = {{ tamiCheckoutApp_i18n|json_encode }},
+        tamiPaymentForm = {},
+        tamiCheckoutProcess_i18n = {{ tamiCheckout_process_i18n|json_encode }}
+    ;
+    tamiCheckoutFields.currencySymbol = "₺";
+    {% if orderDetails.currency_code is defined %}
+    {% if orderDetails.currency_code == 'TRY' or orderDetails.currency_code == 'TRL' %}
+    tamiCheckoutFields.currencySymbol = "₺";
+    {% elseif orderDetails.currency_code == 'USD' %}
+    tamiCheckoutFields.currencySymbol = "$";
+    {% elseif orderDetails.currency_code == 'EUR' %}
+    tamiCheckoutFields.currencySymbol = "€";
+    {% else %}
+    tamiCheckoutFields.currencySymbol = "{{ orderDetails.currency_code }}";
+    {% endif %}
+    {% endif %}
+</script>
+<link href="catalog/view/javascript/tami-creditcard-app.js" rel=preload as=script>
+<link href="catalog/view/javascript/tami-creditcard-app-vendors.js" rel=preload as=script>
+
+<link href="catalog/view/stylesheet/tami-checkout-process.css" rel=preload as=style>
+<link href="catalog/view/stylesheet/tami-creditcard-app.css" rel=preload as=style>
+
+<link href="catalog/view/stylesheet/tami-checkout-process.css" rel=stylesheet>
+<link href="catalog/view/stylesheet/tami-creditcard-app.css" rel=stylesheet>
+
+<form name="tami-checkout-form" action="#" id="tami-checkout-form" method="post">
+    <input type="hidden" id="tami-checkout-status" value="1">
+    <div id=tamiCreditCardFormApp></div>
+</form>
+<div id="tamiCreditCardFormPopup">
+    {{ popup }}
+</div>
+
+<script src="catalog/view/javascript/sweetalert2.all.min.js"></script>
+<script src="catalog/view/javascript/tami-checkout-process.js"></script>
+
+<script src="catalog/view/javascript/tami-creditcard-app-vendors.js"></script>
+<script src="catalog/view/javascript/tami-creditcard-app.js"></script>

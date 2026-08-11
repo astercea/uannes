@@ -1,0 +1,50 @@
+<style>
+.home-banner-stack__item--collection .home-banner-stack__overlay {
+  left: max(8%, calc((100vw - 1320px) / 2 + 15px));
+  right: auto;
+  width: 44%;
+  max-width: 540px;
+  align-items: flex-start;
+  text-align: left;
+}
+.home-banner-stack__item--collection .home-banner-stack__title,
+.home-banner-stack__item--collection .home-banner-stack__desc {
+  text-align: left;
+  max-width: 36rem;
+}
+.home-banner-stack__item--collection .home-banner-stack__btn {
+  align-self: flex-start;
+}
+@media (max-width: 767px) {
+  .home-banner-stack__item--collection .home-banner-stack__overlay {
+    width: 85%;
+    max-width: 100%;
+    left: 7.5%;
+    right: auto;
+  }
+}
+</style>
+<div class="home-banner-stack home-banner-stack--home-categories">
+  {% for banner in collection_categories %}
+    {% if loop.index < 3 and banner.title|lower != 'giyim' %}
+    <div class="home-banner-stack__item home-banner-stack__item--collection">
+      <div class="home-banner-stack__media">
+        <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive home-banner-stack__img">
+        {% if banner.title or banner.description or (banner.button_text and banner.link) %}
+          <div class="home-banner-stack__overlay">
+            {% if banner.title %}
+              <h2 class="home-banner-stack__title">{{ banner.title }}</h2>
+            {% endif %}
+            {% if banner.description %}
+              <p class="home-banner-stack__desc">{{ banner.description }}</p>
+            {% endif %}
+            {% if banner.button_text and banner.link %}
+              <a href="{{ banner.link }}" class="home-banner-stack__btn">{{ banner.button_text }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

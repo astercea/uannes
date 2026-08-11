@@ -1,0 +1,47 @@
+<div class="tami-col" id="tami-installation-status-widget">
+    <div class="tami-card tami-rounded-4 tami-p-4 tami-bg-tami tami-wave-green">
+        <div class="tami-d-flex">
+            <span class="tami-lead tami-text-white tami-w-75"><i
+                        class="fa fa-cogs"></i> {{ lang_text_widget_installation_title }}</span>
+        </div>
+        <div class="tami-text-white tami-mt-2 tami-pb-3">
+            {% if installation_status.merchant_id is defined and installation_status.merchant_id %}
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_merchant_id }}</h6></div>
+                <div class="tami-col">{{ installation_status.merchant_id }}</div>
+            </div>
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_terminal_id }}</h6></div>
+                <div class="tami-col">{{ installation_status.terminal_id }}</div>
+            </div>
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_environment }}</h6></div>
+                <div class="tami-col">
+                    {% if installation_status.environment == 'test' %}
+                        {{ lang_text_widget_environment_test }}
+                    {% else %}
+                        {{ lang_text_widget_environment_prod }}
+                    {% endif %}
+                </div>
+            </div>
+            {%else%}
+                <div class="tami-row tami-py-2">
+                    <div class="tami-col">
+                        <div class="tami-alert tami-alert-primary">
+                            <p class="tami-m-0"><i class="fa fa-exclamation-circle"></i> {{ lang_text_installation_not_completed }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+            <div class="tami-row">
+                <div class="tami-col">
+                    <a href="#" class="tami-btn tami-btn-tami-green tami-go-apisettings-button">
+                        {{ lang_text_widget_go_settings }}
+                        <i class="fa fa-long-arrow-right fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

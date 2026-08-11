@@ -1,0 +1,42 @@
+<div class="tami-col">
+    <div class="tami-card tami-rounded-4 tami-p-4 tami-bg-tami tami-wave-green tami-mb-3">
+                <span class="tami-lead tami-text-white tami-w-75">
+                    <i class="fa fa-shopping-bag"></i> {{ lang_text_widget_last_order }}</span>
+        <div class="tami-text-white tami-mt-2 tami-pb-3">
+            {% if last_order.order_id != '-' %}
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_last_order_id }}</h6></div>
+                <div class="tami-col">
+                    {% if last_order.order_id != '-' %}
+                        #{{ last_order.order_id }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_last_order_paymentdate }}</h6></div>
+                <div class="tami-col">
+                    {% if last_order.payment_completed_time matches '/^\\d+$/' %}
+                    {{ last_order.payment_completed_time|date('d/m/Y H:i') }}
+                    {% else %}
+                        {{ last_order.payment_completed_time }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tami-row tami-py-2">
+                <div class="tami-col"><h6 class="tami-m-0">{{ lang_text_widget_last_order_amount }}</h6></div>
+                <div class="tami-col">{{ last_order.total|number_format(2) }} {{ last_order.currency_code }}</div>
+            </div>
+            <div class="tami-row">
+                <div class="tami-col">
+                    <a target="_blank" href="{{ tamiAdminOrdersUrl }}"
+                       class="tami-btn tami-btn-tami-green">{{ lang_text_widget_list_orders_button }} <i
+                                class="fa fa-arrow-right-long fa-long-arrow-right"></i></a></div>
+            </div>
+            {% else %}
+                <p class="tami-text-center tami-my-5"><i class="fa fa-exclamation-triangle"></i> {{ lang_text_last_order_not_found }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

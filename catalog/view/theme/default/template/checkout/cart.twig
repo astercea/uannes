@@ -1,0 +1,136 @@
+{{ header }}
+<main id="checkout-cart" class="container cart-page">
+  {% if attention %}
+    <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ attention }}<button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  {% endif %}
+  {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}<button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  {% endif %}
+  {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}<button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  {% endif %}
+
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+      {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+      {% set class = 'col-sm-9' %}
+    {% else %}
+      {% set class = 'col-sm-12' %}
+    {% endif %}
+
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <header class="cart-page__heading">
+        <h1>{{ heading_title }}</h1>
+      </header>
+
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="cart-page__form">
+        <div class="table-responsive cart-page__table-wrap">
+          <table class="table cart-page__table">
+            <thead>
+              <tr>
+                <td class="text-left" colspan="2">Ürün</td>
+                <td class="text-left">{{ column_quantity }}</td>
+                <td class="text-right">{{ column_total }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for product in products %}
+                <tr>
+                  <td class="text-center cart-page__image-cell" data-label="Ürün">
+                    {% if product.thumb %}<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="cart-page__product-image" /></a>{% endif %}
+                  </td>
+                  <td class="text-left cart-page__product-cell" data-label="{{ column_name }}">
+                    <a href="{{ product.href }}" class="cart-page__product-name">{{ product.name }}</a>{% if not product.stock %} <span class="text-danger">***</span>{% endif %}
+                    {% for option in product.option %}
+                      {% if option.name|lower == 'beden' or option.name|lower == 'size' %}<small class="cart-page__product-size">{{ option.name }}: {{ option.value }}</small>{% endif %}
+                    {% endfor %}
+                    {% if product.reward %}<small>{{ product.reward }}</small>{% endif %}
+                    {% if product.recurring %}<small>{{ text_recurring_item }}: {{ product.recurring }}</small>{% endif %}
+                  </td>
+                  <td class="text-left cart-page__quantity-cell" data-label="{{ column_quantity }}">
+                    <div class="cart-page__quantity-control" data-cart-key="{{ product.cart_id }}" data-qty="{{ product.quantity }}">
+                      <button type="button" class="cart-page__qty-btn" data-action="decrease" aria-label="Azalt">−</button>
+                      <span class="cart-page__qty-value">{{ product.quantity }}</span>
+                      <button type="button" class="cart-page__qty-btn" data-action="increase" aria-label="Artır">+</button>
+                    </div>
+                    <button type="button" class="cart-page__remove" onclick="cart.remove('{{ product.cart_id }}');">{{ button_remove }}</button>
+                  </td>
+                  <td class="text-right cart-page__total-cell" data-label="{{ column_total }}">{{ product.total }}</td>
+                </tr>
+              {% endfor %}
+              {% for voucher in vouchers %}
+                <tr>
+                  <td class="cart-page__image-cell" data-label="Ürün"></td>
+                  <td class="text-left cart-page__product-cell" data-label="{{ column_name }}"><span class="cart-page__product-name">{{ voucher.description }}</span></td>
+                  <td class="text-left cart-page__quantity-cell" data-label="{{ column_quantity }}">
+                    <div class="cart-page__quantity-control cart-page__quantity-control--static"><span class="cart-page__qty-value">1</span></div>
+                    <button type="button" class="cart-page__remove" onclick="voucher.remove('{{ voucher.key }}');">{{ button_remove }}</button>
+                  </td>
+                  <td class="text-right cart-page__total-cell" data-label="{{ column_total }}">{{ voucher.amount }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </form>
+
+      <div class="cart-page__bottom">
+        <aside class="cart-page__summary" aria-label="Sipariş özeti">
+          <h2>Sipariş Özeti</h2>
+          <table class="table">
+            {% for total in totals %}
+              <tr><td>{{ total.title }}</td><td class="text-right">{{ total.text }}</td></tr>
+            {% endfor %}
+          </table>
+        </aside>
+      </div>
+
+      <div class="buttons clearfix cart-page__actions">
+        <div class="pull-left"><a href="{{ continue }}" class="btn btn-default">{{ button_shopping }}</a></div>
+        <div class="pull-right"><a href="{{ checkout }}" class="btn btn-primary">{{ button_checkout }}</a></div>
+      </div>
+
+      {% if recently_viewed_products %}
+        <section class="cart-page__recent" aria-labelledby="recently-viewed-title">
+          <header class="cart-page__recent-heading">
+            <h2 id="recently-viewed-title">Son Ziyaret Edilenler</h2>
+          </header>
+          <div class="uannes-row-grid cart-page__recent-grid">
+            {% for product in recently_viewed_products %}
+              <a href="{{ product.href }}" class="uannes-row-card cart-page__recent-card">
+                <div class="uannes-row-media">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}" class="uannes-row-img main-img" />
+                  {% if product.thumb2 %}<img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img hover-img" />{% endif %}
+                </div>
+                <div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</main>
+<script>
+document.addEventListener('click', function(event) {
+  var button = event.target.closest('.cart-page__qty-btn');
+  if (!button) return;
+
+  var control = button.closest('.cart-page__quantity-control');
+  if (!control || typeof cart === 'undefined') return;
+
+  var quantity = parseInt(control.getAttribute('data-qty'), 10) || 1;
+  quantity += button.getAttribute('data-action') === 'increase' ? 1 : -1;
+
+  if (quantity < 1) {
+    cart.remove(control.getAttribute('data-cart-key'));
+    return;
+  }
+
+  cart.update(control.getAttribute('data-cart-key'), quantity);
+});
+</script>
+{{ footer }}

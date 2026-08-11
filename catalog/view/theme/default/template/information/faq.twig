@@ -1,0 +1,42 @@
+{{ header }}
+<div id="information-faq" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <div class="faq-main-container">
+        <div class="faq-container faq-title-container">
+          <h1>{{ heading_title }}</h1>
+        </div>
+        <div class="faq-container faq-content-container">
+          {% if faqs %}
+            {% for faq in faqs %}
+            <div class="faq-item" data-faq-id="{{ faq.faq_id }}">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                <h2>{{ faq.question }}</h2>
+                <button type="button" class="toggle-btn" aria-label="Toggle answer">+</button>
+              </div>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">{{ faq.answer|e|nl2br }}</div>
+              </div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <p class="faq-empty">{{ text_empty|default('Henüz soru eklenmemiş.') }}</p>
+          {% endif %}
+        </div>
+      </div>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

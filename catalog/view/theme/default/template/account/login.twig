@@ -1,0 +1,68 @@
+{{ header }}
+<style>
+  body { background-color: #f8f6f2; }
+  footer { margin-top: 0; }
+</style>
+<div id="account-login" class="login-page">
+  <div class="container">
+    <div class="login-page__container">
+
+    {% if success %}
+    <div class="login-alert login-alert--success">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>{{ success }}</span>
+    </div>
+    {% endif %}
+
+    {% if error_warning %}
+    <div class="login-alert login-alert--error">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M8 5v4M8 11h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span>{{ error_warning }}</span>
+    </div>
+    {% endif %}
+
+    <h1 class="login-page__title">Hesap</h1>
+    <p class="login-page__subtitle">Hesabınıza erişmek veya yeni bir hesap<br>oluşturmak için lütfen e-posta adresinizi girin.</p>
+
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" class="login-page__form" autocomplete="off">
+      <div class="login-field">
+        <input type="email" name="email" value="{{ email }}" id="input-email" class="login-field__input" placeholder=" " required autocomplete="email" />
+        <label for="input-email" class="login-field__label">E-posta *</label>
+        <span class="login-field__line"></span>
+      </div>
+
+      <div class="login-field">
+        <input type="password" name="password" value="{{ password }}" id="input-password" class="login-field__input" placeholder=" " required autocomplete="current-password" />
+        <label for="input-password" class="login-field__label">Şifre *</label>
+        <span class="login-field__line"></span>
+      </div>
+
+      <div class="login-page__forgot">
+        <a href="{{ forgotten }}" class="login-page__forgot-link">Şifremi unuttum</a>
+      </div>
+
+      <button type="submit" class="login-page__submit">
+        <span>Devam Et</span>
+      </button>
+
+      {% if redirect %}
+      <input type="hidden" name="redirect" value="{{ redirect }}" />
+      {% endif %}
+    </form>
+
+    <div class="login-page__divider">
+      <span class="login-page__divider-line"></span>
+      <span class="login-page__divider-text">veya</span>
+      <span class="login-page__divider-line"></span>
+    </div>
+
+    <a href="{{ register }}" class="login-page__register-link">
+      <span>Yeni Hesap Oluştur</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    </div>
+  </div>
+</div>
+
+{{ footer }}

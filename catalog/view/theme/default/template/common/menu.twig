@@ -1,0 +1,28 @@
+{% if menu_items %}
+<div id="menuOverlay" class="mega-menu-backdrop" aria-hidden="true"></div>
+<nav id="mega-menu" class="mega-menu mega-menu--three" aria-label="{{ text_category }}" aria-hidden="true">
+  <div class="mega-menu__inner container">
+    <div class="mega-menu__header">
+      {% if logo %}
+      <a href="{{ home }}" class="mega-menu__logo-link">
+        <img src="{{ logo }}" alt="{{ name }}" class="mega-menu__logo img-fluid">
+      </a>
+      {% else %}
+      <a href="{{ home }}" class="mega-menu__logo-text">{{ name }}</a>
+      {% endif %}
+      <button type="button" class="mega-menu__close" aria-label="{{ text_close }}">&times;</button>
+    </div>
+
+    <div class="mega-menu__track mega-menu__track--three" role="list">
+      {% for item in menu_items %}
+      <a href="{{ item.href }}" class="mega-menu__card" role="listitem">
+        <span class="mega-menu__card-media">
+          <img src="{{ item.thumb }}" alt="" class="mega-menu__card-img" loading="lazy">
+          <span class="mega-menu__card-title">{{ item.name }}</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
+{% endif %}

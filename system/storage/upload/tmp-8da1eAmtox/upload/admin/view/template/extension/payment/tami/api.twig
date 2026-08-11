@@ -1,0 +1,59 @@
+<input type="hidden" name="action" value="tami_api_settings_save"/>
+<div class="tami-m-0">
+
+    <div class="tami-card tami-rounded-4 tami-bg-white tami-overflow-hidden">
+        <div class="tami-card-body">
+            <ul class="tami-nav tami-nav-pills tami-border-bottom" id="environmentTab" role="tablist">
+                <li class="tami-nav-item" role="presentation">
+                    <button class="tami-nav-link{% if api_settings.environment == "prod" %} tami-active{% endif %}"
+                            id="live-tab" data-tamibs-toggle="tamitab"
+                            data-tamibs-target="#live-tab-pane" type="button" role="tab"
+                            aria-controls="live-tab-pane"
+                            aria-selected="{% if api_settings.payment_method == "prod" %}true{% else %}false{% endif %}"
+                    >{{ lang_text_api_environment_prod }}
+                    </button>
+                </li>
+                <li class="tami-nav-item" role="presentation">
+                    <button class="tami-nav-link{% if api_settings.environment == "test" %} tami-active{% endif %}"
+                            id="test-tab" data-tamibs-toggle="tamitab"
+                            data-tamibs-target="#test-tab-pane" type="button" role="tab"
+                            aria-controls="test-tab-pane"
+                            aria-selected="{% if api_settings.payment_method == "prod" %}true{% else %}false{% endif %}"
+                    >{{ lang_text_api_environment_test }}</button>
+                </li>
+            </ul>
+            <br/>
+            <div class="tab-content tami-text-dark" id="environmentTabContent">
+                <div class="tami-text-dark tami-tab-pane{% if api_settings.environment == "prod" %} tami-show tami-active{% endif %}"
+                     id="live-tab-pane" role="tabpanel"
+                     aria-labelledby="live-tab"
+                     tabindex="0"{% if api_settings.environment == "test" %} style="display:none"{% endif %}>
+                    <form
+                            id="tami-api-settings-form" name="tami-api-settings-form"
+                            class="tami-lead tami-text-tami tami-ajax-form"
+                            method="post"
+                            action="{{ apiFormSaveUrl }}">
+                        <input type="hidden" name="api_settings[environment]" value="prod"/>
+                        {{ liveSettings }}
+                        {{ saveRow }}
+                    </form>
+                </div>
+                <div
+                <div class="tami-text-dark tami-tab-pane{% if api_settings.environment == "test" %} tami-show tami-active{% endif %}"
+                     id="test-tab-pane" role="tabpanel"
+                     aria-labelledby="test-tab"
+                     tabindex="0"{% if api_settings.environment != "test" %} style="display:none"{% endif %}>
+                    <form
+                            id="tami-api-settings-form" name="tami-api-settings-form"
+                            class="tami-lead tami-text-tami tami-ajax-form"
+                            method="post"
+                            action="{{ apiFormSaveUrl }}">
+                        <input type="hidden" name="api_settings[environment]" value="test"/>
+                        {{ testSettings }}
+                        {{ saveRow }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

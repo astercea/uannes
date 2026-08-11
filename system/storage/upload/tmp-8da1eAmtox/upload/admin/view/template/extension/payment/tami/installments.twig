@@ -1,0 +1,223 @@
+<form
+        id="tami-installment-settings-form" name="tami-installment-settings-form"
+        class="tami-lead tami-text-tami tami-ajax-form"
+        method="post"
+        action="{{ apiFormSaveUrl }}"
+>
+    <input type="hidden"
+           name="installment_settings[enabled]"
+           value="0"/>
+    <div class="tami-m-0">
+        <div class="tami-card tami-rounded-4 tami-bg-white tami-m-3 tami-overflow-hidden">
+
+            <div class="tami-row">
+                <div class="tami-col-12 tami-col-lg-6 tami-px-5 tami-py-3">
+                    <div class="tami-checkbox-custom tami-mt-2">
+                        <input id="tami-installment-switch" value="1" type="checkbox"
+                               name="installment_settings[enabled]"
+                               autocomplete="off"
+                               class="tami-custom-switch"
+                                {% if installment_settings.enabled == '1' %}
+                                    checked
+                                {% endif %}
+                        >
+                        <label for="tami-installment-switch"
+                               class="tami-lead tami-text-tami" style="white-space: nowrap">{{ lang_text_enable_installments }}</label>
+                    </div>
+                </div>
+                <div id="minimum-installment-col" class="tami-col-12 tami-col-lg-6 tami-px-5 tami-py-3"
+                        {% if installment_settings.enabled != '1' %} style="display: none" {% endif %}
+                >
+                    <div class="tami-row">
+                        <div class="tami-col-12 tami-col-lg-8">
+                            <div class="tami-d-flex tami-checkbox-custom tami-mt-2">
+                                <input id="form-InstallmentSettings-Minimum" value="1"
+                                       type="checkbox"
+                                        {% if installment_settings.minimum_amount != '-1' and installment_settings.minimum_amount != '' %}
+                                            checked
+                                        {% endif %}
+                                       autocomplete="off"
+
+                                       class="tami-check-input-toggle tami-custom-switch"
+                                >
+                                &nbsp;<label
+                                        for="form-InstallmentSettings-Minimum"
+                                        class="tami-lead tami-text-tami tami-w-75"
+                                        style="white-space: nowrap"
+                                >
+                                            <span
+                                                    data-tamibs-toggle="tooltip"
+                                                    data-tamibs-placement="top"
+                                                    data-tamibs-original-title="{{ lang_desc_minimum_installment_amount }}"
+                                            >
+                                            {{ lang_text_minimum_installment_amount }}
+                                            <i class="fa fa-info-circle"></i>
+                                            </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="tami-col-12 tami-col-lg-4" id="minimum-installment-column" {% if installment_settings.minimum_amount == '-1' or installment_settings.minimum_amount == '' %}
+                            style="display: none"
+                                {% endif %}>
+                            <div class="tami-m-0">
+                                <div class="tami-d-flex tami-check-input-toggleable" style="margin-top: -4px;">
+                                    <input class="tami-form-control tami-input-only-decimal" type="tel"
+                                           value="{{ installment_settings.minimum_amount }}"
+                                           id="form-InstallmentSettings-MinimumAmount"
+                                           autocomplete="off"
+                                           name="installment_settings[minimum_amount]"/>
+                                    <span class="tami-p-2 tami-bg-tami tami-text-white tami-ms-1 tami-input-group-text">{{ default_currency }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="tami-mt-0 tami-mb-0 tami-border-1 tami-border-secondary"/>
+
+
+            <div class="tami-card-body">
+                <div id="tami-installment-container" class="tami-row tami-overflow-hidden"
+                        {% if installment_settings.enabled != '1' %}
+                            style="visibility: hidden; height: 0"
+                        {% endif %}
+                >
+                    <div class="tami-col-6">
+                        <table id="tami-installment-table"
+                               class="tami-table tami-table-striped tami-table-borderless tami-shadow-sm tami-mb-3">
+                            <tbody>
+                            <tr>
+                                <th colspan="5" class="tami-align-middle tami-bg-tami tami-text-center">
+
+                                    <label
+                                            style="padding: 0;white-space: nowrap; line-height: 60px;"
+                                            class="tami-text-white tami-lead tami-w-100"
+                                            for="form-InstallmentSettings-Table">
+                                        Installment Rates
+                                        <span
+                                                data-tamibs-toggle="tooltip"
+                                                data-tamibs-placement="right"
+                                                title="{{ lang_desc_installment_input_label }}"
+                                                class="tami-text-white tami-fw-normal tami-text-end tami-w-100"
+                                                style=" line-height: 60px;"
+                                                for="form-InstallmentSettings-Info">
+                                            <i class="tami-text-white fa fa-info-circle"></i>
+                                        </span>
+                                    </label>
+                                </th>
+                            </tr>
+                            {% for i in 2..6 %}
+                                {% set rate_slug = "" ~ i %}
+                                <tr>
+                                    <th width="15%">&nbsp;</th>
+                                    <th width="25%" align="right" class="tami-align-middle">
+                                        <label
+                                                class="tami-text-tami tami-fw-normal tami-w-100"
+                                                style="line-height: 60px;" for="form-InstallmentSettings-{{ i }}"
+                                        >
+                                            {{ lang_text_installment_input_label|format(i) }}
+                                        </label>
+                                    </th>
+                                    <th class="tami-text-center user-select-none tami-align-middle">
+                                        <input type="checkbox"
+                                               autocomplete="off"
+                                                {% if installment_settings[rate_slug] != '-1' and installment_settings[rate_slug] != '' %} checked{% endif %}
+                                               class="tami-form-check-input tami-justify-content-center tami-check-input-toggle">
+                                    </th>
+                                    <td class="tami-align-middle">
+                                        <div class="tami-d-flex tami-check-input-toggleable tami-align-items-center"
+                                             style="visibility: visible;">
+                                            <i class="fa fa-percent tami-me-2 tami-text-tami"></i>
+                                            <input
+                                                    autocomplete="off"
+                                                    class="tami-input-only-decimal tami-form-control tami-input-only-decimal"
+                                                    type="tel"
+
+                                                    value="{{ installment_settings[rate_slug] }}"
+                                                    id="form-InstallmentSettings-{{ i }}"
+                                                    name="installment_settings[{{ i }}]"
+                                            />
+                                        </div>
+
+                                    </td>
+                                    <td width="15%">&nbsp;</td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tami-col-6">
+                        <table id="tami-installment-table"
+                               class="tami-table tami-table-striped tami-table-borderless tami-shadow-sm tami-mb-3">
+                            <tbody>
+                            {% for i in 7..12 %}
+                                {% set rate_slug = "" ~ i %}
+                                <tr>
+                                    <th width="15%">&nbsp;</th>
+                                    <th width="25%" align="right" class="tami-align-middle">
+                                        <label
+                                                class="tami-text-tami tami-fw-normal tami-w-100"
+                                                style="line-height: 60px;" for="form-InstallmentSettings-{{ i }}"
+                                        >
+                                            {{ lang_text_installment_input_label|format(i) }}
+                                        </label>
+                                    </th>
+                                    <th class="tami-text-center user-select-none tami-align-middle">
+                                        <input type="checkbox"
+                                               autocomplete="off"
+                                                {% if installment_settings[rate_slug] != '-1' and installment_settings[rate_slug] != '' %} checked{% endif %}
+                                               class="tami-form-check-input tami-justify-content-center tami-check-input-toggle">
+                                    </th>
+                                    <td class="tami-align-middle">
+                                        <div class="tami-d-flex tami-check-input-toggleable tami-align-items-center"
+                                             style="visibility: visible;">
+                                            <i class="fa fa-percent tami-me-2 tami-text-tami"></i>
+                                            <input
+                                                    autocomplete="off"
+                                                    class="tami-input-only-decimal tami-form-control tami-input-only-decimal"
+                                                    type="tel"
+
+                                                    value="{{ installment_settings[rate_slug] }}"
+                                                    id="form-InstallmentSettings-{{ i }}"
+                                                    name="installment_settings[{{ i }}]"
+                                            />
+                                        </div>
+
+                                    </td>
+                                    <td width="15%">&nbsp;</td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tami-installment-container-closed" class="tami-overflow-hidden"
+                        {% if installment_settings.enabled == '1' %}
+                            style="visibility: hidden; height: 0"
+                        {% endif %}
+                >
+                    <div class="tami-p-3">
+                        <p class="tami-lead tami-text-muted">
+                            {{ lang_text_installments_disabled }} </p>
+                    </div>
+                </div>
+
+                <div class="tami-col-12 tami-col-lg-12 tami-px-0 tami-py-3 tami-text-end">
+                    <button type="submit" form="tami-installment-settings-form"
+                            class="tami-btn tami-btn-primary">
+                        <span style="display: none"
+                              class="tami--button-loader tami-spinner-border tami-spinner-border-sm"></span>
+                        {{ lang_text_save_changes }}
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</form>

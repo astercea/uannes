@@ -1,0 +1,24 @@
+/*
+tami-wordpress-plugin
+tami-global.scss
+2023
+*/
+/*
+tami-payment-modules
+_variables.scss
+2023
+*/
+#menu-tami > a {
+  text-indent: -9999px;
+  background-size: 48px !important;
+  background-repeat: no-repeat !important;
+  background-position: calc(0% + 20px) 11px !important;
+  background-color: #44318b !important;
+  transition: all 0.25s ease-in-out;
+  background-image: url("../../image/tami/tami-white.svg") !important;
+}
+#menu-tami:hover > a {
+  background-color: rgba(68, 49, 139, 0.9) !important;
+}
+
+/*# sourceMappingURL=tami-global.css.map */

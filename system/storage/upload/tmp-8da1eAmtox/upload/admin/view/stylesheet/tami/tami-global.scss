@@ -1,0 +1,25 @@
+/*
+tami-wordpress-plugin
+tami-global.scss
+2023
+*/
+
+@import "../../../../../../../common/assets/scss/variables";
+
+#menu-tami {
+  & > a {
+    text-indent: -9999px;
+    background-size: 48px !important;
+    background-repeat: no-repeat !important;
+    background-position: calc(0% + 20px) 11px !important;
+    background-color: $tami-purple !important;
+    transition: all .25s ease-in-out;
+    background-image: url("../../image/tami/tami-white.svg") !important;
+  }
+
+  &:hover {
+    & > a {
+      background-color: rgba($tami-purple, 0.9) !important;
+    }
+  }
+}

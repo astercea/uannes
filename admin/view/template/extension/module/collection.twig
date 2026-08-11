@@ -1,0 +1,34 @@
+{{ header }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>{{ heading_title }}</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <form action="" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+      <div class="form-group row">
+        <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+        <div class="col-sm-10">
+          <select name="module_collection_status" id="input-status" class="form-control">
+            <option value="1" {% if module_collection_status %}selected{% endif %}>{{ text_enabled }}</option>
+            <option value="0" {% if not module_collection_status %}selected{% endif %}>{{ text_disabled }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
+        <div class="col-sm-10">
+          <input type="text" name="module_collection_sort_order" value="{{ module_collection_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control" />
+        </div>
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">{{ button_save }}</button>
+        <a href="{{ cancel }}" class="btn btn-light">{{ button_cancel }}</a>
+      </div>
+    </form>
+  </div>
+</div>
+{{ footer }}

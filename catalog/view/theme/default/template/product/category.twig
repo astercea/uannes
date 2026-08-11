@@ -1,0 +1,375 @@
+{{ header }}
+<style>
+footer {
+  background-color: #1a1a50;
+  margin-top: 0;
+}
+  @media (max-width: 767px) {
+      .grid-buttons {
+          display: none;
+      }
+  }
+	/*
+	#filterSidebar {
+		position: fixed;
+		top: 0;
+		left: -300px;
+		width: 300px;
+		height: 100%;
+		background: rgba(26, 26, 80, 0.75);
+		overflow-y: auto;
+		z-index: 1050;
+		padding: 15px;
+		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+		transition: left 0.3s ease;
+		color: #fff;
+	}
+	#filterSidebar.show {
+		left: 0;
+	}
+	#filterOverlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 1040;
+	}
+	#filterOverlay.show {
+		display: block;
+	}
+	#filterSidebar .panel-default {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+	}
+	#filterSidebar .panel-heading {
+		background-color: transparent;
+		color: #fff;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#filterSidebar .list-group-item {
+		background-color: transparent;
+		color: #fff;
+		border: none;
+	}
+	#filterSidebar .checkbox label {
+		color: #fff;
+	}
+
+	#filterSidebar .panel-footer {
+		background: transparent;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	*/
+	label {
+		font-size: 15px;
+		font-weight: normal;
+	}
+	.list-group {
+		padding-top: 30px;
+	}
+	.category-list-toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin-bottom: 1.25rem;
+	}
+	.category-list-toolbar__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.65rem;
+		margin-left: auto;
+	}
+	.category-tool-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.65rem 1.15rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		line-height: 1.2;
+		color: #fff;
+		background: #1a1a50;
+		border: 1px solid transparent;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(26, 26, 80, 0.18);
+		transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+	}
+	.category-tool-btn:hover,
+	.category-tool-btn:focus {
+		color: #fff;
+		background: #22226a;
+		box-shadow: 0 4px 14px rgba(26, 26, 80, 0.28);
+		outline: none;
+	}
+	.category-tool-btn:active {
+		transform: scale(0.98);
+	}
+	.category-view-toggle {
+		display: inline-flex;
+		align-items: stretch;
+		padding: 3px;
+		background: #f0f1f8;
+		border: 1px solid #e2e4ef;
+		border-radius: 10px;
+		gap: 2px;
+	}
+	.category-view-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 2.5rem;
+		height: 2.35rem;
+		padding: 0 0.65rem;
+		font-size: 1rem;
+		color: #1a1a50;
+		background: transparent;
+		border: none;
+		border-radius: 7px;
+		transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+	}
+	.category-view-btn:hover,
+	.category-view-btn:focus {
+		color: #1a1a50;
+		background: rgba(26, 26, 80, 0.08);
+		outline: none;
+	}
+	.category-view-btn.active {
+		color: #fff;
+		background: #1a1a50;
+		box-shadow: 0 2px 6px rgba(26, 26, 80, 0.25);
+	}
+	/*
+	#product-category .category-sort .dropdown-toggle {
+		background: #1a1a50;
+		color: #fff;
+		border: 1px solid transparent;
+		border-radius: 10px;
+		padding: 0.65rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		box-shadow: 0 2px 8px rgba(26, 26, 80, 0.18);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+	}
+	#product-category .category-sort .dropdown-toggle:hover,
+	#product-category .category-sort .dropdown-toggle:focus {
+		background: #22226a;
+		color: #fff;
+		outline: none;
+	}
+	#product-category .category-sort .dropdown-menu {
+		margin-top: 0.35rem;
+		padding: 0.35rem 0;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #e8eaf3;
+		border-radius: 10px;
+		box-shadow: 0 8px 24px rgba(26, 26, 80, 0.12);
+		min-width: 100%;
+	}
+	#product-category .category-sort .dropdown-menu > li > a {
+		padding: 0.55rem 1rem;
+		font-size: 0.875rem;
+		color: #1a1a50;
+	}
+	#product-category .category-sort .dropdown-menu > li > a:hover,
+	#product-category .category-sort .dropdown-menu > li.active > a,
+	#product-category .category-sort .dropdown-menu > li.active > a:hover {
+		background: rgba(26, 26, 80, 0.08);
+		color: #1a1a50;
+	}
+	#product-category .category-sort .caret {
+		margin-left: 0.15rem;
+		border-top-color: #fff;
+		opacity: 0.9;
+	}
+	*/
+  .pagination > .active > span,
+  .pagination > .active > a,
+  .pagination > .active > span:hover,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:focus,
+  .pagination > .active > a:focus {
+      background-color: #1a1a50;
+      border-color: #1a1a50;
+      color: #fff;
+  }
+  .pagination>li>a, .pagination>li>span{
+    color:#1a1a50;
+    padding: 8px 15px;
+  }
+  .pagination{
+    padding:20px 20px 20px 5px;
+  }
+</style>
+
+<div id="product-category" class="container">
+
+
+	<div class="row">{{ column_left }}
+		{% if column_left and column_right %}
+			{% set class = 'col-sm-6' %}
+		{% elseif column_left or column_right %}
+			{% set class = 'col-sm-9' %}
+		{% else %}
+			{% set class = 'col-sm-12' %}
+		{% endif %}
+
+		<div id="content" class="{{ class }}">{{ content_top }}
+
+			{% if is_collection_hub %}
+			<div class="collection-hub">
+				<header class="collection-hub__header">
+					{% if collection_parent_name %}
+					<p class="collection-hub__eyebrow">{{ collection_parent_name }}</p>
+					{% endif %}
+					<h1 class="collection-hub__title">{{ heading_title }}</h1>
+				</header>
+				<div class="collection-grid">
+					{% for category in categories %}
+					<a href="{{ category.href }}" class="collection-grid__card">
+						<span class="collection-grid__media">
+							<img src="{{ category.thumb }}" alt="{{ category.name }}" class="collection-grid__img" />
+						</span>
+						<span class="collection-grid__name">{{ category.name }}</span>
+					</a>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="giyim-filter-bar">
+				<div class="giyim-breadcrumb">
+					<span>Tüm Ürünler</span> &middot; <span>{{ heading_title }}</span>
+				</div>
+				<div class="giyim-filter-link">Filtrele +</div>
+			</div>
+
+			{% if products %}
+				<div class="uannes-row-grid">
+					{% for product in products %}
+					<a href="{{ product.href }}" class="uannes-row-card">
+						<div class="uannes-row-media">
+							{% include 'common/product_badges.twig' with { badges: product.badges|default([]) } only %}
+							<img src="{{ product.thumb }}" class="uannes-row-img main-img" alt="{{ product.name }}" title="{{ product.name }}"/>
+							{% if product.thumb2 %}
+								<img src="{{ product.thumb2 }}" class="uannes-row-img hover-img" alt="{{ product.name }} Hover"/>
+							{% endif %}
+						</div>
+						<div class="uannes-row-info">
+							<span class="uannes-row-name">{{ product.name }}</span>
+							{% if product.price %}
+								<div class="uannes-row-price-box">
+									<span class="uannes-row-currency">TRY</span>
+									<span class="uannes-row-price">{{ product.price }}</span>
+								</div>
+							{% endif %}
+						</div>
+					</a>
+					{% endfor %}
+				</div>
+
+				<div class="row" style="margin-top: 40px;">
+					<div class="col-sm-6 text-left">{{ pagination }}</div>
+				</div>
+			{% endif %}
+
+			{% if not products %}
+				<p>{{ text_empty }}</p>
+				<div class="buttons">
+					<div class="pull-right">
+						<a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a>
+					</div>
+				</div>
+			{% endif %}
+			{% endif %}
+
+			{{ content_bottom }}
+		</div>
+		{{ column_right }}</div>
+</div>
+
+{# Filtre paneli — geçici kapalı
+<div id="filterSidebar">
+	<button type="button" class="close" id="closeFilter">&times;</button>
+	{{ filter }}
+</div>
+<div id="filterOverlay"></div>
+#}
+
+{{ footer }}
+
+<script type="text/javascript">
+$(document).ready(function(){
+  {# Filtre paneli JS — geçici kapalı
+  $('#openFilter').click(function(){
+    $('#filterSidebar, #filterOverlay').addClass('show');
+    $('body').css('overflow','hidden');
+  });
+  $('#closeFilter, #filterOverlay').click(function(){
+    $('#filterSidebar, #filterOverlay').removeClass('show');
+    $('body').css('overflow','auto');
+  });
+  #}
+
+  $('#grid-view-4').click(function() {
+    $('#product-list .product-layout').attr('class', 'product-layout col-lg-3 col-md-4 col-sm-6 col-xs-6');
+    $('#grid-view-4').addClass('active');
+    $('#grid-view-6').removeClass('active');
+    localStorage.setItem('display', 'grid-4');
+  });
+
+  $('#grid-view-6').click(function() {
+    $('#product-list .product-layout').attr('class', 'product-layout col-lg-2 col-md-3 col-sm-4 col-xs-6');
+    $('#grid-view-6').addClass('active');
+    $('#grid-view-4').removeClass('active');
+    localStorage.setItem('display', 'grid-6');
+  });
+
+  var display = localStorage.getItem('display');
+  if (display == 'grid-6') {
+    $('#grid-view-6').trigger('click');
+  } else {
+    $('#grid-view-4').addClass('active');
+  }
+});
+
+$(document).on('mouseleave', '.giyim-product-card, .giyim-product-media', function() {
+  var $media = $(this).hasClass('giyim-product-media') ? $(this) : $(this).find('.giyim-product-media');
+  $media.removeClass('show-2');
+  $media.find('.giyim-swatch').removeClass('active').eq(0).addClass('active');
+});
+
+function toggleGiyimProductImg(el, target) {
+  var $media = $(el).closest('.giyim-product-media');
+  var $swatches = $media.find('.giyim-swatch');
+  
+  var isShowingSecond = $media.hasClass('show-2');
+
+  if (target === 'next' || target === 'prev') {
+    if (isShowingSecond) {
+      $media.removeClass('show-2');
+      $swatches.removeClass('active').eq(0).addClass('active');
+    } else {
+      $media.addClass('show-2');
+      $swatches.removeClass('active').eq(1).addClass('active');
+    }
+  } else if (target === 0) {
+    $media.removeClass('show-2');
+    $swatches.removeClass('active').eq(0).addClass('active');
+  } else if (target === 1) {
+    $media.addClass('show-2');
+    $swatches.removeClass('active').eq(1).addClass('active');
+  }
+}
+</script>

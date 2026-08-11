@@ -1,0 +1,110 @@
+<table class="tami-table tami-table-striped tami-table-borderless">
+    <tbody>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-0">{{ lang_text_security_method }}</label>
+        </th>
+        <td>
+            <select
+                    style="max-width: 25rem"
+                    class="tami-form-select"
+                    name="api_settings[payment_method]"
+                    autocomplete="off"
+                    type="select"
+                    id="form-ApiSettings-0"
+            >
+                <option value="3D"{% if api_settings.payment_method == "3D" %} selected{% endif %}>
+                    {{ lang_text_security_method_3d }}
+                </option>
+                <option value="Nonsecure"{% if api_settings.payment_method == "Nonsecure" %} selected{% endif %}>
+                    {{ lang_text_security_method_non_secure }}
+                </option>
+                <option value="HostedPayment"{% if api_settings.payment_method == "HostedPayment" %} selected{% endif %}>
+                    {{ lang_text_security_method_hosted_payment }}
+                </option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-1">{{ lang_text_merchant_id }}</label>
+        </th>
+        <td>
+            <input
+                    class="tami-form-control"
+                    type="tel"
+                    name="api_settings[merchant_id]"
+                    autocomplete="off"
+                    id="form-ApiSettings-1"
+                    value="{{ api_settings.merchant_id }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-2">{{ lang_text_terminal_id }}</label>
+        </th>
+        <td>
+            <input
+                    class="tami-form-control"
+                    type="tel"
+                    name="api_settings[terminal_id]"
+                    autocomplete="off"
+                    id="form-ApiSettings-2"
+                    value="{{ api_settings.terminal_id }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-3">{{ lang_text_secret_key }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[secret_key]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-3"
+                    value="{{ api_settings.secret_key }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-4">{{ lang_text_fixed_kid_value }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[fixed_kid_value]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-4"
+                    value="{{ api_settings.fixed_kid_value }}"
+            />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label class="tami-text-tami tami-fw-normal"
+                   for="form-ApiSettings-5">{{ lang_text_fixed_k_value }}</label>
+        </th>
+        <td>
+            <input
+                    name="api_settings[fixed_k_value]"
+                    class="tami-form-control"
+                    type="password"
+                    autocomplete="off"
+                    id="form-ApiSettings-5"
+                    value="{{ api_settings.fixed_k_value }}"
+            />
+        </td>
+    </tr>
+    </tbody>
+</table>

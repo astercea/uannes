@@ -1,0 +1,12 @@
+config.php
+admin/config.php
+
+error_log
+*.log
+*.tmp
+
+.vscode/
+.idea/
+
+Thumbs.db
+.DS_Store

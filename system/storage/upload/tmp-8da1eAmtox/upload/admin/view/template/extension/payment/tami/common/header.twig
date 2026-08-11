@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="view/stylesheet/tami/sweetalert2.min.css" type="text/css" />
+<link rel="stylesheet" href="view/stylesheet/tami/app.css" type="text/css" />
+<script type="text/javascript">
+    var tamiAdminPanelGlobals = {{ ui_localize|json_encode }};
+    var tamiApiValidateUrl = "{{ tami_api_validate_url }}";
+    var tamiAdminPanelTabs = (tamiAdminPanelGlobals.tamiAdminPanelTabs) || [];
+    var tamiCheckoutSwal_i18n = tamiAdminPanelGlobals.swal;
+    var tamiApplicationDismissUrl = "{{ tami_application_dismiss_url }}";
+    var tamiAdminPanelMainUrl = "{{ tami_admin_panel_main_url }}";
+</script>
+
+{{ header }}<style>html{font-size: 14px;}</style>{{ column_left }}
+
+<div id="content" class="payment-tami" style="padding: 5px">
+    <div class="tami-all tami-border tami-border-tami tami-rounded-5 tami-overflow-hidden tami-page-loading" style="border-width: 2px !important;">
+        <div class="tami-page-loading-spinner tami-bg-tami-grey tami-align-items-center tami-rounded-4">
+            <div class="tami-spinner-border tami-text-tami tami-m-auto"></div>
+        </div>
+        <div class="tami-bg-white tami-rounded-4 tami-m-auto" style="max-width:auto">
+            <div class="
+         tami-rounded-0 tami-border-0 tami-outer-div">
+                <div class="tami-p-0 tami-green-wave-bg">
+                    <div class="tami-card-header tami-bg-tami-green tami-p-3">
+                        <table class="tami-table-borderless" width="100%">
+                            <tbody>
+                            <tr>
+                                <td class="tami-text-center">
+                                    <div class="tami-px-3">
+                                        <a href="https://www.tami.com.tr/" target="_blank">
+                                            <img class="tami-logo"
+                                                 src="view/image/tami/tami-full.png"
+                                                 width="125"
+                                            />
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="tami-text-center tami-py-0 tami-py-lg-2 tami-d-none tami-d-lg-table-cell">
+                                    <ul class="tami-nav tami-nav-pills tami-nav-fill tami-gap-2 tami-p-1 tami-h4 tami-ms-0 tami-ms-lg-5"
+                                        id="pillNav2">
+                                        {% for key, menu_item in module_menu %}
+                                            <li class="tami-nav-item" role="presentation" style="margin-top: 7px;">
+                                                <button class="tami-nav-link {{ key == 0 ? 'tami-active ' : '' }}tami-rounded-5"
+                                                        data-tamitarget="{{ menu_item.slug }}"
+                                                        id="tami-{{ menu_item.slug }}-tab-button"
+                                                        data-tamibs-toggle="tamitab" type="button" role="tab"
+                                                        aria-selected="true">{{ menu_item.icon }}
+                                                    &nbsp;{{ menu_item.label }}</button>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="tami-d-table-row tami-d-lg-none tami-text-center">
+                                <td>
+                                    <ul class="tami-nav tami-nav-pills tami-nav-fill tami-gap-2 tami-p-1 tami-h4"
+                                        id="pillNav2-mobile">
+                                        {% for key, menu_item in module_menu %}
+                                            <li class="tami-nav-item" role="presentation" style="margin-top: 7px;">
+                                                <button class="tami-nav-link {{ key == 0 ? 'tami-active ' : '' }}tami-rounded-5"
+                                                        data-tamitarget="{{ menu_item.slug }}"
+                                                        id="tami-{{ menu_item.slug }}-tab-button"
+                                                        data-tamibs-toggle="tamitab" type="button" role="tab"
+                                                        aria-selected="true">{{ menu_item.icon }}
+                                                    &nbsp;{{ menu_item.label }}</button>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tami-card-body tami-card-minheight">

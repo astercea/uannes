@@ -1,0 +1,154 @@
+{{ header }}
+<div id="product-giyim" class="container uannes-giyim-page">
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <div class="giyim-filter-bar">
+        <div class="giyim-breadcrumb"><span>Tüm Ürünler</span> &middot; <span>Giyim</span></div>
+        <div class="giyim-filter" data-giyim-filter>
+          <button type="button" class="giyim-filter-link" aria-expanded="false" aria-controls="giyim-filter-menu">
+            Filtrele <span aria-hidden="true">{{ active_filter_count ? '(' ~ active_filter_count ~ ')' : '+' }}</span>
+          </button>
+          <div class="giyim-filter-backdrop" data-giyim-filter-close hidden></div>
+          <aside id="giyim-filter-menu" class="giyim-filter-menu" aria-hidden="true" aria-label="Ürün filtreleri">
+            <form method="get" action="{{ filter_action }}">
+              <div class="giyim-filter-menu__header">
+                <p class="giyim-filter-menu__title">Filtrele</p>
+                <button type="button" class="giyim-filter-menu__close" data-giyim-filter-close aria-label="Filtre panelini kapat">×</button>
+              </div>
+
+              {% if filter_colors %}
+              <details class="giyim-filter-menu__section"{% if selected_filters.color %} open{% endif %}>
+                <summary>Renk <span aria-hidden="true">›</span></summary>
+                <div class="giyim-filter-menu__options">
+                  {% for color in filter_colors %}
+                  <label><input type="radio" name="renk" value="{{ color.id }}"{% if selected_filters.color == color.id %} checked{% endif %}> <span>{{ color.name }}</span></label>
+                  {% endfor %}
+                </div>
+              </details>
+              {% endif %}
+
+              {% if filter_sizes %}
+              <details class="giyim-filter-menu__section"{% if selected_filters.size %} open{% endif %}>
+                <summary>Beden <span aria-hidden="true">›</span></summary>
+                <div class="giyim-filter-menu__options">
+                  {% for size in filter_sizes %}
+                  <label><input type="radio" name="beden" value="{{ size.id }}"{% if selected_filters.size == size.id %} checked{% endif %}> <span>{{ size.name }}</span></label>
+                  {% endfor %}
+                </div>
+              </details>
+              {% endif %}
+
+              {% if filter_categories %}
+              <details class="giyim-filter-menu__section"{% if selected_filters.category %} open{% endif %}>
+                <summary>Alt kategori <span aria-hidden="true">›</span></summary>
+                <div class="giyim-filter-menu__options">
+                  {% for category in filter_categories %}
+                  <label><input type="radio" name="kategori" value="{{ category.id }}"{% if selected_filters.category == category.id %} checked{% endif %}> <span>{{ category.name }}</span></label>
+                  {% endfor %}
+                </div>
+              </details>
+              {% endif %}
+
+              <details class="giyim-filter-menu__section"{% if selected_filters.stock != 'all' %} open{% endif %}>
+                <summary>Stok durumu <span aria-hidden="true">›</span></summary>
+                <div class="giyim-filter-menu__options">
+                  <label><input type="radio" name="stok" value="all"{% if selected_filters.stock == 'all' %} checked{% endif %}> <span>Tüm ürünler</span></label>
+                  <label><input type="radio" name="stok" value="in-stock"{% if selected_filters.stock == 'in-stock' %} checked{% endif %}> <span>Stokta olanlar</span></label>
+                  <label><input type="radio" name="stok" value="low-stock"{% if selected_filters.stock == 'low-stock' %} checked{% endif %}> <span>Son ürünler</span></label>
+                  <label><input type="radio" name="stok" value="out-of-stock"{% if selected_filters.stock == 'out-of-stock' %} checked{% endif %}> <span>Stokta olmayanlar</span></label>
+                </div>
+              </details>
+
+              <div class="giyim-filter-menu__actions">
+                <a href="{{ filter_action }}">Tümünü temizle</a>
+                <button type="submit">Uygula</button>
+              </div>
+            </form>
+          </aside>
+        </div>
+      </div>
+
+      {% if products %}
+      <div class="uannes-row-grid">
+        {% for product in products %}
+        <a href="{{ product.href }}" class="uannes-row-card">
+          <div class="uannes-row-media">
+            {% include 'common/product_badges.twig' with { badges: product.badges|default([]) } only %}
+            {% for image in product.images %}
+            <img src="{{ image }}" alt="{{ product.name }}" title="{{ product.name }}" class="uannes-row-img uannes-row-card__image{% if loop.first %} main-img is-active{% elseif loop.index == 2 %} hover-img{% endif %}" data-card-image="{{ loop.index0 }}" />
+            {% endfor %}
+            {% if product.images|length > 1 %}
+            <div class="uannes-row-card__swatches" aria-label="Görünüm seçenekleri">
+              <button type="button" class="uannes-row-card__swatch is-active" data-image-index="0" aria-label="Birinci görünüm"></button>
+              <button type="button" class="uannes-row-card__swatch" data-image-index="1" aria-label="İkinci görünüm"></button>
+            </div>
+            <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--prev" data-direction="prev" aria-label="Önceki görsel">‹</button>
+            <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--next" data-direction="next" aria-label="Sonraki görsel">›</button>
+            {% endif %}
+          </div>
+          <div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
+        </a>
+        {% if loop.index == 6 %}
+        <article class="uannes-row-ad-card" aria-label="Yeni sezon duyurusu">
+          <img src="image/catalog/uannes-banner-new-season.webp" alt="Uannes yeni sezon seçkisi" class="uannes-row-ad-card__image" />
+          <div class="uannes-row-ad-card__content">
+            <span class="uannes-row-ad-card__eyebrow">UANNES</span>
+            <h2>YENİ SEZON</h2>
+            <p>Zamansız silüetler, özenle seçilmiş dokular.</p>
+          </div>
+        </article>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="giyim-empty-state">Seçtiğiniz ölçütlere uygun ürün bulunamadı.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{{ footer }}
+<script>
+document.addEventListener('click', function (event) {
+  var control = event.target.closest('.uannes-row-card__swatch, .uannes-row-card__arrow');
+  if (!control) return;
+  event.preventDefault();
+  event.stopPropagation();
+  var media = control.closest('.uannes-row-media');
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  var current = parseInt(media.getAttribute('data-current-image'), 10);
+  if (isNaN(current)) current = media.closest('.uannes-row-card').matches(':hover') && images.length > 1 ? 1 : 0;
+  current = control.classList.contains('uannes-row-card__arrow') ? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length) : parseInt(control.getAttribute('data-image-index'), 10);
+  media.classList.add('is-manual-image');
+  media.setAttribute('data-current-image', String(current));
+  images.forEach(function (image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+(function () {
+  var filter = document.querySelector('[data-giyim-filter]');
+  if (!filter) return;
+  var trigger = filter.querySelector('.giyim-filter-link');
+  var panel = filter.querySelector('.giyim-filter-menu');
+  var backdrop = filter.querySelector('.giyim-filter-backdrop');
+  var closeControls = filter.querySelectorAll('[data-giyim-filter-close]');
+  var lastFocused;
+  function closePanel() {
+    filter.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    if (lastFocused) lastFocused.focus();
+  }
+  function openPanel() {
+    lastFocused = document.activeElement;
+    filter.classList.add('is-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden', 'false');
+    backdrop.hidden = false;
+    panel.querySelector('.giyim-filter-menu__close').focus();
+  }
+  trigger.addEventListener('click', function () { filter.classList.contains('is-open') ? closePanel() : openPanel(); });
+  closeControls.forEach(function (control) { control.addEventListener('click', closePanel); });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && filter.classList.contains('is-open')) closePanel(); });
+}());
+</script>

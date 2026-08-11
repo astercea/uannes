@@ -1,0 +1,7 @@
+{% if badges %}
+<div class="product-badges">
+	{% for badge in badges %}
+	<span class="product-badge product-badge--{{ badge.type }}">{{ badge.label }}</span>
+	{% endfor %}
+</div>
+{% endif %}

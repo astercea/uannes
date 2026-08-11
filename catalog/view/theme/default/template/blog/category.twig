@@ -1,0 +1,63 @@
+{{ header }}
+<div id="blog-category" class="blog-page">
+  <div class="blog-image-container">
+    {% if hero_image %}
+      <img src="{{ hero_image }}" alt="{{ heading_title }}" class="blog-image" />
+    {% else %}
+      <img src="catalog/view/theme/default/image/blogbanner.webp" alt="{{ heading_title }}" class="blog-image" />
+    {% endif %}
+  
+  </div>
+
+  <div class="container blog-page__content">
+    <ul class="breadcrumb blog-page-breadcrumb">
+      {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+      {% endfor %}
+    </ul>
+
+    {{ content_top }}
+
+        {# {% if category_description %}
+          <div class="blog-category-intro mb-4 text-start">{{ category_description|raw }}</div>
+        {% endif %} #}
+
+        <div class="blog-category-filters mb-4 d-flex flex-wrap">
+          {% for category in categories %}
+            <a href="{{ category.href }}" class="btn btn-sm {% if category.active %}btn-warning{% else %}btn-inverse{% endif %}">{{ category.name }}</a>
+          {% endfor %}
+        </div>
+
+        {% if articles %}
+          <div class="row g-4 blog-cards-row">
+            {% for article in articles %}
+              <div class="col-12 col-md-6 col-lg-4 blog-cards-row__col">
+                <article class="blog-card">
+                  <a href="{{ article.href }}" class="blog-card__link text-decoration-none text-dark">
+                    <div class="blog-card__media">
+                      <img src="{{ article.thumb }}" class="blog-card__img" alt="{{ article.title }}" />
+                    </div>
+                    <div class="blog-card__body">
+                      <p class="blog-card-meta text-muted small mb-1">{{ article.date }}</p>
+                      <h2 class="blog-card__title h5 fw-normal">{{ article.title }}</h2>
+                      <p class="blog-card-excerpt text-muted small mt-2">{% if article.excerpt %}{{ article.excerpt }}{% else %}&nbsp;{% endif %}</p>
+                    </div>
+                  </a>
+                </article>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="blog-pagination">
+            <div class="blog-pagination__inner">
+              {{ pagination }}
+              <p class="blog-pagination__results text-muted small mb-0">{{ results }}</p>
+            </div>
+          </div>
+        {% else %}
+          <p class="text-start py-5">{{ text_empty }}</p>
+        {% endif %}
+
+        {{ content_bottom }}
+  </div>
+</div>
+{{ footer }}
