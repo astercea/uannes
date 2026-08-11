@@ -1,9 +1,15 @@
 {{ header }}
-<div id="product-giyim" class="container uannes-giyim-page">
+<div id="product-giyim" class="container uannes-giyim-page uannes-giyim-page--{{ catalogue_key }}">
   <div class="row">
     <div id="content" class="col-sm-12">
       <div class="giyim-filter-bar">
-        <div class="giyim-breadcrumb"><span>Tüm Ürünler</span> &middot; <span>Giyim</span></div>
+        <div class="giyim-breadcrumb">
+          {% if is_all_products %}
+            <span>{{ catalogue_name }}</span>
+          {% else %}
+            <span>Tüm Ürünler</span> &middot; <span>{{ catalogue_name }}</span>
+          {% endif %}
+        </div>
         <div class="giyim-filter" data-giyim-filter>
           <button type="button" class="giyim-filter-link" aria-expanded="false" aria-controls="giyim-filter-menu">
             Filtrele <span aria-hidden="true">{{ active_filter_count ? '(' ~ active_filter_count ~ ')' : '+' }}</span>
@@ -116,12 +122,23 @@ document.addEventListener('click', function (event) {
   var media = control.closest('.uannes-row-media');
   var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
   var current = parseInt(media.getAttribute('data-current-image'), 10);
-  if (isNaN(current)) current = media.closest('.uannes-row-card').matches(':hover') && images.length > 1 ? 1 : 0;
+  if (isNaN(current)) current = media.matches(':hover') && images.length > 1 ? 1 : 0;
   current = control.classList.contains('uannes-row-card__arrow') ? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length) : parseInt(control.getAttribute('data-image-index'), 10);
   media.classList.add('is-manual-image');
   media.setAttribute('data-current-image', String(current));
   images.forEach(function (image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
   media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function (event) {
+  var media = event.target.closest('.uannes-row-media');
+  if (!media || media.contains(event.relatedTarget)) return;
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  if (!images.length) return;
+  media.classList.remove('is-manual-image');
+  media.setAttribute('data-current-image', '0');
+  images.forEach(function (image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 
 (function () {

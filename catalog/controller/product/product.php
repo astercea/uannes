@@ -330,12 +330,22 @@ class ControllerProductProduct extends Controller {
 			}
 
 			$data['options'] = array();
+			$data['has_sold_out_size'] = false;
+			$product_has_stock = (int)$product_info['quantity'] > 0;
 
 			foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
 				$product_option_value_data = array();
+				$is_size_option = stripos($option['name'], 'beden') !== false || stripos($option['name'], 'size') !== false;
 
 				foreach ($option['product_option_value'] as $option_value) {
-					if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+					$in_stock = $product_has_stock && (!$option_value['subtract'] || (int)$option_value['quantity'] > 0);
+					if ($is_size_option && !$in_stock) {
+						$data['has_sold_out_size'] = true;
+					}
+
+					// Keep unavailable sizes visible so the customer can understand which
+					// sizes are sold out. Other option types retain the existing behaviour.
+					if ($is_size_option || $in_stock) {
 						if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
 							$price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
 						} else {
@@ -347,6 +357,7 @@ class ControllerProductProduct extends Controller {
 							'option_value_id'         => $option_value['option_value_id'],
 							'name'                    => $option_value['name'],
 							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+							'in_stock'                => $in_stock,
 							'price'                   => $price,
 							'price_prefix'            => $option_value['price_prefix']
 						);
@@ -396,11 +407,56 @@ class ControllerProductProduct extends Controller {
 
 			$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
-			$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
+			$data['attribute_groups'] = array();
+			foreach ($this->model_catalog_product->getProductAttributes($this->request->get['product_id']) as $attribute_group) {
+				$group_name = utf8_strtolower(trim($attribute_group['name']));
+				if (in_array($group_name, array('renk', 'color', 'colour'), true)) {
+					continue;
+				}
+				$data['attribute_groups'][] = $attribute_group;
+			}
 
 			$data['products'] = array();
 
 			$results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+
+			// A single manually related product leaves the recommendation rail empty.
+			// Complete it with pieces from the same primary collection, while retaining
+			// explicit related products at the beginning of the list.
+			$recommendation_ids = array();
+			foreach ($results as $result) {
+				$recommendation_ids[] = (int)$result['product_id'];
+			}
+
+			if (count($results) < 6) {
+				$product_category_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$this->request->get['product_id'] . "' ORDER BY category_id ASC LIMIT 1");
+
+				if ($product_category_query->num_rows) {
+					$fallback_results = $this->model_catalog_product->getProducts(array(
+						'filter_category_id' => (int)$product_category_query->row['category_id'],
+						'filter_sub_category' => true,
+						'sort' => 'p.sort_order',
+						'order' => 'ASC',
+						'start' => 0,
+						'limit' => 12
+					));
+
+					foreach ($fallback_results as $fallback_result) {
+						$fallback_product_id = (int)$fallback_result['product_id'];
+
+						if ($fallback_product_id === (int)$this->request->get['product_id'] || in_array($fallback_product_id, $recommendation_ids, true)) {
+							continue;
+						}
+
+						$results[] = $fallback_result;
+						$recommendation_ids[] = $fallback_product_id;
+
+						if (count($results) >= 6) {
+							break;
+						}
+					}
+				}
+			}
 
 			foreach ($results as $result) {
 

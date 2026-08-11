@@ -30,7 +30,7 @@
             <thead>
               <tr>
                 <td class="text-left" colspan="2">Ürün</td>
-                <td class="text-left">{{ column_quantity }}</td>
+                <td class="text-center cart-page__quantity-heading">{{ column_quantity }}</td>
                 <td class="text-right">{{ column_total }}</td>
               </tr>
             </thead>
@@ -42,9 +42,12 @@
                   </td>
                   <td class="text-left cart-page__product-cell" data-label="{{ column_name }}">
                     <a href="{{ product.href }}" class="cart-page__product-name">{{ product.name }}</a>{% if not product.stock %} <span class="text-danger">***</span>{% endif %}
+                    {% set product_size = '' %}
                     {% for option in product.option %}
-                      {% if option.name|lower == 'beden' or option.name|lower == 'size' %}<small class="cart-page__product-size">{{ option.name }}: {{ option.value }}</small>{% endif %}
+                      {% set option_name = option.name|lower %}
+                      {% if 'beden' in option_name or 'size' in option_name %}{% set product_size = option.value %}{% endif %}
                     {% endfor %}
+                    <small class="cart-page__product-size">Beden: {{ product_size ? product_size : 'Standart' }}</small>
                     {% if product.reward %}<small>{{ product.reward }}</small>{% endif %}
                     {% if product.recurring %}<small>{{ text_recurring_item }}: {{ product.recurring }}</small>{% endif %}
                   </td>
@@ -99,9 +102,17 @@
           <div class="uannes-row-grid cart-page__recent-grid">
             {% for product in recently_viewed_products %}
               <a href="{{ product.href }}" class="uannes-row-card cart-page__recent-card">
-                <div class="uannes-row-media">
-                  <img src="{{ product.thumb }}" alt="{{ product.name }}" class="uannes-row-img main-img" />
-                  {% if product.thumb2 %}<img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img hover-img" />{% endif %}
+                <div class="uannes-row-media" data-current-image="0">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}" class="uannes-row-img uannes-row-card__image main-img is-active" data-card-image="0" />
+                  {% if product.thumb2 %}
+                    <img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img uannes-row-card__image hover-img" data-card-image="1" />
+                    <div class="uannes-row-card__swatches" aria-label="Renk seçenekleri">
+                      <button type="button" class="uannes-row-card__swatch is-active" data-image-index="0" aria-label="Birinci renk seçeneği"></button>
+                      <button type="button" class="uannes-row-card__swatch" data-image-index="1" aria-label="İkinci renk seçeneği"></button>
+                    </div>
+                    <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--prev" data-direction="prev" aria-label="Önceki görsel">‹</button>
+                    <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--next" data-direction="next" aria-label="Sonraki görsel">›</button>
+                  {% endif %}
                 </div>
                 <div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
               </a>
@@ -131,6 +142,39 @@ document.addEventListener('click', function(event) {
   }
 
   cart.update(control.getAttribute('data-cart-key'), quantity);
+});
+
+document.addEventListener('click', function(event) {
+  var control = event.target.closest('#checkout-cart .cart-page__recent .uannes-row-card__swatch, #checkout-cart .cart-page__recent .uannes-row-card__arrow, #checkout-cart-empty .cart-page__recent .uannes-row-card__swatch, #checkout-cart-empty .cart-page__recent .uannes-row-card__arrow');
+  if (!control) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  var media = control.closest('.uannes-row-media');
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  if (images.length < 2) return;
+
+  var current = parseInt(media.getAttribute('data-current-image'), 10);
+  if (isNaN(current)) current = 0;
+  current = control.classList.contains('uannes-row-card__arrow')
+    ? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length)
+    : parseInt(control.getAttribute('data-image-index'), 10);
+
+  media.classList.add('is-manual-image');
+  media.setAttribute('data-current-image', String(current));
+  images.forEach(function(image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function(event) {
+  var media = event.target.closest('#checkout-cart .cart-page__recent .uannes-row-media, #checkout-cart-empty .cart-page__recent .uannes-row-media');
+  if (!media || media.contains(event.relatedTarget)) return;
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  media.classList.remove('is-manual-image');
+  media.setAttribute('data-current-image', '0');
+  images.forEach(function(image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 </script>
 {{ footer }}

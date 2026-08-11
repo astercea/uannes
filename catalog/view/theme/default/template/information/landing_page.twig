@@ -61,7 +61,7 @@
                   <p class="home-banner-stack__desc mto-hero-desc">{{ hero_desc }}</p>
                 {% endif %}
                 {% if hero and hero.button_text and hero.link %}
-                  <a href="{{ hero.link }}" class="home-banner-stack__btn">{{ hero.button_text }}</a>
+                  <a href="{{ hero.link }}" class="home-banner-stack__btn"><span class="home-banner-stack__btn-label">{{ hero.button_text }}</span></a>
                 {% endif %}
               </div>
             </div>
@@ -80,7 +80,7 @@
                     <div class="content-landing-row__desc">{{ section.description|e|nl2br }}</div>
                   {% endif %}
                   {% if section.button_text and section.link %}
-                    <p class="content-landing-row__action"><a href="{{ section.link }}" class="home-banner-stack__btn">{{ section.button_text }}</a></p>
+                    <p class="content-landing-row__action"><a href="{{ section.link }}" class="home-banner-stack__btn"><span class="home-banner-stack__btn-label">{{ section.button_text }}</span></a></p>
                   {% endif %}
                 </div>
                 <div class="content-landing-row__media">

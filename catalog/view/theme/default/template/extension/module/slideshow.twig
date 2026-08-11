@@ -39,7 +39,7 @@
               <p class="home-banner-stack__desc">{{ banner.description }}</p>
             {% endif %}
             {% if banner.button_text and banner.link %}
-              <a href="{{ banner.link }}" class="home-banner-stack__btn">{{ banner.button_text }}</a>
+              <a href="{{ banner.link }}" class="home-banner-stack__btn"><span class="home-banner-stack__btn-label">{{ banner.button_text }}</span></a>
             {% endif %}
           </div>
         {% endif %}

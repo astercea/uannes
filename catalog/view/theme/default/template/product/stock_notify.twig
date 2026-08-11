@@ -1,0 +1,10 @@
+<div class="product-stock-notify" data-stock-notify data-product-id="{{ product_id }}">
+  <button type="button" class="product-stock-notify__trigger">Gelince Haber Ver</button>
+  <div class="product-stock-notify__form" hidden>
+    <div class="product-stock-notify__controls">
+      <input id="stock-notify-email-{{ product_id }}" type="email" autocomplete="email" aria-label="E-posta adresiniz" placeholder="E-posta adresiniz" required>
+      <button type="button" class="product-stock-notify__submit" aria-label="Kaydet">›</button>
+    </div>
+    <p class="product-stock-notify__status" aria-live="polite"></p>
+  </div>
+</div>

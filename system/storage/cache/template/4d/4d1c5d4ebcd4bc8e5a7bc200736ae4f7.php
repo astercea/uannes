@@ -498,8 +498,8 @@ footer {
   }
 });
 
-\$(document).on('mouseleave', '.giyim-product-card, .giyim-product-media', function() {
-  var \$media = \$(this).hasClass('giyim-product-media') ? \$(this) : \$(this).find('.giyim-product-media');
+\$(document).on('mouseleave', '.giyim-product-media', function() {
+  var \$media = \$(this);
   \$media.removeClass('show-2');
   \$media.find('.giyim-swatch').removeClass('active').eq(0).addClass('active');
 });
@@ -526,7 +526,8 @@ function toggleGiyimProductImg(el, target) {
     \$swatches.removeClass('active').eq(1).addClass('active');
   }
 }
-</script>";
+</script>
+";
     }
 
     /**

@@ -258,20 +258,20 @@ class ControllerCheckoutCart extends Controller {
 
 	private function getRecentlyViewedProducts($excluded_product_ids = array()) {
 		$recent_products = array();
-
-		if (empty($this->session->data['recently_viewed_products'])) {
-			return $recent_products;
-		}
+		$included_product_ids = array_map('intval', $excluded_product_ids);
 
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
 
-		foreach ($this->session->data['recently_viewed_products'] as $product_id) {
-			if (count($recent_products) >= 4 || in_array((int)$product_id, $excluded_product_ids)) {
+		$viewed_product_ids = isset($this->session->data['recently_viewed_products']) ? $this->session->data['recently_viewed_products'] : array();
+
+		foreach ($viewed_product_ids as $product_id) {
+			$product_id = (int)$product_id;
+			if (count($recent_products) >= 4 || in_array($product_id, $included_product_ids, true)) {
 				continue;
 			}
 
-			$product_info = $this->model_catalog_product->getProduct((int)$product_id);
+			$product_info = $this->model_catalog_product->getProduct($product_id);
 
 			if (!$product_info) {
 				continue;
@@ -285,8 +285,41 @@ class ControllerCheckoutCart extends Controller {
 				'name'   => $product_info['name'],
 				'thumb'  => $thumb,
 				'thumb2' => $thumb2,
-				'href'   => $this->url->link('product/product', 'product_id=' . (int)$product_id)
+				'href'   => $this->url->link('product/product', 'product_id=' . $product_id)
 			);
+			$included_product_ids[] = $product_id;
+		}
+
+		// Keep the editorial product rail visible for first-time visitors too.
+		// Actual browsing history remains first; current Giyim products fill any gaps.
+		if (count($recent_products) < 4) {
+			$fallback_products = $this->model_catalog_product->getProducts(array(
+				'filter_category_id' => 67,
+				'filter_sub_category' => true,
+				'sort' => 'p.sort_order',
+				'order' => 'ASC',
+				'start' => 0,
+				'limit' => 12
+			));
+
+			foreach ($fallback_products as $product_info) {
+				$product_id = (int)$product_info['product_id'];
+				if (count($recent_products) >= 4 || in_array($product_id, $included_product_ids, true)) {
+					continue;
+				}
+
+				$thumb = $product_info['image'] ? $this->model_tool_image->resizeCover($product_info['image'], 400, 500) : $this->model_tool_image->resizeCover('placeholder.png', 400, 500);
+				$product_images = $this->model_catalog_product->getProductImages($product_id);
+				$thumb2 = $product_images ? $this->model_tool_image->resizeCover($product_images[0]['image'], 400, 500) : false;
+
+				$recent_products[] = array(
+					'name'   => $product_info['name'],
+					'thumb'  => $thumb,
+					'thumb2' => $thumb2,
+					'href'   => $this->url->link('product/product', 'product_id=' . $product_id)
+				);
+				$included_product_ids[] = $product_id;
+			}
 		}
 
 		return $recent_products;

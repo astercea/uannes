@@ -111,65 +111,94 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
                 echo "</a>
             ";
                 // line 33
-                if (twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", false, false, false, 33)) {
-                    // line 34
+                $context["sidebar_size"] = "";
+                // line 34
+                echo "            ";
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(((twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", true, true, false, 34)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", false, false, false, 34), [])) : ([])));
+                foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
+                    // line 35
                     echo "              ";
-                    $context['_parent'] = $context;
-                    $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", false, false, false, 34));
-                    foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
-                        // line 35
-                        echo "              <span class=\"cart-sidebar-product-option\">";
-                        echo twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 35);
-                        echo ": ";
-                        echo twig_get_attribute($this->env, $this->source, $context["option"], "value", [], "any", false, false, false, 35);
-                        echo "</span>
-              ";
+                    $context["option_name"] = twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 35));
+                    // line 36
+                    echo "              ";
+                    if ((twig_in_filter("beden", ($context["option_name"] ?? null)) || twig_in_filter("size", ($context["option_name"] ?? null)))) {
+                        $context["sidebar_size"] = twig_get_attribute($this->env, $this->source, $context["option"], "value", [], "any", false, false, false, 36);
                     }
-                    $_parent = $context['_parent'];
-                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
-                    $context = array_intersect_key($context, $_parent) + $_parent;
                     // line 37
                     echo "            ";
                 }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 38
+                echo "            <span class=\"cart-sidebar-product-option cart-sidebar-product-option--size\">Beden: ";
+                echo ((($context["sidebar_size"] ?? null)) ? (($context["sidebar_size"] ?? null)) : ("Standart"));
+                echo "</span>
+            ";
+                // line 39
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(((twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", true, true, false, 39)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "option", [], "any", false, false, false, 39), [])) : ([])));
+                foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
+                    // line 40
+                    echo "              ";
+                    $context["option_name"] = twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 40));
+                    // line 41
+                    echo "              ";
+                    if ((!twig_in_filter("beden", ($context["option_name"] ?? null)) && !twig_in_filter("size", ($context["option_name"] ?? null)))) {
+                        // line 42
+                        echo "                <span class=\"cart-sidebar-product-option\">";
+                        echo twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 42);
+                        echo ": ";
+                        echo twig_get_attribute($this->env, $this->source, $context["option"], "value", [], "any", false, false, false, 42);
+                        echo "</span>
+              ";
+                    }
+                    // line 44
+                    echo "            ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 45
                 echo "            ";
-                if (twig_get_attribute($this->env, $this->source, $context["product"], "recurring", [], "any", false, false, false, 38)) {
-                    // line 39
+                if (twig_get_attribute($this->env, $this->source, $context["product"], "recurring", [], "any", false, false, false, 45)) {
+                    // line 46
                     echo "              <span class=\"cart-sidebar-product-option\">";
                     echo ($context["text_recurring"] ?? null);
                     echo " ";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "recurring", [], "any", false, false, false, 39);
+                    echo twig_get_attribute($this->env, $this->source, $context["product"], "recurring", [], "any", false, false, false, 46);
                     echo "</span>
             ";
                 }
-                // line 41
+                // line 48
                 echo "            <div class=\"cart-sidebar-product-meta\">
               <div class=\"cart-sidebar-qty-control\" data-cart-key=\"";
-                // line 42
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "cart_id", [], "any", false, false, false, 42);
+                // line 49
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "cart_id", [], "any", false, false, false, 49);
                 echo "\" data-qty=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 42);
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 49);
                 echo "\">
                 <button type=\"button\" class=\"cart-sidebar-qty-btn\" data-action=\"decrease\" aria-label=\"Azalt\">
                   <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line></svg>
                 </button>
                 <span class=\"cart-sidebar-qty-value\">";
-                // line 46
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 46);
+                // line 53
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 53);
                 echo "</span>
                 <button type=\"button\" class=\"cart-sidebar-qty-btn\" data-action=\"increase\" aria-label=\"Artır\">
                   <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line></svg>
                 </button>
               </div>
-              <span class=\"cart-sidebar-line-price\">";
-                // line 51
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "total", [], "any", false, false, false, 51);
-                echo "</span>
             </div>
           </div>
+          <span class=\"cart-sidebar-line-price\">";
+                // line 60
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "total", [], "any", false, false, false, 60);
+                echo "</span>
           <button type=\"button\" onclick=\"cart.remove('";
-                // line 54
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "cart_id", [], "any", false, false, false, 54);
+                // line 61
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "cart_id", [], "any", false, false, false, 61);
                 echo "');\" class=\"cart-sidebar-remove\" aria-label=\"Kaldır\">
             Kaldır
           </button>
@@ -179,29 +208,29 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 59
+            // line 66
             echo "        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["vouchers"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["voucher"]) {
-                // line 60
+                // line 67
                 echo "        <article class=\"cart-sidebar-product cart-sidebar-product--voucher\">
           <div class=\"cart-sidebar-product-body\">
             <span class=\"cart-sidebar-product-name\">";
-                // line 62
-                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "description", [], "any", false, false, false, 62);
+                // line 69
+                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "description", [], "any", false, false, false, 69);
                 echo "</span>
             <div class=\"cart-sidebar-product-meta\">
               <span class=\"cart-sidebar-qty\">1 adet</span>
-              <span class=\"cart-sidebar-line-price\">";
-                // line 65
-                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "amount", [], "any", false, false, false, 65);
-                echo "</span>
             </div>
           </div>
+          <span class=\"cart-sidebar-line-price\">";
+                // line 74
+                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "amount", [], "any", false, false, false, 74);
+                echo "</span>
           <button type=\"button\" onclick=\"voucher.remove('";
-                // line 68
-                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "key", [], "any", false, false, false, 68);
+                // line 75
+                echo twig_get_attribute($this->env, $this->source, $context["voucher"], "key", [], "any", false, false, false, 75);
                 echo "');\" class=\"cart-sidebar-remove\" aria-label=\"Kaldır\">
             Kaldır
           </button>
@@ -211,31 +240,31 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['voucher'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 73
+            // line 80
             echo "      </div>
 
       ";
         } else {
-            // line 76
+            // line 83
             echo "      <div class=\"cart-sidebar-empty\">
         <svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.0\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom: 15px;\"><path d=\"M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z\"></path><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line><path d=\"M16 10a4 4 0 0 1-8 0\"></path></svg>
         <p style=\"font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300;\">";
-            // line 78
+            // line 85
             echo ($context["text_empty"] ?? null);
             echo "</p>
       </div>
       ";
         }
-        // line 81
+        // line 88
         echo "    </div>
     ";
-        // line 82
+        // line 89
         if ((($context["products"] ?? null) || ($context["vouchers"] ?? null))) {
-            // line 83
+            // line 90
             echo "    <div class=\"cart-totals cart-sidebar-footer\">
       <div class=\"cart-sidebar-summary\">
         ";
-            // line 85
+            // line 92
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["totals"] ?? null));
             $context['loop'] = [
@@ -252,19 +281,19 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["total"]) {
-                // line 86
+                // line 93
                 echo "        <div class=\"cart-sidebar-summary-row";
-                if (twig_get_attribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 86)) {
+                if (twig_get_attribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 93)) {
                     echo " cart-sidebar-summary-row--emphasis";
                 }
                 echo "\">
           <span class=\"cart-sidebar-summary-label\">";
-                // line 87
-                echo twig_get_attribute($this->env, $this->source, $context["total"], "title", [], "any", false, false, false, 87);
+                // line 94
+                echo twig_get_attribute($this->env, $this->source, $context["total"], "title", [], "any", false, false, false, 94);
                 echo "</span>
           <span class=\"cart-sidebar-summary-value\">";
-                // line 88
-                echo twig_get_attribute($this->env, $this->source, $context["total"], "text", [], "any", false, false, false, 88);
+                // line 95
+                echo twig_get_attribute($this->env, $this->source, $context["total"], "text", [], "any", false, false, false, 95);
                 echo "</span>
         </div>
         ";
@@ -280,21 +309,21 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['total'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 91
+            // line 98
             echo "      </div>
       <div class=\"cart-sidebar-actions\">
         <a href=\"";
-            // line 93
+            // line 100
             echo ($context["cart"] ?? null);
             echo "\" class=\"btn-cart-action btn-cart-outline\" style=\"background-color: #ffffff !important;\">
           Sepeti Görüntüle
         </a>
         <a href=\"";
-            // line 96
+            // line 103
             echo ($context["checkout"] ?? null);
             echo "\" class=\"btn-cart-action btn-cart-solid\">
           ";
-            // line 97
+            // line 104
             echo ($context["text_checkout"] ?? null);
             echo "
         </a>
@@ -302,7 +331,7 @@ class __TwigTemplate_a2d49f0d0fef64c845c468f2d1ae1b64 extends Template
     </div>
     ";
         }
-        // line 102
+        // line 109
         echo "  </div>
 </div>
 
@@ -496,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  306 => 102,  298 => 97,  294 => 96,  288 => 93,  284 => 91,  267 => 88,  263 => 87,  256 => 86,  239 => 85,  235 => 83,  233 => 82,  230 => 81,  224 => 78,  220 => 76,  215 => 73,  204 => 68,  198 => 65,  192 => 62,  188 => 60,  183 => 59,  172 => 54,  166 => 51,  158 => 46,  149 => 42,  146 => 41,  138 => 39,  135 => 38,  132 => 37,  121 => 35,  116 => 34,  114 => 33,  108 => 32,  105 => 31,  95 => 28,  90 => 27,  88 => 26,  85 => 25,  81 => 24,  78 => 23,  76 => 22,  59 => 9,  53 => 8,  50 => 7,  45 => 6,  43 => 5,  37 => 1,);
+        return array (  335 => 109,  327 => 104,  323 => 103,  317 => 100,  313 => 98,  296 => 95,  292 => 94,  285 => 93,  268 => 92,  264 => 90,  262 => 89,  259 => 88,  253 => 85,  249 => 83,  244 => 80,  233 => 75,  229 => 74,  221 => 69,  217 => 67,  212 => 66,  201 => 61,  197 => 60,  187 => 53,  178 => 49,  175 => 48,  167 => 46,  164 => 45,  158 => 44,  150 => 42,  147 => 41,  144 => 40,  140 => 39,  135 => 38,  129 => 37,  124 => 36,  121 => 35,  116 => 34,  114 => 33,  108 => 32,  105 => 31,  95 => 28,  90 => 27,  88 => 26,  85 => 25,  81 => 24,  78 => 23,  76 => 22,  59 => 9,  53 => 8,  50 => 7,  45 => 6,  43 => 5,  37 => 1,);
     }
 
     public function getSourceContext()

@@ -120,9 +120,9 @@ class __TwigTemplate_350668302a5e4e7f110b35cd561e7348 extends Template
                         // line 42
                         echo "              <a href=\"";
                         echo twig_get_attribute($this->env, $this->source, $context["banner"], "link", [], "any", false, false, false, 42);
-                        echo "\" class=\"home-banner-stack__btn\">";
+                        echo "\" class=\"home-banner-stack__btn\"><span class=\"home-banner-stack__btn-label\">";
                         echo twig_get_attribute($this->env, $this->source, $context["banner"], "button_text", [], "any", false, false, false, 42);
-                        echo "</a>
+                        echo "</span></a>
             ";
                     }
                     // line 44

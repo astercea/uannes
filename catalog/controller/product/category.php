@@ -95,7 +95,7 @@ class ControllerProductCategory extends Controller {
 		if ($category_info) {
 			// The Giyim landing page has its own catalogue and filter experience.
 			// Keep old category URLs working while sending shoppers to that page.
-			if ((int)$category_info['category_id'] === 67) {
+			if ((int)$category_info['category_id'] === 67 || (int)$category_info['category_id'] === 66 || (int)$category_info['category_id'] === 64) {
 				$giyim_filters = array();
 				foreach (array('kategori', 'renk', 'beden', 'stok') as $filter_key) {
 					if (isset($this->request->get[$filter_key]) && $this->request->get[$filter_key] !== '') {
@@ -103,7 +103,8 @@ class ControllerProductCategory extends Controller {
 					}
 				}
 
-				$this->response->redirect($this->url->link('product/giyim', implode('&', $giyim_filters)));
+				$route = (int)$category_info['category_id'] === 66 ? 'product/esarp' : ((int)$category_info['category_id'] === 64 ? 'product/tum_urunler' : 'product/giyim');
+				$this->response->redirect($this->url->link($route, implode('&', $giyim_filters)));
 				return;
 			}
 

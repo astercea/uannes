@@ -6,14 +6,12 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 
 <!-- Owl Carousel (jQuery header'da zaten yüklü; ikinci jQuery eklentileri sıfırlar) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<div
-	class="main-container">
+<main id="product-product" class="main-container product-page">
 	<!-- Sol Taraf: Carousel + Content -->
 	<div
 		class="left-content order-1 order-lg-1">
 		<!-- Carousel -->
 		<div class="carousel-section position-relative">
-			{% include 'common/product_badges.twig' with { badges: badges } only %}
 			<div class="owl-carousel owl-theme carousel-image">
 				{% if thumb %}
 					<div class="item">
@@ -48,45 +46,47 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 				<div class="row">
 					<div
 						class="col-12">
-						<!-- ÜST KUTU -->
-						{% if story_info %}
-							<div class="information product-story content w-100">
-								<div class="product-story__card">
-									<span class="product-story__label">Arkasındaki hikaye</span>
-									<div class="product-story__text information-text">{{ story_info|raw }}</div>
-								</div>
+						<section class="product-page__summary" aria-labelledby="product-title">
+							<div class="product-detail-badges mb-2">
+								{% include 'common/product_badges.twig' with { badges: badges } only %}
 							</div>
-						{% endif %}
+							<h1 id="product-title" class="product-page__title">{{ heading_title }}</h1>
+							<p class="product-page__price">
+							{% if special %}
+								<span class="product-page__price-old">{{ price }}</span><br>
+								<span class="product-page__price-current">{{ special }}</span>
+							{% else %}
+								<span class="product-page__price-current">{{ price }}</span>
+							{% endif %}
+							</p>
 
-						<!-- ALT BAŞLIK + ÜRÜNLER -->
-						{% if products %}
-							<div class="container py-5">
-								<div class="d-flex justify-content-between align-items-center mb-4 section-header" style="padding-bottom:30px;">
-									<h3 class="fw-normal m-0">{{ text_related }}</h3>
-								</div>
-								<div class="row g-3">
-									{% for product in products %}
-										<div class="col-6 col-md-3">
-											<div class="product-card text-center{% if product.in_stock is defined and not product.in_stock %} product-card--out-of-stock{% endif %}">
-												<div class="product-image-container position-relative">
-													{% include 'common/product_badges.twig' with { badges: product.badges } only %}
-													<a href="{{ product.href }}">
-														<img src="{{ product.thumb }}" class="product-image main-img img-fluid" alt="{{ product.name }}">
-														{% if product.thumb2 %}
-															<img src="{{ product.thumb2 }}" class="product-image hover-img img-fluid" alt="{{ product.name }} hover">
-														{% else %}
-															<img src="{{ product.thumb }}" class="product-image hover-img img-fluid" alt="{{ product.name }}">
-														{% endif %}
-													</a>
-												</div>
-
-												<h6 class="fw-normal" style="font-size:18px;">{{ product.name }}</h6>
+							{% if attribute_groups %}
+								<div class="product-attributes mb-3">
+									{% for group in attribute_groups %}
+										{% set group_name = group.name|lower %}
+										{% if group_name not in ['renk', 'color', 'colour'] %}
+											<div class="attribute-group mb-2">
+												<ul class="ps-3 mb-0">
+													{% for attribute in group.attribute %}
+														<li>{{ group.name }}: {{ attribute.name }}</li>
+													{% endfor %}
+												</ul>
 											</div>
-										</div>
+										{% endif %}
 									{% endfor %}
 								</div>
+							{% endif %}
+						</section>
+						<section class="product-page__description" aria-label="Ürün hakkında">
+							<div class="product-page__intro">
+								{% if story_info %}
+									{{ story_info|raw }}
+								{% else %}
+									Uannes'in yalın ve zamansız estetiğini taşıyan bu parça, özenli kumaşı ve akıcı silüetiyle günün her anına eşlik eder.
+								{% endif %}
 							</div>
-						{% endif %}
+						</section>
+
 					</div>
 				</div>
 			</div>
@@ -102,71 +102,99 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 				<form id="product">
 				<input type="hidden" name="product_id" value="{{ product_id }}" />
 				<input type="hidden" name="quantity" value="{{ minimum }}" />
-				<h2 class="fs-5 mb-2">{{ heading_title }}</h2>
-				<div class="product-detail-badges mb-2">
-					{% include 'common/product_badges.twig' with { badges: badges } only %}
-				</div>
-			<p class="fs-5 mb-2" style="font-size:2.25rem;">
-			{% if special %}
-				<span class="text-muted" style="text-decoration: line-through; font-size:1.25rem; opacity:0.7; color:#ff3131">
-				{{ price }}
-				</span><br>
-				<span class="fw-bold text-dark" style="font-size:2.25rem;">
-				{{ special }}
-				</span>
-			{% else %}
-				<span class="fw-bold text-dark">
-				{{ price }}
-				</span>
-			{% endif %}
-			</p>
-
-				{% if attribute_groups %}
-				<div class="product-attributes mb-3">
-					{% for group in attribute_groups %}
-					<div class="attribute-group mb-2">
-						<ul class=" ps-3 mb-0">
-						{% for attribute in group.attribute %}
-							<li>{{ group.name }}: {{ attribute.name }}</li>
-						{% endfor %}
-						</ul>
-					</div>
-					{% endfor %}
-				</div>
-				{% endif %}
-
-				{% if options %}
-					{% for option in options %}
-						{% if option.type == 'select' %}
-							<div class="d-flex justify-content-between align-items-center mb-2 product-option-row">
-								<span>{{ option.name }}</span>
-								<select name="option[{{ option.product_option_id }}]" class="form-control w-auto">
-									{% for value in option.product_option_value %}
-										<option value="{{ value.product_option_value_id }}">{{ value.name }}</option>
-									{% endfor %}
-								</select>
-							</div>
-						{% endif %}
-					{% endfor %}
-				{% endif %}
-
-				<p class="small mb-2">{{ description }}</p>
-
-				{% if not in_stock %}
-				<p class="product-stock-status mb-2"><strong>{{ text_stock }}</strong> {{ stock }}</p>
-				{% endif %}
 
 				<div class="d-flex justify-content-center mb-2 product-action">
 					{% if in_stock %}
-					<button type="button" id="button-cart" class="btn btn-warning text-white">
+					<button type="button" id="button-cart" class="btn product-page__add-to-cart">
 						Sepete Ekle
 					</button>
 					{% else %}
-					<button type="button" class="btn btn-secondary text-white" disabled="disabled">
+					<button type="button" class="btn product-page__add-to-cart product-page__add-to-cart--disabled" disabled="disabled">
 						Sepete Ekle
 					</button>
 					{% endif %}
 				</div>
+
+				{% set has_size_option = false %}
+				{% for option in options|default([]) %}
+					{% set option_name = option.name|lower %}
+					{% if 'beden' in option_name or 'size' in option_name %}{% set has_size_option = true %}{% endif %}
+				{% endfor %}
+				<div class="product-options">
+					{% if not has_size_option %}
+						<fieldset class="product-option-set product-option-set--sizes product-option-set--standard">
+							<div class="product-option-set__heading">
+								<legend>Beden</legend>
+								{% if not in_stock or has_sold_out_size %}
+									<div class="product-option-set__side">{% include 'product/stock_notify.twig' %}</div>
+								{% endif %}
+							</div>
+							<div class="product-option-set__choices">
+								<span class="product-option__size product-option__size--standard">Standart</span>
+							</div>
+						</fieldset>
+					{% endif %}
+						{% for option in options|default([]) %}
+							{% set option_name = option.name|lower %}
+							{% set is_size_option = 'beden' in option_name or 'size' in option_name %}
+							{% set is_colour_option = 'renk' in option_name or 'color' in option_name or 'colour' in option_name %}
+							{% if is_size_option %}
+								{% set has_standard_size = false %}
+								{% for value in option.product_option_value %}
+									{% if value.name|lower == 'standart' %}{% set has_standard_size = true %}{% endif %}
+								{% endfor %}
+								<fieldset class="product-option-set product-option-set--sizes">
+									<div class="product-option-set__heading">
+										<legend>Beden</legend>
+										{% if not has_standard_size or not in_stock or has_sold_out_size %}
+											<div class="product-option-set__side">
+												{% if not has_standard_size %}
+												<a href="#product-description-title" class="product-option-set__guide">Beden Rehberi</a>
+												{% endif %}
+												{% if not in_stock or has_sold_out_size %}{% include 'product/stock_notify.twig' %}{% endif %}
+											</div>
+										{% endif %}
+									</div>
+									<div class="product-option-set__choices">
+										{% set has_available_size = false %}
+										{% for value in option.product_option_value %}
+											{% set is_sold_out = not value.in_stock %}
+											{% set is_standard_size = value.name|lower == 'standart' %}
+											{% if not has_standard_size or is_standard_size %}
+												{% set select_this_size = not is_sold_out and not has_available_size %}
+												{% if select_this_size %}{% set has_available_size = true %}{% endif %}
+												<input class="product-option__input" type="radio" id="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}"{% if select_this_size %} checked{% endif %}{% if is_sold_out %} disabled aria-disabled="true"{% endif %}>
+												<label class="product-option__size{% if is_standard_size %} product-option__size--standard{% endif %}{% if is_sold_out %} is-sold-out{% endif %}" for="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}">{{ value.name }}</label>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</fieldset>
+							{% elseif is_colour_option %}
+								{% set first_colour = option.product_option_value|first %}
+								<fieldset class="product-option-set product-option-set--colours">
+									<div class="product-option-set__heading">
+										<legend>Renk</legend>
+										<span class="product-option-set__selected-colour" data-selected-colour>{{ first_colour.name }}</span>
+									</div>
+									<div class="product-option-set__choices">
+										{% for value in option.product_option_value %}
+											<input class="product-option__input" type="radio" id="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" data-option-label="{{ value.name }}"{% if loop.first %} checked{% endif %}>
+											<label class="product-option__colour" for="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" data-colour="{{ value.name|lower }}"><span class="visually-hidden">{{ value.name }}</span></label>
+										{% endfor %}
+									</div>
+								</fieldset>
+							{% elseif option.type == 'select' %}
+								<div class="d-flex justify-content-between align-items-center mb-2 product-option-row">
+									<span>{{ option.name }}</span>
+									<select name="option[{{ option.product_option_id }}]" class="form-control w-auto">
+										{% for value in option.product_option_value %}
+											<option value="{{ value.product_option_value_id }}">{{ value.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
 				</form>
 			</div>
 
@@ -174,6 +202,15 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 			<div class="transparent-box bg-white bg-opacity-95 p-3 w-100" style="--bs-bg-opacity: 0.7">
 				<div
 					class="accordion" id="productAccordion">
+					<div class="custom-accordion" id="productDetailsSection">
+						<div class="custom-accordion-header">
+							<span>ÜRÜN DETAYLARI</span>
+							<i class="fa fa-chevron-down"></i>
+						</div>
+						<div class="custom-accordion-content product-details-content">
+							{{ description|raw }}
+						</div>
+					</div>
 					{% if maintenance_info %}
 						<style>
 						
@@ -246,7 +283,34 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 		</div>
 	</div>
 
-</div>
+	{% if products %}
+		<section class="product-page__recommendations cart-page__recent" aria-labelledby="recommendations-title">
+			<header class="cart-page__recent-heading">
+				<h2 id="recommendations-title">İlginizi Çekebilecekler</h2>
+			</header>
+			<div class="uannes-row-grid cart-page__recent-grid" role="list">
+				{% for product in products %}
+					<a href="{{ product.href }}" class="uannes-row-card cart-page__recent-card" role="listitem">
+						<div class="uannes-row-media" data-current-image="0">
+							<img src="{{ product.thumb }}" alt="{{ product.name }}" class="uannes-row-img uannes-row-card__image main-img is-active" data-card-image="0" />
+							{% if product.thumb2 %}
+								<img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img uannes-row-card__image hover-img" data-card-image="1" />
+								<div class="uannes-row-card__swatches" aria-label="Renk seçenekleri">
+									<button type="button" class="uannes-row-card__swatch is-active" data-image-index="0" aria-label="Birinci renk seçeneği"></button>
+									<button type="button" class="uannes-row-card__swatch" data-image-index="1" aria-label="İkinci renk seçeneği"></button>
+								</div>
+								<button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--prev" data-direction="prev" aria-label="Önceki görsel">‹</button>
+								<button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--next" data-direction="next" aria-label="Sonraki görsel">›</button>
+							{% endif %}
+						</div>
+						<div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
+					</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
+</main>
 <style>
 	.carousel-section .owl-carousel .item img {
 		width: 100%;
@@ -296,13 +360,13 @@ $(document).ready(function(){
     loop:true,
     margin:0,
     nav:true,
-    dots:true,
-    autoplay:true,
-    autoplayTimeout:5000,
+    navText:['<span aria-hidden="true">&#8249;</span>', '<span aria-hidden="true">&#8250;</span>'],
+    dots:false,
+    autoplay:false,
+    slideBy:1,
     responsive:{
-      0:{items:1},
-      600:{items:2},
-      1000:{items:2}
+      0:{items:1, slideBy:1},
+      768:{items:2, slideBy:1}
     }
   });
 
@@ -315,6 +379,61 @@ $(document).ready(function(){
   });
 });
 
+</script>
+<script>
+document.addEventListener('change', function(event) {
+	if (!event.target.matches('.product-option-set--colours .product-option__input')) return;
+
+	var optionSet = event.target.closest('.product-option-set--colours');
+	var selectedLabel = optionSet ? optionSet.querySelector('[data-selected-colour]') : null;
+
+	if (selectedLabel) {
+		selectedLabel.textContent = event.target.getAttribute('data-option-label') || '';
+	}
+});
+</script>
+<script>
+document.addEventListener('click', function(event) {
+	var trigger = event.target.closest('[data-stock-notify] .product-stock-notify__trigger');
+	if (trigger) {
+		var wrapper = trigger.parentElement;
+		var form = wrapper.querySelector('.product-stock-notify__form');
+		form.hidden = !form.hidden;
+		wrapper.classList.toggle('is-open', !form.hidden);
+		if (!form.hidden) form.querySelector('input').focus();
+		return;
+	}
+
+	var submit = event.target.closest('[data-stock-notify] .product-stock-notify__submit');
+	if (!submit) return;
+
+	var wrapper = submit.closest('[data-stock-notify]');
+	var email = wrapper.querySelector('input');
+	var status = wrapper.querySelector('.product-stock-notify__status');
+	if (!email.checkValidity()) {
+		email.reportValidity();
+		return;
+	}
+
+	submit.disabled = true;
+	fetch('index.php?route=product/stock_notification/add', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+		body: 'product_id=' + encodeURIComponent(wrapper.getAttribute('data-product-id')) + '&email=' + encodeURIComponent(email.value)
+	}).then(function(response) {
+		return response.json();
+	}).then(function(result) {
+		status.textContent = result.success || result.error || 'İşleminiz tamamlanamadı.';
+		if (result.success) {
+			email.disabled = true;
+			submit.hidden = true;
+		}
+	}).catch(function() {
+		status.textContent = 'İşleminiz tamamlanamadı. Lütfen tekrar deneyin.';
+	}).finally(function() {
+		submit.disabled = false;
+	});
+});
 </script>
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
@@ -536,12 +655,37 @@ $(document).ready(function() {
 	});
 </script>
 <script>
-$(document).ready(function(){
-  if ($(window).width() <= 992) {
-    var productDetails = $('.right-sidebar');
+document.addEventListener('click', function(event) {
+	var control = event.target.closest('#product-product .product-page__recommendations .uannes-row-card__swatch, #product-product .product-page__recommendations .uannes-row-card__arrow');
+	if (!control) return;
 
-    $('.carousel-section').after(productDetails);
-  }
+	event.preventDefault();
+	event.stopPropagation();
+
+	var media = control.closest('.uannes-row-media');
+	var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+	if (images.length < 2) return;
+
+	var current = parseInt(media.getAttribute('data-current-image'), 10);
+	if (isNaN(current)) current = 0;
+	current = control.classList.contains('uannes-row-card__arrow')
+		? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length)
+		: parseInt(control.getAttribute('data-image-index'), 10);
+
+	media.classList.add('is-manual-image');
+	media.setAttribute('data-current-image', String(current));
+	images.forEach(function(image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
+	media.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function(event) {
+	var media = event.target.closest('#product-product .product-page__recommendations .uannes-row-media');
+	if (!media || media.contains(event.relatedTarget)) return;
+	var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+	media.classList.remove('is-manual-image');
+	media.setAttribute('data-current-image', '0');
+	images.forEach(function(image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+	media.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 </script>
 {{ footer }}

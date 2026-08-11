@@ -133,7 +133,6 @@ class __TwigTemplate_81ea089999d1183b5d0177347149202b extends Template
         echo ($context["register"] ?? null);
         echo "\" class=\"login-page__register-link\">
       <span>Yeni Hesap Oluştur</span>
-      <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><path d=\"M5 3l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>
     </a>
 
     </div>
@@ -141,7 +140,7 @@ class __TwigTemplate_81ea089999d1183b5d0177347149202b extends Template
 </div>
 
 ";
-        // line 68
+        // line 67
         echo ($context["footer"] ?? null);
         echo "
 ";
@@ -168,7 +167,7 @@ class __TwigTemplate_81ea089999d1183b5d0177347149202b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  145 => 68,  133 => 59,  123 => 51,  117 => 49,  115 => 48,  105 => 41,  96 => 35,  87 => 29,  82 => 27,  76 => 23,  70 => 20,  66 => 18,  64 => 17,  61 => 16,  55 => 13,  51 => 11,  49 => 10,  37 => 1,);
+        return array (  144 => 67,  133 => 59,  123 => 51,  117 => 49,  115 => 48,  105 => 41,  96 => 35,  87 => 29,  82 => 27,  76 => 23,  70 => 20,  66 => 18,  64 => 17,  61 => 16,  55 => 13,  51 => 11,  49 => 10,  37 => 1,);
     }
 
     public function getSourceContext()

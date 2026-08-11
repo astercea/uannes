@@ -43,43 +43,38 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 
 <!-- Owl Carousel (jQuery header'da zaten yüklü; ikinci jQuery eklentileri sıfırlar) -->
 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js\"></script>
-<div
-\tclass=\"main-container\">
+<main id=\"product-product\" class=\"main-container product-page\">
 \t<!-- Sol Taraf: Carousel + Content -->
 \t<div
 \t\tclass=\"left-content order-1 order-lg-1\">
 \t\t<!-- Carousel -->
 \t\t<div class=\"carousel-section position-relative\">
-\t\t\t";
-        // line 16
-        $this->loadTemplate("common/product_badges.twig", "default/template/product/product.twig", 16)->display(twig_to_array(["badges" => ($context["badges"] ?? null)]));
-        // line 17
-        echo "\t\t\t<div class=\"owl-carousel owl-theme carousel-image\">
+\t\t\t<div class=\"owl-carousel owl-theme carousel-image\">
 \t\t\t\t";
-        // line 18
+        // line 16
         if (($context["thumb"] ?? null)) {
-            // line 19
+            // line 17
             echo "\t\t\t\t\t<div class=\"item\">
 \t\t\t\t\t\t<img src=\"";
-            // line 20
+            // line 18
             echo ($context["thumb"] ?? null);
             echo "\" class=\"img-fluid w-100\"/>
 \t\t\t\t\t</div>
 \t\t\t\t";
         }
-        // line 23
+        // line 21
         echo "\t\t\t\t";
         if (($context["images"] ?? null)) {
-            // line 24
+            // line 22
             echo "\t\t\t\t\t";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["images"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
-                // line 25
+                // line 23
                 echo "\t\t\t\t\t\t<div class=\"item\">
 \t\t\t\t\t\t\t<img src=\"";
-                // line 26
-                echo twig_get_attribute($this->env, $this->source, $context["image"], "popup", [], "any", false, false, false, 26);
+                // line 24
+                echo twig_get_attribute($this->env, $this->source, $context["image"], "popup", [], "any", false, false, false, 24);
                 echo "\" class=\"img-fluid w-100\"/>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
@@ -87,44 +82,44 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 29
+            // line 27
             echo "\t\t\t\t";
         }
-        // line 30
+        // line 28
         echo "\t\t\t</div>
 
 \t\t\t<!-- Küçük Resimler -->
 \t\t\t<div class=\"thumbnails\">
 \t\t\t\t";
-        // line 34
+        // line 32
         if (($context["thumb"] ?? null)) {
-            // line 35
+            // line 33
             echo "\t\t\t\t\t<img src=\"";
             echo ($context["thumb"] ?? null);
             echo "\" class=\"active\"/>
 \t\t\t\t";
         }
-        // line 37
+        // line 35
         echo "\t\t\t\t";
         if (($context["images"] ?? null)) {
-            // line 38
+            // line 36
             echo "\t\t\t\t\t";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["images"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
-                // line 39
+                // line 37
                 echo "\t\t\t\t\t\t<img src=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["image"], "thumb", [], "any", false, false, false, 39);
+                echo twig_get_attribute($this->env, $this->source, $context["image"], "thumb", [], "any", false, false, false, 37);
                 echo "\"/>
 \t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 41
+            // line 39
             echo "\t\t\t\t";
         }
-        // line 42
+        // line 40
         echo "\t\t\t</div>
 \t\t</div>
 
@@ -134,105 +129,112 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 \t\t\t\t<div class=\"row\">
 \t\t\t\t\t<div
 \t\t\t\t\t\tclass=\"col-12\">
-\t\t\t\t\t\t<!-- ÜST KUTU -->
-\t\t\t\t\t\t";
+\t\t\t\t\t\t<section class=\"product-page__summary\" aria-labelledby=\"product-title\">
+\t\t\t\t\t\t\t<div class=\"product-detail-badges mb-2\">
+\t\t\t\t\t\t\t\t";
+        // line 51
+        $this->loadTemplate("common/product_badges.twig", "default/template/product/product.twig", 51)->display(twig_to_array(["badges" => ($context["badges"] ?? null)]));
         // line 52
-        if (($context["story_info"] ?? null)) {
-            // line 53
-            echo "\t\t\t\t\t\t\t<div class=\"information product-story content w-100\">
-\t\t\t\t\t\t\t\t<div class=\"product-story__card\">
-\t\t\t\t\t\t\t\t\t<span class=\"product-story__label\">Arkasındaki hikaye</span>
-\t\t\t\t\t\t\t\t\t<div class=\"product-story__text information-text\">";
+        echo "\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<h1 id=\"product-title\" class=\"product-page__title\">";
+        // line 53
+        echo ($context["heading_title"] ?? null);
+        echo "</h1>
+\t\t\t\t\t\t\t<p class=\"product-page__price\">
+\t\t\t\t\t\t\t";
+        // line 55
+        if (($context["special"] ?? null)) {
             // line 56
-            echo ($context["story_info"] ?? null);
-            echo "</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t";
+            echo "\t\t\t\t\t\t\t\t<span class=\"product-page__price-old\">";
+            echo ($context["price"] ?? null);
+            echo "</span><br>
+\t\t\t\t\t\t\t\t<span class=\"product-page__price-current\">";
+            // line 57
+            echo ($context["special"] ?? null);
+            echo "</span>
+\t\t\t\t\t\t\t";
+        } else {
+            // line 59
+            echo "\t\t\t\t\t\t\t\t<span class=\"product-page__price-current\">";
+            echo ($context["price"] ?? null);
+            echo "</span>
+\t\t\t\t\t\t\t";
         }
-        // line 60
-        echo "
-\t\t\t\t\t\t<!-- ALT BAŞLIK + ÜRÜNLER -->
-\t\t\t\t\t\t";
-        // line 62
-        if (($context["products"] ?? null)) {
-            // line 63
-            echo "\t\t\t\t\t\t\t<div class=\"container py-5\">
-\t\t\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-4 section-header\" style=\"padding-bottom:30px;\">
-\t\t\t\t\t\t\t\t\t<h3 class=\"fw-normal m-0\">";
-            // line 65
-            echo ($context["text_related"] ?? null);
-            echo "</h3>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t<div class=\"row g-3\">
-\t\t\t\t\t\t\t\t\t";
-            // line 68
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["products"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-                // line 69
-                echo "\t\t\t\t\t\t\t\t\t\t<div class=\"col-6 col-md-3\">
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"product-card text-center";
-                // line 70
-                if ((twig_get_attribute($this->env, $this->source, $context["product"], "in_stock", [], "any", true, true, false, 70) &&  !twig_get_attribute($this->env, $this->source, $context["product"], "in_stock", [], "any", false, false, false, 70))) {
-                    echo " product-card--out-of-stock";
-                }
-                echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"product-image-container position-relative\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 72
-                $this->loadTemplate("common/product_badges.twig", "default/template/product/product.twig", 72)->display(twig_to_array(["badges" => twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", false, false, false, 72)]));
-                // line 73
-                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 73);
-                echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"";
-                // line 74
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "thumb", [], "any", false, false, false, 74);
-                echo "\" class=\"product-image main-img img-fluid\" alt=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 74);
-                echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 75
-                if (twig_get_attribute($this->env, $this->source, $context["product"], "thumb2", [], "any", false, false, false, 75)) {
-                    // line 76
-                    echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "thumb2", [], "any", false, false, false, 76);
-                    echo "\" class=\"product-image hover-img img-fluid\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 76);
-                    echo " hover\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                } else {
-                    // line 78
-                    echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "thumb", [], "any", false, false, false, 78);
-                    echo "\" class=\"product-image hover-img img-fluid\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 78);
-                    echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                }
-                // line 80
-                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
+        // line 61
+        echo "\t\t\t\t\t\t\t</p>
 
-\t\t\t\t\t\t\t\t\t\t\t\t<h6 class=\"fw-normal\" style=\"font-size:18px;\">";
-                // line 83
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 83);
-                echo "</h6>
-\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t";
+        // line 63
+        if (($context["attribute_groups"] ?? null)) {
+            // line 64
+            echo "\t\t\t\t\t\t\t\t<div class=\"product-attributes mb-3\">
 \t\t\t\t\t\t\t\t\t";
+            // line 65
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["attribute_groups"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["group"]) {
+                // line 66
+                echo "\t\t\t\t\t\t\t\t\t\t";
+                $context["group_name"] = twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "name", [], "any", false, false, false, 66));
+                // line 67
+                echo "\t\t\t\t\t\t\t\t\t\t";
+                if (!twig_in_filter(($context["group_name"] ?? null), ["renk", "color", "colour"])) {
+                    // line 68
+                    echo "\t\t\t\t\t\t\t\t\t\t\t<div class=\"attribute-group mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"ps-3 mb-0\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                    // line 70
+                    $context['_parent'] = $context;
+                    $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["group"], "attribute", [], "any", false, false, false, 70));
+                    foreach ($context['_seq'] as $context["_key"] => $context["attribute"]) {
+                        // line 71
+                        echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li>";
+                        echo twig_get_attribute($this->env, $this->source, $context["group"], "name", [], "any", false, false, false, 71);
+                        echo ": ";
+                        echo twig_get_attribute($this->env, $this->source, $context["attribute"], "name", [], "any", false, false, false, 71);
+                        echo "</li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t";
+                    }
+                    $_parent = $context['_parent'];
+                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['attribute'], $context['_parent'], $context['loop']);
+                    $context = array_intersect_key($context, $_parent) + $_parent;
+                    // line 73
+                    echo "\t\t\t\t\t\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t";
+                }
+                // line 76
+                echo "\t\t\t\t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 87
+            // line 77
             echo "\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t";
+\t\t\t\t\t\t\t";
         }
-        // line 90
-        echo "\t\t\t\t\t</div>
+        // line 79
+        echo "\t\t\t\t\t\t</section>
+\t\t\t\t\t\t<section class=\"product-page__description\" aria-label=\"Ürün hakkında\">
+\t\t\t\t\t\t\t<div class=\"product-page__intro\">
+\t\t\t\t\t\t\t\t";
+        // line 82
+        if (($context["story_info"] ?? null)) {
+            // line 83
+            echo "\t\t\t\t\t\t\t\t\t";
+            echo ($context["story_info"] ?? null);
+            echo "
+\t\t\t\t\t\t\t\t";
+        } else {
+            // line 85
+            echo "\t\t\t\t\t\t\t\t\tUannes'in yalın ve zamansız estetiğini taşıyan bu parça, özenli kumaşı ve akıcı silüetiyle günün her anına eşlik eder.
+\t\t\t\t\t\t\t\t";
+        }
+        // line 87
+        echo "\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</section>
+
+\t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
@@ -253,179 +255,345 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
         // line 104
         echo ($context["minimum"] ?? null);
         echo "\" />
-\t\t\t\t<h2 class=\"fs-5 mb-2\">";
-        // line 105
-        echo ($context["heading_title"] ?? null);
-        echo "</h2>
-\t\t\t\t<div class=\"product-detail-badges mb-2\">
-\t\t\t\t\t";
-        // line 107
-        $this->loadTemplate("common/product_badges.twig", "default/template/product/product.twig", 107)->display(twig_to_array(["badges" => ($context["badges"] ?? null)]));
-        // line 108
-        echo "\t\t\t\t</div>
-\t\t\t<p class=\"fs-5 mb-2\" style=\"font-size:2.25rem;\">
-\t\t\t";
-        // line 110
-        if (($context["special"] ?? null)) {
-            // line 111
-            echo "\t\t\t\t<span class=\"text-muted\" style=\"text-decoration: line-through; font-size:1.25rem; opacity:0.7; color:#ff3131\">
-\t\t\t\t";
-            // line 112
-            echo ($context["price"] ?? null);
-            echo "
-\t\t\t\t</span><br>
-\t\t\t\t<span class=\"fw-bold text-dark\" style=\"font-size:2.25rem;\">
-\t\t\t\t";
-            // line 115
-            echo ($context["special"] ?? null);
-            echo "
-\t\t\t\t</span>
-\t\t\t";
-        } else {
-            // line 118
-            echo "\t\t\t\t<span class=\"fw-bold text-dark\">
-\t\t\t\t";
-            // line 119
-            echo ($context["price"] ?? null);
-            echo "
-\t\t\t\t</span>
-\t\t\t";
-        }
-        // line 122
-        echo "\t\t\t</p>
 
-\t\t\t\t";
-        // line 124
-        if (($context["attribute_groups"] ?? null)) {
-            // line 125
-            echo "\t\t\t\t<div class=\"product-attributes mb-3\">
-\t\t\t\t\t";
-            // line 126
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["attribute_groups"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["group"]) {
-                // line 127
-                echo "\t\t\t\t\t<div class=\"attribute-group mb-2\">
-\t\t\t\t\t\t<ul class=\" ps-3 mb-0\">
-\t\t\t\t\t\t";
-                // line 129
-                $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["group"], "attribute", [], "any", false, false, false, 129));
-                foreach ($context['_seq'] as $context["_key"] => $context["attribute"]) {
-                    // line 130
-                    echo "\t\t\t\t\t\t\t<li>";
-                    echo twig_get_attribute($this->env, $this->source, $context["group"], "name", [], "any", false, false, false, 130);
-                    echo ": ";
-                    echo twig_get_attribute($this->env, $this->source, $context["attribute"], "name", [], "any", false, false, false, 130);
-                    echo "</li>
-\t\t\t\t\t\t";
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['attribute'], $context['_parent'], $context['loop']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 132
-                echo "\t\t\t\t\t\t</ul>
-\t\t\t\t\t</div>
-\t\t\t\t\t";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 135
-            echo "\t\t\t\t</div>
-\t\t\t\t";
-        }
-        // line 137
-        echo "
-\t\t\t\t";
-        // line 138
-        if (($context["options"] ?? null)) {
-            // line 139
-            echo "\t\t\t\t\t";
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["options"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
-                // line 140
-                echo "\t\t\t\t\t\t";
-                if ((twig_get_attribute($this->env, $this->source, $context["option"], "type", [], "any", false, false, false, 140) == "select")) {
-                    // line 141
-                    echo "\t\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-2 product-option-row\">
-\t\t\t\t\t\t\t\t<span>";
-                    // line 142
-                    echo twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 142);
-                    echo "</span>
-\t\t\t\t\t\t\t\t<select name=\"option[";
-                    // line 143
-                    echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 143);
-                    echo "]\" class=\"form-control w-auto\">
-\t\t\t\t\t\t\t\t\t";
-                    // line 144
-                    $context['_parent'] = $context;
-                    $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 144));
-                    foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
-                        // line 145
-                        echo "\t\t\t\t\t\t\t\t\t\t<option value=\"";
-                        echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 145);
-                        echo "\">";
-                        echo twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 145);
-                        echo "</option>
-\t\t\t\t\t\t\t\t\t";
-                    }
-                    $_parent = $context['_parent'];
-                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
-                    $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 147
-                    echo "\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t";
-                }
-                // line 150
-                echo "\t\t\t\t\t";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 151
-            echo "\t\t\t\t";
-        }
-        // line 152
-        echo "
-\t\t\t\t<p class=\"small mb-2\">";
-        // line 153
-        echo ($context["description"] ?? null);
-        echo "</p>
-
-\t\t\t\t";
-        // line 155
-        if ( !($context["in_stock"] ?? null)) {
-            // line 156
-            echo "\t\t\t\t<p class=\"product-stock-status mb-2\"><strong>";
-            echo ($context["text_stock"] ?? null);
-            echo "</strong> ";
-            echo ($context["stock"] ?? null);
-            echo "</p>
-\t\t\t\t";
-        }
-        // line 158
-        echo "
 \t\t\t\t<div class=\"d-flex justify-content-center mb-2 product-action\">
 \t\t\t\t\t";
-        // line 160
+        // line 107
         if (($context["in_stock"] ?? null)) {
-            // line 161
-            echo "\t\t\t\t\t<button type=\"button\" id=\"button-cart\" class=\"btn btn-warning text-white\">
+            // line 108
+            echo "\t\t\t\t\t<button type=\"button\" id=\"button-cart\" class=\"btn product-page__add-to-cart\">
 \t\t\t\t\t\tSepete Ekle
 \t\t\t\t\t</button>
 \t\t\t\t\t";
         } else {
-            // line 165
-            echo "\t\t\t\t\t<button type=\"button\" class=\"btn btn-secondary text-white\" disabled=\"disabled\">
+            // line 112
+            echo "\t\t\t\t\t<button type=\"button\" class=\"btn product-page__add-to-cart product-page__add-to-cart--disabled\" disabled=\"disabled\">
 \t\t\t\t\t\tSepete Ekle
 \t\t\t\t\t</button>
 \t\t\t\t\t";
         }
-        // line 169
+        // line 116
         echo "\t\t\t\t</div>
+
+\t\t\t\t";
+        // line 118
+        $context["has_size_option"] = false;
+        // line 119
+        echo "\t\t\t\t";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(((array_key_exists("options", $context)) ? (_twig_default_filter(($context["options"] ?? null), [])) : ([])));
+        foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
+            // line 120
+            echo "\t\t\t\t\t";
+            $context["option_name"] = twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 120));
+            // line 121
+            echo "\t\t\t\t\t";
+            if ((twig_in_filter("beden", ($context["option_name"] ?? null)) || twig_in_filter("size", ($context["option_name"] ?? null)))) {
+                $context["has_size_option"] = true;
+            }
+            // line 122
+            echo "\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 123
+        echo "\t\t\t\t<div class=\"product-options\">
+\t\t\t\t\t";
+        // line 124
+        if ( !($context["has_size_option"] ?? null)) {
+            // line 125
+            echo "\t\t\t\t\t\t<fieldset class=\"product-option-set product-option-set--sizes product-option-set--standard\">
+\t\t\t\t\t\t\t<div class=\"product-option-set__heading\">
+\t\t\t\t\t\t\t\t<legend>Beden</legend>
+\t\t\t\t\t\t\t\t";
+            // line 128
+            if (( !($context["in_stock"] ?? null) || ($context["has_sold_out_size"] ?? null))) {
+                // line 129
+                echo "\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__side\">";
+                $this->loadTemplate("product/stock_notify.twig", "default/template/product/product.twig", 129)->display($context);
+                echo "</div>
+\t\t\t\t\t\t\t\t";
+            }
+            // line 131
+            echo "\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"product-option-set__choices\">
+\t\t\t\t\t\t\t\t<span class=\"product-option__size product-option__size--standard\">Standart</span>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</fieldset>
+\t\t\t\t\t";
+        }
+        // line 137
+        echo "\t\t\t\t\t\t";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(((array_key_exists("options", $context)) ? (_twig_default_filter(($context["options"] ?? null), [])) : ([])));
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
+        foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
+            // line 138
+            echo "\t\t\t\t\t\t\t";
+            $context["option_name"] = twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 138));
+            // line 139
+            echo "\t\t\t\t\t\t\t";
+            $context["is_size_option"] = (twig_in_filter("beden", ($context["option_name"] ?? null)) || twig_in_filter("size", ($context["option_name"] ?? null)));
+            // line 140
+            echo "\t\t\t\t\t\t\t";
+            $context["is_colour_option"] = ((twig_in_filter("renk", ($context["option_name"] ?? null)) || twig_in_filter("color", ($context["option_name"] ?? null))) || twig_in_filter("colour", ($context["option_name"] ?? null)));
+            // line 141
+            echo "\t\t\t\t\t\t\t";
+            if (($context["is_size_option"] ?? null)) {
+                // line 142
+                echo "\t\t\t\t\t\t\t\t";
+                $context["has_standard_size"] = false;
+                // line 143
+                echo "\t\t\t\t\t\t\t\t";
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 143));
+                foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
+                    // line 144
+                    echo "\t\t\t\t\t\t\t\t\t";
+                    if ((twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 144)) == "standart")) {
+                        $context["has_standard_size"] = true;
+                    }
+                    // line 145
+                    echo "\t\t\t\t\t\t\t\t";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 146
+                echo "\t\t\t\t\t\t\t\t<fieldset class=\"product-option-set product-option-set--sizes\">
+\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__heading\">
+\t\t\t\t\t\t\t\t\t\t<legend>Beden</legend>
+\t\t\t\t\t\t\t\t\t\t";
+                // line 149
+                if ((( !($context["has_standard_size"] ?? null) ||  !($context["in_stock"] ?? null)) || ($context["has_sold_out_size"] ?? null))) {
+                    // line 150
+                    echo "\t\t\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__side\">
+\t\t\t\t\t\t\t\t\t\t\t\t";
+                    // line 151
+                    if ( !($context["has_standard_size"] ?? null)) {
+                        // line 152
+                        echo "\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"#product-description-title\" class=\"product-option-set__guide\">Beden Rehberi</a>
+\t\t\t\t\t\t\t\t\t\t\t\t";
+                    }
+                    // line 154
+                    echo "\t\t\t\t\t\t\t\t\t\t\t\t";
+                    if (( !($context["in_stock"] ?? null) || ($context["has_sold_out_size"] ?? null))) {
+                        $this->loadTemplate("product/stock_notify.twig", "default/template/product/product.twig", 154)->display($context);
+                    }
+                    // line 155
+                    echo "\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t";
+                }
+                // line 157
+                echo "\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__choices\">
+\t\t\t\t\t\t\t\t\t\t";
+                // line 159
+                $context["has_available_size"] = false;
+                // line 160
+                echo "\t\t\t\t\t\t\t\t\t\t";
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 160));
+                foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
+                    // line 161
+                    echo "\t\t\t\t\t\t\t\t\t\t\t";
+                    $context["is_sold_out"] =  !twig_get_attribute($this->env, $this->source, $context["value"], "in_stock", [], "any", false, false, false, 161);
+                    // line 162
+                    echo "\t\t\t\t\t\t\t\t\t\t\t";
+                    $context["is_standard_size"] = (twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 162)) == "standart");
+                    // line 163
+                    echo "\t\t\t\t\t\t\t\t\t\t\t";
+                    if (( !($context["has_standard_size"] ?? null) || ($context["is_standard_size"] ?? null))) {
+                        // line 164
+                        echo "\t\t\t\t\t\t\t\t\t\t\t\t";
+                        $context["select_this_size"] = ( !($context["is_sold_out"] ?? null) &&  !($context["has_available_size"] ?? null));
+                        // line 165
+                        echo "\t\t\t\t\t\t\t\t\t\t\t\t";
+                        if (($context["select_this_size"] ?? null)) {
+                            $context["has_available_size"] = true;
+                        }
+                        // line 166
+                        echo "\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"product-option__input\" type=\"radio\" id=\"option-";
+                        echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 166);
+                        echo "-";
+                        echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 166);
+                        echo "\" name=\"option[";
+                        echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 166);
+                        echo "]\" value=\"";
+                        echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 166);
+                        echo "\"";
+                        if (($context["select_this_size"] ?? null)) {
+                            echo " checked";
+                        }
+                        if (($context["is_sold_out"] ?? null)) {
+                            echo " disabled aria-disabled=\"true\"";
+                        }
+                        echo ">
+\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"product-option__size";
+                        // line 167
+                        if (($context["is_standard_size"] ?? null)) {
+                            echo " product-option__size--standard";
+                        }
+                        if (($context["is_sold_out"] ?? null)) {
+                            echo " is-sold-out";
+                        }
+                        echo "\" for=\"option-";
+                        echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 167);
+                        echo "-";
+                        echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 167);
+                        echo "\">";
+                        echo twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 167);
+                        echo "</label>
+\t\t\t\t\t\t\t\t\t\t\t";
+                    }
+                    // line 169
+                    echo "\t\t\t\t\t\t\t\t\t\t";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 170
+                echo "\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</fieldset>
+\t\t\t\t\t\t\t";
+            } elseif (            // line 172
+($context["is_colour_option"] ?? null)) {
+                // line 173
+                echo "\t\t\t\t\t\t\t\t";
+                $context["first_colour"] = twig_first($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 173));
+                // line 174
+                echo "\t\t\t\t\t\t\t\t<fieldset class=\"product-option-set product-option-set--colours\">
+\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__heading\">
+\t\t\t\t\t\t\t\t\t\t<legend>Renk</legend>
+\t\t\t\t\t\t\t\t\t\t<span class=\"product-option-set__selected-colour\" data-selected-colour>";
+                // line 177
+                echo twig_get_attribute($this->env, $this->source, ($context["first_colour"] ?? null), "name", [], "any", false, false, false, 177);
+                echo "</span>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t<div class=\"product-option-set__choices\">
+\t\t\t\t\t\t\t\t\t\t";
+                // line 180
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 180));
+                $context['loop'] = [
+                  'parent' => $context['_parent'],
+                  'index0' => 0,
+                  'index'  => 1,
+                  'first'  => true,
+                ];
+                if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                    $length = count($context['_seq']);
+                    $context['loop']['revindex0'] = $length - 1;
+                    $context['loop']['revindex'] = $length;
+                    $context['loop']['length'] = $length;
+                    $context['loop']['last'] = 1 === $length;
+                }
+                foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
+                    // line 181
+                    echo "\t\t\t\t\t\t\t\t\t\t\t<input class=\"product-option__input\" type=\"radio\" id=\"option-";
+                    echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 181);
+                    echo "-";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 181);
+                    echo "\" name=\"option[";
+                    echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 181);
+                    echo "]\" value=\"";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 181);
+                    echo "\" data-option-label=\"";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 181);
+                    echo "\"";
+                    if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 181)) {
+                        echo " checked";
+                    }
+                    echo ">
+\t\t\t\t\t\t\t\t\t\t\t<label class=\"product-option__colour\" for=\"option-";
+                    // line 182
+                    echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 182);
+                    echo "-";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 182);
+                    echo "\" data-colour=\"";
+                    echo twig_lower_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 182));
+                    echo "\"><span class=\"visually-hidden\">";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 182);
+                    echo "</span></label>
+\t\t\t\t\t\t\t\t\t\t";
+                    ++$context['loop']['index0'];
+                    ++$context['loop']['index'];
+                    $context['loop']['first'] = false;
+                    if (isset($context['loop']['length'])) {
+                        --$context['loop']['revindex0'];
+                        --$context['loop']['revindex'];
+                        $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                    }
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 184
+                echo "\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</fieldset>
+\t\t\t\t\t\t\t";
+            } elseif ((twig_get_attribute($this->env, $this->source,             // line 186
+$context["option"], "type", [], "any", false, false, false, 186) == "select")) {
+                // line 187
+                echo "\t\t\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-2 product-option-row\">
+\t\t\t\t\t\t\t\t\t<span>";
+                // line 188
+                echo twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 188);
+                echo "</span>
+\t\t\t\t\t\t\t\t\t<select name=\"option[";
+                // line 189
+                echo twig_get_attribute($this->env, $this->source, $context["option"], "product_option_id", [], "any", false, false, false, 189);
+                echo "]\" class=\"form-control w-auto\">
+\t\t\t\t\t\t\t\t\t\t";
+                // line 190
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["option"], "product_option_value", [], "any", false, false, false, 190));
+                foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
+                    // line 191
+                    echo "\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "product_option_value_id", [], "any", false, false, false, 191);
+                    echo "\">";
+                    echo twig_get_attribute($this->env, $this->source, $context["value"], "name", [], "any", false, false, false, 191);
+                    echo "</option>
+\t\t\t\t\t\t\t\t\t\t";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 193
+                echo "\t\t\t\t\t\t\t\t\t</select>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t";
+            }
+            // line 196
+            echo "\t\t\t\t\t\t";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 197
+        echo "\t\t\t\t\t</div>
 \t\t\t\t</form>
 \t\t\t</div>
 
@@ -433,10 +601,22 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 \t\t\t<div class=\"transparent-box bg-white bg-opacity-95 p-3 w-100\" style=\"--bs-bg-opacity: 0.7\">
 \t\t\t\t<div
 \t\t\t\t\tclass=\"accordion\" id=\"productAccordion\">
+\t\t\t\t\t<div class=\"custom-accordion\" id=\"productDetailsSection\">
+\t\t\t\t\t\t<div class=\"custom-accordion-header\">
+\t\t\t\t\t\t\t<span>ÜRÜN DETAYLARI</span>
+\t\t\t\t\t\t\t<i class=\"fa fa-chevron-down\"></i>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"custom-accordion-content product-details-content\">
+\t\t\t\t\t\t\t";
+        // line 211
+        echo ($context["description"] ?? null);
+        echo "
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
 \t\t\t\t\t";
-        // line 177
+        // line 214
         if (($context["maintenance_info"] ?? null)) {
-            // line 178
+            // line 215
             echo "\t\t\t\t\t\t<style>
 \t\t\t\t\t\t
 \t\t\t\t\t\t\t.custom-accordion {
@@ -487,14 +667,14 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"custom-accordion-content\">
 \t\t\t\t\t\t\t\t";
-            // line 227
+            // line 264
             echo ($context["maintenance_info"] ?? null);
             echo "
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
         }
-        // line 231
+        // line 268
         echo "\t\t\t\t\t<!-- TESLİMAT VE İADELER -->
 \t\t\t\t\t<div class=\"custom-accordion\" id=\"deliveryReturnsSection\">
 \t\t\t\t\t\t<div class=\"custom-accordion-header\">
@@ -513,7 +693,68 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 \t\t</div>
 \t</div>
 
-</div>
+\t";
+        // line 286
+        if (($context["products"] ?? null)) {
+            // line 287
+            echo "\t\t<section class=\"product-page__recommendations cart-page__recent\" aria-labelledby=\"recommendations-title\">
+\t\t\t<header class=\"cart-page__recent-heading\">
+\t\t\t\t<h2 id=\"recommendations-title\">İlginizi Çekebilecekler</h2>
+\t\t\t</header>
+\t\t\t<div class=\"uannes-row-grid cart-page__recent-grid\" role=\"list\">
+\t\t\t\t";
+            // line 292
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["products"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
+                // line 293
+                echo "\t\t\t\t\t<a href=\"";
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 293);
+                echo "\" class=\"uannes-row-card cart-page__recent-card\" role=\"listitem\">
+\t\t\t\t\t\t<div class=\"uannes-row-media\" data-current-image=\"0\">
+\t\t\t\t\t\t\t<img src=\"";
+                // line 295
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "thumb", [], "any", false, false, false, 295);
+                echo "\" alt=\"";
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 295);
+                echo "\" class=\"uannes-row-img uannes-row-card__image main-img is-active\" data-card-image=\"0\" />
+\t\t\t\t\t\t\t";
+                // line 296
+                if (twig_get_attribute($this->env, $this->source, $context["product"], "thumb2", [], "any", false, false, false, 296)) {
+                    // line 297
+                    echo "\t\t\t\t\t\t\t\t<img src=\"";
+                    echo twig_get_attribute($this->env, $this->source, $context["product"], "thumb2", [], "any", false, false, false, 297);
+                    echo "\" alt=\"";
+                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 297);
+                    echo "\" class=\"uannes-row-img uannes-row-card__image hover-img\" data-card-image=\"1\" />
+\t\t\t\t\t\t\t\t<div class=\"uannes-row-card__swatches\" aria-label=\"Renk seçenekleri\">
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"uannes-row-card__swatch is-active\" data-image-index=\"0\" aria-label=\"Birinci renk seçeneği\"></button>
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"uannes-row-card__swatch\" data-image-index=\"1\" aria-label=\"İkinci renk seçeneği\"></button>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--prev\" data-direction=\"prev\" aria-label=\"Önceki görsel\">‹</button>
+\t\t\t\t\t\t\t\t<button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--next\" data-direction=\"next\" aria-label=\"Sonraki görsel\">›</button>
+\t\t\t\t\t\t\t";
+                }
+                // line 305
+                echo "\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"uannes-row-info\"><span class=\"uannes-row-name\">";
+                // line 306
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 306);
+                echo "</span></div>
+\t\t\t\t\t</a>
+\t\t\t\t";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 309
+            echo "\t\t\t</div>
+\t\t</section>
+\t";
+        }
+        // line 312
+        echo "
+</main>
 <style>
 \t.carousel-section .owl-carousel .item img {
 \t\twidth: 100%;
@@ -563,13 +804,13 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
     loop:true,
     margin:0,
     nav:true,
-    dots:true,
-    autoplay:true,
-    autoplayTimeout:5000,
+    navText:['<span aria-hidden=\"true\">&#8249;</span>', '<span aria-hidden=\"true\">&#8250;</span>'],
+    dots:false,
+    autoplay:false,
+    slideBy:1,
     responsive:{
-      0:{items:1},
-      600:{items:2},
-      1000:{items:2}
+      0:{items:1, slideBy:1},
+      768:{items:2, slideBy:1}
     }
   });
 
@@ -582,6 +823,61 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
   });
 });
 
+</script>
+<script>
+document.addEventListener('change', function(event) {
+\tif (!event.target.matches('.product-option-set--colours .product-option__input')) return;
+
+\tvar optionSet = event.target.closest('.product-option-set--colours');
+\tvar selectedLabel = optionSet ? optionSet.querySelector('[data-selected-colour]') : null;
+
+\tif (selectedLabel) {
+\t\tselectedLabel.textContent = event.target.getAttribute('data-option-label') || '';
+\t}
+});
+</script>
+<script>
+document.addEventListener('click', function(event) {
+\tvar trigger = event.target.closest('[data-stock-notify] .product-stock-notify__trigger');
+\tif (trigger) {
+\t\tvar wrapper = trigger.parentElement;
+\t\tvar form = wrapper.querySelector('.product-stock-notify__form');
+\t\tform.hidden = !form.hidden;
+\t\twrapper.classList.toggle('is-open', !form.hidden);
+\t\tif (!form.hidden) form.querySelector('input').focus();
+\t\treturn;
+\t}
+
+\tvar submit = event.target.closest('[data-stock-notify] .product-stock-notify__submit');
+\tif (!submit) return;
+
+\tvar wrapper = submit.closest('[data-stock-notify]');
+\tvar email = wrapper.querySelector('input');
+\tvar status = wrapper.querySelector('.product-stock-notify__status');
+\tif (!email.checkValidity()) {
+\t\temail.reportValidity();
+\t\treturn;
+\t}
+
+\tsubmit.disabled = true;
+\tfetch('index.php?route=product/stock_notification/add', {
+\t\tmethod: 'POST',
+\t\theaders: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+\t\tbody: 'product_id=' + encodeURIComponent(wrapper.getAttribute('data-product-id')) + '&email=' + encodeURIComponent(email.value)
+\t}).then(function(response) {
+\t\treturn response.json();
+\t}).then(function(result) {
+\t\tstatus.textContent = result.success || result.error || 'İşleminiz tamamlanamadı.';
+\t\tif (result.success) {
+\t\t\temail.disabled = true;
+\t\t\tsubmit.hidden = true;
+\t\t}
+\t}).catch(function() {
+\t\tstatus.textContent = 'İşleminiz tamamlanamadı. Lütfen tekrar deneyin.';
+\t}).finally(function() {
+\t\tsubmit.disabled = false;
+\t});
+});
 </script>
 <script type=\"text/javascript\"><!--
 \$('select[name=\\'recurring_id\\'], input[name=\"quantity\"]').change(function(){
@@ -673,7 +969,7 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 <script type=\"text/javascript\"><!--
 \$('.date').datetimepicker({
 \tlanguage: '";
-        // line 408
+        // line 527
         echo ($context["datepicker"] ?? null);
         echo "',
 \tpickTime: false
@@ -681,7 +977,7 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 
 \$('.datetime').datetimepicker({
 \tlanguage: '";
-        // line 413
+        // line 532
         echo ($context["datepicker"] ?? null);
         echo "',
 \tpickDate: true,
@@ -690,7 +986,7 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 
 \$('.time').datetimepicker({
 \tlanguage: '";
-        // line 419
+        // line 538
         echo ($context["datepicker"] ?? null);
         echo "',
 \tpickDate: false
@@ -760,14 +1056,14 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 });
 
 \$('#review').load('index.php?route=product/product/review&product_id=";
-        // line 486
+        // line 605
         echo ($context["product_id"] ?? null);
         echo "');
 
 \$('#button-review').on('click', function() {
 \t\$.ajax({
 \t\turl: 'index.php?route=product/product/write&product_id=";
-        // line 490
+        // line 609
         echo ($context["product_id"] ?? null);
         echo "',
 \t\ttype: 'post',
@@ -818,16 +1114,41 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
 \t});
 </script>
 <script>
-\$(document).ready(function(){
-  if (\$(window).width() <= 992) {
-    var productDetails = \$('.right-sidebar');
+document.addEventListener('click', function(event) {
+\tvar control = event.target.closest('#product-product .product-page__recommendations .uannes-row-card__swatch, #product-product .product-page__recommendations .uannes-row-card__arrow');
+\tif (!control) return;
 
-    \$('.carousel-section').after(productDetails);
-  }
+\tevent.preventDefault();
+\tevent.stopPropagation();
+
+\tvar media = control.closest('.uannes-row-media');
+\tvar images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+\tif (images.length < 2) return;
+
+\tvar current = parseInt(media.getAttribute('data-current-image'), 10);
+\tif (isNaN(current)) current = 0;
+\tcurrent = control.classList.contains('uannes-row-card__arrow')
+\t\t? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length)
+\t\t: parseInt(control.getAttribute('data-image-index'), 10);
+
+\tmedia.classList.add('is-manual-image');
+\tmedia.setAttribute('data-current-image', String(current));
+\timages.forEach(function(image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
+\tmedia.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function(event) {
+\tvar media = event.target.closest('#product-product .product-page__recommendations .uannes-row-media');
+\tif (!media || media.contains(event.relatedTarget)) return;
+\tvar images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+\tmedia.classList.remove('is-manual-image');
+\tmedia.setAttribute('data-current-image', '0');
+\timages.forEach(function(image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+\tmedia.querySelectorAll('.uannes-row-card__swatch').forEach(function(swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 </script>
 ";
-        // line 547
+        // line 691
         echo ($context["footer"] ?? null);
         echo "
 ";
@@ -854,7 +1175,7 @@ rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.
      */
     public function getDebugInfo()
     {
-        return array (  831 => 547,  771 => 490,  764 => 486,  694 => 419,  685 => 413,  677 => 408,  498 => 231,  491 => 227,  440 => 178,  438 => 177,  428 => 169,  422 => 165,  416 => 161,  414 => 160,  410 => 158,  402 => 156,  400 => 155,  395 => 153,  392 => 152,  389 => 151,  383 => 150,  378 => 147,  367 => 145,  363 => 144,  359 => 143,  355 => 142,  352 => 141,  349 => 140,  344 => 139,  342 => 138,  339 => 137,  335 => 135,  327 => 132,  316 => 130,  312 => 129,  308 => 127,  304 => 126,  301 => 125,  299 => 124,  295 => 122,  289 => 119,  286 => 118,  280 => 115,  274 => 112,  271 => 111,  269 => 110,  265 => 108,  263 => 107,  258 => 105,  254 => 104,  250 => 103,  235 => 90,  230 => 87,  220 => 83,  215 => 80,  207 => 78,  199 => 76,  197 => 75,  191 => 74,  186 => 73,  184 => 72,  177 => 70,  174 => 69,  170 => 68,  164 => 65,  160 => 63,  158 => 62,  154 => 60,  147 => 56,  142 => 53,  140 => 52,  128 => 42,  125 => 41,  116 => 39,  111 => 38,  108 => 37,  102 => 35,  100 => 34,  94 => 30,  91 => 29,  82 => 26,  79 => 25,  74 => 24,  71 => 23,  65 => 20,  62 => 19,  60 => 18,  57 => 17,  55 => 16,  37 => 1,);
+        return array (  1152 => 691,  1067 => 609,  1060 => 605,  990 => 538,  981 => 532,  973 => 527,  756 => 312,  751 => 309,  742 => 306,  739 => 305,  725 => 297,  723 => 296,  717 => 295,  711 => 293,  707 => 292,  700 => 287,  698 => 286,  678 => 268,  671 => 264,  620 => 215,  618 => 214,  612 => 211,  596 => 197,  582 => 196,  577 => 193,  566 => 191,  562 => 190,  558 => 189,  554 => 188,  551 => 187,  549 => 186,  545 => 184,  523 => 182,  506 => 181,  489 => 180,  483 => 177,  478 => 174,  475 => 173,  473 => 172,  469 => 170,  463 => 169,  447 => 167,  429 => 166,  424 => 165,  421 => 164,  418 => 163,  415 => 162,  412 => 161,  407 => 160,  405 => 159,  401 => 157,  397 => 155,  392 => 154,  388 => 152,  386 => 151,  383 => 150,  381 => 149,  376 => 146,  370 => 145,  365 => 144,  360 => 143,  357 => 142,  354 => 141,  351 => 140,  348 => 139,  345 => 138,  327 => 137,  319 => 131,  313 => 129,  311 => 128,  306 => 125,  304 => 124,  301 => 123,  295 => 122,  290 => 121,  287 => 120,  282 => 119,  280 => 118,  276 => 116,  270 => 112,  264 => 108,  262 => 107,  256 => 104,  252 => 103,  234 => 87,  230 => 85,  224 => 83,  222 => 82,  217 => 79,  213 => 77,  207 => 76,  202 => 73,  191 => 71,  187 => 70,  183 => 68,  180 => 67,  177 => 66,  173 => 65,  170 => 64,  168 => 63,  164 => 61,  158 => 59,  153 => 57,  148 => 56,  146 => 55,  141 => 53,  138 => 52,  136 => 51,  123 => 40,  120 => 39,  111 => 37,  106 => 36,  103 => 35,  97 => 33,  95 => 32,  89 => 28,  86 => 27,  77 => 24,  74 => 23,  69 => 22,  66 => 21,  60 => 18,  57 => 17,  55 => 16,  37 => 1,);
     }
 
     public function getSourceContext()

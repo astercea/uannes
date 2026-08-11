@@ -36,22 +36,42 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
         // line 1
         echo ($context["header"] ?? null);
         echo "
-<div id=\"product-giyim\" class=\"container uannes-giyim-page\">
+<div id=\"product-giyim\" class=\"container uannes-giyim-page uannes-giyim-page--";
+        // line 2
+        echo ($context["catalogue_key"] ?? null);
+        echo "\">
   <div class=\"row\">
     <div id=\"content\" class=\"col-sm-12\">
       <div class=\"giyim-filter-bar\">
-        <div class=\"giyim-breadcrumb\"><span>Tüm Ürünler</span> &middot; <span>Giyim</span></div>
+        <div class=\"giyim-breadcrumb\">
+          ";
+        // line 7
+        if (($context["is_all_products"] ?? null)) {
+            // line 8
+            echo "            <span>";
+            echo ($context["catalogue_name"] ?? null);
+            echo "</span>
+          ";
+        } else {
+            // line 10
+            echo "            <span>Tüm Ürünler</span> &middot; <span>";
+            echo ($context["catalogue_name"] ?? null);
+            echo "</span>
+          ";
+        }
+        // line 12
+        echo "        </div>
         <div class=\"giyim-filter\" data-giyim-filter>
           <button type=\"button\" class=\"giyim-filter-link\" aria-expanded=\"false\" aria-controls=\"giyim-filter-menu\">
             Filtrele <span aria-hidden=\"true\">";
-        // line 9
+        // line 15
         echo ((($context["active_filter_count"] ?? null)) ? ((("(" . ($context["active_filter_count"] ?? null)) . ")")) : ("+"));
         echo "</span>
           </button>
           <div class=\"giyim-filter-backdrop\" data-giyim-filter-close hidden></div>
           <aside id=\"giyim-filter-menu\" class=\"giyim-filter-menu\" aria-hidden=\"true\" aria-label=\"Ürün filtreleri\">
             <form method=\"get\" action=\"";
-        // line 13
+        // line 19
         echo ($context["filter_action"] ?? null);
         echo "\">
               <div class=\"giyim-filter-menu__header\">
@@ -60,148 +80,148 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
               </div>
 
               ";
-        // line 19
+        // line 25
         if (($context["filter_colors"] ?? null)) {
-            // line 20
+            // line 26
             echo "              <details class=\"giyim-filter-menu__section\"";
-            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "color", [], "any", false, false, false, 20)) {
+            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "color", [], "any", false, false, false, 26)) {
                 echo " open";
             }
             echo ">
                 <summary>Renk <span aria-hidden=\"true\">›</span></summary>
                 <div class=\"giyim-filter-menu__options\">
                   ";
-            // line 23
+            // line 29
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["filter_colors"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["color"]) {
-                // line 24
+                // line 30
                 echo "                  <label><input type=\"radio\" name=\"renk\" value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["color"], "id", [], "any", false, false, false, 24);
+                echo twig_get_attribute($this->env, $this->source, $context["color"], "id", [], "any", false, false, false, 30);
                 echo "\"";
-                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "color", [], "any", false, false, false, 24) == twig_get_attribute($this->env, $this->source, $context["color"], "id", [], "any", false, false, false, 24))) {
+                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "color", [], "any", false, false, false, 30) == twig_get_attribute($this->env, $this->source, $context["color"], "id", [], "any", false, false, false, 30))) {
                     echo " checked";
                 }
                 echo "> <span>";
-                echo twig_get_attribute($this->env, $this->source, $context["color"], "name", [], "any", false, false, false, 24);
+                echo twig_get_attribute($this->env, $this->source, $context["color"], "name", [], "any", false, false, false, 30);
                 echo "</span></label>
                   ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['color'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 26
+            // line 32
             echo "                </div>
               </details>
               ";
         }
-        // line 29
+        // line 35
         echo "
               ";
-        // line 30
+        // line 36
         if (($context["filter_sizes"] ?? null)) {
-            // line 31
+            // line 37
             echo "              <details class=\"giyim-filter-menu__section\"";
-            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "size", [], "any", false, false, false, 31)) {
+            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "size", [], "any", false, false, false, 37)) {
                 echo " open";
             }
             echo ">
                 <summary>Beden <span aria-hidden=\"true\">›</span></summary>
                 <div class=\"giyim-filter-menu__options\">
                   ";
-            // line 34
+            // line 40
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["filter_sizes"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["size"]) {
-                // line 35
+                // line 41
                 echo "                  <label><input type=\"radio\" name=\"beden\" value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["size"], "id", [], "any", false, false, false, 35);
+                echo twig_get_attribute($this->env, $this->source, $context["size"], "id", [], "any", false, false, false, 41);
                 echo "\"";
-                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "size", [], "any", false, false, false, 35) == twig_get_attribute($this->env, $this->source, $context["size"], "id", [], "any", false, false, false, 35))) {
+                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "size", [], "any", false, false, false, 41) == twig_get_attribute($this->env, $this->source, $context["size"], "id", [], "any", false, false, false, 41))) {
                     echo " checked";
                 }
                 echo "> <span>";
-                echo twig_get_attribute($this->env, $this->source, $context["size"], "name", [], "any", false, false, false, 35);
+                echo twig_get_attribute($this->env, $this->source, $context["size"], "name", [], "any", false, false, false, 41);
                 echo "</span></label>
                   ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['size'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 37
+            // line 43
             echo "                </div>
               </details>
               ";
         }
-        // line 40
+        // line 46
         echo "
               ";
-        // line 41
+        // line 47
         if (($context["filter_categories"] ?? null)) {
-            // line 42
+            // line 48
             echo "              <details class=\"giyim-filter-menu__section\"";
-            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "category", [], "any", false, false, false, 42)) {
+            if (twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "category", [], "any", false, false, false, 48)) {
                 echo " open";
             }
             echo ">
                 <summary>Alt kategori <span aria-hidden=\"true\">›</span></summary>
                 <div class=\"giyim-filter-menu__options\">
                   ";
-            // line 45
+            // line 51
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["filter_categories"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-                // line 46
+                // line 52
                 echo "                  <label><input type=\"radio\" name=\"kategori\" value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 46);
+                echo twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 52);
                 echo "\"";
-                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "category", [], "any", false, false, false, 46) == twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 46))) {
+                if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "category", [], "any", false, false, false, 52) == twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 52))) {
                     echo " checked";
                 }
                 echo "> <span>";
-                echo twig_get_attribute($this->env, $this->source, $context["category"], "name", [], "any", false, false, false, 46);
+                echo twig_get_attribute($this->env, $this->source, $context["category"], "name", [], "any", false, false, false, 52);
                 echo "</span></label>
                   ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 48
+            // line 54
             echo "                </div>
               </details>
               ";
         }
-        // line 51
+        // line 57
         echo "
               <details class=\"giyim-filter-menu__section\"";
-        // line 52
-        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 52) != "all")) {
+        // line 58
+        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 58) != "all")) {
             echo " open";
         }
         echo ">
                 <summary>Stok durumu <span aria-hidden=\"true\">›</span></summary>
                 <div class=\"giyim-filter-menu__options\">
                   <label><input type=\"radio\" name=\"stok\" value=\"all\"";
-        // line 55
-        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 55) == "all")) {
+        // line 61
+        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 61) == "all")) {
             echo " checked";
         }
         echo "> <span>Tüm ürünler</span></label>
                   <label><input type=\"radio\" name=\"stok\" value=\"in-stock\"";
-        // line 56
-        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 56) == "in-stock")) {
+        // line 62
+        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 62) == "in-stock")) {
             echo " checked";
         }
         echo "> <span>Stokta olanlar</span></label>
                   <label><input type=\"radio\" name=\"stok\" value=\"low-stock\"";
-        // line 57
-        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 57) == "low-stock")) {
+        // line 63
+        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 63) == "low-stock")) {
             echo " checked";
         }
         echo "> <span>Son ürünler</span></label>
                   <label><input type=\"radio\" name=\"stok\" value=\"out-of-stock\"";
-        // line 58
-        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 58) == "out-of-stock")) {
+        // line 64
+        if ((twig_get_attribute($this->env, $this->source, ($context["selected_filters"] ?? null), "stock", [], "any", false, false, false, 64) == "out-of-stock")) {
             echo " checked";
         }
         echo "> <span>Stokta olmayanlar</span></label>
@@ -210,7 +230,7 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
 
               <div class=\"giyim-filter-menu__actions\">
                 <a href=\"";
-        // line 63
+        // line 69
         echo ($context["filter_action"] ?? null);
         echo "\">Tümünü temizle</a>
                 <button type=\"submit\">Uygula</button>
@@ -221,12 +241,12 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
       </div>
 
       ";
-        // line 71
+        // line 77
         if (($context["products"] ?? null)) {
-            // line 72
+            // line 78
             echo "      <div class=\"uannes-row-grid\">
         ";
-            // line 73
+            // line 79
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["products"] ?? null));
             $context['loop'] = [
@@ -243,18 +263,18 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-                // line 74
+                // line 80
                 echo "        <a href=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 74);
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 80);
                 echo "\" class=\"uannes-row-card\">
           <div class=\"uannes-row-media\">
             ";
-                // line 76
-                $this->loadTemplate("common/product_badges.twig", "default/template/product/giyim.twig", 76)->display(twig_to_array(["badges" => ((twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", true, true, false, 76)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", false, false, false, 76), [])) : ([]))]));
-                // line 77
+                // line 82
+                $this->loadTemplate("common/product_badges.twig", "default/template/product/giyim.twig", 82)->display(twig_to_array(["badges" => ((twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", true, true, false, 82)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", false, false, false, 82), [])) : ([]))]));
+                // line 83
                 echo "            ";
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 77));
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 83));
                 $context['loop'] = [
                   'parent' => $context['_parent'],
                   'index0' => 0,
@@ -269,21 +289,21 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
                     $context['loop']['last'] = 1 === $length;
                 }
                 foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
-                    // line 78
+                    // line 84
                     echo "            <img src=\"";
                     echo $context["image"];
                     echo "\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 78);
+                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 84);
                     echo "\" title=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 78);
+                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 84);
                     echo "\" class=\"uannes-row-img uannes-row-card__image";
-                    if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 78)) {
+                    if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 84)) {
                         echo " main-img is-active";
-                    } elseif ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 78) == 2)) {
+                    } elseif ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 84) == 2)) {
                         echo " hover-img";
                     }
                     echo "\" data-card-image=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 78);
+                    echo twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 84);
                     echo "\" />
             ";
                     ++$context['loop']['index0'];
@@ -298,10 +318,10 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 80
+                // line 86
                 echo "            ";
-                if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 80)) > 1)) {
-                    // line 81
+                if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 86)) > 1)) {
+                    // line 87
                     echo "            <div class=\"uannes-row-card__swatches\" aria-label=\"Görünüm seçenekleri\">
               <button type=\"button\" class=\"uannes-row-card__swatch is-active\" data-image-index=\"0\" aria-label=\"Birinci görünüm\"></button>
               <button type=\"button\" class=\"uannes-row-card__swatch\" data-image-index=\"1\" aria-label=\"İkinci görünüm\"></button>
@@ -310,17 +330,17 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
             <button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--next\" data-direction=\"next\" aria-label=\"Sonraki görsel\">›</button>
             ";
                 }
-                // line 88
+                // line 94
                 echo "          </div>
           <div class=\"uannes-row-info\"><span class=\"uannes-row-name\">";
-                // line 89
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 89);
+                // line 95
+                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 95);
                 echo "</span></div>
         </a>
         ";
-                // line 91
-                if ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 91) == 6)) {
-                    // line 92
+                // line 97
+                if ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 97) == 6)) {
+                    // line 98
                     echo "        <article class=\"uannes-row-ad-card\" aria-label=\"Yeni sezon duyurusu\">
           <img src=\"image/catalog/uannes-banner-new-season.webp\" alt=\"Uannes yeni sezon seçkisi\" class=\"uannes-row-ad-card__image\" />
           <div class=\"uannes-row-ad-card__content\">
@@ -331,7 +351,7 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
         </article>
         ";
                 }
-                // line 101
+                // line 107
                 echo "        ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
@@ -345,20 +365,20 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 102
+            // line 108
             echo "      </div>
       ";
         } else {
-            // line 104
+            // line 110
             echo "      <p class=\"giyim-empty-state\">Seçtiğiniz ölçütlere uygun ürün bulunamadı.</p>
       ";
         }
-        // line 106
+        // line 112
         echo "    </div>
   </div>
 </div>
 ";
-        // line 109
+        // line 115
         echo ($context["footer"] ?? null);
         echo "
 <script>
@@ -370,12 +390,23 @@ document.addEventListener('click', function (event) {
   var media = control.closest('.uannes-row-media');
   var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
   var current = parseInt(media.getAttribute('data-current-image'), 10);
-  if (isNaN(current)) current = media.closest('.uannes-row-card').matches(':hover') && images.length > 1 ? 1 : 0;
+  if (isNaN(current)) current = media.matches(':hover') && images.length > 1 ? 1 : 0;
   current = control.classList.contains('uannes-row-card__arrow') ? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length) : parseInt(control.getAttribute('data-image-index'), 10);
   media.classList.add('is-manual-image');
   media.setAttribute('data-current-image', String(current));
   images.forEach(function (image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
   media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function (event) {
+  var media = event.target.closest('.uannes-row-media');
+  if (!media || media.contains(event.relatedTarget)) return;
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  if (!images.length) return;
+  media.classList.remove('is-manual-image');
+  media.setAttribute('data-current-image', '0');
+  images.forEach(function (image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 
 (function () {
@@ -430,7 +461,7 @@ document.addEventListener('click', function (event) {
      */
     public function getDebugInfo()
     {
-        return array (  362 => 109,  357 => 106,  353 => 104,  349 => 102,  335 => 101,  324 => 92,  322 => 91,  317 => 89,  314 => 88,  305 => 81,  302 => 80,  273 => 78,  255 => 77,  253 => 76,  247 => 74,  230 => 73,  227 => 72,  225 => 71,  214 => 63,  204 => 58,  198 => 57,  192 => 56,  186 => 55,  178 => 52,  175 => 51,  170 => 48,  155 => 46,  151 => 45,  142 => 42,  140 => 41,  137 => 40,  132 => 37,  117 => 35,  113 => 34,  104 => 31,  102 => 30,  99 => 29,  94 => 26,  79 => 24,  75 => 23,  66 => 20,  64 => 19,  55 => 13,  48 => 9,  37 => 1,);
+        return array (  382 => 115,  377 => 112,  373 => 110,  369 => 108,  355 => 107,  344 => 98,  342 => 97,  337 => 95,  334 => 94,  325 => 87,  322 => 86,  293 => 84,  275 => 83,  273 => 82,  267 => 80,  250 => 79,  247 => 78,  245 => 77,  234 => 69,  224 => 64,  218 => 63,  212 => 62,  206 => 61,  198 => 58,  195 => 57,  190 => 54,  175 => 52,  171 => 51,  162 => 48,  160 => 47,  157 => 46,  152 => 43,  137 => 41,  133 => 40,  124 => 37,  122 => 36,  119 => 35,  114 => 32,  99 => 30,  95 => 29,  86 => 26,  84 => 25,  75 => 19,  68 => 15,  63 => 12,  57 => 10,  51 => 8,  49 => 7,  41 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

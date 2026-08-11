@@ -1,6 +1,22 @@
 <?php
 class ControllerProductGiyim extends Controller {
+	protected function getCatalogueConfig() {
+		return array(
+			'name' => 'Giyim',
+			'category_name' => 'giyim',
+			'fallback_category_id' => 67,
+			'route' => 'product/giyim',
+			'all_products' => false,
+			'exclude_category_ids' => array()
+		);
+	}
+
 	public function index() {
+		$catalogue = $this->getCatalogueConfig();
+		$catalogue += array(
+			'all_products' => false,
+			'exclude_category_ids' => array()
+		);
 		$this->response->addHeader('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 		$this->response->addHeader('Pragma: no-cache');
 
@@ -9,27 +25,41 @@ class ControllerProductGiyim extends Controller {
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
 
-		$this->document->setTitle('Giyim - Uannes');
-		$data['heading_title'] = 'Giyim';
-		$data['filter_action'] = $this->url->link('product/giyim');
+		$this->document->setTitle($catalogue['name'] . ' - Uannes');
+		$data['heading_title'] = $catalogue['name'];
+		$data['catalogue_name'] = $catalogue['name'];
+		// The catalogue template is shared by Giyim, Eşarp and Tüm Ürünler.
+		// Keep a small, predictable page modifier so individual catalogues can
+		// retain their own editorial grid proportions without affecting the rest.
+		$data['catalogue_key'] = preg_replace('/[^a-z0-9_-]/', '', str_replace('product/', '', $catalogue['route']));
+		$data['filter_action'] = $this->url->link($catalogue['route']);
 
 		$data['breadcrumbs'] = array(
 			array('text' => $this->language->get('text_home'), 'href' => $this->url->link('common/home')),
-			array('text' => 'Giyim', 'href' => $data['filter_action'])
+			array('text' => $catalogue['name'], 'href' => $data['filter_action'])
 		);
 
-		// Giyim is the catalogue root (currently category 67). Resolve it by name
-		// first so this page remains usable if categories are restored or re-imported.
-		$language_id = (int)$this->config->get('config_language_id');
-		$giyim_query = $this->db->query("SELECT c.category_id FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) WHERE cd.language_id = '" . $language_id . "' AND LCASE(cd.name) = 'giyim' ORDER BY c.parent_id ASC, c.sort_order ASC LIMIT 1");
-		$giyim_category_id = $giyim_query->num_rows ? (int)$giyim_query->row['category_id'] : 67;
-
-		$child_categories = $this->model_catalog_category->getCategories($giyim_category_id);
+		$is_all_products = !empty($catalogue['all_products']);
+		$data['is_all_products'] = $is_all_products;
+		if ($is_all_products) {
+			$catalogue_category_id = 0;
+			$child_categories = $this->model_catalog_category->getCategories(0);
+		} else {
+			// Resolve the catalogue root by name so this page remains usable if categories
+			// are restored or re-imported.
+			$language_id = (int)$this->config->get('config_language_id');
+			$catalogue_query = $this->db->query("SELECT c.category_id FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) WHERE cd.language_id = '" . $language_id . "' AND LCASE(cd.name) = '" . $this->db->escape($catalogue['category_name']) . "' ORDER BY c.parent_id ASC, c.sort_order ASC LIMIT 1");
+			$catalogue_category_id = $catalogue_query->num_rows ? (int)$catalogue_query->row['category_id'] : (int)$catalogue['fallback_category_id'];
+			$child_categories = $this->model_catalog_category->getCategories($catalogue_category_id);
+		}
 		$allowed_category_ids = array();
 		$data['filter_categories'] = array();
 
 		foreach ($child_categories as $category) {
 			$category_id = (int)$category['category_id'];
+			if (in_array($category_id, $catalogue['exclude_category_ids'], true)) {
+				continue;
+			}
 			$allowed_category_ids[] = $category_id;
 			$data['filter_categories'][] = array(
 				'id' => $category_id,
@@ -51,13 +81,15 @@ class ControllerProductGiyim extends Controller {
 		}
 
 		$filter_data = array(
-			'filter_category_id' => $selected_category ? $selected_category : $giyim_category_id,
-			'filter_sub_category' => true,
 			'sort' => 'p.sort_order',
 			'order' => 'ASC',
 			'start' => 0,
 			'limit' => 100
 		);
+		if ($selected_category || !$is_all_products) {
+			$filter_data['filter_category_id'] = $selected_category ? $selected_category : $catalogue_category_id;
+			$filter_data['filter_sub_category'] = true;
+		}
 		$results = $this->model_catalog_product->getProducts($filter_data);
 
 		$color_values = array();
@@ -124,16 +156,15 @@ class ControllerProductGiyim extends Controller {
 
 			$product_images = $this->model_catalog_product->getProductImages($result['product_id']);
 			$image_sources = array();
-			if (!empty($product_images[0]['image'])) {
-				$image_sources[] = $product_images[0]['image'];
+			// The product image is the intentional catalogue cover. Keep it first
+			// instead of allowing the first detail-gallery image to replace it.
+			if (!empty($result['image'])) {
+				$image_sources[] = $result['image'];
 			}
 			foreach ($product_images as $product_image) {
 				if (!empty($product_image['image'])) {
 					$image_sources[] = $product_image['image'];
 				}
-			}
-			if (!empty($result['image'])) {
-				$image_sources[] = $result['image'];
 			}
 			$image_sources = array_values(array_unique($image_sources));
 			if (!$image_sources) {

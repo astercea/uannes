@@ -30,11 +30,18 @@
           {% endif %}
           <div class="cart-sidebar-product-body">
             <a href="{{ product.href }}" class="cart-sidebar-product-name">{{ product.name }}</a>
-            {% if product.option %}
-              {% for option in product.option %}
-              <span class="cart-sidebar-product-option">{{ option.name }}: {{ option.value }}</span>
-              {% endfor %}
-            {% endif %}
+            {% set sidebar_size = '' %}
+            {% for option in product.option|default([]) %}
+              {% set option_name = option.name|lower %}
+              {% if 'beden' in option_name or 'size' in option_name %}{% set sidebar_size = option.value %}{% endif %}
+            {% endfor %}
+            <span class="cart-sidebar-product-option cart-sidebar-product-option--size">Beden: {{ sidebar_size ? sidebar_size : 'Standart' }}</span>
+            {% for option in product.option|default([]) %}
+              {% set option_name = option.name|lower %}
+              {% if 'beden' not in option_name and 'size' not in option_name %}
+                <span class="cart-sidebar-product-option">{{ option.name }}: {{ option.value }}</span>
+              {% endif %}
+            {% endfor %}
             {% if product.recurring %}
               <span class="cart-sidebar-product-option">{{ text_recurring }} {{ product.recurring }}</span>
             {% endif %}
@@ -48,9 +55,9 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </button>
               </div>
-              <span class="cart-sidebar-line-price">{{ product.total }}</span>
             </div>
           </div>
+          <span class="cart-sidebar-line-price">{{ product.total }}</span>
           <button type="button" onclick="cart.remove('{{ product.cart_id }}');" class="cart-sidebar-remove" aria-label="Kaldır">
             Kaldır
           </button>
@@ -62,9 +69,9 @@
             <span class="cart-sidebar-product-name">{{ voucher.description }}</span>
             <div class="cart-sidebar-product-meta">
               <span class="cart-sidebar-qty">1 adet</span>
-              <span class="cart-sidebar-line-price">{{ voucher.amount }}</span>
             </div>
           </div>
+          <span class="cart-sidebar-line-price">{{ voucher.amount }}</span>
           <button type="button" onclick="voucher.remove('{{ voucher.key }}');" class="cart-sidebar-remove" aria-label="Kaldır">
             Kaldır
           </button>

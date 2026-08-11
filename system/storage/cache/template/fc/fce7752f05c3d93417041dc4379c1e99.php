@@ -114,7 +114,7 @@ class __TwigTemplate_0b58743317210b5427240baa93dd9c9a extends Template
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['style'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 32
-        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=86\" rel=\"stylesheet\">
+        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=153\" rel=\"stylesheet\">
 ";
         // line 33
         $context['_parent'] = $context;
@@ -307,8 +307,8 @@ html, body {
 }
 
 /* Diğer Tüm Sayfalarda Header sayfanın en üstünde başlar (Krem #f8f6f2), scroll edildikçe ekranla birlikte gelir (sticky) */
-body:not(.is-homepage) #header-area,
-body:not(.is-homepage) #header-area.is-scrolled {
+body:not(.is-homepage):not(.is-product-page) #header-area,
+body:not(.is-homepage):not(.is-product-page) #header-area.is-scrolled {
   position: sticky;
   top: 0;
   z-index: 10500;
@@ -415,28 +415,53 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
     box-shadow: none;
 }
 
+/* Ürün sayfasında galeri ilk ekranda header'ın arkasından görünür. */
+body.is-product-page #header-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10500;
+  background-color: rgba(248, 246, 242, 0);
+  box-shadow: none;
+  border: none;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+body.is-product-page #header-area.is-scrolled {
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+}
+
 </style>
 </head>
 ";
-        // line 300
+        // line 319
         $context["body_classes"] = ($context["class"] ?? null);
-        // line 301
+        // line 320
         if (((($context["route"] ?? null) == "common/home") || (($context["route"] ?? null) == ""))) {
-            // line 302
+            // line 321
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " is-homepage");
         } else {
-            // line 304
+            // line 323
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " not-homepage");
         }
-        // line 306
+        // line 325
+        if ((($context["route"] ?? null) == "product/product")) {
+            // line 326
+            echo "  ";
+            $context["body_classes"] = (($context["body_classes"] ?? null) . " is-product-page");
+        }
+        // line 328
         if ((array_key_exists("landing_code", $context) && (($context["landing_code"] ?? null) == "made_to_order"))) {
-            // line 307
+            // line 329
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " is-made-to-order-page");
         }
-        // line 309
+        // line 331
         echo "<body class=\"";
         echo ($context["body_classes"] ?? null);
         echo "\">
@@ -449,13 +474,13 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
         <button type=\"button\" id=\"mobile-menu-toggle\" class=\"mobile-menu-toggle\" aria-label=\"Menüyü aç\" aria-expanded=\"false\" aria-controls=\"mobile-navigation\">
           <span></span><span></span><span></span>
         </button>
-        <a href=\"index.php?route=product/category&path=66\" class=\"header-nav-link\">
+        <a href=\"index.php?route=product/esarp\" class=\"header-nav-link\">
           <span>Eşarp</span>
         </a>
         <a href=\"index.php?route=product/giyim\" class=\"header-nav-link\">
           <span>Giyim</span>
         </a>
-        <a href=\"index.php?route=product/category&path=64\" class=\"header-nav-link\">
+        <a href=\"index.php?route=product/tum_urunler\" class=\"header-nav-link\">
           <span>Tüm Ürünler</span>
         </a>
       </div>
@@ -463,14 +488,14 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
       <!-- Orta: Logo + arama paneli -->
       <div id=\"logo\" class=\"header-center\">
         ";
-        // line 332
+        // line 354
         if (($context["logo"] ?? null)) {
-            // line 333
+            // line 355
             echo "          <a href=\"";
             echo ($context["home"] ?? null);
             echo "\" class=\"header-logo-link\">
             <img src=\"";
-            // line 334
+            // line 356
             echo ($context["logo"] ?? null);
             echo "\" title=\"";
             echo ($context["name"] ?? null);
@@ -480,7 +505,7 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
           </a>
         ";
         } else {
-            // line 337
+            // line 359
             echo "          <h1><a href=\"";
             echo ($context["home"] ?? null);
             echo "\">";
@@ -488,7 +513,7 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
             echo "</a></h1>
         ";
         }
-        // line 339
+        // line 361
         echo "      </div>
 
       <!-- Sağ: Arama, Giriş Yap, Sepet -->
@@ -498,49 +523,48 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
         </button>
 
         ";
-        // line 347
+        // line 369
         if (($context["logged"] ?? null)) {
-            // line 348
+            // line 370
             echo "          <div class=\"header-account-menu\">
             <button type=\"button\" class=\"header-nav-link header-account-toggle\" aria-expanded=\"false\" aria-haspopup=\"true\" aria-controls=\"account-dropdown\">
               <span>Hesabım</span>
-              <i class=\"fa fa-angle-down\" aria-hidden=\"true\"></i>
             </button>
-            <div id=\"account-dropdown\" class=\"account-dropdown\" aria-hidden=\"true\">
+            <div id=\"account-dropdown\" class=\"account-dropdown\" aria-hidden=\"true\" hidden>
               <div class=\"account-dropdown__intro\">
                 Merhaba";
-            // line 355
+            // line 376
             if (($context["customer_name"] ?? null)) {
                 echo ", ";
                 echo ($context["customer_name"] ?? null);
             }
-            // line 356
+            // line 377
             echo "              </div>
               <div class=\"account-dropdown__links\">
                 <a href=\"";
-            // line 358
+            // line 379
             echo ($context["account_edit"] ?? null);
             echo "\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i>Bilgilerim</a>
                 <a href=\"";
-            // line 359
+            // line 380
             echo ($context["account_password"] ?? null);
             echo "\"><i class=\"fa fa-lock\" aria-hidden=\"true\"></i>Şifre</a>
                 <a href=\"";
-            // line 360
+            // line 381
             echo ($context["account_address"] ?? null);
             echo "\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>Adreslerim</a>
                 <a href=\"";
-            // line 361
+            // line 382
             echo ($context["order"] ?? null);
             echo "\"><i class=\"fa fa-shopping-bag\" aria-hidden=\"true\"></i>Siparişlerim</a>
                 <a href=\"";
-            // line 362
+            // line 383
             echo ($context["account_newsletter"] ?? null);
             echo "\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i>Bülten aboneliği</a>
               </div>
               <div class=\"account-dropdown__footer\">
                 <a href=\"";
-            // line 365
+            // line 386
             echo ($context["logout"] ?? null);
             echo "\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Oturumu kapat</a>
               </div>
@@ -548,7 +572,7 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
           </div>
         ";
         } else {
-            // line 370
+            // line 391
             echo "          <a href=\"";
             echo ($context["login"] ?? null);
             echo "\" class=\"header-nav-link\">
@@ -556,10 +580,10 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
           </a>
         ";
         }
-        // line 374
+        // line 395
         echo "
         <div class=\"header-cart\">";
-        // line 375
+        // line 396
         echo ($context["cart"] ?? null);
         echo "</div>
       </div>
@@ -575,15 +599,6 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
 
 #header-area .header-account-toggle {
   gap: 6px;
-}
-
-#header-area .header-account-toggle .fa {
-  font-size: 11px;
-  transition: transform 0.2s ease;
-}
-
-#header-area .header-account-menu.is-open .header-account-toggle .fa {
-  transform: rotate(180deg);
 }
 
 #header-area .account-dropdown {
@@ -602,6 +617,10 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
   transform: translateY(-6px);
   transform-origin: top right;
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+#header-area .account-dropdown[hidden] {
+  display: none !important;
 }
 
 #header-area .header-account-menu.is-open .account-dropdown {
@@ -748,10 +767,6 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
     line-height: 1;
   }
 
-  #header-area .header-account-toggle .fa {
-    display: none;
-  }
-
   #mobile-navigation .mobile-navigation__panel > a {
     padding: 20px 0 !important;
     font-size: 18px !important;
@@ -779,9 +794,9 @@ button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
       <span>Menü</span>
       <button type=\"button\" class=\"mobile-navigation__close\" style=\"font-size: 30px !important;\" aria-label=\"Menüyü kapat\" data-mobile-menu-close>&times;</button>
     </div>
-    <a href=\"index.php?route=product/category&path=66\" style=\"font-size: 18px !important;\">Eşarp</a>
+    <a href=\"index.php?route=product/esarp\" style=\"font-size: 18px !important;\">Eşarp</a>
     <a href=\"index.php?route=product/category&path=67\" style=\"font-size: 18px !important;\">Giyim</a>
-    <a href=\"index.php?route=product/category&path=64\" style=\"font-size: 18px !important;\">Tüm Ürünler</a>
+    <a href=\"index.php?route=product/tum_urunler\" style=\"font-size: 18px !important;\">Tüm Ürünler</a>
   </nav>
 </aside>
 
@@ -832,13 +847,27 @@ document.addEventListener('DOMContentLoaded', function() {
     accountMenu.classList.remove('is-open');
     accountToggle.setAttribute('aria-expanded', 'false');
     accountDropdown.setAttribute('aria-hidden', 'true');
+    accountDropdown.hidden = true;
+  }
+
+  function openAccountMenu() {
+    if (!accountMenu || !accountToggle || !accountDropdown) return;
+    accountDropdown.hidden = false;
+    accountMenu.classList.add('is-open');
+    accountToggle.setAttribute('aria-expanded', 'true');
+    accountDropdown.setAttribute('aria-hidden', 'false');
   }
 
   if (accountMenu && accountToggle && accountDropdown) {
-    accountToggle.addEventListener('click', function() {
-      const isOpen = accountMenu.classList.toggle('is-open');
-      accountToggle.setAttribute('aria-expanded', String(isOpen));
-      accountDropdown.setAttribute('aria-hidden', String(!isOpen));
+    accountToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (accountMenu.classList.contains('is-open')) {
+        closeAccountMenu();
+      } else {
+        openAccountMenu();
+      }
     });
 
     document.addEventListener('click', function(event) {
@@ -851,6 +880,7 @@ document.addEventListener('DOMContentLoaded', function() {
         accountToggle.focus();
       }
     });
+
   }
 
   document.querySelectorAll('.account-page .form-group').forEach(function(group) {
@@ -1160,7 +1190,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  563 => 375,  560 => 374,  552 => 370,  544 => 365,  538 => 362,  534 => 361,  530 => 360,  526 => 359,  522 => 358,  518 => 356,  513 => 355,  504 => 348,  502 => 347,  492 => 339,  484 => 337,  474 => 334,  469 => 333,  467 => 332,  440 => 309,  436 => 307,  434 => 306,  430 => 304,  426 => 302,  424 => 301,  422 => 300,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
+        return array (  587 => 396,  584 => 395,  576 => 391,  568 => 386,  562 => 383,  558 => 382,  554 => 381,  550 => 380,  546 => 379,  542 => 377,  537 => 376,  529 => 370,  527 => 369,  517 => 361,  509 => 359,  499 => 356,  494 => 355,  492 => 354,  465 => 331,  461 => 329,  459 => 328,  455 => 326,  453 => 325,  449 => 323,  445 => 321,  443 => 320,  441 => 319,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
     }
 
     public function getSourceContext()

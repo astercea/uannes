@@ -147,10 +147,7 @@ class __TwigTemplate_6935ea6ac41a82cecdfad5ce04f5d501 extends Template
         echo ($context["button_back"] ?? null);
         echo "</a></div>
           <div class=\"pull-right\">
-            <input type=\"submit\" value=\"";
-        // line 41
-        echo ($context["button_continue"] ?? null);
-        echo "\" class=\"btn btn-primary\" />
+            <input type=\"submit\" value=\"Kaydet\" class=\"btn btn-primary\" />
           </div>
         </div>
       </form>
@@ -191,7 +188,7 @@ class __TwigTemplate_6935ea6ac41a82cecdfad5ce04f5d501 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  168 => 48,  163 => 46,  159 => 45,  152 => 41,  145 => 39,  139 => 35,  133 => 33,  131 => 32,  125 => 31,  120 => 29,  115 => 26,  109 => 24,  107 => 23,  101 => 22,  96 => 20,  91 => 18,  86 => 16,  82 => 15,  75 => 14,  72 => 13,  69 => 12,  66 => 11,  63 => 10,  60 => 9,  57 => 8,  55 => 7,  50 => 6,  44 => 4,  42 => 3,  37 => 1,);
+        return array (  165 => 48,  160 => 46,  156 => 45,  145 => 39,  139 => 35,  133 => 33,  131 => 32,  125 => 31,  120 => 29,  115 => 26,  109 => 24,  107 => 23,  101 => 22,  96 => 20,  91 => 18,  86 => 16,  82 => 15,  75 => 14,  72 => 13,  69 => 12,  66 => 11,  63 => 10,  60 => 9,  57 => 8,  55 => 7,  50 => 6,  44 => 4,  42 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
