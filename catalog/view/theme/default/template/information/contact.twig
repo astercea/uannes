@@ -1,38 +1,192 @@
 {{ header }}
 <style>
-form .form-control {
-  border: 1px solid #dcdcdc;
-  border-radius: 12px;
-  padding: 12px 16px;
-  background-color: #fdfdfd;
-  transition: all 0.3s ease;
-  box-shadow: none;
-  height: 45px;
+/* İletişim Sayfası Özel Tasarımı */
+footer { margin-top: 0; }
 
+#content {
+  min-height: 0 !important;
 }
 
-form .form-control:focus {
-  border-color: #1a1a50; 
-  box-shadow: 0 0 8px rgba(122, 90, 245, 0.3);
+#information-contact {
+  margin-top: 15px;
+  margin-bottom: 60px;
+}
+
+#information-contact,
+#information-contact p,
+#information-contact .contact-details {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #1a1a50;
+}
+
+/* Form heading */
+#information-contact .contact-heading-main {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a50;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+/* Contact Info text */
+#information-contact .contact-details p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+#information-contact .contact-details a {
+  color: #1a1a50;
+  text-decoration: none;
+}
+#information-contact .contact-details a:not(.btn-white):hover {
+  text-decoration: underline;
+}
+
+/* Floating label input styling fix for contact page */
+#information-contact .login-field {
+  position: relative;
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+#information-contact .login-field__input {
+  display: block !important;
+  width: 100% !important;
+  height: 48px !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(26, 26, 80, 0.25) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 14px 10px 6px 10px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+  color: #1a1a50 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  line-height: 1.4 !important;
+}
+
+#information-contact textarea.login-field__input {
+  height: auto !important;
+  min-height: 120px !important;
+  resize: vertical !important;
+  padding: 12px 10px 10px 10px !important;
+}
+
+#information-contact .login-field__label {
+  position: absolute !important;
+  left: 10px !important;
+  top: 24px !important;
+  transform: translateY(-50%) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(26, 26, 80, 0.6) !important;
+  pointer-events: none !important;
+  transition: all 0.2s ease !important;
+}
+
+#information-contact textarea.login-field__input + .login-field__label {
+  top: 20px !important;
+  transform: translateY(0) !important;
+}
+
+#information-contact .login-field__input:focus + .login-field__label,
+#information-contact .login-field__input:not(:placeholder-shown) + .login-field__label {
+  top: -16px !important;
+  transform: translateY(0) !important;
+  font-size: 11px !important;
+  color: rgba(26, 26, 80, 0.8) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Flexbox Layout for perfect centering */
+#information-contact .contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#information-contact .contact-form-side,
+#information-contact .contact-info-side {
+  flex: 1;
+  min-width: 320px;
+  max-width: 400px;
+}
+
+/* Mavi Buton (Gönder) */
+#information-contact .btn-blue {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background-color: #1a1a50;
+  color: #fff !important;
+  border: 1.5px solid #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border-radius: 0;
+  text-align: center;
+}
+#information-contact .btn-blue:hover {
   background-color: #fff;
+  color: #1a1a50 !important;
 }
 
-form textarea.form-control {
-  resize: none;
-  min-height: 140px;
+/* Beyaz Buton (Haritayı Göster) */
+#information-contact .btn-white {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 0; /* Remove side padding to align exactly with text */
+  background: transparent;
+  color: #1a1a50 !important;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: color 0.35s ease;
+  border-radius: 0;
+}
+#information-contact .btn-white span {
+  position: relative;
+  padding-bottom: 4px;
+  background-image: linear-gradient(#1a1a50, #1a1a50);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: background-size 0.3s ease;
 }
 
-form .mb-3 {
-  margin-bottom: 22px;
+#information-contact .btn-white:hover span {
+  background-size: 100% 1px;
 }
 
+#information-contact .btn-white:hover {
+  text-decoration: none !important;
+}
 </style>
 <div id="information-contact" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -42,112 +196,77 @@ form .mb-3 {
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <div class="container contact-container shadow-sm">
-        <div class="text-center mb-4">
-          <h2>{{ heading_title }}</h2>
+      
+      <div class="row mt-5">
+        <div class="col-12">
+          <h2 class="contact-heading-main">{{ heading_title }}</h2>
         </div>
-        <div class="row g-4">
-          <div class="col-md-6">
-            <form action="{{ action }}" method="post" enctype="multipart/form-data">
-              {# İletişim formunun başlangıcı #}
-              {% if error_warning %}
-              <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
-              {% endif %}
-              <div class="mb-3 required">
-                {# İsim Soyisim Alanı #}
-                <input
-                  type="text"
-                  name="name"
-                  value="{{ name }}"
-                  placeholder="{{ entry_name }}"
-                  id="input-name"
-                  class="form-control"
-                  required
-                />
-                {% if error_name %}
-                <div class="text-danger">{{ error_name }}</div>
-                {% endif %}
-              </div>
-              <div class="mb-3 required">
-                {# E-Posta Alanı #}
-                <input
-                  type="email"
-                  name="email"
-                  value="{{ email }}"
-                  placeholder="{{ entry_email }}"
-                  id="input-email"
-                  class="form-control"
-                  required
-                />
-                {% if error_email %}
-                <div class="text-danger">{{ error_email }}</div>
-                {% endif %}
-              </div>
-              <div class="mb-3 required">
-                {# Mesaj Alanı #}
-                <textarea
-                  name="enquiry"
-                  rows="5"
-                  placeholder="{{ entry_enquiry }}" {# OpenCart'ta enquiry = Mesaj/Sorgu anlamına gelir #}
-                  id="input-enquiry"
-                  class="form-control"
-                  required
-                >{{ enquiry }}</textarea>
-                {% if error_enquiry %}
-                <div class="text-danger">{{ error_enquiry }}</div>
-                {% endif %}
-              </div>
-              {# reCAPTCHA veya diğer captcha'lar buraya gelir #}
-              {{ captcha }}
-              <div class="col-md-5 mx-auto d-flex justify-content-center" style="padding-bottom:25px;">
-                <button type="submit" class="btn btn-custom btn-login btn-giris">
-                  {{ button_submit }}
-                </button>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-6">
-            <div class="contact-info">
-              <h5>{{ text_location }}</h5> {# "Mağaza Konumumuz" gibi çevrilir #}
-              {# Mağaza Adı #}
-              {# <p><strong>{{ store }}</strong></p> #}
-              {# Adres #}
-              {% if address %}
-              <p><strong>Adres:</strong><br/> {{ address }}</p>
-              {% endif %}
-              {# Telefon #}
-              {% if telephone %}
-              <p><strong>{{ text_telephone }}</strong> {{ telephone }}</p>
-              {% endif %}
-              {# Store Mail #}
-              {% if store_email %}
-              <p><strong>E-Posta:</strong> <a href="mailto:{{ store_email }}">{{ store_email }}</a></p>
-              {% endif %}
-              {# Çalışma Saatleri (Açılış Saatleri) #}
-              {% if open %}
-              <p>
-                <strong>{{ text_open }}:</strong><br />{{ open }}
-              </p>
-              {% endif %}
-              {# Diğer yorumlar/notlar #}
-              {# {% if comment %}
-              <p>
-                <strong>{{ text_comment }}:</strong><br />{{ comment }}
-              </p>
-              {% endif %} #}
-              {# Haritada Göster butonu #}
-              {% if geocode %}
-              <div class="mt-3">
-                  <a href="http://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn btn-info btn-block"><i class="fa fa-map-marker"></i> {{ button_map }}</a>
-              </div>
-              {% endif %}
-              {# Fax Bilgisi (İhtiyaç duyulursa) #}
-              {# {% if fax %}
-              <p class="mt-3"><strong>{{ text_fax }}:</strong> {{ fax }}</p>
-              {% endif %} #}
+      </div>
+      
+      <div class="contact-wrapper mt-3">
+        
+        <div class="contact-form-side">
+          <form action="{{ action }}" method="post" enctype="multipart/form-data">
+            
+            {% if error_warning %}
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+            {% endif %}
+
+            <div class="login-field">
+              <input type="text" name="name" value="{{ name }}" id="input-name" class="login-field__input" placeholder=" " required />
+              <label for="input-name" class="login-field__label">{{ entry_name }} *</label>
+              <span class="login-field__line"></span>
+              {% if error_name %}<div class="text-danger mt-1">{{ error_name }}</div>{% endif %}
             </div>
+            
+            <div class="login-field">
+              <input type="email" name="email" value="{{ email }}" id="input-email" class="login-field__input" placeholder=" " required />
+              <label for="input-email" class="login-field__label">{{ entry_email }} *</label>
+              <span class="login-field__line"></span>
+              {% if error_email %}<div class="text-danger mt-1">{{ error_email }}</div>{% endif %}
+            </div>
+            
+            <div class="login-field">
+              <textarea name="enquiry" rows="5" id="input-enquiry" class="login-field__input" placeholder=" " required>{{ enquiry }}</textarea>
+              <label for="input-enquiry" class="login-field__label">{{ entry_enquiry }} *</label>
+              <span class="login-field__line"></span>
+              {% if error_enquiry %}<div class="text-danger mt-1">{{ error_enquiry }}</div>{% endif %}
+            </div>
+            
+            {{ captcha }}
+            
+            <div class="mt-4">
+              <button type="submit" class="btn-blue">
+                <span>{{ button_submit }}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="contact-info-side pt-2">
+          <div class="contact-details">
+            {% if address %}
+            <p><strong>Adres:</strong><br/> {{ address }}</p>
+            {% endif %}
+            {% if telephone %}
+            <p><strong>{{ text_telephone }}</strong> {{ telephone }}</p>
+            {% endif %}
+            {% if store_email %}
+            <p><strong>E-Posta:</strong> <a href="mailto:{{ store_email }}">{{ store_email }}</a></p>
+            {% endif %}
+            {% if open %}
+            <p><strong>{{ text_open }}:</strong><br />{{ open }}</p>
+            {% endif %}
+            {% if geocode %}
+            <div class="mt-3">
+              <a href="http://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn-white">
+                <span><i class="fa fa-map-marker"></i> {{ button_map }}</span>
+              </a>
+            </div>
+            {% endif %}
           </div>
         </div>
+        
       </div>
       {# OpenCart'ın çoklu mağaza/konum listeleme kısmı (İsteğe bağlı olarak korundu) #}
       {% if locations %}

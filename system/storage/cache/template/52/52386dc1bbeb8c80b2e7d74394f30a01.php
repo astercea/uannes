@@ -85,10 +85,8 @@ class __TwigTemplate_350668302a5e4e7f110b35cd561e7348 extends Template
                 // line 30
                 echo "    <div class=\"home-banner-stack__item home-banner-stack__item--collection\">
       <div class=\"home-banner-stack__media\">
-        <img src=\"";
+        <img src=\"image/catalog/esarp_banner_v3.jpg\" alt=\"";
                 // line 32
-                echo twig_get_attribute($this->env, $this->source, $context["banner"], "image", [], "any", false, false, false, 32);
-                echo "\" alt=\"";
                 echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 32);
                 echo "\" class=\"img-responsive home-banner-stack__img\">
         ";
@@ -174,7 +172,7 @@ class __TwigTemplate_350668302a5e4e7f110b35cd561e7348 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 50,  138 => 49,  133 => 46,  129 => 44,  121 => 42,  118 => 41,  112 => 39,  109 => 38,  103 => 36,  101 => 35,  98 => 34,  96 => 33,  90 => 32,  86 => 30,  83 => 29,  66 => 28,  37 => 1,);
+        return array (  150 => 50,  136 => 49,  131 => 46,  127 => 44,  119 => 42,  116 => 41,  110 => 39,  107 => 38,  101 => 36,  99 => 35,  96 => 34,  94 => 33,  90 => 32,  86 => 30,  83 => 29,  66 => 28,  37 => 1,);
     }
 
     public function getSourceContext()

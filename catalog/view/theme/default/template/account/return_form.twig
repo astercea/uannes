@@ -20,26 +20,8 @@
     {% endif %}
 
     <div id="content" class="{{ class }}">{{ content_top }}
-      <section class="return-hero">
-        <div class="return-hero__content">
-          <span class="return-eyebrow">Uannes Care</span>
-          <h1>{{ heading_title }}</h1>
-          <p>{{ text_description }}</p>
-        </div>
-        <div class="return-hero__steps" aria-label="İade süreci">
-          <div class="return-step">
-            <span>01</span>
-            <strong>Talep</strong>
-          </div>
-          <div class="return-step">
-            <span>02</span>
-            <strong>İnceleme</strong>
-          </div>
-          <div class="return-step">
-            <span>03</span>
-            <strong>Sonuç</strong>
-          </div>
-        </div>
+      <section class="return-hero return-hero--title-only">
+        <h1>İADE TALEBİ OLUŞTURUN</h1>
       </section>
 
       <form action="{{ action }}" method="post" enctype="multipart/form-data" class="return-form">
@@ -187,7 +169,7 @@
               <span>{{ text_agree }}</span>
             </label>
             {% endif %}
-            <button type="submit" class="btn btn-primary">{{ button_submit }} <i class="fa fa-angle-right"></i></button>
+            <button type="submit" class="btn btn-primary">{{ button_submit }}</button>
           </div>
         </div>
       </form>

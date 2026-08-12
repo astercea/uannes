@@ -39,246 +39,388 @@ class __TwigTemplate_7334cecf5a1a3c6fcc9b2ce3bbdb86be extends Template
 <div id=\"account-order\" class=\"container account-page\">
 
   <style>
+    /* ==========================================================================
+       SIPARISLERIM / MY ORDERS TABLE REDESIGN
+       ========================================================================== */
+    #account-order #content {
+      max-width: 1320px !important;
+      width: 100% !important;
+    }
+
+    .account-orders-table-wrap {
+      border: 1px solid rgba(26, 26, 80, 0.12);
+      background: #ffffff;
+      margin-bottom: 28px;
+      overflow-x: visible;
+      border-radius: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 991px) {
+      .account-orders-table-wrap {
+        overflow-x: auto;
+      }
+    }
+
+    .account-orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a50;
+      background: transparent;
+      table-layout: fixed;
+    }
+
+    .account-orders-table thead tr {
+      background-color: #f5f2eb !important;
+      border-bottom: 1px solid rgba(26, 26, 80, 0.12) !important;
+    }
+
+    .account-orders-table thead th,
+    .account-orders-table thead td {
+      width: 12.5% !important;
+      padding: 14px 12px !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: #1a1a50 !important;
+      background: transparent !important;
+      border: none !important;
+      border-right: 1px solid rgba(26, 26, 80, 0.08) !important;
+      white-space: nowrap;
+      vertical-align: middle !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .account-orders-table thead th:last-child,
+    .account-orders-table thead td:last-child {
+      border-right: none !important;
+    }
+
+    .account-orders-table tbody tr {
+      border-bottom: 1px solid rgba(26, 26, 80, 0.08) !important;
+      transition: background-color 0.2s ease;
+    }
+
+    .account-orders-table tbody tr:last-child {
+      border-bottom: none !important;
+    }
+
+    .account-orders-table tbody tr:hover {
+      background-color: transparent !important;
+    }
+
+    .account-orders-table tbody td {
+      width: 12.5% !important;
+      padding: 16px 12px !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 13.5px !important;
+      color: #1a1a50 !important;
+      background: transparent !important;
+      border: none !important;
+      border-right: 1px solid rgba(26, 26, 80, 0.05) !important;
+      vertical-align: middle !important;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    .account-orders-table tbody td:last-child {
+      border-right: none !important;
+    }
+
+    .account-order-id {
+      font-weight: 500;
+      color: #1a1a50;
+    }
+
+    .account-order-thumb {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      display: inline-block;
+      vertical-align: middle;
+      background: #f8f8f8;
+      border: 1px solid rgba(26, 26, 80, 0.08);
+      border-radius: 0;
+    }
+
+    /* Plain Text Status (No Box / No Orange Background) */
     .status-badge {
       display: inline-block;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.2;
-      min-width: 100px;
-      text-align: center;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 13.5px !important;
+      font-weight: 400 !important;
+      color: #1a1a50 !important;
+      line-height: inherit;
     }
-    .status-pending   { background:#fff4cc; color:#7a5b00; border:1px solid #e6c200; }
-    .status-processing{ background:#fff1e6; color:#a65a00; border:1px solid #ffb347; }
-    .status-shipped   { background:#dff4ff; color:#004d61; border:1px solid #66c2e3; }
-    .status-complete  { background:#e8ffe8; color:#1e7a1e; border:1px solid #51c451; }
-    .status-canceled  { background:#ffe5e5; color:#8a0000; border:1px solid #ff5c5c; }
-    .status-refunded  { background:#f2e6ff; color:#4b0082; border:1px solid #b980ff; }
-    .status-hold      { background:#e0e0e0; color:#333; border:1px solid #ccc; }
-    .status-default   { background:#eee; color:#555; border:1px solid #bbb; }
+
+    /* İncele Link with center-expanding thin underline animation */
+    .order-action-link {
+      position: relative;
+      display: inline-block;
+      color: #1a1a50 !important;
+      text-decoration: none !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      padding: 3px 2px;
+      line-height: 1.4;
+      transition: color 0.25s ease;
+    }
+
+    .order-action-link::after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 50%;
+      width: 100%;
+      height: 1px;
+      background-color: #1a1a50;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .order-action-link:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .order-action-link:hover,
+    .order-action-link:focus {
+      color: #1a1a50 !important;
+      text-decoration: none !important;
+    }
   </style>
 
   <div class=\"row\">";
-        // line 25
+        // line 167
         echo ($context["column_left"] ?? null);
         echo "
     ";
-        // line 26
+        // line 168
         if ((($context["column_left"] ?? null) && ($context["column_right"] ?? null))) {
-            // line 27
+            // line 169
             echo "      ";
             $context["class"] = "col-sm-6";
-            // line 28
+            // line 170
             echo "    ";
         } elseif ((($context["column_left"] ?? null) || ($context["column_right"] ?? null))) {
-            // line 29
+            // line 171
             echo "      ";
             $context["class"] = "col-sm-9";
-            // line 30
+            // line 172
             echo "    ";
         } else {
-            // line 31
+            // line 173
             echo "      ";
             $context["class"] = "col-sm-12";
-            // line 32
+            // line 174
             echo "    ";
         }
-        // line 33
+        // line 175
         echo "
     <div id=\"content\" class=\"";
-        // line 34
+        // line 176
         echo ($context["class"] ?? null);
         echo "\">";
         echo ($context["content_top"] ?? null);
         echo "
       <h1>";
-        // line 35
+        // line 177
         echo ($context["heading_title"] ?? null);
         echo "</h1>
 
       ";
-        // line 37
+        // line 179
         if (($context["orders"] ?? null)) {
-            // line 38
-            echo "      <div class=\"table-responsive\">
-        <table class=\"table table-bordered table-hover\">
+            // line 180
+            echo "      <div class=\"table-responsive account-orders-table-wrap\">
+        <table class=\"table account-orders-table\">
           <thead>
             <tr>
-              <td class=\"text-left\">";
-            // line 42
+              <th class=\"text-left col-order-id\">";
+            // line 184
             echo ($context["column_order_id"] ?? null);
-            echo "</td>
-              <td class=\"text-left\">Görsel</td>
-              <td class=\"text-left\">";
-            // line 44
+            echo "</th>
+              <th class=\"text-center col-thumb\">ÜRÜN</th>
+              <th class=\"text-left col-customer\">";
+            // line 186
             echo ($context["column_customer"] ?? null);
-            echo "</td>
-              <td class=\"text-left\">";
-            // line 45
+            echo "</th>
+              <th class=\"text-center col-products\">";
+            // line 187
             echo ($context["column_product"] ?? null);
-            echo "</td>
-              <td class=\"text-left\">";
-            // line 46
+            echo "</th>
+              <th class=\"text-left col-status\">";
+            // line 188
             echo ($context["column_status"] ?? null);
-            echo "</td>
-              <td class=\"text-left\">";
-            // line 47
+            echo "</th>
+              <th class=\"text-left col-total\">";
+            // line 189
             echo ($context["column_total"] ?? null);
-            echo "</td>
-              <td class=\"text-left\">";
-            // line 48
+            echo "</th>
+              <th class=\"text-left col-date\">";
+            // line 190
             echo ($context["column_date_added"] ?? null);
-            echo "</td>
-              <td>Detay</td>
+            echo "</th>
+              <th class=\"text-center col-action\">DETAY</th>
             </tr>
           </thead>
           <tbody>
           ";
-            // line 53
+            // line 195
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["orders"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["order"]) {
-                // line 54
+                // line 196
                 echo "            ";
-                $context["status_tr"] = twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 54);
-                // line 55
+                $context["status_tr"] = twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 196);
+                // line 197
                 echo "            ";
                 $context["status_class"] = "status-default";
-                // line 56
+                // line 198
                 echo "
             ";
-                // line 57
-                if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 57), ["Pending", "Beklemede", "On Hold", "Bekliyor", "Pending Payment", "Pending Verification"])) {
-                    // line 58
+                // line 199
+                if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 199), ["Pending", "Beklemede", "On Hold", "Bekliyor", "Pending Payment", "Pending Verification"])) {
+                    // line 200
                     echo "              ";
                     $context["status_tr"] = "Beklemede";
-                    // line 59
+                    // line 201
                     echo "              ";
                     $context["status_class"] = "status-pending";
-                    // line 60
+                    // line 202
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 60), ["Processing", "Processed", "Processing Payment", "İşleniyor", "Hazırlanıyor"])) {
-                    // line 61
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 202), ["Processing", "Processed", "Processing Payment", "İşleniyor", "Hazırlanıyor"])) {
+                    // line 203
                     echo "              ";
                     $context["status_tr"] = "İşleniyor";
-                    // line 62
+                    // line 204
                     echo "              ";
                     $context["status_class"] = "status-processing";
-                    // line 63
+                    // line 205
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 63), ["Shipped", "Kargoda", "Gönderildi", "Kargoya Verildi"])) {
-                    // line 64
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 205), ["Shipped", "Kargoda", "Gönderildi", "Kargoya Verildi"])) {
+                    // line 206
                     echo "              ";
                     $context["status_tr"] = "Kargoya Verildi";
-                    // line 65
+                    // line 207
                     echo "              ";
                     $context["status_class"] = "status-shipped";
-                    // line 66
+                    // line 208
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 66), ["Delivered", "Teslim Edildi"])) {
-                    // line 67
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 208), ["Delivered", "Teslim Edildi"])) {
+                    // line 209
                     echo "              ";
                     $context["status_tr"] = "Teslim Edildi";
-                    // line 68
+                    // line 210
                     echo "              ";
                     $context["status_class"] = "status-shipped";
-                    // line 69
+                    // line 211
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 69), ["Completed", "Complete", "Tamamlandı", "Bitti"])) {
-                    // line 70
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 211), ["Completed", "Complete", "Tamamlandı", "Bitti"])) {
+                    // line 212
                     echo "              ";
                     $context["status_tr"] = "Tamamlandı";
-                    // line 71
+                    // line 213
                     echo "              ";
                     $context["status_class"] = "status-complete";
-                    // line 72
+                    // line 214
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 72), ["Canceled", "Cancelled", "İptal Edildi", "İptal"])) {
-                    // line 73
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 214), ["Canceled", "Cancelled", "İptal Edildi", "İptal"])) {
+                    // line 215
                     echo "              ";
                     $context["status_tr"] = "İptal Edildi";
-                    // line 74
+                    // line 216
                     echo "              ";
                     $context["status_class"] = "status-canceled";
-                    // line 75
+                    // line 217
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 75), ["Refunded", "İade Edildi", "Returned"])) {
-                    // line 76
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 217), ["Refunded", "İade Edildi", "Returned"])) {
+                    // line 218
                     echo "              ";
                     $context["status_tr"] = "İade Edildi";
-                    // line 77
+                    // line 219
                     echo "              ";
                     $context["status_class"] = "status-refunded";
-                    // line 78
+                    // line 220
                     echo "            ";
-                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 78), ["On Hold", "Hold", "Bekletiliyor"])) {
-                    // line 79
+                } elseif (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["order"], "status", [], "any", false, false, false, 220), ["On Hold", "Hold", "Bekletiliyor"])) {
+                    // line 221
                     echo "              ";
                     $context["status_tr"] = "Bekletiliyor";
-                    // line 80
+                    // line 222
                     echo "              ";
                     $context["status_class"] = "status-hold";
-                    // line 81
+                    // line 223
                     echo "            ";
                 }
-                // line 82
+                // line 224
                 echo "
             <tr>
-              <td class=\"text-left\">#";
-                // line 84
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "order_id", [], "any", false, false, false, 84);
+              <td class=\"text-left col-order-id account-order-id\">#";
+                // line 226
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "order_id", [], "any", false, false, false, 226);
                 echo "</td>
 
-              <td class=\"text-center\">
+              <td class=\"text-center col-thumb\">
                 ";
-                // line 87
-                if (twig_get_attribute($this->env, $this->source, $context["order"], "thumb", [], "any", false, false, false, 87)) {
-                    // line 88
+                // line 229
+                if (twig_get_attribute($this->env, $this->source, $context["order"], "thumb", [], "any", false, false, false, 229)) {
+                    // line 230
                     echo "                  <img src=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["order"], "thumb", [], "any", false, false, false, 88);
+                    echo twig_get_attribute($this->env, $this->source, $context["order"], "thumb", [], "any", false, false, false, 230);
                     echo "\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["order"], "name", [], "any", false, false, false, 88);
-                    echo "\" class=\"img-thumbnail\" style=\"width:60px; height:60px; object-fit:cover;\">
+                    echo twig_get_attribute($this->env, $this->source, $context["order"], "name", [], "any", false, false, false, 230);
+                    echo "\" class=\"account-order-thumb\">
                 ";
                 }
-                // line 90
+                // line 232
                 echo "              </td>
 
-              <td class=\"text-left\">";
-                // line 92
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "name", [], "any", false, false, false, 92);
+              <td class=\"text-left col-customer\">";
+                // line 234
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "name", [], "any", false, false, false, 234);
                 echo "</td>
-              <td class=\"text-left\">";
-                // line 93
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "products", [], "any", false, false, false, 93);
+              <td class=\"text-center col-products\">";
+                // line 235
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "products", [], "any", false, false, false, 235);
                 echo "</td>
 
-              <td class=\"text-left\">
+              <td class=\"text-left col-status\">
                 <span class=\"status-badge ";
-                // line 96
+                // line 238
                 echo ($context["status_class"] ?? null);
                 echo "\">";
                 echo ($context["status_tr"] ?? null);
                 echo "</span>
               </td>
 
-              <td class=\"text-left\">";
-                // line 99
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "total", [], "any", false, false, false, 99);
+              <td class=\"text-left col-total\">";
+                // line 241
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "total", [], "any", false, false, false, 241);
                 echo "</td>
-              <td class=\"text-left\">";
-                // line 100
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "date_added", [], "any", false, false, false, 100);
+              <td class=\"text-left col-date\">";
+                // line 242
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "date_added", [], "any", false, false, false, 242);
                 echo "</td>
-              <td class=\"text-center\">
+              <td class=\"text-center col-action\">
                 <a href=\"";
-                // line 102
-                echo twig_get_attribute($this->env, $this->source, $context["order"], "view", [], "any", false, false, false, 102);
-                echo "\" data-toggle=\"tooltip\" title=\"";
+                // line 244
+                echo twig_get_attribute($this->env, $this->source, $context["order"], "view", [], "any", false, false, false, 244);
+                echo "\" class=\"order-action-link\" title=\"";
                 echo ($context["button_view"] ?? null);
-                echo "\" class=\"btn btn-info\">
-                  <i class=\"fa fa-eye\"></i>
+                echo "\">
+                  İncele
                 </a>
               </td>
             </tr>
@@ -287,46 +429,42 @@ class __TwigTemplate_7334cecf5a1a3c6fcc9b2ce3bbdb86be extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['order'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 108
+            // line 250
             echo "          </tbody>
         </table>
       </div>
 
-      <div class=\"row\">
-        <div class=\"col-sm-6 text-left\">";
-            // line 113
+      <div class=\"row\" style=\"margin-top: 15px;\">
+        <div class=\"col-sm-12 text-center\">";
+            // line 255
             echo ($context["pagination"] ?? null);
-            echo "</div>
-        <div class=\"col-sm-6 text-right\">";
-            // line 114
-            echo ($context["results"] ?? null);
             echo "</div>
       </div>
 
       ";
         } else {
-            // line 118
+            // line 259
             echo "        <p>";
             echo ($context["text_empty"] ?? null);
             echo "</p>
       ";
         }
-        // line 120
+        // line 261
         echo "
       ";
-        // line 121
+        // line 262
         echo ($context["content_bottom"] ?? null);
         echo "
     </div>
 
     ";
-        // line 124
+        // line 265
         echo ($context["column_right"] ?? null);
         echo "
   </div>
 </div>
 ";
-        // line 127
+        // line 268
         echo ($context["footer"] ?? null);
         echo "
 ";
@@ -353,7 +491,7 @@ class __TwigTemplate_7334cecf5a1a3c6fcc9b2ce3bbdb86be extends Template
      */
     public function getDebugInfo()
     {
-        return array (  330 => 127,  324 => 124,  318 => 121,  315 => 120,  309 => 118,  302 => 114,  298 => 113,  291 => 108,  277 => 102,  272 => 100,  268 => 99,  260 => 96,  254 => 93,  250 => 92,  246 => 90,  238 => 88,  236 => 87,  230 => 84,  226 => 82,  223 => 81,  220 => 80,  217 => 79,  214 => 78,  211 => 77,  208 => 76,  205 => 75,  202 => 74,  199 => 73,  196 => 72,  193 => 71,  190 => 70,  187 => 69,  184 => 68,  181 => 67,  178 => 66,  175 => 65,  172 => 64,  169 => 63,  166 => 62,  163 => 61,  160 => 60,  157 => 59,  154 => 58,  152 => 57,  149 => 56,  146 => 55,  143 => 54,  139 => 53,  131 => 48,  127 => 47,  123 => 46,  119 => 45,  115 => 44,  110 => 42,  104 => 38,  102 => 37,  97 => 35,  91 => 34,  88 => 33,  85 => 32,  82 => 31,  79 => 30,  76 => 29,  73 => 28,  70 => 27,  68 => 26,  64 => 25,  37 => 1,);
+        return array (  468 => 268,  462 => 265,  456 => 262,  453 => 261,  447 => 259,  440 => 255,  433 => 250,  419 => 244,  414 => 242,  410 => 241,  402 => 238,  396 => 235,  392 => 234,  388 => 232,  380 => 230,  378 => 229,  372 => 226,  368 => 224,  365 => 223,  362 => 222,  359 => 221,  356 => 220,  353 => 219,  350 => 218,  347 => 217,  344 => 216,  341 => 215,  338 => 214,  335 => 213,  332 => 212,  329 => 211,  326 => 210,  323 => 209,  320 => 208,  317 => 207,  314 => 206,  311 => 205,  308 => 204,  305 => 203,  302 => 202,  299 => 201,  296 => 200,  294 => 199,  291 => 198,  288 => 197,  285 => 196,  281 => 195,  273 => 190,  269 => 189,  265 => 188,  261 => 187,  257 => 186,  252 => 184,  246 => 180,  244 => 179,  239 => 177,  233 => 176,  230 => 175,  227 => 174,  224 => 173,  221 => 172,  218 => 171,  215 => 170,  212 => 169,  210 => 168,  206 => 167,  37 => 1,);
     }
 
     public function getSourceContext()

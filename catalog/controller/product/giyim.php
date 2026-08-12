@@ -171,9 +171,27 @@ class ControllerProductGiyim extends Controller {
 				$image_sources[] = 'placeholder.png';
 			}
 
+			// Detect whether this product belongs to the Eşarp category (66)
+			// so we can use square card dimensions for scarves everywhere.
+			$esarp_category_id = 66;
+			$is_esarp = false;
+			if (isset($catalogue['fallback_category_id']) && (int)$catalogue['fallback_category_id'] === $esarp_category_id) {
+				$is_esarp = true;
+			} else {
+				$cat_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$result['product_id'] . "' AND category_id = '" . $esarp_category_id . "' LIMIT 1");
+				$is_esarp = $cat_query->num_rows > 0;
+			}
+
+			if ($is_esarp) {
+				$card_w = 500;
+				$card_h = 500;
+			} else {
+				$card_w = isset($catalogue['card_image_width'])  ? (int)$catalogue['card_image_width']  : 400;
+				$card_h = isset($catalogue['card_image_height']) ? (int)$catalogue['card_image_height'] : 500;
+			}
 			$images = array();
 			foreach ($image_sources as $image_source) {
-				$images[] = $this->model_tool_image->resizeCover($image_source, 400, 500);
+				$images[] = $this->model_tool_image->resizeCover($image_source, $card_w, $card_h);
 			}
 
 			$badge_info = $this->model_catalog_product->getProductBadges($result);
@@ -182,6 +200,7 @@ class ControllerProductGiyim extends Controller {
 				'images' => $images,
 				'name' => $result['name'],
 				'badges' => $badge_info['badges'],
+				'is_esarp' => $is_esarp,
 				'href' => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 			);
 		}

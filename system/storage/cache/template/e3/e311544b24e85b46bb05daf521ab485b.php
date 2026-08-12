@@ -58,6 +58,9 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
       <div class=\"swiper-wrapper\" style=\"height: auto;\">
         ";
             // line 20
+            $context["slide_imgs"] = ["image/catalog/slide_model_1.jpg", "image/catalog/slide_model_2.jpg", "image/catalog/slide_model_3.jpg", "image/catalog/slide_model_4.jpg", "image/catalog/slide_model_5.jpg"];
+            // line 27
+            echo "        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["banners"] ?? null));
             $context['loop'] = [
@@ -74,34 +77,34 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["banner"]) {
-                // line 21
+                // line 28
                 echo "        <div class=\"swiper-slide\" style=\"height: auto;\">
           <div class=\"uannes-card\">
             ";
-                // line 23
-                $context["card_img"] = ((twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 23)) ? ("image/catalog/marka_hikayesi_card1.png") : (twig_get_attribute($this->env, $this->source, $context["banner"], "image", [], "any", false, false, false, 23)));
-                // line 24
+                // line 30
+                $context["card_img"] = (($__internal_compile_0 = ($context["slide_imgs"] ?? null)) && is_array($__internal_compile_0) || $__internal_compile_0 instanceof ArrayAccess ? ($__internal_compile_0[(twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 30) % 5)] ?? null) : null);
+                // line 31
                 echo "            ";
-                if (twig_get_attribute($this->env, $this->source, $context["banner"], "link", [], "any", false, false, false, 24)) {
-                    // line 25
+                if (twig_get_attribute($this->env, $this->source, $context["banner"], "link", [], "any", false, false, false, 31)) {
+                    // line 32
                     echo "            <a href=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "link", [], "any", false, false, false, 25);
+                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "link", [], "any", false, false, false, 32);
                     echo "\"><img src=\"";
                     echo ($context["card_img"] ?? null);
                     echo "\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 25);
+                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 32);
                     echo "\" class=\"uannes-card-img\" /></a>
             ";
                 } else {
-                    // line 27
+                    // line 34
                     echo "            <img src=\"";
                     echo ($context["card_img"] ?? null);
                     echo "\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 27);
+                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 34);
                     echo "\" class=\"uannes-card-img\" />
             ";
                 }
-                // line 29
+                // line 36
                 echo "            <button type=\"button\" class=\"uannes-card-arrow uannes-card-arrow-left\" aria-label=\"Önceki\">
               <svg width=\"8\" height=\"14\" viewBox=\"0 0 8 14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 1L1 7L7 13\"/></svg>
             </button>
@@ -123,14 +126,14 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['banner'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 38
+            // line 45
             echo "      </div>
     </div>
   </div>
 </div>
 ";
         }
-        // line 43
+        // line 50
         echo "
 <!-- Uannes'i Keşfet Bölümü (Hermès Stilinde 3'lü Kare Grid) -->
 <div class=\"uannes-discover-section\">
@@ -141,9 +144,9 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
     
     <div class=\"uannes-discover-grid\">
       <div class=\"uannes-discover-card\">
-        <a href=\"javascript:void(0);\" class=\"uannes-discover-link\" style=\"cursor: default;\">
+        <a href=\"index.php?route=information/hikaye\" class=\"uannes-discover-link\">
           <div class=\"uannes-discover-media\">
-            <img src=\"image/catalog/282A9418.jpg\" alt=\"Uannes'in Hikayesi\" class=\"uannes-discover-img\" />
+            <img src=\"image/catalog/hikaye_discover_card.png\" alt=\"Uannes'in Hikayesi\" class=\"uannes-discover-img\" />
           </div>
           <div class=\"uannes-discover-label-wrap\">
             <span class=\"uannes-discover-label\">Uannes'in Hikayesi</span>
@@ -152,9 +155,9 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
       </div>
 
       <div class=\"uannes-discover-card\">
-        <a href=\"javascript:void(0);\" class=\"uannes-discover-link\" style=\"cursor: default;\">
+        <a href=\"index.php?route=information/ozel_uretim\" class=\"uannes-discover-link\">
           <div class=\"uannes-discover-media\">
-            <img src=\"image/catalog/282A9426.jpg\" alt=\"Özel Üretim\" class=\"uannes-discover-img\" />
+            <img src=\"image/catalog/ozel_uretim_card.png\" alt=\"Özel Üretim\" class=\"uannes-discover-img\" />
           </div>
           <div class=\"uannes-discover-label-wrap\">
             <span class=\"uannes-discover-label\">Özel Üretim</span>
@@ -163,12 +166,12 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
       </div>
 
       <div class=\"uannes-discover-card\">
-        <a href=\"index.php?route=product/category&path=67\" class=\"uannes-discover-link\">
+        <a href=\"index.php?route=information/kumas\" class=\"uannes-discover-link\">
           <div class=\"uannes-discover-media\">
-            <img src=\"image/catalog/282A9443.jpg\" alt=\"Giyim\" class=\"uannes-discover-img\" />
+            <img src=\"image/catalog/kumas_banner.png\" alt=\"Kumaş\" class=\"uannes-discover-img\" />
           </div>
           <div class=\"uannes-discover-label-wrap\">
-            <span class=\"uannes-discover-label\">Giyim</span>
+            <span class=\"uannes-discover-label\">Kumaş</span>
           </div>
         </a>
       </div>
@@ -209,7 +212,6 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
   });
 });
 --></script>
-
 ";
     }
 
@@ -234,7 +236,7 @@ class __TwigTemplate_b68a1a390c2df219418493893a491dbf extends Template
      */
     public function getDebugInfo()
     {
-        return array (  134 => 43,  127 => 38,  105 => 29,  97 => 27,  87 => 25,  84 => 24,  82 => 23,  78 => 21,  61 => 20,  55 => 16,  53 => 15,  37 => 1,);
+        return array (  137 => 50,  130 => 45,  108 => 36,  100 => 34,  90 => 32,  87 => 31,  85 => 30,  81 => 28,  63 => 27,  61 => 20,  55 => 16,  53 => 15,  37 => 1,);
     }
 
     public function getSourceContext()

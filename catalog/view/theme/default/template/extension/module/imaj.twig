@@ -17,10 +17,17 @@
   <div class="uannes-slider-container" style="padding: 10px 0; margin: 0; height: auto;">
     <div class="swiper-container uannes-swiper" style="margin-bottom: 0px; height: auto;">
       <div class="swiper-wrapper" style="height: auto;">
+        {% set slide_imgs = [
+          'image/catalog/slide_model_1.jpg',
+          'image/catalog/slide_model_2.jpg',
+          'image/catalog/slide_model_3.jpg',
+          'image/catalog/slide_model_4.jpg',
+          'image/catalog/slide_model_5.jpg'
+        ] %}
         {% for banner in banners %}
         <div class="swiper-slide" style="height: auto;">
           <div class="uannes-card">
-            {% set card_img = loop.first ? 'image/catalog/marka_hikayesi_card1.png' : banner.image %}
+            {% set card_img = slide_imgs[loop.index0 % 5] %}
             {% if banner.link %}
             <a href="{{ banner.link }}"><img src="{{ card_img }}" alt="{{ banner.title }}" class="uannes-card-img" /></a>
             {% else %}
@@ -50,9 +57,9 @@
     
     <div class="uannes-discover-grid">
       <div class="uannes-discover-card">
-        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+        <a href="index.php?route=information/hikaye" class="uannes-discover-link">
           <div class="uannes-discover-media">
-            <img src="image/catalog/282A9418.jpg" alt="Uannes'in Hikayesi" class="uannes-discover-img" />
+            <img src="image/catalog/hikaye_discover_card.png" alt="Uannes'in Hikayesi" class="uannes-discover-img" />
           </div>
           <div class="uannes-discover-label-wrap">
             <span class="uannes-discover-label">Uannes'in Hikayesi</span>
@@ -61,9 +68,9 @@
       </div>
 
       <div class="uannes-discover-card">
-        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+        <a href="index.php?route=information/ozel_uretim" class="uannes-discover-link">
           <div class="uannes-discover-media">
-            <img src="image/catalog/282A9426.jpg" alt="Özel Üretim" class="uannes-discover-img" />
+            <img src="image/catalog/ozel_uretim_card.png" alt="Özel Üretim" class="uannes-discover-img" />
           </div>
           <div class="uannes-discover-label-wrap">
             <span class="uannes-discover-label">Özel Üretim</span>
@@ -72,12 +79,12 @@
       </div>
 
       <div class="uannes-discover-card">
-        <a href="index.php?route=product/category&path=67" class="uannes-discover-link">
+        <a href="index.php?route=information/kumas" class="uannes-discover-link">
           <div class="uannes-discover-media">
-            <img src="image/catalog/282A9443.jpg" alt="Giyim" class="uannes-discover-img" />
+            <img src="image/catalog/kumas_banner.png" alt="Kumaş" class="uannes-discover-img" />
           </div>
           <div class="uannes-discover-label-wrap">
-            <span class="uannes-discover-label">Giyim</span>
+            <span class="uannes-discover-label">Kumaş</span>
           </div>
         </a>
       </div>
@@ -118,4 +125,3 @@ $(document).ready(function() {
   });
 });
 --></script>
-

@@ -244,11 +244,50 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
         // line 77
         if (($context["products"] ?? null)) {
             // line 78
-            echo "      <div class=\"uannes-row-grid\">
-        ";
+            echo "      ";
+            $context["giyim_products"] = [];
             // line 79
+            echo "      ";
+            $context["esarp_products"] = [];
+            // line 80
+            echo "      ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["products"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
+                // line 81
+                echo "        ";
+                if ((twig_get_attribute($this->env, $this->source, $context["product"], "is_esarp", [], "any", true, true, false, 81) && twig_get_attribute($this->env, $this->source, $context["product"], "is_esarp", [], "any", false, false, false, 81))) {
+                    // line 82
+                    echo "          ";
+                    $context["esarp_products"] = twig_array_merge(($context["esarp_products"] ?? null), [$context["product"]]);
+                    // line 83
+                    echo "        ";
+                } else {
+                    // line 84
+                    echo "          ";
+                    $context["giyim_products"] = twig_array_merge(($context["giyim_products"] ?? null), [$context["product"]]);
+                    // line 85
+                    echo "        ";
+                }
+                // line 86
+                echo "      ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 87
+            echo "
+      ";
+            // line 88
+            $context["product_groups"] = [["items" =>             // line 89
+($context["giyim_products"] ?? null), "show_ad" => true], ["items" =>             // line 90
+($context["esarp_products"] ?? null), "show_ad" => false]];
+            // line 92
+            echo "
+      ";
+            // line 93
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["product_groups"] ?? null));
             $context['loop'] = [
               'parent' => $context['_parent'],
               'index0' => 0,
@@ -262,97 +301,147 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
                 $context['loop']['length'] = $length;
                 $context['loop']['last'] = 1 === $length;
             }
-            foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-                // line 80
-                echo "        <a href=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 80);
-                echo "\" class=\"uannes-row-card\">
-          <div class=\"uannes-row-media\">
-            ";
-                // line 82
-                $this->loadTemplate("common/product_badges.twig", "default/template/product/giyim.twig", 82)->display(twig_to_array(["badges" => ((twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", true, true, false, 82)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", false, false, false, 82), [])) : ([]))]));
-                // line 83
-                echo "            ";
-                $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 83));
-                $context['loop'] = [
-                  'parent' => $context['_parent'],
-                  'index0' => 0,
-                  'index'  => 1,
-                  'first'  => true,
-                ];
-                if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-                    $length = count($context['_seq']);
-                    $context['loop']['revindex0'] = $length - 1;
-                    $context['loop']['revindex'] = $length;
-                    $context['loop']['length'] = $length;
-                    $context['loop']['last'] = 1 === $length;
-                }
-                foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
-                    // line 84
-                    echo "            <img src=\"";
-                    echo $context["image"];
-                    echo "\" alt=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 84);
-                    echo "\" title=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 84);
-                    echo "\" class=\"uannes-row-img uannes-row-card__image";
-                    if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 84)) {
-                        echo " main-img is-active";
-                    } elseif ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 84) == 2)) {
-                        echo " hover-img";
-                    }
-                    echo "\" data-card-image=\"";
-                    echo twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 84);
-                    echo "\" />
-            ";
-                    ++$context['loop']['index0'];
-                    ++$context['loop']['index'];
-                    $context['loop']['first'] = false;
-                    if (isset($context['loop']['length'])) {
-                        --$context['loop']['revindex0'];
-                        --$context['loop']['revindex'];
-                        $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-                    }
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 86
-                echo "            ";
-                if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 86)) > 1)) {
-                    // line 87
-                    echo "            <div class=\"uannes-row-card__swatches\" aria-label=\"Görünüm seçenekleri\">
-              <button type=\"button\" class=\"uannes-row-card__swatch is-active\" data-image-index=\"0\" aria-label=\"Birinci görünüm\"></button>
-              <button type=\"button\" class=\"uannes-row-card__swatch\" data-image-index=\"1\" aria-label=\"İkinci görünüm\"></button>
-            </div>
-            <button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--prev\" data-direction=\"prev\" aria-label=\"Önceki görsel\">‹</button>
-            <button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--next\" data-direction=\"next\" aria-label=\"Sonraki görsel\">›</button>
-            ";
-                }
+            foreach ($context['_seq'] as $context["_key"] => $context["group"]) {
                 // line 94
-                echo "          </div>
-          <div class=\"uannes-row-info\"><span class=\"uannes-row-name\">";
-                // line 95
-                echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 95);
-                echo "</span></div>
-        </a>
-        ";
-                // line 97
-                if ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 97) == 6)) {
-                    // line 98
-                    echo "        <article class=\"uannes-row-ad-card\" aria-label=\"Yeni sezon duyurusu\">
-          <img src=\"image/catalog/uannes-banner-new-season.webp\" alt=\"Uannes yeni sezon seçkisi\" class=\"uannes-row-ad-card__image\" />
-          <div class=\"uannes-row-ad-card__content\">
-            <span class=\"uannes-row-ad-card__eyebrow\">UANNES</span>
-            <h2>YENİ SEZON</h2>
-            <p>Zamansız silüetler, özenle seçilmiş dokular.</p>
-          </div>
-        </article>
+                echo "        ";
+                if (twig_get_attribute($this->env, $this->source, $context["group"], "items", [], "any", false, false, false, 94)) {
+                    // line 95
+                    echo "        <div class=\"uannes-row-grid\"";
+                    if ( !twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 95)) {
+                        echo " style=\"margin-top: 60px;\"";
+                    }
+                    echo ">
+          ";
+                    // line 96
+                    $context['_parent'] = $context;
+                    $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["group"], "items", [], "any", false, false, false, 96));
+                    $context['loop'] = [
+                      'parent' => $context['_parent'],
+                      'index0' => 0,
+                      'index'  => 1,
+                      'first'  => true,
+                    ];
+                    if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                        $length = count($context['_seq']);
+                        $context['loop']['revindex0'] = $length - 1;
+                        $context['loop']['revindex'] = $length;
+                        $context['loop']['length'] = $length;
+                        $context['loop']['last'] = 1 === $length;
+                    }
+                    foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
+                        // line 97
+                        echo "          <a href=\"";
+                        echo twig_get_attribute($this->env, $this->source, $context["product"], "href", [], "any", false, false, false, 97);
+                        echo "\" class=\"uannes-row-card\">
+            <div class=\"uannes-row-media";
+                        // line 98
+                        if ((twig_get_attribute($this->env, $this->source, $context["product"], "is_esarp", [], "any", true, true, false, 98) && twig_get_attribute($this->env, $this->source, $context["product"], "is_esarp", [], "any", false, false, false, 98))) {
+                            echo " uannes-row-media--square";
+                        }
+                        echo "\">
+              ";
+                        // line 99
+                        $this->loadTemplate("common/product_badges.twig", "default/template/product/giyim.twig", 99)->display(twig_to_array(["badges" => ((twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", true, true, false, 99)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, $context["product"], "badges", [], "any", false, false, false, 99), [])) : ([]))]));
+                        // line 100
+                        echo "              ";
+                        $context['_parent'] = $context;
+                        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 100));
+                        $context['loop'] = [
+                          'parent' => $context['_parent'],
+                          'index0' => 0,
+                          'index'  => 1,
+                          'first'  => true,
+                        ];
+                        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                            $length = count($context['_seq']);
+                            $context['loop']['revindex0'] = $length - 1;
+                            $context['loop']['revindex'] = $length;
+                            $context['loop']['length'] = $length;
+                            $context['loop']['last'] = 1 === $length;
+                        }
+                        foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
+                            // line 101
+                            echo "              <img src=\"";
+                            echo $context["image"];
+                            echo "\" alt=\"";
+                            echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 101);
+                            echo "\" title=\"";
+                            echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 101);
+                            echo "\" class=\"uannes-row-img uannes-row-card__image";
+                            if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 101)) {
+                                echo " main-img is-active";
+                            } elseif ((twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 101) == 2)) {
+                                echo " hover-img";
+                            }
+                            echo "\" data-card-image=\"";
+                            echo twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 101);
+                            echo "\" />
+              ";
+                            ++$context['loop']['index0'];
+                            ++$context['loop']['index'];
+                            $context['loop']['first'] = false;
+                            if (isset($context['loop']['length'])) {
+                                --$context['loop']['revindex0'];
+                                --$context['loop']['revindex'];
+                                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                            }
+                        }
+                        $_parent = $context['_parent'];
+                        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
+                        $context = array_intersect_key($context, $_parent) + $_parent;
+                        // line 103
+                        echo "              ";
+                        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 103)) > 1)) {
+                            // line 104
+                            echo "              <div class=\"uannes-row-card__swatches\" aria-label=\"Görünüm seçenekleri\">
+                <button type=\"button\" class=\"uannes-row-card__swatch is-active\" data-image-index=\"0\" aria-label=\"Birinci görünüm\"></button>
+                <button type=\"button\" class=\"uannes-row-card__swatch\" data-image-index=\"1\" aria-label=\"İkinci görünüm\"></button>
+              </div>
+              <button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--prev\" data-direction=\"prev\" aria-label=\"Önceki görsel\">‹</button>
+              <button type=\"button\" class=\"uannes-row-card__arrow uannes-row-card__arrow--next\" data-direction=\"next\" aria-label=\"Sonraki görsel\">›</button>
+              ";
+                        }
+                        // line 111
+                        echo "            </div>
+            <div class=\"uannes-row-info\"><span class=\"uannes-row-name\">";
+                        // line 112
+                        echo twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 112);
+                        echo "</span></div>
+          </a>
+          ";
+                        // line 114
+                        if ((twig_get_attribute($this->env, $this->source, $context["group"], "show_ad", [], "any", false, false, false, 114) && (twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 114) == 6))) {
+                            // line 115
+                            echo "          <article class=\"uannes-row-ad-card\" aria-label=\"Yeni sezon duyurusu\">
+            <img src=\"image/catalog/uannes-banner-new-season.webp\" alt=\"Uannes yeni sezon seçkisi\" class=\"uannes-row-ad-card__image\" />
+            <div class=\"uannes-row-ad-card__content\">
+              <span class=\"uannes-row-ad-card__eyebrow\">UANNES</span>
+              <h2>YENİ SEZON</h2>
+              <p>Zamansız silüetler, özenle seçilmiş dokular.</p>
+            </div>
+          </article>
+          ";
+                        }
+                        // line 124
+                        echo "          ";
+                        ++$context['loop']['index0'];
+                        ++$context['loop']['index'];
+                        $context['loop']['first'] = false;
+                        if (isset($context['loop']['length'])) {
+                            --$context['loop']['revindex0'];
+                            --$context['loop']['revindex'];
+                            $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                        }
+                    }
+                    $_parent = $context['_parent'];
+                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+                    $context = array_intersect_key($context, $_parent) + $_parent;
+                    // line 125
+                    echo "        </div>
         ";
                 }
-                // line 107
-                echo "        ";
+                // line 127
+                echo "      ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
                 $context['loop']['first'] = false;
@@ -363,22 +452,21 @@ class __TwigTemplate_45fbdf82972d66b4be839352f33ad0ed extends Template
                 }
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 108
-            echo "      </div>
-      ";
+            // line 128
+            echo "      ";
         } else {
-            // line 110
+            // line 129
             echo "      <p class=\"giyim-empty-state\">Seçtiğiniz ölçütlere uygun ürün bulunamadı.</p>
       ";
         }
-        // line 112
+        // line 131
         echo "    </div>
   </div>
 </div>
 ";
-        // line 115
+        // line 134
         echo ($context["footer"] ?? null);
         echo "
 <script>
@@ -461,7 +549,7 @@ document.addEventListener('mouseout', function (event) {
      */
     public function getDebugInfo()
     {
-        return array (  382 => 115,  377 => 112,  373 => 110,  369 => 108,  355 => 107,  344 => 98,  342 => 97,  337 => 95,  334 => 94,  325 => 87,  322 => 86,  293 => 84,  275 => 83,  273 => 82,  267 => 80,  250 => 79,  247 => 78,  245 => 77,  234 => 69,  224 => 64,  218 => 63,  212 => 62,  206 => 61,  198 => 58,  195 => 57,  190 => 54,  175 => 52,  171 => 51,  162 => 48,  160 => 47,  157 => 46,  152 => 43,  137 => 41,  133 => 40,  124 => 37,  122 => 36,  119 => 35,  114 => 32,  99 => 30,  95 => 29,  86 => 26,  84 => 25,  75 => 19,  68 => 15,  63 => 12,  57 => 10,  51 => 8,  49 => 7,  41 => 2,  37 => 1,);
+        return array (  470 => 134,  465 => 131,  461 => 129,  458 => 128,  444 => 127,  440 => 125,  426 => 124,  415 => 115,  413 => 114,  408 => 112,  405 => 111,  396 => 104,  393 => 103,  364 => 101,  346 => 100,  344 => 99,  338 => 98,  333 => 97,  316 => 96,  309 => 95,  306 => 94,  289 => 93,  286 => 92,  284 => 90,  283 => 89,  282 => 88,  279 => 87,  273 => 86,  270 => 85,  267 => 84,  264 => 83,  261 => 82,  258 => 81,  253 => 80,  250 => 79,  247 => 78,  245 => 77,  234 => 69,  224 => 64,  218 => 63,  212 => 62,  206 => 61,  198 => 58,  195 => 57,  190 => 54,  175 => 52,  171 => 51,  162 => 48,  160 => 47,  157 => 46,  152 => 43,  137 => 41,  133 => 40,  124 => 37,  122 => 36,  119 => 35,  114 => 32,  99 => 30,  95 => 29,  86 => 26,  84 => 25,  75 => 19,  68 => 15,  63 => 12,  57 => 10,  51 => 8,  49 => 7,  41 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

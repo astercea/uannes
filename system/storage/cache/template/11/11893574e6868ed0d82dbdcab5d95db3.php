@@ -101,36 +101,12 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
         echo "\">";
         echo ($context["content_top"] ?? null);
         echo "
-      <section class=\"return-hero\">
-        <div class=\"return-hero__content\">
-          <span class=\"return-eyebrow\">Uannes Care</span>
-          <h1>";
-        // line 26
-        echo ($context["heading_title"] ?? null);
-        echo "</h1>
-          <p>";
-        // line 27
-        echo ($context["text_description"] ?? null);
-        echo "</p>
-        </div>
-        <div class=\"return-hero__steps\" aria-label=\"İade süreci\">
-          <div class=\"return-step\">
-            <span>01</span>
-            <strong>Talep</strong>
-          </div>
-          <div class=\"return-step\">
-            <span>02</span>
-            <strong>İnceleme</strong>
-          </div>
-          <div class=\"return-step\">
-            <span>03</span>
-            <strong>Sonuç</strong>
-          </div>
-        </div>
+      <section class=\"return-hero return-hero--title-only\">
+        <h1>İADE TALEBİ OLUŞTURUN</h1>
       </section>
 
       <form action=\"";
-        // line 45
+        // line 27
         echo ($context["action"] ?? null);
         echo "\" method=\"post\" enctype=\"multipart/form-data\" class=\"return-form\">
         <section class=\"return-panel\">
@@ -138,7 +114,7 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
             <span class=\"return-panel__icon\"><i class=\"fa fa-file-text-o\"></i></span>
             <div>
               <h2>";
-        // line 50
+        // line 32
         echo ($context["text_order"] ?? null);
         echo "</h2>
               <p>Sipariş ve iletişim bilgilerinizi eksiksiz girin.</p>
@@ -148,107 +124,107 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
           <div class=\"return-grid\">
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"firstname\" value=\"";
-        // line 57
+        // line 39
         echo ($context["firstname"] ?? null);
         echo "\" placeholder=\" \" id=\"input-firstname\" class=\"form-control\" />
               <label for=\"input-firstname\">";
-        // line 58
+        // line 40
         echo ($context["entry_firstname"] ?? null);
         echo "</label>
               ";
-        // line 59
+        // line 41
         if (($context["error_firstname"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_firstname"] ?? null);
             echo "</div>";
         }
-        // line 60
+        // line 42
         echo "            </div>
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"lastname\" value=\"";
-        // line 62
+        // line 44
         echo ($context["lastname"] ?? null);
         echo "\" placeholder=\" \" id=\"input-lastname\" class=\"form-control\" />
               <label for=\"input-lastname\">";
-        // line 63
+        // line 45
         echo ($context["entry_lastname"] ?? null);
         echo "</label>
               ";
-        // line 64
+        // line 46
         if (($context["error_lastname"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_lastname"] ?? null);
             echo "</div>";
         }
-        // line 65
+        // line 47
         echo "            </div>
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"email\" value=\"";
-        // line 67
+        // line 49
         echo ($context["email"] ?? null);
         echo "\" placeholder=\" \" id=\"input-email\" class=\"form-control\" />
               <label for=\"input-email\">";
-        // line 68
+        // line 50
         echo ($context["entry_email"] ?? null);
         echo "</label>
               ";
-        // line 69
+        // line 51
         if (($context["error_email"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_email"] ?? null);
             echo "</div>";
         }
-        // line 70
+        // line 52
         echo "            </div>
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"telephone\" value=\"";
-        // line 72
+        // line 54
         echo ($context["telephone"] ?? null);
         echo "\" placeholder=\" \" id=\"input-telephone\" class=\"form-control\" />
               <label for=\"input-telephone\">";
-        // line 73
+        // line 55
         echo ($context["entry_telephone"] ?? null);
         echo "</label>
               ";
-        // line 74
+        // line 56
         if (($context["error_telephone"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_telephone"] ?? null);
             echo "</div>";
         }
-        // line 75
+        // line 57
         echo "            </div>
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"order_id\" value=\"";
-        // line 77
+        // line 59
         echo ($context["order_id"] ?? null);
         echo "\" placeholder=\" \" id=\"input-order-id\" class=\"form-control\" />
               <label for=\"input-order-id\">";
-        // line 78
+        // line 60
         echo ($context["entry_order_id"] ?? null);
         echo "</label>
               ";
-        // line 79
+        // line 61
         if (($context["error_order_id"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_order_id"] ?? null);
             echo "</div>";
         }
-        // line 80
+        // line 62
         echo "            </div>
             <div class=\"return-field return-float\">
               <div class=\"input-group date return-date\">
                 <input type=\"text\" name=\"date_ordered\" value=\"";
-        // line 83
+        // line 65
         echo ($context["date_ordered"] ?? null);
         echo "\" placeholder=\" \" data-date-format=\"YYYY-MM-DD\" id=\"input-date-ordered\" class=\"form-control\" />
                 <label for=\"input-date-ordered\">";
-        // line 84
+        // line 66
         echo ($context["entry_date_ordered"] ?? null);
         echo "</label>
                 <span class=\"input-group-btn\">
                 <button type=\"button\" class=\"btn btn-default\" aria-label=\"";
-        // line 86
+        // line 68
         echo ($context["entry_date_ordered"] ?? null);
         echo "\"><i class=\"fa fa-calendar\"></i></button>
                 </span>
@@ -262,7 +238,7 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
             <span class=\"return-panel__icon\"><i class=\"fa fa-tag\"></i></span>
             <div>
               <h2>";
-        // line 97
+        // line 79
         echo ($context["text_product"] ?? null);
         echo "</h2>
               <p>Ürünü, iade nedenini ve ek detayları belirtin.</p>
@@ -272,119 +248,119 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
           <div class=\"return-grid\">
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"product\" value=\"";
-        // line 104
+        // line 86
         echo ($context["product"] ?? null);
         echo "\" placeholder=\" \" id=\"input-product\" class=\"form-control\" />
               <label for=\"input-product\">";
-        // line 105
+        // line 87
         echo ($context["entry_product"] ?? null);
         echo "</label>
               <input type=\"hidden\" name=\"product_id\" value=\"";
-        // line 106
+        // line 88
         echo ($context["product_id"] ?? null);
         echo "\" />
               ";
-        // line 107
+        // line 89
         if (($context["error_product"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_product"] ?? null);
             echo "</div>";
         }
-        // line 108
+        // line 90
         echo "            </div>
             <div class=\"return-field return-float required\">
               <input type=\"text\" name=\"model\" value=\"";
-        // line 110
+        // line 92
         echo ($context["model"] ?? null);
         echo "\" placeholder=\" \" id=\"input-model\" class=\"form-control\" />
               <label for=\"input-model\">";
-        // line 111
+        // line 93
         echo ($context["entry_model"] ?? null);
         echo "</label>
               ";
-        // line 112
+        // line 94
         if (($context["error_model"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_model"] ?? null);
             echo "</div>";
         }
-        // line 113
+        // line 95
         echo "            </div>
             <div class=\"return-field return-float\">
               <input type=\"text\" name=\"quantity\" value=\"";
-        // line 115
+        // line 97
         echo ($context["quantity"] ?? null);
         echo "\" placeholder=\" \" id=\"input-quantity\" class=\"form-control\" />
               <label for=\"input-quantity\">";
-        // line 116
+        // line 98
         echo ($context["entry_quantity"] ?? null);
         echo "</label>
             </div>
             <div class=\"return-field required return-field--wide\">
               <label>";
-        // line 119
+        // line 101
         echo ($context["entry_reason"] ?? null);
         echo "</label>
               <div class=\"return-choice-grid\">
                 ";
-        // line 121
+        // line 103
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["return_reasons"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["return_reason"]) {
-            // line 122
+            // line 104
             echo "                ";
-            $context["reason_name"] = twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 122);
-            // line 123
+            $context["reason_name"] = twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 104);
+            // line 105
             echo "                ";
-            if ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 123) == "Dead On Arrival")) {
-                // line 124
+            if ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 105) == "Dead On Arrival")) {
+                // line 106
                 echo "                ";
                 $context["reason_name"] = "Ürün çalışmıyor";
-                // line 125
+                // line 107
                 echo "                ";
-            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 125) == "Faulty, please supply details")) {
-                // line 126
+            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 107) == "Faulty, please supply details")) {
+                // line 108
                 echo "                ";
                 $context["reason_name"] = "Arızalı, lütfen detay belirtin";
-                // line 127
+                // line 109
                 echo "                ";
-            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 127) == "Order Error")) {
-                // line 128
+            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 109) == "Order Error")) {
+                // line 110
                 echo "                ";
                 $context["reason_name"] = "Sipariş hatası";
-                // line 129
+                // line 111
                 echo "                ";
-            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 129) == "Other, please supply details")) {
-                // line 130
+            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 111) == "Other, please supply details")) {
+                // line 112
                 echo "                ";
                 $context["reason_name"] = "Diğer, lütfen detay belirtin";
-                // line 131
+                // line 113
                 echo "                ";
-            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 131) == "Received Wrong Item")) {
-                // line 132
+            } elseif ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "name", [], "any", false, false, false, 113) == "Received Wrong Item")) {
+                // line 114
                 echo "                ";
                 $context["reason_name"] = "Yanlış ürün gönderildi";
-                // line 133
+                // line 115
                 echo "                ";
             }
-            // line 134
+            // line 116
             echo "                <label class=\"return-choice\">
                   ";
-            // line 135
-            if ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 135) == ($context["return_reason_id"] ?? null))) {
-                // line 136
+            // line 117
+            if ((twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 117) == ($context["return_reason_id"] ?? null))) {
+                // line 118
                 echo "                  <input type=\"radio\" name=\"return_reason_id\" value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 136);
+                echo twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 118);
                 echo "\" checked=\"checked\" />
                   ";
             } else {
-                // line 138
+                // line 120
                 echo "                  <input type=\"radio\" name=\"return_reason_id\" value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 138);
+                echo twig_get_attribute($this->env, $this->source, $context["return_reason"], "return_reason_id", [], "any", false, false, false, 120);
                 echo "\" />
                   ";
             }
-            // line 140
+            // line 122
             echo "                  <span>";
             echo ($context["reason_name"] ?? null);
             echo "</span>
@@ -394,53 +370,53 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['return_reason'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 143
+        // line 125
         echo "              </div>
               ";
-        // line 144
+        // line 126
         if (($context["error_reason"] ?? null)) {
             echo "<div class=\"text-danger\">";
             echo ($context["error_reason"] ?? null);
             echo "</div>";
         }
-        // line 145
+        // line 127
         echo "            </div>
             <div class=\"return-field required return-field--wide\">
               <label>";
-        // line 147
+        // line 129
         echo ($context["entry_opened"] ?? null);
         echo "</label>
               <div class=\"return-inline-choice\">
                 <label class=\"return-choice return-choice--inline\">
                   ";
-        // line 150
+        // line 132
         if (($context["opened"] ?? null)) {
-            // line 151
+            // line 133
             echo "                  <input type=\"radio\" name=\"opened\" value=\"1\" checked=\"checked\" />
                   ";
         } else {
-            // line 153
+            // line 135
             echo "                  <input type=\"radio\" name=\"opened\" value=\"1\" />
                   ";
         }
-        // line 155
+        // line 137
         echo "                  <span>";
         echo ($context["text_yes"] ?? null);
         echo "</span>
                 </label>
                 <label class=\"return-choice return-choice--inline\">
                   ";
-        // line 158
+        // line 140
         if ( !($context["opened"] ?? null)) {
-            // line 159
+            // line 141
             echo "                  <input type=\"radio\" name=\"opened\" value=\"0\" checked=\"checked\" />
                   ";
         } else {
-            // line 161
+            // line 143
             echo "                  <input type=\"radio\" name=\"opened\" value=\"0\" />
                   ";
         }
-        // line 163
+        // line 145
         echo "                  <span>";
         echo ($context["text_no"] ?? null);
         echo "</span>
@@ -449,17 +425,17 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
             </div>
             <div class=\"return-field return-float return-field--wide\">
               <textarea name=\"comment\" rows=\"7\" placeholder=\" \" id=\"input-comment\" class=\"form-control\">";
-        // line 168
+        // line 150
         echo ($context["comment"] ?? null);
         echo "</textarea>
               <label for=\"input-comment\">";
-        // line 169
+        // line 151
         echo ($context["entry_fault_detail"] ?? null);
         echo "</label>
             </div>
             <div class=\"return-field return-field--wide\">
               ";
-        // line 172
+        // line 154
         echo ($context["captcha"] ?? null);
         echo "
             </div>
@@ -468,62 +444,62 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
 
         <div class=\"return-actions\">
           <a href=\"";
-        // line 178
+        // line 160
         echo ($context["back"] ?? null);
         echo "\" class=\"btn btn-default return-back-btn\"><i class=\"fa fa-angle-left\"></i><span>";
         echo ($context["button_back"] ?? null);
         echo "</span></a>
           <div class=\"return-actions__submit\">
             ";
-        // line 180
+        // line 162
         if (($context["text_agree"] ?? null)) {
-            // line 181
+            // line 163
             echo "            <label class=\"return-agree\">
               ";
-            // line 182
+            // line 164
             if (($context["agree"] ?? null)) {
-                // line 183
+                // line 165
                 echo "              <input type=\"checkbox\" name=\"agree\" value=\"1\" checked=\"checked\" />
               ";
             } else {
-                // line 185
+                // line 167
                 echo "              <input type=\"checkbox\" name=\"agree\" value=\"1\" />
               ";
             }
-            // line 187
+            // line 169
             echo "              <span>";
             echo ($context["text_agree"] ?? null);
             echo "</span>
             </label>
             ";
         }
-        // line 190
+        // line 172
         echo "            <button type=\"submit\" class=\"btn btn-primary\">";
         echo ($context["button_submit"] ?? null);
-        echo " <i class=\"fa fa-angle-right\"></i></button>
+        echo "</button>
           </div>
         </div>
       </form>
       ";
-        // line 194
+        // line 176
         echo ($context["content_bottom"] ?? null);
         echo "</div>
     ";
-        // line 195
+        // line 177
         echo ($context["column_right"] ?? null);
         echo "</div>
 </div>
 <script type=\"text/javascript\"><!--
 \$('.date').datetimepicker({
 \tlanguage: '";
-        // line 199
+        // line 181
         echo ($context["datepicker"] ?? null);
         echo "',
 \tpickTime: false
 });
 //--></script>
 ";
-        // line 203
+        // line 185
         echo ($context["footer"] ?? null);
         echo "
 ";
@@ -550,7 +526,7 @@ class __TwigTemplate_1c72d975094d27491748f432603e43ef extends Template
      */
     public function getDebugInfo()
     {
-        return array (  527 => 203,  520 => 199,  513 => 195,  509 => 194,  501 => 190,  494 => 187,  490 => 185,  486 => 183,  484 => 182,  481 => 181,  479 => 180,  472 => 178,  463 => 172,  457 => 169,  453 => 168,  444 => 163,  440 => 161,  436 => 159,  434 => 158,  427 => 155,  423 => 153,  419 => 151,  417 => 150,  411 => 147,  407 => 145,  401 => 144,  398 => 143,  388 => 140,  382 => 138,  376 => 136,  374 => 135,  371 => 134,  368 => 133,  365 => 132,  362 => 131,  359 => 130,  356 => 129,  353 => 128,  350 => 127,  347 => 126,  344 => 125,  341 => 124,  338 => 123,  335 => 122,  331 => 121,  326 => 119,  320 => 116,  316 => 115,  312 => 113,  306 => 112,  302 => 111,  298 => 110,  294 => 108,  288 => 107,  284 => 106,  280 => 105,  276 => 104,  266 => 97,  252 => 86,  247 => 84,  243 => 83,  238 => 80,  232 => 79,  228 => 78,  224 => 77,  220 => 75,  214 => 74,  210 => 73,  206 => 72,  202 => 70,  196 => 69,  192 => 68,  188 => 67,  184 => 65,  178 => 64,  174 => 63,  170 => 62,  166 => 60,  160 => 59,  156 => 58,  152 => 57,  142 => 50,  134 => 45,  113 => 27,  109 => 26,  100 => 22,  97 => 21,  94 => 20,  91 => 19,  88 => 18,  85 => 17,  82 => 16,  79 => 15,  77 => 14,  73 => 13,  70 => 12,  64 => 10,  62 => 9,  58 => 7,  47 => 5,  43 => 4,  37 => 1,);
+        return array (  503 => 185,  496 => 181,  489 => 177,  485 => 176,  477 => 172,  470 => 169,  466 => 167,  462 => 165,  460 => 164,  457 => 163,  455 => 162,  448 => 160,  439 => 154,  433 => 151,  429 => 150,  420 => 145,  416 => 143,  412 => 141,  410 => 140,  403 => 137,  399 => 135,  395 => 133,  393 => 132,  387 => 129,  383 => 127,  377 => 126,  374 => 125,  364 => 122,  358 => 120,  352 => 118,  350 => 117,  347 => 116,  344 => 115,  341 => 114,  338 => 113,  335 => 112,  332 => 111,  329 => 110,  326 => 109,  323 => 108,  320 => 107,  317 => 106,  314 => 105,  311 => 104,  307 => 103,  302 => 101,  296 => 98,  292 => 97,  288 => 95,  282 => 94,  278 => 93,  274 => 92,  270 => 90,  264 => 89,  260 => 88,  256 => 87,  252 => 86,  242 => 79,  228 => 68,  223 => 66,  219 => 65,  214 => 62,  208 => 61,  204 => 60,  200 => 59,  196 => 57,  190 => 56,  186 => 55,  182 => 54,  178 => 52,  172 => 51,  168 => 50,  164 => 49,  160 => 47,  154 => 46,  150 => 45,  146 => 44,  142 => 42,  136 => 41,  132 => 40,  128 => 39,  118 => 32,  110 => 27,  100 => 22,  97 => 21,  94 => 20,  91 => 19,  88 => 18,  85 => 17,  82 => 16,  79 => 15,  77 => 14,  73 => 13,  70 => 12,  64 => 10,  62 => 9,  58 => 7,  47 => 5,  43 => 4,  37 => 1,);
     }
 
     public function getSourceContext()

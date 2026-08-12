@@ -180,88 +180,185 @@ class __TwigTemplate_512d5ef94b81afe4b53339265eecac09 extends Template
   }
 
 
+  /* ==========================================================================
+     VANNES HAKKINDA / ABOUT PAGE (Gucci Style Minimalist Luxury Design)
+     ========================================================================== */
+  .vannes-about-page {
+    background-color: #f8f6f2;
+    min-height: calc(100vh - var(--header-height, 80px) - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 110px 24px 150px;
+    width: 100%;
+  }
+
+  .vannes-about-container {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vannes-about-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #1a1a50;
+    margin: 0 0 45px 0;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .vannes-about-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.95;
+    color: #1a1a50;
+    text-align: center;
+  }
+
+  .vannes-about-content p,
+  .vannes-about-content div,
+  .vannes-about-content span {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.95 !important;
+    color: #1a1a50 !important;
+    margin-bottom: 28px !important;
+    text-align: center !important;
+  }
+
+  .vannes-about-content p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  @media (max-width: 768px) {
+    .vannes-about-page {
+      padding: 60px 20px 90px;
+      min-height: auto;
+    }
+    .vannes-about-title {
+      margin-bottom: 30px;
+      letter-spacing: 0.14em;
+    }
+    .vannes-about-content p,
+    .vannes-about-content div,
+    .vannes-about-content span {
+      font-size: 14px !important;
+      line-height: 1.85 !important;
+      margin-bottom: 22px !important;
+    }
+  }
 </style>
 ";
-        // line 148
+        // line 222
         echo ($context["header"] ?? null);
         echo "
 ";
-        // line 149
-        if (twig_in_filter(($context["information_id"] ?? null), [8, 11, 12, 13])) {
-            // line 150
+        // line 223
+        if ((($context["information_id"] ?? null) == 4)) {
+            // line 224
+            echo "<div id=\"information-about\" class=\"vannes-about-page\">
+  <div class=\"vannes-about-container\">
+    ";
+            // line 226
+            echo ($context["content_top"] ?? null);
+            echo "
+    <h1 class=\"vannes-about-title\">VANNES HAKKINDA</h1>
+    <div class=\"vannes-about-content\">
+      ";
+            // line 229
+            echo ($context["description"] ?? null);
+            echo "
+    </div>
+    ";
+            // line 231
+            echo ($context["content_bottom"] ?? null);
+            echo "
+  </div>
+</div>
+";
+        } elseif (twig_in_filter(        // line 234
+($context["information_id"] ?? null), [8, 11, 12, 13])) {
+            // line 235
             echo "<div id=\"information-information\" class=\"container\">
 </div>
 ";
         } else {
-            // line 153
+            // line 238
             echo "<div id=\"information-information\" class=\"container\">
   <ul class=\"breadcrumb\">
     ";
-            // line 155
+            // line 240
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["breadcrumbs"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["breadcrumb"]) {
-                // line 156
+                // line 241
                 echo "    <li><a href=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["breadcrumb"], "href", [], "any", false, false, false, 156);
+                echo twig_get_attribute($this->env, $this->source, $context["breadcrumb"], "href", [], "any", false, false, false, 241);
                 echo "\">";
-                echo twig_get_attribute($this->env, $this->source, $context["breadcrumb"], "text", [], "any", false, false, false, 156);
+                echo twig_get_attribute($this->env, $this->source, $context["breadcrumb"], "text", [], "any", false, false, false, 241);
                 echo "</a></li>
     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['breadcrumb'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 158
+            // line 243
             echo "  </ul>
   <div class=\"row\">";
-            // line 159
+            // line 244
             echo ($context["column_left"] ?? null);
             echo "
     ";
-            // line 160
+            // line 245
             if ((($context["column_left"] ?? null) && ($context["column_right"] ?? null))) {
-                // line 161
+                // line 246
                 echo "    ";
                 $context["class"] = "col-sm-6";
-                // line 162
+                // line 247
                 echo "    ";
             } elseif ((($context["column_left"] ?? null) || ($context["column_right"] ?? null))) {
-                // line 163
+                // line 248
                 echo "    ";
                 $context["class"] = "col-sm-9";
-                // line 164
+                // line 249
                 echo "    ";
             } else {
-                // line 165
+                // line 250
                 echo "    ";
                 $context["class"] = "col-sm-12";
-                // line 166
+                // line 251
                 echo "    ";
             }
-            // line 167
+            // line 252
             echo "    <div id=\"content\" class=\"";
             echo ($context["class"] ?? null);
             echo "\">";
             echo ($context["content_top"] ?? null);
             echo "
       <h1>";
-            // line 168
+            // line 253
             echo ($context["heading_title"] ?? null);
             echo "</h1>
       ";
-            // line 169
+            // line 254
             echo ($context["description"] ?? null);
             echo ($context["content_bottom"] ?? null);
             echo "</div>
     ";
-            // line 170
+            // line 255
             echo ($context["column_right"] ?? null);
             echo "</div>
 </div>
 ";
         }
-        // line 173
+        // line 258
         echo ($context["footer"] ?? null);
     }
 
@@ -286,7 +383,7 @@ class __TwigTemplate_512d5ef94b81afe4b53339265eecac09 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  265 => 173,  259 => 170,  254 => 169,  250 => 168,  243 => 167,  240 => 166,  237 => 165,  234 => 164,  231 => 163,  228 => 162,  225 => 161,  223 => 160,  219 => 159,  216 => 158,  205 => 156,  201 => 155,  197 => 153,  192 => 150,  190 => 149,  186 => 148,  37 => 1,);
+        return array (  362 => 258,  356 => 255,  351 => 254,  347 => 253,  340 => 252,  337 => 251,  334 => 250,  331 => 249,  328 => 248,  325 => 247,  322 => 246,  320 => 245,  316 => 244,  313 => 243,  302 => 241,  298 => 240,  294 => 238,  289 => 235,  287 => 234,  281 => 231,  276 => 229,  270 => 226,  266 => 224,  264 => 223,  260 => 222,  37 => 1,);
     }
 
     public function getSourceContext()

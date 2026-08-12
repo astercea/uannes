@@ -114,7 +114,7 @@ class __TwigTemplate_0b58743317210b5427240baa93dd9c9a extends Template
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['style'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 32
-        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=153\" rel=\"stylesheet\">
+        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=192\" rel=\"stylesheet\">
 ";
         // line 33
         $context['_parent'] = $context;
@@ -608,7 +608,7 @@ body.is-product-page #header-area.is-scrolled {
   z-index: 10600;
   width: 282px;
   padding: 8px;
-  background: #f8f6f2;
+  background: #fdfbf7;
   border: 1px solid rgba(26, 26, 80, 0.22);
   border-radius: 0;
   box-shadow: 0 12px 24px rgba(26, 26, 80, 0.12);

@@ -11,6 +11,7 @@ class ControllerBlogBlog extends Controller {
 		$this->load->model('tool/image');
 
 		$page = isset($this->request->get['page']) ? (int)$this->request->get['page'] : 1;
+		$order = isset($this->request->get['order']) ? $this->request->get['order'] : 'DESC';
 		$limit = (int)$this->config->get('module_blog_limit');
 
 		if ($limit < 1) {
@@ -34,20 +35,29 @@ class ControllerBlogBlog extends Controller {
 
 		$data['categories'] = array();
 		$data['categories'][] = array(
-			'name' => $this->language->get('text_all'),
-			'href' => $this->url->link('blog/blog'),
+			'id'     => 0,
+			'name'   => $this->language->get('text_all'),
+			'href'   => $this->url->link('blog/blog'),
 			'active' => true
 		);
 
 		foreach ($this->model_blog_blog->getCategories() as $category) {
 			$data['categories'][] = array(
+				'id'     => $category['blog_category_id'],
 				'name'   => $category['name'],
 				'href'   => $this->url->link('blog/category', 'blog_category_id=' . $category['blog_category_id']),
 				'active' => false
 			);
 		}
 
+		$data['selected_category'] = 0;
+		$data['selected_order'] = $order;
+		$data['filter_action'] = $this->url->link('blog/blog');
+		$data['blog_url'] = $this->url->link('blog/blog');
+
 		$filter_data = array(
+			'sort'  => 'b.date_published',
+			'order' => $order,
 			'start' => ($page - 1) * $limit,
 			'limit' => $limit
 		);
@@ -61,7 +71,7 @@ class ControllerBlogBlog extends Controller {
 		$pagination->total = $post_total;
 		$pagination->page = $page;
 		$pagination->limit = $limit;
-		$pagination->url = $this->url->link('blog/blog', 'page={page}');
+		$pagination->url = $this->url->link('blog/blog', 'order=' . $order . '&page={page}');
 
 		$data['pagination'] = $pagination->render();
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($post_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($post_total - $limit)) ? $post_total : ((($page - 1) * $limit) + $limit), $post_total, ceil($post_total / $limit));

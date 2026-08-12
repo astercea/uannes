@@ -90,7 +90,7 @@ class __TwigTemplate_a406412b753848f6e16d3cea04b5ceac extends Template
                 if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 32)) {
                     echo "image/catalog/marka_hikayesi_card1.png";
                 } else {
-                    echo twig_get_attribute($this->env, $this->source, $context["banner"], "image", [], "any", false, false, false, 32);
+                    echo "image/catalog/esarp_banner_v3.jpg";
                 }
                 echo "\" alt=\"";
                 echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 32);

@@ -1,0 +1,1666 @@
+﻿<style>
+/* Hide 3rd slideshow banner on homepage because it's replaced by Tri-Grid */
+.is-homepage .home-banner-stack__item--3 {
+  display: none;
+}
+
+
+
+</style>
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="ltr" lang="tr" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="tr" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="tr">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Uannes</title>
+<base href="http://localhost/uannes.dijicrea.net/" />
+<meta name="description" content="My Store" />
+
+<script src="catalog/view/javascript/jquery/jquery-3.7.1.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" type="text/css" />
+<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+<link href="catalog/view/javascript/jquery/swiper/css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="catalog/view/javascript/jquery/swiper/css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=156" rel="stylesheet">
+<script src="catalog/view/javascript/jquery/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/common.js?v=20260810-cart-notice" type="text/javascript"></script>
+<link href="http://localhost/uannes.dijicrea.net/image/catalog/uanneslogo.png" rel="icon" />
+<script>
+document.addEventListener('click', function(e) {
+  var modal = document.querySelector('.modal.in, .modal.show');
+  if (!modal) return;
+  var content = modal.querySelector('.modal-content');
+  if (content && !content.contains(e.target)) {
+    $(modal).modal('hide');
+  }
+});
+</script>
+<style>
+/* === MOVED FROM HEADER.TWIG === */
+
+  .modal { z-index: 10600; top: 80px; bottom: 0; height: auto; padding-top: 0; }
+  .modal.in, .modal.show { display: flex; align-items: center; justify-content: center; }
+  .modal-dialog { margin: 0 auto; max-width: 800px; width: 90%; min-height: auto; transform: translateY(0); }
+  .modal-content { max-height: 75vh; overflow-y: auto; }
+
+  /* Modal Ãst BaÅlÄ±k (Modal Header Title) */
+  .modal-title,
+  #modal-agree .modal-title,
+  #modal-agree .modal-header h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a50;
+  }
+
+  /* Modal GÃ¶vdesindeki Ä°lk BaÅlÄ±ÄÄ± ve Breadcrumb'Ä± Gizle */
+  .modal-body .breadcrumb,
+  .modal-body > h1:first-child,
+  .modal-body #content > h1:first-child,
+  .modal-body h1:first-of-type,
+  .kvkk-cookies-container h1 {
+    display: none;
+  }
+
+  /* Metin Ä°Ã§indeki Kalan BaÅlÄ±klar (BÃ¼yÃ¼tÃ¼lmÃ¼Å ve Tam Boyut Rakamlar) */
+  .modal-body h2,
+  .modal-body h3,
+  .modal-body h4,
+  .modal-body h5,
+  .modal-body h6,
+  #modal-agree .modal-body h2,
+  #modal-agree .modal-body h3,
+  #modal-agree .modal-body h4,
+  #modal-agree .modal-body h5,
+  #modal-agree .modal-body h6,
+  .kvkk-cookies-container h2,
+  .kvkk-cookies-container h3,
+  .kvkk-cookies-container h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a50;
+    margin-top: 1.6rem;
+    margin-bottom: 0.6rem;
+    text-align: left;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+  }
+
+  /* Metin Ä°Ã§indeki BaÅlÄ±k Olmayan DÃ¼z YazÄ±lar (DM Sans, 13.5px, #1a1a50) */
+  .modal-body,
+  .modal-body p,
+  .modal-body div:not(.row):not([class*="col-"]),
+  .modal-body span,
+  .modal-body td,
+  .modal-body th,
+  .kvkk-cookies-container p,
+  .kvkk-cookies-container div {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: #1a1a50;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  /* DÃ¼zen & SÃ¼tun SÄ±fÄ±rlama (Maddelerin saÄa kaymasÄ±nÄ± Ã¶nleme) */
+  .modal-body .row,
+  .modal-body [class*="col-"] {
+    display: block;
+    width: 100%;
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Alt Alta SÄ±ralanan Maddeler (Listeler) - Sol tarafa hizalÄ± */
+  .modal-body ul,
+  .modal-body ol {
+    display: block;
+    width: 100%;
+    float: none;
+    clear: both;
+    margin: 12px 0 16px 0;
+    padding-left: 20px;
+    text-align: left;
+    list-style: disc outside;
+  }
+
+  .modal-body li {
+    display: list-item;
+    width: 100%;
+    float: none;
+    clear: both;
+    text-align: left;
+    margin-bottom: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: #1a1a50;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.6;
+  }
+/* Kesin Header Sabitleme (Scroll sorunu iin) - Sticky ile doYal akY */
+html, body {
+  overflow-x: clip;
+}
+#header-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10500;
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+  border-bottom: none;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+#header-area::before,
+#header-area::after,
+#header-area * {
+  box-shadow: none;
+}
+
+/* Diğer Tüm Sayfalarda Header sayfanın en üstünde başlar (Krem #f8f6f2), scroll edildikçe ekranla birlikte gelir (sticky) */
+body:not(.is-homepage):not(.is-product-page) #header-area,
+body:not(.is-homepage):not(.is-product-page) #header-area.is-scrolled {
+  position: sticky;
+  top: 0;
+  z-index: 10500;
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+  transition: none;
+}
+
+body {
+  background-color: #f8f6f2;
+}
+
+/* Ana Sayfada (body.is-homepage) Header sabit süzülen katmandır (fixed) */
+body.is-homepage #header-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10500;
+  background-color: rgba(248, 246, 242, 0);
+  box-shadow: none;
+  border: none;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+body.is-homepage #header-area.is-scrolled {
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+body.header-search-open #header-area,
+body.mega-menu-open #header-area {
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+  border-bottom: none;
+}
+
+/* Arama Paneli Zorunlu YÃ¼kseklik (Uzatma) */
+.header-search-overlay {
+  height: 35vh;
+  min-height: 280px;
+  padding-top: 5vh;
+  justify-content: center;
+  z-index: 10400;
+  top: var(--header-height, 85px);
+  background-color: #f8f6f2;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none; /* default, JS ile aÃ§Ä±lÄ±nca block olacak */
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px; 
+  text-align: left;
+  background-color: rgba(26, 26, 80, 0.75); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  background-clip: padding-box;
+}
+
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 5px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143; 
+  color: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: rgba(255,255,255,0.1); 
+  color: #fff;
+}
+
+button.btn.p-0.border-0.bg-transparent.dropdown-toggle {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Ürün sayfasında galeri ilk ekranda header'ın arkasından görünür. */
+body.is-product-page #header-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10500;
+  background-color: rgba(248, 246, 242, 0);
+  box-shadow: none;
+  border: none;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+body.is-product-page #header-area.is-scrolled {
+  background-color: #f8f6f2;
+  box-shadow: none;
+  border: none;
+}
+
+</style>
+</head>
+  <body class=" is-homepage">
+<header id="header-area">
+  <div class="container">
+    <div class="header-inner">
+      
+      <!-- Sol: Menü Bağlantıları (Eşarp, Giyim, Tüm Ürünler) -->
+      <div class="header-left">
+        <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobile-navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="index.php?route=product/esarp" class="header-nav-link">
+          <span>Eşarp</span>
+        </a>
+        <a href="index.php?route=product/giyim" class="header-nav-link">
+          <span>Giyim</span>
+        </a>
+        <a href="index.php?route=product/tum_urunler" class="header-nav-link">
+          <span>Tüm Ürünler</span>
+        </a>
+      </div>
+
+      <!-- Orta: Logo + arama paneli -->
+      <div id="logo" class="header-center">
+                  <a href="http://localhost/uannes.dijicrea.net/index.php?route=common/home" class="header-logo-link">
+            <img src="http://localhost/uannes.dijicrea.net/image/catalog/uanneslogo.png" title="Uannes" alt="Uannes" class="img-fluid header-logo-img">
+          </a>
+              </div>
+
+      <!-- Sağ: Arama, Giriş Yap, Sepet -->
+      <div class="header-right">
+        <button type="button" id="search-toggle" class="header-nav-link" aria-label="Ara">
+          <span>Ara</span>
+        </button>
+
+                  <a href="http://localhost/uannes.dijicrea.net/index.php?route=account/login" class="header-nav-link">
+            <span>Giriş Yap</span>
+          </a>
+        
+        <div class="header-cart"><div id="cart" class="btn-group btn-block">
+  <button type="button" id="cart-toggle" class="header-nav-link cart-text-btn" aria-label="Sepet">
+    <span>Sepet</span>
+    <span id="cart-total" class="cart-count-inline">
+                  0
+    </span>
+  </button>
+
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-sidebar-header">
+      <h2 class="cart-sidebar-title">SEPETİM</h2>
+      <button type="button" class="close-cart" aria-label="Kapat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="cart-sidebar-content">
+            <div class="cart-sidebar-empty">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 15px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <p style="font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300;">Alışveriş sepetiniz boş!</p>
+      </div>
+          </div>
+      </div>
+</div>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<script>
+(function () {
+  function syncUannesCartMobileLayout() {
+    var viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+    var screenWidth = window.screen && window.screen.width ? window.screen.width : viewportWidth;
+    var hasTouchInput = (navigator.maxTouchPoints || 0) > 0 || window.matchMedia('(pointer: coarse)').matches;
+    var isMobileDeviceProfile = /Android|iPhone|iPad|iPod|Mobile|Tablet|Silk|Kindle|PlayBook/i.test(navigator.userAgent);
+    var isCompactDevice = viewportWidth <= 900 || (hasTouchInput && isMobileDeviceProfile && screenWidth <= 1366);
+    var sidebar = document.getElementById('cartSidebar');
+
+    document.documentElement.classList.toggle('uannes-cart-mobile', isCompactDevice);
+
+    if (!sidebar) {
+      return;
+    }
+
+    var header = sidebar.querySelector('.cart-sidebar-header');
+    var footer = sidebar.querySelector('.cart-sidebar-footer');
+    sidebar.style.setProperty('--uannes-cart-header-height', (header ? header.offsetHeight : 86) + 'px');
+    sidebar.style.setProperty('--uannes-cart-footer-height', (footer ? footer.offsetHeight : 220) + 'px');
+  }
+
+  window.uannesSyncCartMobileLayout = syncUannesCartMobileLayout;
+  syncUannesCartMobileLayout();
+  window.addEventListener('resize', syncUannesCartMobileLayout);
+  window.addEventListener('orientationchange', syncUannesCartMobileLayout);
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncUannesCartMobileLayout);
+  }
+}());
+
+document.addEventListener('DOMContentLoaded', function() {
+  const cartToggle = document.getElementById('cart-toggle');
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+
+  function updateCartBadgeFromHtml(tempRoot) {
+    const newBadge = tempRoot.querySelector('#cart #cart-total') || tempRoot.querySelector('#cart-total');
+    const liveBadge = document.querySelector('#cart #cart-total');
+    if (newBadge && liveBadge) {
+      liveBadge.textContent = newBadge.textContent.trim();
+    }
+  }
+
+  function updateCartSidebar() {
+    fetch('index.php?route=common/cart/info')
+      .then(res => res.text())
+      .then(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+
+        const content = tempDiv.querySelector('.cart-sidebar-content');
+        if (content && cartSidebar) {
+          const liveContent = cartSidebar.querySelector('.cart-sidebar-content');
+          if (liveContent) {
+            liveContent.innerHTML = content.innerHTML;
+          }
+
+          const freshFooter = tempDiv.querySelector('.cart-sidebar-footer');
+          const liveFooter = cartSidebar.querySelector('.cart-sidebar-footer');
+          if (freshFooter && liveFooter) {
+            liveFooter.outerHTML = freshFooter.outerHTML;
+          } else if (freshFooter) {
+            cartSidebar.insertAdjacentHTML('beforeend', freshFooter.outerHTML);
+          } else if (liveFooter) {
+            liveFooter.remove();
+          }
+        }
+
+        updateCartBadgeFromHtml(tempDiv);
+        if (window.uannesSyncCartMobileLayout) {
+          window.uannesSyncCartMobileLayout();
+        }
+      });
+  }
+
+  if (cartToggle && cartSidebar && cartOverlay) {
+  cartToggle.addEventListener('click', () => {
+    updateCartSidebar();
+    cartSidebar.classList.add('open');
+    cartOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+  }
+
+  function shouldReleaseBodyScroll() {
+    const searchOverlay = document.getElementById('header-search-overlay');
+    const searchOpen = searchOverlay && searchOverlay.classList.contains('is-open');
+    const megaMenu = document.getElementById('mega-menu');
+    const menuOpen = megaMenu && megaMenu.classList.contains('is-open');
+    return !searchOpen && !menuOpen;
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.close-cart') || e.target === cartOverlay) {
+      cartSidebar.classList.remove('open');
+      cartOverlay.classList.remove('active');
+      if (shouldReleaseBodyScroll()) {
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  if(typeof cart !== 'undefined') {
+    const originalAdd = cart.add;
+    cart.add = function(product_id, quantity) {
+      quantity = quantity || 1;
+      originalAdd(product_id, quantity);
+      setTimeout(updateCartSidebar, 500);
+    };
+
+    const originalRemove = cart.remove;
+    cart.remove = function(key) {
+      originalRemove(key);
+      setTimeout(updateCartSidebar, 500);
+    };
+
+    const originalUpdate = cart.update;
+    cart.update = function(key, quantity) {
+      originalUpdate(key, quantity);
+      setTimeout(updateCartSidebar, 500);
+    };
+  }
+
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.cart-sidebar-qty-btn');
+    if (!btn) return;
+
+    const control = btn.closest('.cart-sidebar-qty-control');
+    if (!control) return;
+
+    e.preventDefault();
+    const key = control.getAttribute('data-cart-key');
+    let qty = parseInt(control.getAttribute('data-qty'), 10) || 1;
+    const action = btn.getAttribute('data-action');
+
+    if (action === 'increase') {
+      qty += 1;
+    } else if (action === 'decrease') {
+      qty -= 1;
+    }
+
+    if (qty < 1) {
+      if (typeof cart !== 'undefined' && cart.remove) {
+        cart.remove(key);
+      }
+      return;
+    }
+
+    control.setAttribute('data-qty', qty);
+    const valueEl = control.querySelector('.cart-sidebar-qty-value');
+    if (valueEl) valueEl.textContent = qty;
+
+    if (typeof cart !== 'undefined' && cart.update) {
+      cart.update(key, qty);
+    }
+  });
+
+  $(document).on('uannes:cartUpdated', updateCartSidebar);
+});
+
+
+</script>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+/* Account navigation */
+#header-area .header-account-menu {
+  position: relative;
+}
+
+#header-area .header-account-toggle {
+  gap: 6px;
+}
+
+#header-area .account-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 10600;
+  width: 282px;
+  padding: 8px;
+  background: #f8f6f2;
+  border: 1px solid rgba(26, 26, 80, 0.22);
+  border-radius: 0;
+  box-shadow: 0 12px 24px rgba(26, 26, 80, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transform-origin: top right;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+#header-area .account-dropdown[hidden] {
+  display: none !important;
+}
+
+#header-area .header-account-menu.is-open .account-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#header-area .account-dropdown__links {
+  padding: 7px 0;
+}
+
+#header-area .account-dropdown__intro {
+  padding: 12px;
+  border-bottom: 1px solid rgba(26, 26, 80, 0.18);
+  color: #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+}
+
+#header-area .account-dropdown__links a,
+#header-area .account-dropdown__footer a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 0;
+  color: #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+#header-area .account-dropdown__links a:hover,
+#header-area .account-dropdown__links a:focus {
+  background: #ece8df;
+  color: #1a1a50;
+}
+
+#header-area .account-dropdown__links i,
+#header-area .account-dropdown__footer i {
+  width: 14px;
+  color: #1a1a50;
+  text-align: center;
+}
+
+#header-area .account-dropdown__footer {
+  padding-top: 7px;
+  border-top: 1px solid rgba(26, 26, 80, 0.18);
+}
+
+#header-area .account-dropdown__footer a,
+#header-area .account-dropdown__footer i {
+  color: #b13a3a;
+}
+
+#header-area .account-dropdown__footer a:hover,
+#header-area .account-dropdown__footer a:focus {
+  background: #f1e5df;
+}
+
+/* Kept next to the header so cached theme styles cannot move the mobile logo. */
+@media (max-width: 768px) {
+  #header-area {
+    height: 68px !important;
+    min-height: 68px !important;
+    padding: 8px 0 !important;
+  }
+
+  #header-area > .container {
+    display: flex !important;
+    align-items: center !important;
+    height: 52px !important;
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+
+  #header-area .header-inner {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+  }
+
+  #header-area .header-center {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    z-index: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: max-content !important;
+    max-width: 38vw !important;
+    margin: 0 !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  #header-area .header-left,
+  #header-area .header-right {
+    position: relative !important;
+    z-index: 1 !important;
+    align-items: center !important;
+    height: 52px !important;
+  }
+
+  #header-area .header-right { margin-left: auto !important; }
+  #header-area .header-right {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    gap: 0 !important;
+  }
+  #header-area .header-right .header-nav-link,
+  #header-area .header-cart #cart > .header-nav-link.cart-text-btn {
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+  #header-area #search-toggle::before,
+  #header-area .header-account-toggle::before,
+  #header-area .header-cart #cart-toggle::before {
+    font-size: 15px !important;
+  }
+  #header-area .header-logo-link { display: inline-flex !important; align-items: center !important; justify-content: center !important; }
+  #header-area .header-logo-img { display: block !important; width: auto !important; max-width: min(30vw, 118px) !important; max-height: 40px !important; }
+
+  #header-area .account-dropdown {
+    position: fixed;
+    top: 62px;
+    right: 12px;
+    width: min(300px, calc(100vw - 24px));
+  }
+
+  #header-area .header-account-toggle::before {
+    content: '\f2bd';
+    font-family: 'FontAwesome';
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  #mobile-navigation .mobile-navigation__panel > a {
+    padding: 20px 0 !important;
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+  }
+
+  #mobile-navigation .mobile-navigation__header {
+    font-size: 17px !important;
+  }
+
+  #mobile-navigation .mobile-navigation__close {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #header-area .header-logo-img { max-width: 29vw !important; }
+}
+</style>
+
+<aside id="mobile-navigation" class="mobile-navigation" aria-hidden="true">
+  <div class="mobile-navigation__backdrop" data-mobile-menu-close></div>
+  <nav class="mobile-navigation__panel" aria-label="Mobil menü">
+    <div class="mobile-navigation__header" style="font-size: 17px !important;">
+      <span>Menü</span>
+      <button type="button" class="mobile-navigation__close" style="font-size: 30px !important;" aria-label="Menüyü kapat" data-mobile-menu-close>&times;</button>
+    </div>
+    <a href="index.php?route=product/esarp" style="font-size: 18px !important;">Eşarp</a>
+    <a href="index.php?route=product/category&path=67" style="font-size: 18px !important;">Giyim</a>
+    <a href="index.php?route=product/tum_urunler" style="font-size: 18px !important;">Tüm Ürünler</a>
+  </nav>
+</aside>
+
+<div id="header-search-overlay" class="header-search-overlay" aria-hidden="true">
+  <button type="button" id="search-close" class="header-search-close" aria-label="Kapat">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  
+  <div id="search" class="mega-search-wrapper" style="width: 100%; max-width: 400px; text-align: left; padding: 0 20px;">
+    <div class="mega-search-form" style="display: flex; align-items: center; border-bottom: 1px solid #1a1a50; margin-bottom: 25px; width: 100%;">
+      <button type="button" class="search-icon-btn" style="margin-right: 12px; color: #1a1a50; background: transparent; border: none; cursor: pointer; padding: 5px 0; display: flex; align-items: center;">
+         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <input type="text" name="search" value="" placeholder="Search..." class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
+    </div>
+    
+    <div class="mega-search-links" style="display: flex; flex-direction: column; gap: 10px; padding-left: 0;">
+      <a href="index.php?route=product/search&search=Yenidoğan" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Yenidoğan Bebek</a>
+      <a href="index.php?route=product/search&search=Kız+Bebek" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Kız Bebek Koleksiyonu</a>
+      <a href="index.php?route=product/search&search=Erkek+Bebek" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Erkek Bebek Koleksiyonu</a>
+      <a href="index.php?route=product/search&search=Aksesuarlar" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Aksesuarlar</a>
+    </div>
+  </div>
+</div>
+<div id="header-search-backdrop" class="header-search-backdrop" aria-hidden="true"></div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const headerArea = document.getElementById('header-area');
+  const megaMenu = document.getElementById('mega-menu');
+  const openBtn = document.getElementById('menu-toggle');
+  const closeBtn = megaMenu ? megaMenu.querySelector('.mega-menu__close') : null;
+  const overlay = document.getElementById('menuOverlay');
+  const searchBtn = document.getElementById('search-toggle');
+  const searchOverlay = document.getElementById('header-search-overlay');
+  const searchBackdrop = document.getElementById('header-search-backdrop');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = searchOverlay ? searchOverlay.querySelector('input[name="search"]') : null;
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNavigation = document.getElementById('mobile-navigation');
+  const accountMenu = document.querySelector('.header-account-menu');
+  const accountToggle = document.querySelector('.header-account-toggle');
+  const accountDropdown = document.getElementById('account-dropdown');
+
+  function closeAccountMenu() {
+    if (!accountMenu || !accountToggle || !accountDropdown) return;
+    accountMenu.classList.remove('is-open');
+    accountToggle.setAttribute('aria-expanded', 'false');
+    accountDropdown.setAttribute('aria-hidden', 'true');
+    accountDropdown.hidden = true;
+  }
+
+  function openAccountMenu() {
+    if (!accountMenu || !accountToggle || !accountDropdown) return;
+    accountDropdown.hidden = false;
+    accountMenu.classList.add('is-open');
+    accountToggle.setAttribute('aria-expanded', 'true');
+    accountDropdown.setAttribute('aria-hidden', 'false');
+  }
+
+  if (accountMenu && accountToggle && accountDropdown) {
+    accountToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (accountMenu.classList.contains('is-open')) {
+        closeAccountMenu();
+      } else {
+        openAccountMenu();
+      }
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!accountMenu.contains(event.target)) closeAccountMenu();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeAccountMenu();
+        accountToggle.focus();
+      }
+    });
+
+  }
+
+  document.querySelectorAll('.account-page .form-group').forEach(function(group) {
+    const control = group.querySelector('.form-control');
+    if (!control || control.type === 'hidden') return;
+
+    group.classList.add('form-group--floating');
+    control.setAttribute('data-original-placeholder', control.getAttribute('placeholder') || '');
+    control.setAttribute('placeholder', '');
+
+    function syncFloatingLabel() {
+      const value = typeof control.value === 'string' ? control.value.trim() : '';
+      group.classList.toggle('is-filled', value !== '' && value !== '0');
+    }
+
+    control.addEventListener('input', syncFloatingLabel);
+    control.addEventListener('change', syncFloatingLabel);
+    syncFloatingLabel();
+    window.setTimeout(syncFloatingLabel, 600);
+  });
+  
+  if (searchInput) {
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        doMegaSearch();
+      }
+    });
+  }
+
+  const searchIconBtn = document.querySelector('.search-icon-btn');
+  if (searchIconBtn) {
+    searchIconBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      doMegaSearch();
+    });
+  }
+
+
+
+
+
+  // Banner Kartları Ekranda İlk Göründüğünde Animasyonun Tetiklenmesi (.is-in-view)
+  if ('IntersectionObserver' in window) {
+    const bannerObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    document.querySelectorAll('.home-banner-stack__item, .tri-grid-item').forEach(item => {
+      bannerObserver.observe(item);
+    });
+  } else {
+    document.querySelectorAll('.home-banner-stack__item, .tri-grid-item').forEach(item => {
+      item.classList.add('is-in-view');
+    });
+  }
+
+
+  // 1. ve 2. Banner Kartlarındaki Butonların Anlık Sticky Scroll Hareketi (Alt sınırdan 20px önce durur)
+  function handleBannerButtonScroll() {
+    const items = document.querySelectorAll('.home-banner-stack__item');
+    items.forEach((item, index) => {
+      if (index > 1) return;
+      const btn = item.querySelector('.home-banner-stack__btn');
+      const media = item.querySelector('.home-banner-stack__media');
+      if (!btn || !media) return;
+
+      const mediaRect = media.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Kart ekranda göründüğü sürece
+      if (mediaRect.top < windowHeight && mediaRect.bottom > 0) {
+        const mediaHeight = media.offsetHeight;
+        const btnTopInitial = btn.offsetTop;
+        const btnHeight = btn.offsetHeight;
+
+        // Kartın en altına 20px kala duracağı maksimum offset
+        const maxTranslate = Math.max(0, mediaHeight - btnTopInitial - btnHeight - 20);
+
+        // Ekranın üstünden 140px aşağıda sabit süzülme hedefi
+        const targetViewportTop = 140;
+        const currentBtnViewportTop = mediaRect.top + btnTopInitial;
+        
+        let translateY = targetViewportTop - currentBtnViewportTop;
+
+        if (translateY < 0) {
+          translateY = 0;
+        }
+        if (translateY > maxTranslate) {
+          translateY = maxTranslate;
+        }
+
+        btn.style.transform = `translateY(${translateY}px)`;
+        btn.style.transition = 'none';
+      } else {
+        btn.style.transform = 'translateY(0px)';
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleBannerButtonScroll, { passive: true });
+  window.addEventListener('resize', handleBannerButtonScroll, { passive: true });
+  handleBannerButtonScroll();
+
+  function doMegaSearch() {
+    var baseElem = document.querySelector('base');
+    var url = (baseElem ? baseElem.href : '') + 'index.php?route=product/search';
+    if (searchInput && searchInput.value) {
+      url += '&search=' + encodeURIComponent(searchInput.value);
+    }
+    window.location = url;
+  }
+
+  function syncHeaderHeight() {
+    if (!headerArea) return;
+    document.documentElement.style.setProperty('--header-height', headerArea.offsetHeight + 'px');
+  }
+
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('scroll', syncHeaderHeight);
+
+
+  /* Scroll — header arka plan geçişi */
+  function onScroll() {
+    if (!headerArea) return;
+    if (window.scrollY > 0) {
+      headerArea.classList.add('is-scrolled');
+    } else {
+      headerArea.classList.remove('is-scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  function isMenuOpen() {
+    return megaMenu && megaMenu.classList.contains('is-open');
+  }
+
+  function isAnotherScrollLockActive() {
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartOpen = cartSidebar && cartSidebar.classList.contains('open');
+    const searchOpen = searchOverlay && searchOverlay.classList.contains('is-open');
+    return cartOpen || isMenuOpen() || searchOpen;
+  }
+
+  function openMenu() {
+    if (!megaMenu || !overlay || !openBtn) return;
+    closeSearch();
+    syncHeaderHeight();
+    megaMenu.classList.add('is-open');
+    megaMenu.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    openBtn.classList.add('is-active');
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('mega-menu-open');
+    // document.body.style.overflow = 'hidden'; // Header'in sticky ozelligi bozulmasin diye iptal
+  }
+
+  function closeMenu() {
+    if (!megaMenu || !overlay || !openBtn) return;
+    megaMenu.classList.remove('is-open');
+    megaMenu.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    openBtn.classList.remove('is-active');
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mega-menu-open');
+    if (!isAnotherScrollLockActive()) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function openSearch() {
+    if (!searchOverlay) return;
+    closeMenu();
+    document.body.classList.add('header-search-open');
+    // document.body.style.overflow = 'hidden'; // Header'in sticky ozelligi bozulmasin diye iptal
+    if (searchBackdrop) {
+      searchBackdrop.classList.add('is-open');
+      searchBackdrop.setAttribute('aria-hidden', 'false');
+    }
+    requestAnimationFrame(function() {
+      searchOverlay.classList.add('is-open');
+      searchOverlay.setAttribute('aria-hidden', 'false');
+    });
+    if (searchInput) {
+      setTimeout(function() { searchInput.focus(); }, 380);
+    }
+  }
+
+  function closeSearch() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.remove('is-open');
+    searchOverlay.setAttribute('aria-hidden', 'true');
+    if (searchBackdrop) {
+      searchBackdrop.classList.remove('is-open');
+      searchBackdrop.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('header-search-open');
+    if (!isAnotherScrollLockActive()) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function setMobileMenu(open) {
+    if (!mobileNavigation || !mobileMenuToggle) return;
+    mobileNavigation.classList.toggle('is-open', open);
+    mobileNavigation.setAttribute('aria-hidden', String(!open));
+    mobileMenuToggle.classList.toggle('is-active', open);
+    mobileMenuToggle.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('mobile-menu-open', open);
+  }
+
+  if (mobileMenuToggle && mobileNavigation) {
+    mobileMenuToggle.addEventListener('click', function() {
+      const willOpen = !mobileNavigation.classList.contains('is-open');
+      if (willOpen) closeSearch();
+      setMobileMenu(willOpen);
+    });
+
+    mobileNavigation.querySelectorAll('[data-mobile-menu-close], a').forEach(function(element) {
+      element.addEventListener('click', function() { setMobileMenu(false); });
+    });
+  }
+
+  if (openBtn && megaMenu) {
+    openBtn.setAttribute('aria-expanded', 'false');
+    openBtn.setAttribute('aria-controls', 'mega-menu');
+    openBtn.addEventListener('click', function() {
+      if (isMenuOpen()) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeMenu);
+  }
+
+  if (searchBtn && searchOverlay) {
+    searchBtn.addEventListener('click', function() {
+      if (searchOverlay.classList.contains('is-open')) {
+        closeSearch();
+      } else {
+        openSearch();
+      }
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', closeSearch);
+  }
+
+  if (searchBackdrop) {
+    searchBackdrop.addEventListener('click', closeSearch);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    if (isMenuOpen()) {
+      closeMenu();
+    } else if (mobileNavigation && mobileNavigation.classList.contains('is-open')) {
+      setMobileMenu(false);
+    } else if (searchOverlay && searchOverlay.classList.contains('is-open')) {
+      closeSearch();
+    }
+  });
+});
+</script>
+
+
+<div id="common-home">
+  <div class="home-fullwidth-top"><style>
+.home-banner-stack__item--slideshow .home-banner-stack__overlay {
+  right: max(8%, calc((100vw - 1320px) / 2 + 15px));
+  left: auto;
+  width: 44%;
+  max-width: 540px;
+  align-items: flex-end;
+  text-align: right;
+}
+.home-banner-stack__item--slideshow .home-banner-stack__title,
+.home-banner-stack__item--slideshow .home-banner-stack__desc {
+  text-align: right;
+  max-width: 36rem;
+}
+.home-banner-stack__item--slideshow .home-banner-stack__btn {
+  align-self: flex-end;
+}
+@media (max-width: 767px) {
+  .home-banner-stack__item--slideshow .home-banner-stack__overlay {
+    width: 85%;
+    max-width: 100%;
+    right: 7.5%;
+    left: auto;
+  }
+}
+</style>
+<div class="home-banner-stack">
+          <div class="home-banner-stack__item home-banner-stack__item--slideshow">
+      <div class="home-banner-stack__media">
+        <img src="image/catalog/marka_hikayesi_card1.png" alt="Giyim" class="img-responsive home-banner-stack__img">
+                  <div class="home-banner-stack__overlay">
+                          <h2 class="home-banner-stack__title">Giyim</h2>
+                                      <p class="home-banner-stack__desc">Zamansız silüetler, özenle seçilmiş dokular ve gün boyu eşlik eden rahatlıkla tasarlanan Uannes giyim koleksiyonunu keşfedin.</p>
+                                      <a href="index.php?route=product/category&path=67" class="home-banner-stack__btn"><span class="home-banner-stack__btn-label">KEŞFET</span></a>
+                      </div>
+              </div>
+    </div>
+      </div>
+
+<style>
+.home-banner-stack__item--collection .home-banner-stack__overlay {
+  left: max(8%, calc((100vw - 1320px) / 2 + 15px));
+  right: auto;
+  width: 44%;
+  max-width: 540px;
+  align-items: flex-start;
+  text-align: left;
+}
+.home-banner-stack__item--collection .home-banner-stack__title,
+.home-banner-stack__item--collection .home-banner-stack__desc {
+  text-align: left;
+  max-width: 36rem;
+}
+.home-banner-stack__item--collection .home-banner-stack__btn {
+  align-self: flex-start;
+}
+@media (max-width: 767px) {
+  .home-banner-stack__item--collection .home-banner-stack__overlay {
+    width: 85%;
+    max-width: 100%;
+    left: 7.5%;
+    right: auto;
+  }
+}
+</style>
+<div class="home-banner-stack home-banner-stack--home-categories">
+          <div class="home-banner-stack__item home-banner-stack__item--collection">
+      <div class="home-banner-stack__media">
+        <img src="image/catalog/ürün/ürün1.2.png" alt="Eşarp" class="img-responsive home-banner-stack__img">
+                  <div class="home-banner-stack__overlay">
+                          <h2 class="home-banner-stack__title">Eşarp</h2>
+                                      <p class="home-banner-stack__desc">Farklı renk, desen ve kumaş seçenekleriyle hazırlanan eşarp koleksiyonumuz, günlük ve özel kombinlerinize zarif bir dokunuş katar. Kaliteli yapısı ve şık tasarımlarıyla her tarza uyum sağlar.</p>
+                                      <a href="http://localhost/uannes.dijicrea.net/index.php?route=product/category&amp;path=66" class="home-banner-stack__btn"><span class="home-banner-stack__btn-label">KEŞFET</span></a>
+                      </div>
+              </div>
+    </div>
+            </div>
+
+</div>
+  <div class="container">
+    <div class="row">
+                        <div id="content" class="col-sm-12">
+      <!-- Uannes Motto Alanı -->
+<div class="uannes-motto-section">
+  <div class="uannes-motto-container">
+    <div class="uannes-motto-title-wrap">
+      <span class="uannes-motto-line"></span>
+      <h3 class="uannes-motto-title">Zamansız Zarafetin İzinde</h3>
+      <span class="uannes-motto-line"></span>
+    </div>
+    <p class="uannes-motto-quote">
+      “Hayalimiz, doğaya ve insan emeğine saygı duyan saf dokularla zamansız bir zarafet yaratmaktır. Her detayda geleceğe ilham veren mirasa yakışır dokunuşlar sunuyoruz.”
+    </p>
+  </div>
+</div>
+
+<div class="uannes-slider-section" style="margin-bottom: 1.5rem; padding-bottom: 0px; height: auto;">
+  <div class="uannes-slider-container" style="padding: 10px 0; margin: 0; height: auto;">
+    <div class="swiper-container uannes-swiper" style="margin-bottom: 0px; height: auto;">
+      <div class="swiper-wrapper" style="height: auto;">
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/marka_hikayesi_card1.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/image 10.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/Rectangle 1.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/Rectangle 3.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/slider_mainfoto.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+                <div class="swiper-slide" style="height: auto;">
+          <div class="uannes-card">
+                                    <img src="image/catalog/cute-young-girl.png" alt="" class="uannes-card-img" />
+                        <button type="button" class="uannes-card-arrow uannes-card-arrow-left" aria-label="Önceki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7L7 13"/></svg>
+            </button>
+            <button type="button" class="uannes-card-arrow uannes-card-arrow-right" aria-label="Sonraki">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L7 7L1 13"/></svg>
+            </button>
+          </div>
+        </div>
+              </div>
+    </div>
+  </div>
+</div>
+
+<!-- Uannes'i Keşfet Bölümü (Hermès Stilinde 3'lü Kare Grid) -->
+<div class="uannes-discover-section">
+  <div class="uannes-discover-container">
+    <div class="uannes-discover-header">
+      <h2 class="uannes-discover-title">Uannes'i Keşfet</h2>
+    </div>
+    
+    <div class="uannes-discover-grid">
+      <div class="uannes-discover-card">
+        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9418.jpg" alt="Uannes'in Hikayesi" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Uannes'in Hikayesi</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="uannes-discover-card">
+        <a href="javascript:void(0);" class="uannes-discover-link" style="cursor: default;">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9426.jpg" alt="Özel Üretim" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Özel Üretim</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="uannes-discover-card">
+        <a href="index.php?route=product/category&path=67" class="uannes-discover-link">
+          <div class="uannes-discover-media">
+            <img src="image/catalog/282A9443.jpg" alt="Giyim" class="uannes-discover-img" />
+          </div>
+          <div class="uannes-discover-label-wrap">
+            <span class="uannes-discover-label">Giyim</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  if (!$('.uannes-swiper').length) return;
+
+  var uannesSwiper = new Swiper('.uannes-swiper', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 24,
+    loop: true,
+    autoHeight: true,
+    autoplay: 4000,
+    autoplayDisableOnInteraction: false,
+    breakpoints: {
+      767: {
+        slidesPerView: 1.5,
+        spaceBetween: 12
+      }
+    }
+  });
+
+  $(document).on('click', '.uannes-card-arrow-left', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uannesSwiper.slidePrev();
+  });
+
+  $(document).on('click', '.uannes-card-arrow-right', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    uannesSwiper.slideNext();
+  });
+});
+--></script>
+
+
+</div>
+      </div>
+  </div>
+</div>
+<style>
+/* Footer layout is kept with the component so it cannot depend on a cached theme CSS file. */
+.site-footer {
+  width: 100%;
+  margin: 0;
+  padding: 50px 0;
+  overflow: visible !important;
+  color: #fff;
+  background: #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  clear: both;
+  position: relative;
+  z-index: 99;
+  display: block;
+  height: auto;
+  max-height: none;
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    height: 750px !important; /* Test amacli statik yukseklik */
+  }
+}
+.site-footer *, .site-footer *::before, .site-footer *::after { box-sizing: border-box; }
+.site-footer__container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 25px; overflow: visible; }
+.site-footer__main, .site-footer__grid, .site-footer__nav-container, .site-footer__nav, .site-footer__nav-col, .site-footer__bar { min-width: 0; }
+.site-footer__grid { display: grid; grid-template-columns: clamp(250px, 26vw, 360px) minmax(0, 1fr); align-items: start; gap: clamp(32px, 5vw, 80px); }
+.site-footer__brand { display: flex; align-self: stretch; align-items: center; min-width: 0; }
+.site-footer__logo-link, .site-footer__logo-link:hover, .site-footer__logo-link:focus { display: inline-block; color: #fff; text-decoration: none; }
+.site-footer__logo-text { display: block; max-width: 100%; color: #fff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size: clamp(3rem, 4.8vw, 6rem); font-weight: 800; letter-spacing: .04em; line-height: 1; text-transform: uppercase; }
+.site-footer__nav-container { width: 100%; }
+.site-footer__nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3.75vw, 60px); width: 100%; }
+.site-footer__nav-title { margin: 0 0 1.25rem; color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: .08em; line-height: 1.3; text-transform: uppercase; }
+.site-footer__nav-list { margin: 0; padding: 0; list-style: none; }
+.site-footer__nav-link, .site-footer__nav-link:visited, .site-footer__legal-link, .site-footer__legal-link:visited { position: relative; display: inline-block; text-decoration: none; }
+.site-footer__nav-link, .site-footer__nav-link:visited { margin-bottom: 1.1rem; color: rgba(255,255,255,.9); font-size: 12.5px; }
+.site-footer__nav-link::after, .site-footer__legal-link::after { position: absolute; right: 0; bottom: -3px; left: 0; height: 1px; content: ''; background: currentColor; transform: scaleX(0); transform-origin: center; transition: transform .35s cubic-bezier(.25, .8, .25, 1); }
+.site-footer__nav-link:hover, .site-footer__nav-link:focus, .site-footer__legal-link:hover, .site-footer__legal-link:focus { color: #fff; text-decoration: none; }
+.site-footer__nav-link:hover::after, .site-footer__nav-link:focus::after, .site-footer__legal-link:hover::after, .site-footer__legal-link:focus::after { transform: scaleX(1); }
+.site-footer__nav-list li:last-child .site-footer__nav-link { margin-bottom: 0; }
+.site-footer__newsletter { min-width: 0; }
+.site-footer__newsletter-text { margin: 0 0 1.5rem; color: rgba(255,255,255,.88); font-size: 13.5px; line-height: 1.65; }
+.site-footer__newsletter-form { display: flex; padding-bottom: .25rem; border-bottom: 1px solid rgba(255,255,255,.25); }
+.site-footer__newsletter-input { flex: 1 1 auto; min-width: 0; padding: 0; color: #fff; background: transparent; border: 0; outline: 0; }
+.site-footer__newsletter-btn { padding: 0; color: #fff; background: transparent; border: 0; cursor: pointer; }
+.site-footer__newsletter-message { margin-top: 10px; font-size: 14.5px; }
+.site-footer__divider { display: block; width: 100%; height: 1px; margin: 40px 0; border: 0; background: rgba(255,255,255,.15); }
+.site-footer__bar { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 24px; width: 100%; }
+.site-footer__social { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.site-footer__social-label, .site-footer__copyright { color: rgba(255,255,255,.9); font-family: 'Cormorant Garamond', Georgia, serif; }
+.site-footer__social-label { font-size: 1.45rem; }
+.site-footer__social-icons, .site-footer__legal { display: flex; gap: 1rem; }
+.site-footer__social-link { color: #fff; font-size: 1.875rem; }
+.site-footer__copyright { font-size: 1.3rem; text-align: center; }
+.site-footer__copyright p { margin: 0; }
+.site-footer__legal { justify-content: flex-end; flex-wrap: wrap; }
+.site-footer__legal-link { margin: 0; color: rgba(255,255,255,.9); font-size: 1.1rem; }
+
+.site-footer__container,
+.site-footer__main,
+.site-footer__grid,
+.site-footer__nav-container,
+.site-footer__nav,
+.site-footer__bar { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .site-footer { padding: 32px 0 28px; }
+  .site-footer__container { padding: 0 28px; }
+  .site-footer__grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .site-footer__brand, .site-footer__logo-link { width: 100%; text-align: center; }
+  .site-footer__logo-text { font-size: clamp(2.4rem, 7vw, 3.5rem); }
+  .site-footer__nav { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+  .site-footer__nav-title { margin-bottom: .7rem; font-size: 1.05rem; }
+  .site-footer__nav-title::after { display: none !important; }
+  .site-footer__nav-link { margin-bottom: .7rem; font-size: 11px; }
+  .site-footer__nav-list,
+  .site-footer__newsletter-text,
+  .site-footer__newsletter-form,
+  .site-footer__newsletter-message {
+    max-height: none !important;
+    margin-top: 0 !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+  }
+  .site-footer__newsletter-text { margin-bottom: .75rem; font-size: 11.5px; line-height: 1.45; }
+  .site-footer__newsletter-form { margin-bottom: 0 !important; }
+  .site-footer__divider { margin: 24px 0; }
+  .site-footer__bar { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .site-footer__social { flex-direction: row; align-items: center; gap: 10px; }
+  .site-footer__social-label { font-size: 1.05rem; }
+  .site-footer__social-icons { gap: 8px; }
+  .site-footer__social-link { font-size: 1.5rem; }
+  .site-footer__copyright { font-size: 1rem; }
+  .site-footer__legal { gap: 8px; }
+  .site-footer__legal-link { font-size: .84rem; }
+}
+
+@media (max-width: 767px) {
+  .site-footer { padding: 20px 0 max(18px, env(safe-area-inset-bottom)); }
+  .site-footer__container { padding: 0 22px; }
+  .site-footer__grid, .site-footer__nav-container, .site-footer__nav { display: block; width: 100%; }
+  .site-footer__brand, .site-footer__logo-link { width: 100%; text-align: center; }
+  .site-footer__brand { margin-bottom: 10px; }
+  .site-footer__logo-text { font-size: clamp(2.2rem, 10vw, 3.1rem); }
+  .site-footer__nav-col { width: 100%; margin: 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .site-footer__nav-col:last-child { border-bottom: none; }
+  .site-footer__nav-title { position: relative; display: flex; align-items: center; min-height: 40px; margin: 0; padding: 6px 28px 6px 0; font-size: .98rem; cursor: pointer; }
+  .site-footer__nav-title::after { position: absolute; right: 2px; content: '+'; font-family: 'DM Sans', sans-serif; font-size: 1.25rem; font-weight: 300; transition: transform .2s ease; }
+  .site-footer__nav-col.is-open .site-footer__nav-title::after { transform: rotate(45deg); }
+  .site-footer__nav-list, .site-footer__newsletter-text, .site-footer__newsletter-form, .site-footer__newsletter-message { max-height: 0; margin-top: 0; margin-bottom: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, margin .3s ease, opacity .2s ease; }
+  .site-footer__nav-col.is-open .site-footer__nav-list { max-height: 320px; padding-bottom: 14px; opacity: 1; }
+  .site-footer__newsletter .site-footer__nav-title { cursor: default; }
+  .site-footer__newsletter .site-footer__nav-title::after { display: none; }
+  .site-footer__newsletter .site-footer__newsletter-text { max-height: 72px; margin-bottom: 4px; overflow: visible; opacity: 1; font-size: 11px; line-height: 1.35; }
+  .site-footer__newsletter .site-footer__newsletter-form { max-height: 32px; margin-bottom: 7px; overflow: visible; opacity: 1; font-size: 11px; }
+  .site-footer__newsletter .site-footer__newsletter-message:not(:empty) { max-height: 36px; margin-bottom: 7px; overflow: visible; opacity: 1; }
+  .site-footer__divider { margin: 16px 0 24px 0; }
+  .site-footer__bar { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0; }
+  .site-footer__social { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; order: 1; }
+  .site-footer__social-label { font-size: 0.95rem; color: rgba(255,255,255,0.9); }
+  .site-footer__social-icons { display: flex; gap: 16px; align-items: center; }
+  .site-footer__social-link { font-size: 1.4rem; }
+  .site-footer__legal { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(255,255,255,0.15); order: 2; margin: 4px 0; }
+  .site-footer__legal-link { font-size: 0.85rem; color: rgba(255,255,255,0.9); text-decoration: none; }
+  .site-footer__copyright { width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); order: 3; padding-bottom: 8px; }
+}
+
+</style>
+
+<footer class="site-footer">
+  <div class="site-footer__container">
+    <div class="site-footer__main">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a href="http://localhost/uannes.dijicrea.net/index.php?route=common/home" class="site-footer__logo-link" title="Uannes">
+            <span class="site-footer__logo-text">Uannes</span>
+          </a>
+        </div>
+
+        <div class="site-footer__nav-container">
+          <div class="site-footer__nav">
+            <div class="site-footer__nav-col">
+              <h2 class="site-footer__nav-title">İLETİŞİM</h2>
+              <ul class="site-footer__nav-list">
+                <li><a href="#!" class="site-footer__nav-link">Bizi Takip Edin</a></li>
+                <li><a href="http://localhost/uannes.dijicrea.net/index.php?route=information/contact" class="site-footer__nav-link">Bize Ulaşın</a></li>
+                <li><a href="index.php?route=information/information&information_id=7" class="site-footer__nav-link">Sıkça Sorulan Sorular</a></li>
+                <li><a href="http://localhost/uannes.dijicrea.net/index.php?route=blog/blog" class="site-footer__nav-link">Blog</a></li>
+              </ul>
+            </div>
+            <div class="site-footer__nav-col">
+              <h2 class="site-footer__nav-title">HAKKIMIZDA</h2>
+              <ul class="site-footer__nav-list">
+                <li><a href="#!" class="site-footer__nav-link">Şirket</a></li>
+                <li><a href="index.php?route=information/information&information_id=4" class="site-footer__nav-link">Uannes Hakkında</a></li>
+                <li><a href="#!" class="site-footer__nav-link">Uannes'in Hikayesi</a></li>
+                <li><a href="index.php?route=information/information&information_id=9" class="site-footer__nav-link">Sertifikalar</a></li>
+              </ul>
+            </div>
+            <div class="site-footer__nav-col">
+              <h2 class="site-footer__nav-title">SİPARİŞ</h2>
+              <ul class="site-footer__nav-list">
+                <li><a href="#!" class="site-footer__nav-link">Ödeme</a></li>
+                <li><a href="#!" class="site-footer__nav-link">Teslimat</a></li>
+                <li><a href="http://localhost/uannes.dijicrea.net/index.php?route=account/return/add" class="site-footer__nav-link">İade / Değişim</a></li>
+                <li><a href="http://localhost/uannes.dijicrea.net/index.php?route=account/order" class="site-footer__nav-link">Sipariş Takibi</a></li>
+              </ul>
+            </div>
+            <div class="site-footer__nav-col site-footer__newsletter">
+              <h2 class="site-footer__nav-title">BÜLTEN</h2>
+              <p class="site-footer__newsletter-text">Özellikler ve sürümler hakkında güncel kalmak için bültenimize katılın.</p>
+              <div class="site-footer__newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="E-posta adresiniz" class="site-footer__newsletter-input" autocomplete="email">
+                <button id="newsletter-submit" type="button" class="site-footer__newsletter-btn" aria-label="Gönder">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+              <div id="newsletter-message" class="site-footer__newsletter-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="site-footer__divider">
+
+    <div class="site-footer__bar">
+      <div class="site-footer__social">
+        <span class="site-footer__social-label">Bizi Takip Edin</span>
+        <div class="site-footer__social-icons">
+          <a href="#" class="site-footer__social-link" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+          <a href="#" class="site-footer__social-link" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+          <a href="#" class="site-footer__social-link" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="site-footer__copyright">
+        Powered By <a href="http://www.dijicrea.com">DIJICREA</a><br /> Uannes &copy; 2026
+      </div>
+      <div class="site-footer__legal">
+        <a href="index.php?route=information/information&information_id=10" class="site-footer__legal-link">KVKK</a>
+        <a href="index.php?route=information/information&information_id=11" class="site-footer__legal-link">Gizlilik ve Çerez Politikası</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const emailInput = document.getElementById("newsletter-email");
+  const button = document.getElementById("newsletter-submit");
+  const messageBox = document.getElementById("newsletter-message");
+
+  if (!button || !emailInput || !messageBox) return;
+
+  button.addEventListener("click", function() {
+    const email = emailInput.value.trim();
+    messageBox.textContent = "";
+
+    if (!email) {
+      messageBox.textContent = "Lütfen e-posta adresinizi girin!";
+      messageBox.style.color = "#f5b8be";
+      return;
+    }
+
+    fetch("index.php?route=extension/module/newsletter/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "email=" + encodeURIComponent(email)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        messageBox.textContent = data.message;
+        messageBox.style.color = "#b8e6c8";
+        emailInput.value = "";
+      } else {
+        messageBox.textContent = data.message || "Bir hata oluştu!";
+        messageBox.style.color = "#f5b8be";
+      }
+    })
+    .catch(() => {
+      messageBox.textContent = "Bağlantı hatası oluştu.";
+      messageBox.style.color = "#f5b8be";
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileQuery = window.matchMedia('(max-width: 767px)');
+  var columns = document.querySelectorAll('.site-footer__nav-col');
+
+  columns.forEach(function(column) {
+    var title = column.querySelector('.site-footer__nav-title');
+    if (!title) return;
+
+    /* Bülten her zaman görünür; mobil akordeon davranışına katılmaz. */
+    if (column.classList.contains('site-footer__newsletter')) {
+      column.classList.add('is-open');
+      title.setAttribute('aria-expanded', 'true');
+      return;
+    }
+
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    title.setAttribute('aria-expanded', 'false');
+
+    function toggleColumn() {
+      if (!mobileQuery.matches) return;
+      var isOpen = !column.classList.contains('is-open');
+      column.classList.toggle('is-open', isOpen);
+      title.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    title.addEventListener('click', toggleColumn);
+    title.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleColumn();
+      }
+    });
+  });
+});
+</script>
+</body></html>
+

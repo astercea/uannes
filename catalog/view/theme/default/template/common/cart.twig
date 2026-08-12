@@ -205,15 +205,25 @@ document.addEventListener('DOMContentLoaded', function() {
     return !searchOpen && !menuOpen;
   }
 
+  function closeCartDrawer() {
+    if (cartSidebar) cartSidebar.classList.remove('open');
+    if (cartOverlay) cartOverlay.classList.remove('active');
+    if (shouldReleaseBodyScroll()) {
+      document.body.style.overflow = '';
+    }
+  }
+
   document.addEventListener('click', function(e) {
-    if (e.target.closest('.close-cart') || e.target === cartOverlay) {
-      cartSidebar.classList.remove('open');
-      cartOverlay.classList.remove('active');
-      if (shouldReleaseBodyScroll()) {
-        document.body.style.overflow = '';
-      }
+    if (e.target.closest('.close-cart') || e.target === cartOverlay || (e.target.classList && e.target.classList.contains('cart-overlay'))) {
+      closeCartDrawer();
     }
   });
+
+  document.addEventListener('touchend', function(e) {
+    if (e.target.closest('.close-cart')) {
+      closeCartDrawer();
+    }
+  }, { passive: true });
 
   if(typeof cart !== 'undefined') {
     const originalAdd = cart.add;

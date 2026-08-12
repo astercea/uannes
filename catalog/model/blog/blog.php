@@ -29,7 +29,26 @@ class ModelBlogBlog extends Model {
 			$sql .= " AND b.blog_category_id = '" . (int)$data['filter_blog_category_id'] . "'";
 		}
 
-		$sql .= " ORDER BY b.date_published DESC, b.sort_order ASC";
+		$sort_data = array(
+			'b.date_published',
+			'b.sort_order'
+		);
+
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];
+		} else {
+			$sql .= " ORDER BY b.date_published";
+		}
+
+		if (isset($data['order']) && ($data['order'] == 'ASC')) {
+			$sql .= " ASC";
+		} else {
+			$sql .= " DESC";
+		}
+
+		if (!isset($data['sort'])) {
+			$sql .= ", b.sort_order ASC";
+		}
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if (!isset($data['start']) || $data['start'] < 0) {

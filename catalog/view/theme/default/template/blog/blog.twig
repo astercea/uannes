@@ -1,55 +1,194 @@
 {{ header }}
+<style>
+/* Blog Sayfası Özel Tasarımı */
+footer { margin-top: 0; }
+
+#content {
+  min-height: 0 !important;
+}
+
+#blog-blog .blog-page__content {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding: 0;
+}
+#blog-blog .blog-page__content > .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-filter-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 35px;
+}
+
+/* Blog Cards */
+.blog-card a, .blog-card a:hover {
+  text-decoration: none !important;
+}
+.blog-card, .blog-card__img, .blog-card__title {
+  transform: none !important;
+  transition: none !important;
+}
+.blog-pagination {
+  border-top: none !important;
+}
+
+.blog-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.blog-card__media {
+  border-radius: 0 !important;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.blog-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.blog-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-align: left;
+  text-decoration: none !important;
+  color: #1a1a50;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+</style>
+
 <div id="blog-blog" class="blog-page">
   <div class="blog-image-container">
     <img src="catalog/view/theme/default/image/blogbanner.webp" alt="{{ heading_title }}" class="blog-image" />
-  
   </div>
 
-  <div class="container blog-page__content">
-    <ul class="breadcrumb blog-page-breadcrumb">
-      {% for breadcrumb in breadcrumbs %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-      {% endfor %}
-    </ul>
-
+  <div class="container-fluid blog-page__content" style="max-width: 1400px; width: 100%; padding-left: 0; padding-right: 0;">
     {{ content_top }}
 
-        <div class="blog-category-filters mb-4 d-flex flex-wrap">
-          {% for category in categories %}
-            <a href="{{ category.href }}" class="btn btn-sm {% if category.active %}btn-warning{% else %}btn-inverse{% endif %}">{{ category.name }}</a>
-          {% endfor %}
-        </div>
-
-        {% if articles %}
-          <div class="row g-4 blog-cards-row">
-            {% for article in articles %}
-              <div class="col-12 col-md-6 col-lg-4 blog-cards-row__col">
-                <article class="blog-card">
-                  <a href="{{ article.href }}" class="blog-card__link text-decoration-none text-dark">
-                    <div class="blog-card__media">
-                      <img src="{{ article.thumb }}" class="blog-card__img" alt="{{ article.title }}" />
-                    </div>
-                    <div class="blog-card__body">
-                      <p class="blog-card-meta text-muted small mb-1">{{ article.date }}{% if article.category %} · {{ article.category }}{% endif %}</p>
-                      <h2 class="blog-card__title h5 fw-normal">{{ article.title }}</h2>
-                      <p class="blog-card-excerpt text-muted small mt-2">{% if article.excerpt %}{{ article.excerpt }}{% else %}&nbsp;{% endif %}</p>
-                    </div>
-                  </a>
-                </article>
-              </div>
-            {% endfor %}
+    <div class="blog-filter-wrapper">
+      <div class="giyim-filter" data-giyim-filter>
+        <button class="giyim-filter-link" type="button" id="blogFilterMenu" aria-expanded="false" aria-controls="giyim-filter-menu">
+          Filtrele +
+        </button>
+        <div class="giyim-filter-backdrop" data-giyim-filter-close hidden></div>
+        <aside id="giyim-filter-menu" class="giyim-filter-menu" aria-hidden="true" aria-label="Blog filtreleri">
+          <div class="giyim-filter-menu__header">
+            <p class="giyim-filter-menu__title">Filtrele</p>
+            <button type="button" class="giyim-filter-menu__close" data-giyim-filter-close aria-label="Filtre panelini kapat">×</button>
           </div>
-          <div class="blog-pagination">
-            <div class="blog-pagination__inner">
-              {{ pagination }}
-              <p class="blog-pagination__results text-muted small mb-0">{{ results }}</p>
+          <div id="blog-filter-form">
+            <details class="giyim-filter-menu__section">
+              <summary>Konular <span aria-hidden="true">›</span></summary>
+              <div class="giyim-filter-menu__options">
+                {% for category in categories %}
+                  <label><input type="radio" name="blog_category_id" value="{{ category.id }}" data-href="{{ category.href }}" {% if category.id == selected_category %} checked{% endif %}> <span>{{ category.name }}</span></label>
+                {% endfor %}
+              </div>
+            </details>
+            <details class="giyim-filter-menu__section">
+              <summary>Tarih <span aria-hidden="true">›</span></summary>
+              <div class="giyim-filter-menu__options">
+                <label><input type="radio" name="order" value="DESC" {% if selected_order == 'DESC' %} checked{% endif %}> <span>En Yeni</span></label>
+                <label><input type="radio" name="order" value="ASC" {% if selected_order == 'ASC' %} checked{% endif %}> <span>En Eski</span></label>
+              </div>
+            </details>
+            <div class="giyim-filter-menu__actions">
+              <a href="{{ blog_url }}">Tümünü temizle</a>
+              <button type="button" id="applyBlogFilter" class="btn btn-primary" style="background:#1a1a50; color:#fff; border-radius:0; min-width:120px;">Uygula</button>
             </div>
           </div>
-        {% else %}
-          <p class="text-start py-5">{{ text_empty }}</p>
-        {% endif %}
+        </aside>
+      </div>
+    </div>
 
-        {{ content_bottom }}
+    {% if articles %}
+      <div class="row g-4 blog-cards-row">
+        {% for article in articles %}
+          <div class="col-12 col-md-6 col-lg-4 blog-cards-row__col">
+            <article class="blog-card">
+              <a href="{{ article.href }}" class="text-decoration-none">
+                <div class="blog-card__media">
+                  <img src="{{ article.thumb }}" class="blog-card__img" alt="{{ article.title }}" />
+                </div>
+                <div class="blog-card__body">
+                  <h2 class="blog-card__title">{{ article.title }}</h2>
+                </div>
+              </a>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="blog-pagination mt-5">
+        <div class="blog-pagination__inner d-flex justify-content-center align-items-center">
+          {{ pagination }}
+        </div>
+      </div>
+    {% else %}
+      <p class="text-center py-5" style="font-family: 'DM Sans', sans-serif; color: #1a1a50;">{{ text_empty }}</p>
+    {% endif %}
+
+    {{ content_bottom }}
   </div>
 </div>
 {{ footer }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  (function () {
+    var filter = document.querySelector('[data-giyim-filter]');
+    if (!filter) return;
+    var trigger = filter.querySelector('.giyim-filter-link');
+    var panel = filter.querySelector('.giyim-filter-menu');
+    var backdrop = filter.querySelector('.giyim-filter-backdrop');
+    var closeControls = filter.querySelectorAll('[data-giyim-filter-close]');
+    var lastFocused;
+    function closePanel() {
+      filter.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      backdrop.hidden = true;
+      if (lastFocused) lastFocused.focus();
+    }
+    function openPanel() {
+      lastFocused = document.activeElement;
+      filter.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      backdrop.hidden = false;
+      panel.querySelector('.giyim-filter-menu__close').focus();
+    }
+    trigger.addEventListener('click', function () { filter.classList.contains('is-open') ? closePanel() : openPanel(); });
+    closeControls.forEach(function (control) { control.addEventListener('click', closePanel); });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && filter.classList.contains('is-open')) closePanel(); });
+  }());
+
+  var applyBtn = document.getElementById('applyBlogFilter');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', function() {
+      var selectedCat = document.querySelector('input[name="blog_category_id"]:checked');
+      var selectedOrder = document.querySelector('input[name="order"]:checked');
+      
+      var url = selectedCat ? selectedCat.getAttribute('data-href') : '{{ blog_url }}';
+      var order = selectedOrder ? selectedOrder.value : 'DESC';
+      
+      if (url.indexOf('?') !== -1) {
+        url += '&order=' + order;
+      } else {
+        url += '?order=' + order;
+      }
+      
+      window.location.href = url;
+    });
+  }
+});
+</script>

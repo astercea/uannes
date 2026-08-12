@@ -1,33 +1,160 @@
 {{ header }}
+<style>
+/* Lüks ve Minimal Blog Makale Tasarımı */
+#blog-article.blog-page {
+  background-color: #f8f6f2 !important;
+  padding-bottom: 80px;
+}
+
+.article-hero {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.article-hero__img {
+  width: 100%;
+  height: clamp(300px, 60vh, 700px);
+  object-fit: cover;
+  display: block;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.article-category {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1a1a50;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(26,26,80,0.3);
+  padding-bottom: 2px;
+}
+
+.article-category:hover {
+  border-bottom-color: #1a1a50;
+  text-decoration: none;
+}
+
+.article-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  color: #1a1a50;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.article-date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #1a1a50;
+  opacity: 0.6;
+  margin-top: 25px;
+  letter-spacing: 0.05em;
+}
+
+.article-body, 
+.article-body p,
+.article-body div,
+.article-body span,
+.article-body li,
+.article-body a,
+.article-body b,
+.article-body strong,
+.article-body em,
+.article-body i,
+.article-body u,
+.article-body font,
+.article-body blockquote {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  color: #1a1a50 !important;
+}
+
+.article-body p {
+  margin-bottom: 25px !important;
+}
+
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 40px 0;
+  display: block;
+}
+
+.article-body h2, .article-body h3, .article-body h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  color: #1a1a50 !important;
+  margin-top: 50px !important;
+  margin-bottom: 25px !important;
+  line-height: 1.3 !important;
+}
+
+.article-body h2 { font-size: 30px !important; }
+.article-body h3 { font-size: 26px !important; }
+.article-body h4 { font-size: 22px !important; }
+
+.article-body ul, .article-body ol {
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.article-body li {
+  margin-bottom: 10px;
+}
+
+.article-body a {
+  color: #1a1a50;
+  text-decoration: underline;
+}
+
+.article-body blockquote {
+  border-left: 2px solid #1a1a50 !important;
+  padding-left: 20px !important;
+  margin: 40px 0 !important;
+  font-style: italic !important;
+}
+</style>
+
 <div id="blog-article" class="blog-page">
-  <div class="container blog-article-wrap">
-    <ul class="breadcrumb blog-page-breadcrumb blog-article-breadcrumb">
-      {% for breadcrumb in breadcrumbs %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-      {% endfor %}
-    </ul>
-
-    <article class="blog-article">
-      <header class="blog-article-header">
-        {% if category_name %}
-          <a href="{{ category_href }}" class="blog-article-category">{{ category_name }}</a>
-        {% endif %}
-        <h1 class="blog-article-title">{{ heading_title }}</h1>
-        <p class="blog-article-meta">
-          <time datetime="{{ date_published }}">{{ text_date }}: {{ date_published }}</time>
-        </p>
-      </header>
-    </article>
-
-    {% if image %}
-      <figure class="blog-article-cover">
-        <img src="{{ image }}" alt="{{ heading_title }}" class="blog-article-cover__img" />
-      </figure>
-    {% endif %}
-
-    <div class="blog-article-body">
-      {{ description|raw }}
+  {% if image %}
+    <div class="article-hero">
+      <img src="{{ image }}" alt="{{ heading_title }}" class="article-hero__img" />
     </div>
+  {% else %}
+    <div style="height: 60px;"></div>
+  {% endif %}
+
+  <div class="article-content">
+    <article>
+      <header class="article-header">
+        {% if category_name %}
+          <a href="{{ category_href }}" class="article-category">{{ category_name }}</a>
+        {% endif %}
+        <h1 class="article-title">{{ heading_title }}</h1>
+        <p class="article-date">{{ date_published }}</p>
+      </header>
+      
+      <div class="article-body">
+        {{ description|raw }}
+      </div>
+    </article>
 
     {{ content_top }}{{ content_bottom }}
   </div>

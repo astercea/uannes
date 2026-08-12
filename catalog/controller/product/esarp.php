@@ -7,7 +7,9 @@ class ControllerProductEsarp extends ControllerProductGiyim {
 			'name' => 'Eşarp',
 			'category_name' => 'eşarp',
 			'fallback_category_id' => 66,
-			'route' => 'product/esarp'
+			'route' => 'product/esarp',
+			'card_image_width' => 500,
+			'card_image_height' => 500
 		);
 	}
 }
