@@ -29,7 +29,7 @@
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
-<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=192" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=194" rel="stylesheet">
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
@@ -328,7 +328,7 @@ body.is-product-page #header-area.is-scrolled {
 {% if landing_code is defined and landing_code == 'made_to_order' %}
   {% set body_classes = body_classes ~ ' is-made-to-order-page' %}
 {% endif %}
-<body class="{{ body_classes }}">
+<body class="{{ body_classes }}{% if is_checkout %} checkout-mode{% endif %}">
 <header id="header-area">
   <div class="container">
     <div class="header-inner">

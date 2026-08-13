@@ -388,7 +388,7 @@ class ControllerProductManufacturer extends Controller {
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+			$this->response->redirect($this->url->link('common/home'));
 		}
 	}
 }

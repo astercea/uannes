@@ -600,6 +600,12 @@ class ModelCatalogProduct extends Model {
 			$label = !empty($product['stock_status'])
 				? $this->normalizeStockStatusLabel($product['stock_status'])
 				: $this->language->get('text_out_of_stock');
+				
+			$lower_label = mb_strtolower($label, 'UTF-8');
+			if ($lower_label == 'stokta var' || $lower_label == 'stokta yok' || $lower_label == 'in stock' || $lower_label == 'out of stock' || $lower_label == 'tükendi') {
+				$label = 'Stokta Yok';
+			}
+
 			$badges[] = array(
 				'type'  => 'out_of_stock',
 				'label' => $label

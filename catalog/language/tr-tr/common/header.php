@@ -13,6 +13,6 @@ $_['text_order']         = 'Sipariş Geçmişi';
 $_['text_transaction']   = 'Bakiye İşlemlerim';
 $_['text_download']      = 'Dosyalarım';
 $_['text_logout']        = 'Çıkış Yap';
-$_['text_checkout']      = 'Kasaya Git';
+$_['text_checkout']      = 'Alışverişi Tamamla';
 $_['text_search']        = 'Ara';
 $_['text_all']           = 'Tümü Göster';

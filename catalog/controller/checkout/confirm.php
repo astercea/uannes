@@ -324,10 +324,16 @@ class ControllerCheckoutConfirm extends Controller {
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
 
 			$this->load->model('tool/upload');
+			$this->load->model('tool/image');
 
 			$data['products'] = array();
 
 			foreach ($this->cart->getProducts() as $product) {
+				if ($product['image']) {
+					$thumb = $this->model_tool_image->resize($product['image'], 80, 80);
+				} else {
+					$thumb = $this->model_tool_image->resize('placeholder.png', 80, 80);
+				}
 				$option_data = array();
 
 				foreach ($product['option'] as $option) {
@@ -374,6 +380,7 @@ class ControllerCheckoutConfirm extends Controller {
 				$data['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
+					'thumb'      => $thumb,
 					'name'       => $product['name'],
 					'model'      => $product['model'],
 					'option'     => $option_data,

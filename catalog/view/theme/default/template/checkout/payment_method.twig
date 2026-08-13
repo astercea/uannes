@@ -20,24 +20,28 @@
 {% endif %}
 <p><strong>{{ text_comments }}</strong></p>
 <p>
-  <textarea name="comment" rows="8" class="form-control">{{ comment }}</textarea>
+  <textarea name="comment" rows="4" class="form-control">{{ comment }}</textarea>
 </p>
 {% if text_agree %}
-<div class="buttons">
-  <div class="pull-right">{{ text_agree }}
+<div class="checkbox" style="margin-left: 0; margin-bottom: 25px;">
+  <label>
     {% if agree %}
     <input type="checkbox" name="agree" value="1" checked="checked" />
     {% else %}
     <input type="checkbox" name="agree" value="1" />
     {% endif %}
-    &nbsp;
-    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
+    {{ text_agree }}
+  </label>
+</div>
+<div class="buttons">
+  <div class="pull-right">
+    <button type="button" id="button-payment-method" data-loading-text="" class="btn btn-primary btn-continue-custom">{{ button_continue }}</button>
   </div>
 </div>
 {% else %}
 <div class="buttons">
   <div class="pull-right">
-    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
+    <button type="button" id="button-payment-method" data-loading-text="" class="btn btn-primary btn-continue-custom">{{ button_continue }}</button>
   </div>
 </div>
 {% endif %} 

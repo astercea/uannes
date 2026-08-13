@@ -6,13 +6,13 @@ $_['heading_title']                  = 'Kasaya Git';
 
 // Text
 $_['text_cart']                      = 'Alışveriş Sepetim';
-$_['text_checkout_option']           = 'Adım %s: Hesap Seçenekleri';
-$_['text_checkout_account']          = 'Adım %s: Hesap &amp; Fatura Adresi';
-$_['text_checkout_payment_address']  = 'Adım %s: Fatura Adresi';
-$_['text_checkout_shipping_address'] = 'Adım %s: Teslimat Adresi';
-$_['text_checkout_shipping_method']  = 'Adım %s: Kargo Metodu';
-$_['text_checkout_payment_method']   = 'Adım %s: Ödeme Metodu';
-$_['text_checkout_confirm']          = 'Adım %s: Siparişi Onayla';
+$_['text_checkout_option']           = 'Hesap Seçenekleri';
+$_['text_checkout_account']          = 'Hesap &amp; Fatura Adresi';
+$_['text_checkout_payment_address']  = 'Fatura Adresi';
+$_['text_checkout_shipping_address'] = 'Teslimat Adresi';
+$_['text_checkout_shipping_method']  = 'Kargo Methodu';
+$_['text_checkout_payment_method']   = 'Ödeme Methodu';
+$_['text_checkout_confirm']          = 'Siparişi Onayla';
 $_['text_modify']                    = 'Düzenle &raquo;';
 $_['text_new_customer']              = 'Yeni Müşteri';
 $_['text_returning_customer']        = 'Kayıtlı Müşteriyim';
@@ -25,7 +25,7 @@ $_['text_forgotten']                 = 'Parolamı unuttum';
 $_['text_your_details']              = 'Kişisel Bilgileriniz';
 $_['text_your_address']              = 'Adres Bilgileriniz';
 $_['text_your_password']             = 'Parolanız';
-$_['text_agree']                     = '<a href="%s" class="agree"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
+$_['text_agree']                     = '<a href="%s" class="agree"><b>Mesafeli Satış Sözleşmesi</b></a>\'ni okudum ve kabul ediyorum.';
 $_['text_address_new']               = 'Yeni adres ekleyiniz.';
 $_['text_address_existing']          = 'Varolan fatura adresi seçiniz.';
 $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metodunu seçiniz.';
@@ -86,7 +86,7 @@ $_['error_city']                     = 'İlçe / semt alanı 2 ile 128 karakter 
 $_['error_postcode']                 = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']                  = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']                     = 'Lütfen bir şehir seçiniz!';
-$_['error_agree']                    = 'Uyarı: %s\'ni kabul etmelisiniz!';
+$_['error_agree']                    = 'Uyarı: Mesafeli Satış Sözleşmesi\'ni kabul etmelisiniz!';
 $_['error_address']                  = 'Uyarı: Adres seçmelisiniz!';
 $_['error_shipping']                 = 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']              = 'Uyarı: Kargo metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';

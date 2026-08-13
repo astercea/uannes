@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6">
     <fieldset id="account">
-      <legend>{{ text_your_details }}</legend>
+      <legend class="vannes-legend">{{ text_your_details }}</legend>
       <div class="form-group" style="display: {% if customer_groups|length > 1 %} block {% else %} none {% endif %};">
         <label class="control-label">{{ entry_customer_group }}</label>
         {% for customer_group in customer_groups %}
@@ -150,7 +150,7 @@
   </div>
   <div class="col-sm-6">
     <fieldset id="address">
-      <legend>{{ text_your_address }}</legend>
+      <legend class="vannes-legend">{{ text_your_address }}</legend>
       <div class="form-group">
         <label class="control-label" for="input-payment-company">{{ entry_company }}</label>
         <input type="text" name="company" value="{{ company }}" placeholder="{{ entry_company }}" id="input-payment-company" class="form-control" />
@@ -201,6 +201,17 @@
         <select name="zone_id" id="input-payment-zone" class="form-control">
         </select>
       </div>
+      
+      {% if shipping_required %}
+      <div class="checkbox" style="margin-top: 15px;">
+        <label> {% if shipping_address %}
+          <input type="checkbox" name="shipping_address" value="1" checked="checked" />
+          {% else %}
+          <input type="checkbox" name="shipping_address" value="1" />
+          {% endif %}
+          {{ entry_shipping }}</label>
+      </div>
+      {% endif %}
       {% for custom_field in custom_fields %}
       {% if custom_field.location == 'address' %}
       {% if custom_field.type == 'select' %}
@@ -315,19 +326,10 @@
     </fieldset>
     {{ captcha }} </div>
 </div>
-{% if shipping_required %}
-<div class="checkbox">
-  <label> {% if shipping_address %}
-    <input type="checkbox" name="shipping_address" value="1" checked="checked" />
-    {% else %}
-    <input type="checkbox" name="shipping_address" value="1" />
-    {% endif %}
-    {{ entry_shipping }}</label>
-</div>
-{% endif %}
+
 <div class="buttons">
   <div class="pull-right">
-    <input type="button" value="{{ button_continue }}" id="button-guest" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
+    <button type="button" id="button-guest" data-loading-text="" class="btn btn-primary btn-continue-custom">{{ button_continue }}</button>
   </div>
 </div>
 <script type="text/javascript"><!--

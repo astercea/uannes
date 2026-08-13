@@ -114,7 +114,7 @@ class __TwigTemplate_0b58743317210b5427240baa93dd9c9a extends Template
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['style'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 32
-        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=192\" rel=\"stylesheet\">
+        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=194\" rel=\"stylesheet\">
 ";
         // line 33
         $context['_parent'] = $context;
@@ -464,6 +464,9 @@ body.is-product-page #header-area.is-scrolled {
         // line 331
         echo "<body class=\"";
         echo ($context["body_classes"] ?? null);
+        if (($context["is_checkout"] ?? null)) {
+            echo " checkout-mode";
+        }
         echo "\">
 <header id=\"header-area\">
   <div class=\"container\">
@@ -1190,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  587 => 396,  584 => 395,  576 => 391,  568 => 386,  562 => 383,  558 => 382,  554 => 381,  550 => 380,  546 => 379,  542 => 377,  537 => 376,  529 => 370,  527 => 369,  517 => 361,  509 => 359,  499 => 356,  494 => 355,  492 => 354,  465 => 331,  461 => 329,  459 => 328,  455 => 326,  453 => 325,  449 => 323,  445 => 321,  443 => 320,  441 => 319,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
+        return array (  590 => 396,  587 => 395,  579 => 391,  571 => 386,  565 => 383,  561 => 382,  557 => 381,  553 => 380,  549 => 379,  545 => 377,  540 => 376,  532 => 370,  530 => 369,  520 => 361,  512 => 359,  502 => 356,  497 => 355,  495 => 354,  465 => 331,  461 => 329,  459 => 328,  455 => 326,  453 => 325,  449 => 323,  445 => 321,  443 => 320,  441 => 319,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
     }
 
     public function getSourceContext()

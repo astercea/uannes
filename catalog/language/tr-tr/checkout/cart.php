@@ -47,7 +47,7 @@ $_['column_price']             = 'Birim Fiyatı';
 $_['column_total']             = 'Tutarı';
 
 // Error
-$_['error_stock']              = '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen adet bulunmuyor!';
+$_['error_stock']              = 'Sepetinizdeki bazı ürünler stokta kalmamıştır veya istenen adette mevcut değildir. Lütfen sepetinizi güncelleyin.';
 $_['error_stock_available']    = 'Stok yetersiz. Bu ürün için en fazla %s adet sipariş verebilirsiniz.';
 $_['error_stock_add_detail']   = '<strong>%2$s</strong> için stokta %1$d adet kaldı. Sepetinizde %3$d adet var; %4$d adet daha ekleyemezsiniz.';
 $_['error_stock_update_detail']= '<strong>%2$s</strong> için en fazla %1$d adet alınabilir. Sepette %3$d adet varken %4$d adet yapılamaz.';

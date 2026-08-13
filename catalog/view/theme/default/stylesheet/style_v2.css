@@ -9016,7 +9016,7 @@ video {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  row-gap: 120px;
+  row-gap: 80px;
   width: 100%;
   margin: 0 0 40px 0;
 }
@@ -9031,7 +9031,7 @@ video {
   .uannes-row-grid {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 12px;
-    row-gap: 60px;
+    row-gap: 40px;
   }
 }
 
@@ -12660,7 +12660,7 @@ html.uannes-cart-mobile #cartSidebar .cart-sidebar-footer {
 
 #product-product .product-page__recommendations .uannes-row-media {
   width: 100%;
-  padding-bottom: 125%;
+  padding-bottom: 100%;
 }
 
 #product-product .product-page__recommendations .uannes-row-img {
@@ -12669,12 +12669,11 @@ html.uannes-cart-mobile #cartSidebar .cart-sidebar-footer {
   object-fit: cover;
 }
 
-/* Recommendation and recently-viewed cards share the Giyim card proportions
-   and the same discreet image/colour controls on hover. */
+/* Recommendation and recently-viewed cards for scarves */
 #product-product .product-page__recommendations .uannes-row-media,
 #checkout-cart .cart-page__recent .uannes-row-media,
 #checkout-cart-empty .cart-page__recent .uannes-row-media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   padding-bottom: 0;
 }
 
@@ -14987,4 +14986,191 @@ body.is-homepage #header-area.is-scrolled .header-inner {
   font-size: 13.5px;
   line-height: 1.65;
   color: #555555;
+}
+
+/* ==========================================================================
+   CHECKOUT (KASAYA GİT) PAGE REDESIGN (WIZARD FLOW)
+   ========================================================================== */
+body.checkout-mode {
+  background-color: #f8f6f2;
+}
+
+.uannes-checkout-page {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+.uannes-checkout-page > h1 {
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1a1a50;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 50px;
+}
+
+.uannes-checkout-page .panel-group {
+  margin-bottom: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* WIZARD LOGIC: Sadece aktif paneli göster */
+.uannes-checkout-page .panel-default {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  display: none; /* Varsayılan olarak gizli */
+}
+
+/* JavaScript ile eklenecek 'active-step' sınıfı olan paneli göster */
+.uannes-checkout-page .panel-default.active-step {
+  display: block;
+}
+
+.uannes-checkout-page .panel-heading {
+  background-color: transparent;
+  border: none;
+  padding: 0 0 25px 0;
+  border-radius: 0;
+}
+
+.uannes-checkout-page .panel-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #1a1a50;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+/* Link özelliğini kaldır (tıklanamaz başlık) */
+.uannes-checkout-page .panel-title a {
+  color: #1a1a50;
+  text-decoration: none;
+  display: block;
+  pointer-events: none; /* Tıklamayı devre dışı bırak */
+}
+
+/* İkonları gizle */
+.uannes-checkout-page .panel-title a i {
+  display: none;
+}
+
+.uannes-checkout-page .panel-body {
+  border-top: none !important;
+  padding: 0 0 30px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #1a1a50;
+}
+
+.uannes-checkout-page .form-control {
+  border: none;
+  border-bottom: 1px solid #1a1a50;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 10px 0;
+  height: auto;
+  font-size: 13.5px;
+  font-family: 'DM Sans', sans-serif;
+  color: #1a1a50;
+}
+
+.uannes-checkout-page .form-control:focus {
+  box-shadow: none;
+  border-color: #d1bfae;
+}
+
+.uannes-checkout-page .control-label {
+  font-weight: 400;
+  margin-top: 10px;
+  color: #1a1a50;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Buton Konteyneri */
+.uannes-checkout-page .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  flex-direction: row-reverse; /* İleri butonunu sağa, Geri butonunu sola al */
+}
+
+/* İleri Butonu */
+.uannes-checkout-page .btn-primary,
+.uannes-checkout-page #button-confirm,
+.uannes-checkout-page input[type="button"].btn-primary,
+.uannes-checkout-page input[type="submit"].btn-primary,
+.uannes-checkout-page button.btn-primary {
+  background-color: #1a1a50;
+  color: #ffffff;
+  border: 1px solid #1a1a50;
+  border-radius: 0;
+  padding: 12px 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.uannes-checkout-page .btn-primary:hover,
+.uannes-checkout-page #button-confirm:hover,
+.uannes-checkout-page input[type="button"].btn-primary:hover,
+.uannes-checkout-page input[type="submit"].btn-primary:hover,
+.uannes-checkout-page button.btn-primary:hover {
+  background-color: #ffffff;
+  color: #1a1a50;
+}
+
+/* Geri Butonu */
+.uannes-checkout-page .btn-back {
+  background-color: transparent;
+  color: #1a1a50;
+  border: none;
+  padding: 12px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.uannes-checkout-page .btn-back::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #1a1a50;
+  transition: width 0.3s ease;
+}
+
+.uannes-checkout-page .btn-back:hover::after {
+  width: 100%;
+}
+
+.uannes-checkout-page .radio label,
+.uannes-checkout-page .checkbox label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #1a1a50;
 }

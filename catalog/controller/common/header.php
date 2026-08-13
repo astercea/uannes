@@ -86,6 +86,8 @@ class ControllerCommonHeader extends Controller {
 			$data['route'] = 'common/home';
 		}
 
+		$data['is_checkout'] = ($data['route'] == 'checkout/checkout');
+
 		return $this->load->view('common/header', $data);
 	}
 }

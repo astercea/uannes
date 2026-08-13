@@ -85,7 +85,7 @@ class __TwigTemplate_350668302a5e4e7f110b35cd561e7348 extends Template
                 // line 30
                 echo "    <div class=\"home-banner-stack__item home-banner-stack__item--collection\">
       <div class=\"home-banner-stack__media\">
-        <img src=\"image/catalog/esarp_banner_v3.jpg\" alt=\"";
+        <img src=\"image/catalog/scarf1.webp\" alt=\"";
                 // line 32
                 echo twig_get_attribute($this->env, $this->source, $context["banner"], "title", [], "any", false, false, false, 32);
                 echo "\" class=\"img-responsive home-banner-stack__img\">

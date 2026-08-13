@@ -11,8 +11,8 @@
     }
 
     .account-orders-table-wrap {
-      border: 1px solid rgba(26, 26, 80, 0.12);
-      background: #ffffff;
+      border: none;
+      background: transparent;
       margin-bottom: 28px;
       overflow-x: visible;
       border-radius: 0;
@@ -42,7 +42,7 @@
 
     .account-orders-table thead th,
     .account-orders-table thead td {
-      width: 12.5% !important;
+      width: 11.111% !important;
       padding: 14px 12px !important;
       font-family: 'DM Sans', sans-serif !important;
       font-size: 11px !important;
@@ -78,7 +78,7 @@
     }
 
     .account-orders-table tbody td {
-      width: 12.5% !important;
+      width: 11.111% !important;
       padding: 16px 12px !important;
       font-family: 'DM Sans', sans-serif !important;
       font-size: 13.5px !important;
@@ -124,8 +124,8 @@
       line-height: inherit;
     }
 
-    /* İncele Link with center-expanding thin underline animation */
-    .order-action-link {
+    /* Actions: Incele & Iptal Link with center-expanding thin underline animation */
+    .order-action-link, .order-cancel-link {
       position: relative;
       display: inline-block;
       color: #1a1a50 !important;
@@ -140,7 +140,7 @@
       transition: color 0.25s ease;
     }
 
-    .order-action-link::after {
+    .order-action-link::after, .order-cancel-link::after {
       content: '';
       position: absolute;
       bottom: 1px;
@@ -153,12 +153,14 @@
       transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .order-action-link:hover::after {
+    .order-action-link:hover::after, .order-cancel-link:hover::after {
       transform: translateX(-50%) scaleX(1);
     }
 
     .order-action-link:hover,
-    .order-action-link:focus {
+    .order-action-link:focus,
+    .order-cancel-link:hover,
+    .order-cancel-link:focus {
       color: #1a1a50 !important;
       text-decoration: none !important;
     }
@@ -189,6 +191,7 @@
               <th class="text-left col-total">{{ column_total }}</th>
               <th class="text-left col-date">{{ column_date_added }}</th>
               <th class="text-center col-action">DETAY</th>
+              <th class="text-center col-cancel"></th>
             </tr>
           </thead>
           <tbody>
@@ -244,6 +247,9 @@
                 <a href="{{ order.view }}" class="order-action-link" title="{{ button_view }}">
                   İncele
                 </a>
+              </td>
+              <td class="text-center col-cancel">
+                <a href="#" class="order-cancel-link" onclick="event.preventDefault(); alert('Sipariş iptali için müşteri hizmetleriyle iletişime geçiniz.');">Siparişi İptal Et</a>
               </td>
             </tr>
           {% endfor %}
