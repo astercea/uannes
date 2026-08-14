@@ -29,7 +29,7 @@
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
-<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=216" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=219" rel="stylesheet">
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
@@ -311,6 +311,13 @@ body.is-product-page #header-area.is-scrolled {
   background-color: #f8f6f2;
   box-shadow: none;
   border: none;
+}
+
+body.is-product-page.header-search-open #header-area,
+body.is-product-page.mega-menu-open #header-area {
+  background-color: #f8f6f2 !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 </style>
@@ -623,7 +630,7 @@ body.is-product-page #header-area.is-scrolled {
     <div class="mega-search-links" style="display: flex; flex-direction: column; gap: 12px; padding-left: 0;">
       {% if search_suggestions %}
         {% for item in search_suggestions %}
-          <a href="{{ item.href }}" class="mega-search-item" style="font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #1a1a50; text-decoration: none; opacity: 0.85; transition: all 0.2s ease; display: inline-block;">{{ item.name }}</a>
+          <a href="{{ item.search_href }}" class="mega-search-item" style="font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #1a1a50; text-decoration: none; opacity: 0.85; transition: all 0.2s ease; display: inline-block;">{{ item.name }}</a>
         {% endfor %}
       {% endif %}
     </div>

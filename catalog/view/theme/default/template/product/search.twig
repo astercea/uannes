@@ -1,73 +1,248 @@
 {{ header }}
 <style>
-footer {
-  background-color: #1a1a50;
-  margin-top: 50px;
+/* ==========================================================================
+   SEARCH PAGE — Modern Minimalist Design System
+   ========================================================================== */
+#product-search {
+  background: transparent;
+  padding-top: 20px;
+  padding-bottom: 80px;
 }
-@media (max-width: 767px) {
-  .grid-buttons {
-    display: none;
-  }
-}
-#product-search h1 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 300;
+
+.search-page__header {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.search-page__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #1a1a50;
+  margin: 15px 0 6px;
 }
-.category-list-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-.category-list-toolbar__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.65rem;
-}
-.category-view-btn {
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-.category-view-btn:hover {
-  opacity: 0.7;
-}
-.category-view-btn.active {
-  opacity: 1;
-}
-#product-search .category-sort .dropdown-menu > li > a {
-  padding: 0.55rem 1.2rem;
+
+.search-page__count {
+  font-family: 'DM Sans', sans-serif;
   font-size: 13px;
+  font-weight: 400;
+  color: #888;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+/* Product Grid */
+#product-search .uannes-row-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 46px;
+  width: 100%;
+}
+
+/* Media Dimensions: Giyim (4:5 vertical) vs Eşarp (1:1 square) */
+#product-search .uannes-row-media {
+  position: relative;
+  width: 100%;
+  padding-bottom: 125%;
+  background: transparent;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+#product-search .uannes-row-media--square {
+  padding-bottom: 100% !important;
+}
+
+#product-search .uannes-row-img,
+#product-search .uannes-row-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transition: opacity 0.5s ease;
+  display: block;
+}
+
+/* Pagination */
+.search-page__pagination {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-page__pagination .pagination {
+  margin: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.search-page__pagination .pagination > li > a,
+.search-page__pagination .pagination > li > span {
   color: #1a1a50;
+  padding: 8px 14px;
+  border: 1px solid rgba(26, 26, 80, 0.15);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  border-radius: 0 !important;
+  transition: all 0.2s ease;
 }
-#product-search .category-sort .dropdown-menu > li > a:hover,
-#product-search .category-sort .dropdown-menu > li.active > a {
-  background: rgba(26, 26, 80, 0.04);
-}
-#product-search .pagination > .active > span,
-#product-search .pagination > .active > a {
+
+.search-page__pagination .pagination > .active > span,
+.search-page__pagination .pagination > .active > a,
+.search-page__pagination .pagination > li > a:hover {
   background-color: #1a1a50;
   border-color: #1a1a50;
   color: #fff;
 }
-#product-search .pagination > li > a,
-#product-search .pagination > li > span {
-  color: #1a1a50;
-  padding: 8px 15px;
-  border: none;
+
+/* Empty Search State */
+.search-page__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 48vh;
+  text-align: center;
   font-family: 'DM Sans', sans-serif;
+  padding: 30px 15px 60px;
+}
+
+.search-page__empty-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #1a1a50;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.search-page__empty-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #777;
+  max-width: 440px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.search-page__empty .mega-search-wrapper {
+  width: 100%;
+  max-width: 380px;
+}
+
+.search-page__empty .mega-search-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid #1a1a50;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.search-page__empty .search-icon-btn {
+  margin-right: 10px;
+  color: #1a1a50;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-page__empty .mega-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 6px 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #1a1a50;
+  outline: none;
+  box-shadow: none;
+}
+
+.search-page__empty .mega-search-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 767px) {
+  #product-search {
+    padding-top: 15px;
+    padding-bottom: 50px;
+  }
+
+  .search-page__header {
+    margin-bottom: 24px;
+  }
+
+  .search-page__title {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    margin: 10px 0 4px;
+  }
+
+  .search-page__count {
+    font-size: 12px;
+  }
+
+  #product-search .uannes-row-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    column-gap: 10px !important;
+    row-gap: 28px !important;
+  }
+
+  #product-search .uannes-row-media {
+    margin-bottom: 8px;
+  }
+
+  #product-search .uannes-row-name {
+    font-size: 13px;
+    line-height: 1.35;
+    padding-right: 4px;
+  }
+
+  .search-page__pagination {
+    margin-top: 36px;
+  }
+
+  .search-page__pagination .pagination > li > a,
+  .search-page__pagination .pagination > li > span {
+    padding: 6px 11px;
+    font-size: 12px;
+  }
+
+  .search-page__empty {
+    min-height: 40vh;
+    padding: 20px 10px 40px;
+  }
+
+  .search-page__empty-title {
+    font-size: 20px;
+  }
+
+  .search-page__empty-desc {
+    font-size: 12.5px;
+    margin-bottom: 24px;
+  }
 }
 </style>
-<div id="product-search" class="container">
-  <!-- Breadcrumb kaldirildi -->
+
+<div id="product-search" class="container search-page">
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -77,76 +252,94 @@ footer {
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <!-- h1 kaldirildi -->
 
-            {% if products %}
-      <div class="category-list-toolbar" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 40px;">
-        <div class="category-list-toolbar__actions" style="width: 100%; justify-content: space-between;">
-          <div style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #888; font-weight: 300;">
-             {{ results }}
-          </div>
-          <div class="dropdown category-sort" style="display:flex; align-items:center; gap:20px;">
-            <div class="category-view-toggle grid-buttons" role="group" aria-label="Görünüm" style="background:transparent; border:none; gap:15px; display:flex;">
-              <button type="button" id="grid-view-4" class="category-view-btn active" data-toggle="tooltip" title="4'lü Görünüm" style="background:transparent; padding:0; color:#1a1a50; border:none;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              </button>
-              <button type="button" id="grid-view-6" class="category-view-btn" data-toggle="tooltip" title="6'lı Görünüm" style="background:transparent; padding:0; color:#1a1a50; border:none;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="4" height="4"></rect><rect x="10" y="3" width="4" height="4"></rect><rect x="17" y="3" width="4" height="4"></rect><rect x="3" y="10" width="4" height="4"></rect><rect x="10" y="10" width="4" height="4"></rect><rect x="17" y="10" width="4" height="4"></rect><rect x="3" y="17" width="4" height="4"></rect><rect x="10" y="17" width="4" height="4"></rect><rect x="17" y="17" width="4" height="4"></rect></svg>
-              </button>
+      <header class="search-page__header">
+        <h1 class="search-page__title">
+          {% if search %}
+            Arama: "{{ search }}"
+          {% else %}
+            Arama
+          {% endif %}
+        </h1>
+        {% if products %}
+          <p class="search-page__count">{{ products|length }} ürün listeleniyor</p>
+        {% endif %}
+      </header>
+
+      {% if products %}
+      {% set giyim_products = [] %}
+      {% set esarp_products = [] %}
+      {% for product in products %}
+        {% if product.is_esarp is defined and product.is_esarp %}
+          {% set esarp_products = esarp_products|merge([product]) %}
+        {% else %}
+          {% set giyim_products = giyim_products|merge([product]) %}
+        {% endif %}
+      {% endfor %}
+
+      {% set product_groups = [
+        {'items': giyim_products, 'type': 'giyim'},
+        {'items': esarp_products, 'type': 'esarp'}
+      ] %}
+
+      {% for group in product_groups %}
+        {% if group.items %}
+        <div class="uannes-row-grid"{% if not loop.first %} style="margin-top: 50px;"{% endif %}>
+          {% for product in group.items %}
+          <a href="{{ product.href }}" class="uannes-row-card">
+            <div class="uannes-row-media{% if group.type == 'esarp' or (product.is_esarp is defined and product.is_esarp) %} uannes-row-media--square{% endif %}">
+              {% include 'common/product_badges.twig' with { badges: product.badges|default([]) } only %}
+              {% if product.images is defined and product.images|length > 0 %}
+                {% for image in product.images %}
+                <img src="{{ image }}" alt="{{ product.name }}" title="{{ product.name }}" class="uannes-row-img uannes-row-card__image{% if loop.first %} main-img is-active{% elseif loop.index == 2 %} hover-img{% endif %}" data-card-image="{{ loop.index0 }}" />
+                {% endfor %}
+                {% if product.images|length > 1 %}
+                <div class="uannes-row-card__swatches" aria-label="Görünüm seçenekleri">
+                  <button type="button" class="uannes-row-card__swatch is-active" data-image-index="0" aria-label="Birinci görünüm"></button>
+                  <button type="button" class="uannes-row-card__swatch" data-image-index="1" aria-label="İkinci görünüm"></button>
+                </div>
+                <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--prev" data-direction="prev" aria-label="Önceki görsel">‹</button>
+                <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--next" data-direction="next" aria-label="Sonraki görsel">›</button>
+                {% endif %}
+              {% else %}
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="uannes-row-img uannes-row-card__image main-img is-active" data-card-image="0" />
+                {% if product.thumb2 %}
+                <img src="{{ product.thumb2 }}" alt="{{ product.name }}" class="uannes-row-img uannes-row-card__image hover-img" data-card-image="1" />
+                <div class="uannes-row-card__swatches" aria-label="Görünüm seçenekleri">
+                  <button type="button" class="uannes-row-card__swatch is-active" data-image-index="0" aria-label="Birinci görünüm"></button>
+                  <button type="button" class="uannes-row-card__swatch" data-image-index="1" aria-label="İkinci görünüm"></button>
+                </div>
+                <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--prev" data-direction="prev" aria-label="Önceki görsel">‹</button>
+                <button type="button" class="uannes-row-card__arrow uannes-row-card__arrow--next" data-direction="next" aria-label="Sonraki görsel">›</button>
+                {% endif %}
+              {% endif %}
             </div>
-            <button class="btn dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background:transparent; color:#1a1a50; box-shadow:none; padding:0; border:none; font-weight:300; font-size:14px;">
-              <span>{{ text_sort }}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-left:5px;"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="border-radius:0; border:1px solid #eee; box-shadow:0 10px 30px rgba(0,0,0,0.05); margin-top:10px;">
-              {% for sorts in sorts %}
-              <li {% if sorts.value == '%s-%s'|format(sort, order) %} class="active" {% endif %}>
-                <a href="{{ sorts.href }}" style="font-size:13px; font-weight:300;">{{ sorts.text }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row" id="product-list">
-        {% for product in products %}
-        <div class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-6">
-          <div class="product-card text-center{% if product.in_stock is defined and not product.in_stock %} product-card--out-of-stock{% endif %}">
-            <div class="transparent-box w-100 mt-0">
-              <div class="product-image-container position-relative">
-                {% include 'common/product_badges.twig' with { badges: product.badges } only %}
-                <a href="{{ product.href }}">
-                  <img src="{{ product.thumb }}" class="product-image img-fluid mb-3 main-img" alt="{{ product.name }}" title="{{ product.name }}"/>
-                  {% if product.thumb2 %}
-                  <img src="{{ product.thumb2 }}" class="product-image img-fluid hover-img" alt="{{ product.name }} Hover"/>
-                  {% else %}
-                  <img src="{{ product.thumb }}" class="product-image img-fluid hover-img" alt="{{ product.name }} Hover"/>
-                  {% endif %}
-                </a>
-              </div>
-              <h6 class="fw-normal" style="font-size:16px;">{{ product.name }}</h6>
+            <div class="uannes-row-info">
+              <span class="uannes-row-name">{{ product.name }}</span>
             </div>
-          </div>
+          </a>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
+        {% endif %}
+      {% endfor %}
 
-      <div class="row">
-        <div class="col-sm-6 text-left">{{ pagination }}</div>
-        <div class="col-sm-6 text-right">{{ results }}</div>
+      {% if pagination %}
+      <div class="search-page__pagination">
+        {{ pagination }}
       </div>
+      {% endif %}
+
       {% elseif search %}
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh; text-align: center; font-family: 'DM Sans', sans-serif; padding-bottom: 50px;">
-        <h3 style="font-weight: 400; color: #1a1a50; font-size: 24px; margin-bottom: 15px; font-family: 'Cormorant Garamond', 'Georgia', serif; letter-spacing: 0.08em;">Üzgünüz, sonuç bulunamadı.</h3>
-        <p style="color: #888; font-size: 13px; margin-bottom: 30px;">"{{ search }}" için eşleşen bir ürünümüz yok. Başka bir arama terimiyle tekrar deneyebilirsiniz.</p>
+      <div class="search-page__empty">
+        <h2 class="search-page__empty-title">Üzgünüz, sonuç bulunamadı.</h2>
+        <p class="search-page__empty-desc">"{{ search }}" için eşleşen bir ürünümüz bulunamadı. Farklı bir arama terimiyle tekrar deneyebilirsiniz.</p>
         
-        <div class="mega-search-wrapper" style="width: 100%; max-width: 400px; text-align: left;">
-          <div class="mega-search-form" style="display: flex; align-items: center; border-bottom: 1px solid #1a1a50; width: 100%;">
-            <button type="button" id="button-search" class="search-icon-btn" style="margin-right: 12px; color: #1a1a50; background: transparent; border: none; cursor: pointer; padding: 5px 0; display: flex; align-items: center;">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <div class="mega-search-wrapper">
+          <div class="mega-search-form">
+            <button type="button" id="button-search" class="search-icon-btn" aria-label="Arama yap">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-            <input type="text" name="search" value="" placeholder="Search..." id="input-search" class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
+            <input type="text" name="search" value="" placeholder="Arama yapın..." id="input-search" class="mega-search-input" autocomplete="off" />
           </div>
           <input type="hidden" name="category_id" value="0" />
           <input type="hidden" name="sub_category" value="1" />
@@ -154,13 +347,15 @@ footer {
         </div>
       </div>
       {% else %}
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh; text-align: center; font-family: 'DM Sans', sans-serif; padding-bottom: 50px;">
-        <div class="mega-search-wrapper" style="width: 100%; max-width: 400px; text-align: left;">
-          <div class="mega-search-form" style="display: flex; align-items: center; border-bottom: 1px solid #1a1a50; width: 100%;">
-            <button type="button" id="button-search" class="search-icon-btn" style="margin-right: 12px; color: #1a1a50; background: transparent; border: none; cursor: pointer; padding: 5px 0; display: flex; align-items: center;">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="search-page__empty">
+        <h2 class="search-page__empty-title">Ürün Arayın</h2>
+        <p class="search-page__empty-desc">Koleksiyonlarımızda arama yapmak için lütfen bir anahtar kelime yazınız.</p>
+        <div class="mega-search-wrapper">
+          <div class="mega-search-form">
+            <button type="button" id="button-search" class="search-icon-btn" aria-label="Arama yap">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-            <input type="text" name="search" value="" placeholder="Search..." id="input-search" class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
+            <input type="text" name="search" value="" placeholder="Arama yapın..." id="input-search" class="mega-search-input" autocomplete="off" />
           </div>
           <input type="hidden" name="category_id" value="0" />
           <input type="hidden" name="sub_category" value="1" />
@@ -169,78 +364,58 @@ footer {
       </div>
       {% endif %}
 
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
 </div>
-<script type="text/javascript"><!--
+
+<script>
+// Search trigger
 $('#button-search').bind('click', function() {
-	url = 'index.php?route=product/search';
-
-	var search = $('#content input[name=\'search\']').prop('value');
-
-	if (search) {
-		url += '&search=' + encodeURIComponent(search);
-	}
-
-	var category_id = $('#content select[name=\'category_id\']').prop('value');
-
-	if (category_id > 0) {
-		url += '&category_id=' + encodeURIComponent(category_id);
-	}
-
-	var sub_category = $('#content input[name=\'sub_category\']:checked').prop('value');
-
-	if (sub_category) {
-		url += '&sub_category=true';
-	}
-
-	var filter_description = $('#content input[name=\'description\']:checked').prop('value');
-
-	if (filter_description) {
-		url += '&description=true';
-	}
-
-	location = url;
-});
-
-$('#content input[name=\'search\']').bind('keydown', function(e) {
-	if (e.keyCode == 13) {
-		$('#button-search').trigger('click');
-	}
-});
-
-$('select[name=\'category_id\']').on('change', function() {
-	if (this.value == '0') {
-		$('input[name=\'sub_category\']').prop('disabled', true);
-	} else {
-		$('input[name=\'sub_category\']').prop('disabled', false);
-	}
-});
-
-$('select[name=\'category_id\']').trigger('change');
---></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#grid-view-4').click(function() {
-    $('#product-list .product-layout').attr('class', 'product-layout col-lg-3 col-md-4 col-sm-6 col-xs-6');
-    $('#grid-view-4').addClass('active');
-    $('#grid-view-6').removeClass('active');
-    localStorage.setItem('display', 'grid-4');
-  });
-
-  $('#grid-view-6').click(function() {
-    $('#product-list .product-layout').attr('class', 'product-layout col-lg-2 col-md-3 col-sm-4 col-xs-6');
-    $('#grid-view-6').addClass('active');
-    $('#grid-view-4').removeClass('active');
-    localStorage.setItem('display', 'grid-6');
-  });
-
-  var display = localStorage.getItem('display');
-  if (display == 'grid-6') {
-    $('#grid-view-6').trigger('click');
-  } else {
-    $('#grid-view-4').addClass('active');
+  var url = 'index.php?route=product/search';
+  var search = $('#content input[name=\'search\']').prop('value');
+  if (search) {
+    url += '&search=' + encodeURIComponent(search);
   }
+  location = url;
+});
+
+$('#input-search').bind('keydown', function(e) {
+  if (e.keyCode == 13) {
+    $('#button-search').trigger('click');
+  }
+});
+
+// Product card swatch & arrow interactions
+document.addEventListener('click', function (event) {
+  var control = event.target.closest('#product-search .uannes-row-card__swatch, #product-search .uannes-row-card__arrow');
+  if (!control) return;
+  event.preventDefault();
+  event.stopPropagation();
+  var media = control.closest('.uannes-row-media');
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  if (images.length < 2) return;
+  var current = parseInt(media.getAttribute('data-current-image'), 10);
+  if (isNaN(current)) current = media.matches(':hover') && images.length > 1 ? 1 : 0;
+  current = control.classList.contains('uannes-row-card__arrow')
+    ? (control.getAttribute('data-direction') === 'next' ? (current + 1) % images.length : (current - 1 + images.length) % images.length)
+    : parseInt(control.getAttribute('data-image-index'), 10);
+  media.classList.add('is-manual-image');
+  media.setAttribute('data-current-image', String(current));
+  images.forEach(function (image) { image.classList.toggle('is-active', parseInt(image.getAttribute('data-card-image'), 10) === current); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === String(current)); });
+});
+
+document.addEventListener('mouseout', function (event) {
+  var media = event.target.closest('#product-search .uannes-row-media');
+  if (!media || media.contains(event.relatedTarget)) return;
+  var images = Array.prototype.slice.call(media.querySelectorAll('[data-card-image]'));
+  if (!images.length) return;
+  media.classList.remove('is-manual-image');
+  media.setAttribute('data-current-image', '0');
+  images.forEach(function (image) { image.classList.toggle('is-active', image.getAttribute('data-card-image') === '0'); });
+  media.querySelectorAll('.uannes-row-card__swatch').forEach(function (swatch) { swatch.classList.toggle('is-active', swatch.getAttribute('data-image-index') === '0'); });
 });
 </script>
 {{ footer }}

@@ -9133,14 +9133,17 @@ video {
   padding-bottom: 100% !important;
 }
 
-.uannes-row-img {
+.uannes-row-img,
+.uannes-row-card__image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
   transition: opacity 0.5s ease;
+  display: block;
 }
 
 .uannes-row-img.hover-img {
@@ -11519,23 +11522,27 @@ body:has(.account-page) {
   transform: scale(1.003);
 }
 
-/* Giyim card controls: show colour views and image navigation on hover. */
+/* Giyim and Search card controls: show colour views and image navigation on hover. */
 #product-giyim .uannes-row-card__swatches,
-#product-giyim .uannes-row-card__arrow {
+#product-giyim .uannes-row-card__arrow,
+#product-search .uannes-row-card__swatches,
+#product-search .uannes-row-card__arrow {
   position: absolute;
   z-index: 4;
   opacity: 0;
   transition: opacity 180ms ease;
 }
 
-#product-giyim .uannes-row-card__swatches {
+#product-giyim .uannes-row-card__swatches,
+#product-search .uannes-row-card__swatches {
   top: 13px;
   right: 13px;
   display: flex;
   gap: 7px;
 }
 
-#product-giyim .uannes-row-card__swatch {
+#product-giyim .uannes-row-card__swatch,
+#product-search .uannes-row-card__swatch {
   width: 11px;
   height: 11px;
   padding: 0;
@@ -11545,16 +11552,19 @@ body:has(.account-page) {
   cursor: pointer;
 }
 
-#product-giyim .uannes-row-card__swatch:nth-child(2) {
+#product-giyim .uannes-row-card__swatch:nth-child(2),
+#product-search .uannes-row-card__swatch:nth-child(2) {
   background: #dfd5c8;
 }
 
-#product-giyim .uannes-row-card__swatch.is-active {
+#product-giyim .uannes-row-card__swatch.is-active,
+#product-search .uannes-row-card__swatch.is-active {
   outline: 1px solid #1a1a50;
   outline-offset: 3px;
 }
 
-#product-giyim .uannes-row-card__arrow {
+#product-giyim .uannes-row-card__arrow,
+#product-search .uannes-row-card__arrow {
   top: 50%;
   padding: 8px 10px;
   border: 0;
@@ -11568,25 +11578,37 @@ body:has(.account-page) {
   cursor: pointer;
 }
 
-#product-giyim .uannes-row-card__arrow--prev { left: 3px; }
-#product-giyim .uannes-row-card__arrow--next { right: 3px; }
+#product-giyim .uannes-row-card__arrow--prev,
+#product-search .uannes-row-card__arrow--prev { left: 3px; }
+#product-giyim .uannes-row-card__arrow--next,
+#product-search .uannes-row-card__arrow--next { right: 3px; }
 
 #product-giyim .uannes-row-media:hover .uannes-row-card__swatches,
 #product-giyim .uannes-row-media:hover .uannes-row-card__arrow,
 #product-giyim .uannes-row-media:focus-within .uannes-row-card__swatches,
-#product-giyim .uannes-row-media:focus-within .uannes-row-card__arrow {
+#product-giyim .uannes-row-media:focus-within .uannes-row-card__arrow,
+#product-search .uannes-row-media:hover .uannes-row-card__swatches,
+#product-search .uannes-row-media:hover .uannes-row-card__arrow,
+#product-search .uannes-row-media:focus-within .uannes-row-card__swatches,
+#product-search .uannes-row-media:focus-within .uannes-row-card__arrow {
   opacity: 1;
 }
 
 /* On hover, every card reveals its second image; arrows can still force a view. */
-#product-giyim .uannes-row-card__image { opacity: 0; }
-#product-giyim .uannes-row-card__image.is-active { opacity: 1; }
-#product-giyim .uannes-row-media:hover .uannes-row-card__image[data-card-image="1"] { opacity: 1; }
-#product-giyim .uannes-row-media:hover .uannes-row-card__image[data-card-image="0"] { opacity: 0; }
+#product-giyim .uannes-row-card__image,
+#product-search .uannes-row-card__image { opacity: 0; }
+#product-giyim .uannes-row-card__image.is-active,
+#product-search .uannes-row-card__image.is-active { opacity: 1; }
+#product-giyim .uannes-row-media:hover .uannes-row-card__image[data-card-image="1"],
+#product-search .uannes-row-media:hover .uannes-row-card__image[data-card-image="1"] { opacity: 1; }
+#product-giyim .uannes-row-media:hover .uannes-row-card__image[data-card-image="0"],
+#product-search .uannes-row-media:hover .uannes-row-card__image[data-card-image="0"] { opacity: 0; }
 
 /* A manual arrow selection wins over the default hover image. */
-#product-giyim .uannes-row-media.is-manual-image .uannes-row-card__image { opacity: 0 !important; }
-#product-giyim .uannes-row-media.is-manual-image .uannes-row-card__image.is-active { opacity: 1 !important; }
+#product-giyim .uannes-row-media.is-manual-image .uannes-row-card__image,
+#product-search .uannes-row-media.is-manual-image .uannes-row-card__image { opacity: 0 !important; }
+#product-giyim .uannes-row-media.is-manual-image .uannes-row-card__image.is-active,
+#product-search .uannes-row-media.is-manual-image .uannes-row-card__image.is-active { opacity: 1 !important; }
 
 /* Recently viewed cards use the same second-image transition explicitly. */
 #checkout-cart .cart-page__recent-card .uannes-row-media:hover .uannes-row-img.hover-img,
@@ -11600,13 +11622,15 @@ body:has(.account-page) {
 }
 
 /* Availability notes remain labels instead of pill-shaped buttons. */
-#product-giyim .uannes-row-media .product-badges {
+#product-giyim .uannes-row-media .product-badges,
+#product-search .uannes-row-media .product-badges {
   top: 13px;
   left: 13px;
   gap: 5px;
 }
 
-#product-giyim .uannes-row-media .product-badge {
+#product-giyim .uannes-row-media .product-badge,
+#product-search .uannes-row-media .product-badge {
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -11620,8 +11644,10 @@ body:has(.account-page) {
   line-height: 1.3;
 }
 
-#product-giyim .uannes-row-media .product-badge--out_of_stock { color: #722f37; }
-#product-giyim .uannes-row-media .product-badge--low_stock { color: #a76416; }
+#product-giyim .uannes-row-media .product-badge--out_of_stock,
+#product-search .uannes-row-media .product-badge--out_of_stock { color: #722f37; }
+#product-giyim .uannes-row-media .product-badge--low_stock,
+#product-search .uannes-row-media .product-badge--low_stock { color: #a76416; }
 
 /* Giyim filters — a compact desktop popover that becomes a full mobile drawer. */
 .giyim-filter { position: relative; }

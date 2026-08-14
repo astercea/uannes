@@ -188,21 +188,48 @@ class ControllerProductSearch extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
-			foreach ($results as $result) {
-				$width = $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width');
-				$height = $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height');
+			$esarp_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "category_description WHERE LOWER(name) LIKE '%eşarp%' OR LOWER(name) LIKE '%esarp%' OR LOWER(name) LIKE '%şal%' OR LOWER(name) LIKE '%sal%'");
+			$esarp_cat_ids = array(66);
+			if (!empty($esarp_query->rows)) {
+				foreach ($esarp_query->rows as $eq) {
+					$esarp_cat_ids[] = (int)$eq['category_id'];
+				}
+			}
+			$esarp_cat_ids = array_unique($esarp_cat_ids);
 
-				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $width, $height);
-				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $width, $height);
+			foreach ($results as $result) {
+				$cat_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$result['product_id'] . "' AND category_id IN (" . implode(',', $esarp_cat_ids) . ") LIMIT 1");
+				$is_esarp = ($cat_query->num_rows > 0);
+				if (!$is_esarp) {
+					$name_lower = mb_strtolower($result['name'], 'UTF-8');
+					if (strpos($name_lower, 'eşarp') !== false || strpos($name_lower, 'esarp') !== false || strpos($name_lower, 'şal') !== false || strpos($name_lower, 'sal') !== false) {
+						$is_esarp = true;
+					}
 				}
 
-				$image_hover = false;
-				$product_images = $this->model_catalog_product->getProductImages($result['product_id']);
+				if ($is_esarp) {
+					$card_w = 600;
+					$card_h = 600;
+				} else {
+					$card_w = 600;
+					$card_h = 750;
+				}
 
-				if ($product_images) {
-					$image_hover = $this->model_tool_image->resize($product_images[0]['image'], $width, $height);
+				$image_sources = array();
+				if ($result['image']) {
+					$image_sources[] = $result['image'];
+				}
+				$product_images = $this->model_catalog_product->getProductImages($result['product_id']);
+				foreach ($product_images as $product_image) {
+					$image_sources[] = $product_image['image'];
+				}
+				if (!$image_sources) {
+					$image_sources[] = 'placeholder.png';
+				}
+
+				$images = array();
+				foreach ($image_sources as $image_source) {
+					$images[] = $this->model_tool_image->resizeCover($image_source, $card_w, $card_h);
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -235,8 +262,9 @@ class ControllerProductSearch extends Controller {
 
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
-					'thumb'       => $image,
-					'thumb2'      => $image_hover,
+					'images'      => $images,
+					'thumb'       => $images[0],
+					'thumb2'      => isset($images[1]) ? $images[1] : false,
 					'name'        => $result['name'],
 					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
@@ -246,6 +274,7 @@ class ControllerProductSearch extends Controller {
 					'rating'      => $result['rating'],
 					'badges'      => $badge_info['badges'],
 					'in_stock'    => $badge_info['in_stock'],
+					'is_esarp'    => $is_esarp,
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 				);
 			}
