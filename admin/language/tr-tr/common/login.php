@@ -7,7 +7,7 @@ $_['heading_title']  = 'Kontrol Paneli';
 // Text
 $_['text_heading']   = 'Kontrol Paneli';
 $_['text_login']     = 'Lütfen bilgilerinizi giriniz.';
-$_['text_forgotten'] = 'Parolamı Unuttum';
+$_['text_forgotten'] = 'Şifremi unuttum';
 
 // Entry
 $_['entry_username'] = 'Kullanıcı Adınız';

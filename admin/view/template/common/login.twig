@@ -1,51 +1,352 @@
 {{ header }}
-<div id="content">
-  <div class="container-fluid"><br/>
-    <br/>
-    <div class="row">
-      <div class="col-sm-offset-4 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title"><i class="fa fa-lock"></i> {{ text_login }}</h1>
-          </div>
-          <div class="panel-body">
-            {% if success %}
-            <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-            {% endif %}
-            {% if error_warning %}
-            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-            {% endif %}
-            <form action="{{ action }}" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="input-username">{{ entry_username }}</label>
-                <div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" name="username" value="{{ username }}" placeholder="{{ entry_username }}" id="input-username" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="input-password">{{ entry_password }}</label>
-                <div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
-                </div>
-                {% if forgotten %}
-                <span class="help-block"><a href="{{ forgotten }}">{{ text_forgotten }}</a></span>
-                {% endif %}
-              </div>
-              <div class="text-right">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-key"></i> {{ button_login }}</button>
-              </div>
-              {% if redirect %}
-              <input type="hidden" name="redirect" value="{{ redirect }}" />
-              {% endif %}
-            </form>
-          </div>
-        </div>
-      </div>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+
+<style>
+  #container {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f6f2;
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    color: #1a1a50;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .login-page {
+    background: #f8f6f2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 44px 20px 24px;
+    box-sizing: border-box;
+  }
+
+  .login-page__container {
+    width: 100%;
+    max-width: 345px;
+    margin: auto 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  /* UANNES Brand Header */
+  .uannes-brand {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .uannes-brand__title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(34px, 3.8vw, 44px);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+    text-transform: uppercase;
+    color: #1a1a50;
+    margin: 0 0 6px 0;
+    line-height: 1.1;
+  }
+
+  .uannes-brand__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: rgba(26, 26, 80, 0.65);
+    margin: 0;
+  }
+
+  .login-page__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+  }
+
+  /* Minimalist Underline Input Fields (No Box) */
+  .login-field {
+    position: relative;
+    margin-bottom: 1rem;
+    background: transparent;
+  }
+
+  .login-field__input {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    background: transparent;
+    background-color: transparent;
+    padding: 22px 8px 4px 8px;
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #1a1a50;
+    outline: none;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    border-radius: 0;
+    -webkit-appearance: none;
+    line-height: 1.4;
+  }
+
+  .login-field__input:focus {
+    border-bottom-color: #1a1a50;
+    background: transparent;
+    background-color: transparent;
+    outline: none;
+  }
+
+  /* Prevent browser autofill background */
+  .login-field__input:-webkit-autofill,
+  .login-field__input:-webkit-autofill:hover,
+  .login-field__input:-webkit-autofill:focus,
+  .login-field__input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #f8f6f2 inset;
+    box-shadow: 0 0 0px 1000px #f8f6f2 inset;
+    -webkit-text-fill-color: #1a1a50;
+    background-color: transparent;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .login-field__label {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    pointer-events: none;
+    transition: top 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      font-size 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: left top;
+  }
+
+  .login-field__input:focus + .login-field__label,
+  .login-field__input:not(:placeholder-shown) + .login-field__label {
+    top: 0px;
+    transform: translateY(0);
+    font-size: 9.5px;
+    color: #999;
+    letter-spacing: 0.04em;
+  }
+
+  /* Şifremi unuttum */
+  .login-page__forgot {
+    text-align: right;
+    margin-top: -0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .login-page__forgot-link,
+  .login-page__forgot-link:link,
+  .login-page__forgot-link:visited {
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.3s ease;
+  }
+
+  .login-page__forgot-link:hover,
+  .login-page__forgot-link:focus,
+  .login-page__forgot-link:active,
+  .login-page__forgot-link:focus-visible {
+    color: #1a1a50;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  /* Submit Button */
+  .login-page__submit {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background-color: #1a1a50;
+    background-image: none;
+    color: #fff;
+    border: 1.5px solid #1a1a50;
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  .login-page__submit:hover,
+  .login-page__submit:focus {
+    background-color: #fff;
+    background-image: none;
+    color: #1a1a50;
+    outline: none;
+  }
+
+  /* Alerts */
+  .login-alert {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .login-alert--error {
+    background: #fdf2f2;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+  }
+
+  .login-alert--success {
+    background: #f0fff4;
+    color: #276749;
+    border: 1px solid #c6f6d5;
+  }
+
+  .login-alert svg {
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .uannes-login-footer {
+    text-align: center;
+    padding-top: 32px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14.5px;
+    color: #1a1a50;
+  }
+
+  .uannes-login-footer p {
+    margin: 0 0 5px;
+    color: #1a1a50;
+  }
+
+  .uannes-dijicrea-link,
+  .uannes-dijicrea-link:link,
+  .uannes-dijicrea-link:visited {
+    color: #1a1a50;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    padding-bottom: 1px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .uannes-dijicrea-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #1a1a50;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .uannes-dijicrea-link:hover::after,
+  .uannes-dijicrea-link:focus::after,
+  .uannes-dijicrea-link:active::after {
+    transform: scaleX(1);
+  }
+</style>
+
+<div id="account-login" class="login-page">
+  <div class="login-page__container">
+
+    <!-- UANNES Brand Title -->
+    <div class="uannes-brand">
+      <h1 class="uannes-brand__title">UANNES</h1>
+      <p class="uannes-brand__subtitle">YÖNETİM PANELİ</p>
     </div>
+
+    {% if success %}
+    <div class="login-alert login-alert--success">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>{{ success }}</span>
+    </div>
+    {% endif %}
+
+    {% if error_warning %}
+    <div class="login-alert login-alert--error">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor"/><path d="M8 5v4M8 11h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span>{{ error_warning }}</span>
+    </div>
+    {% endif %}
+
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" class="login-page__form" autocomplete="off">
+      <div class="login-field">
+        <input type="text" name="username" value="{{ username }}" id="input-username" class="login-field__input" placeholder=" " required autocomplete="username" autofocus />
+        <label for="input-username" class="login-field__label">Kullanıcı Adı *</label>
+      </div>
+
+      <div class="login-field">
+        <input type="password" name="password" value="{{ password }}" id="input-password" class="login-field__input" placeholder=" " required autocomplete="current-password" />
+        <label for="input-password" class="login-field__label">Şifre *</label>
+      </div>
+
+      <div class="login-page__forgot">
+        <a href="{{ forgotten }}" class="login-page__forgot-link">Şifremi unuttum</a>
+      </div>
+
+      <button type="submit" class="login-page__submit">
+        <span>Giriş Yap</span>
+      </button>
+
+      {% if redirect %}
+      <input type="hidden" name="redirect" value="{{ redirect }}" />
+      {% endif %}
+    </form>
+
   </div>
+
+  <!-- Footer -->
+  <footer class="uannes-login-footer">
+    <p>Powered by <a href="https://www.dijicrea.com" target="_blank" rel="noopener noreferrer" class="uannes-dijicrea-link">DIJICREA</a></p>
+    <p>&copy; {{ "now"|date("Y") }} UANNES</p>
+  </footer>
 </div>
+
 {{ footer }}

@@ -51,14 +51,14 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 								{% include 'common/product_badges.twig' with { badges: badges } only %}
 							</div>
 							<h1 id="product-title" class="product-page__title">{{ heading_title }}</h1>
-							<p class="product-page__price">
+							<div class="product-page__price">
 							{% if special %}
-								<span class="product-page__price-old">{{ price }}</span><br>
-								<span class="product-page__price-current">{{ special }}</span>
+								<span class="product-page__price-old">{{ price }}</span>
+								<span class="product-page__price-current product-page__price-current--special">{{ special }}</span>
 							{% else %}
 								<span class="product-page__price-current">{{ price }}</span>
 							{% endif %}
-							</p>
+							</div>
 
 							{% if attribute_groups %}
 								<div class="product-attributes mb-3">

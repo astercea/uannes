@@ -1,0 +1,126 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-reklam-karti" data-toggle="tooltip" title="{{ button_save|default('Kaydet') }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel|default('İptal') }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    {% endif %}
+    {% if success %}
+      <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-reklam-karti" class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-giyim" data-toggle="tab"><i class="fa fa-female"></i> {{ tab_giyim }}</a></li>
+            <li><a href="#tab-esarp" data-toggle="tab"><i class="fa fa-square-o"></i> {{ tab_esarp }}</a></li>
+            <li><a href="#tab-tum-urunler" data-toggle="tab"><i class="fa fa-th-large"></i> {{ tab_tum_urunler }}</a></li>
+          </ul>
+
+          <div class="tab-content" style="padding-top: 20px;">
+            {% set page_tabs = [
+              {'key': 'giyim', 'id': 'tab-giyim', 'title': tab_giyim},
+              {'key': 'esarp', 'id': 'tab-esarp', 'title': tab_esarp},
+              {'key': 'tum_urunler', 'id': 'tab-tum-urunler', 'title': tab_tum_urunler}
+            ] %}
+
+            {% for page_tab in page_tabs %}
+              {% set card = cards[page_tab.key] %}
+              <div class="tab-pane{% if loop.first %} active{% endif %}" id="{{ page_tab.id }}">
+                
+                <!-- Durum -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-status-{{ page_tab.key }}">{{ entry_status }}</label>
+                  <div class="col-sm-9">
+                    <select name="module_reklam_karti_{{ page_tab.key }}[status]" id="input-status-{{ page_tab.key }}" class="form-control">
+                      <option value="1"{% if card.status == '1' %} selected="selected"{% endif %}>{{ text_enabled }}</option>
+                      <option value="0"{% if card.status == '0' %} selected="selected"{% endif %}>{{ text_disabled }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Konum -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-position-{{ page_tab.key }}">
+                    <span data-toggle="tooltip" title="{{ help_position }}">{{ entry_position }}</span>
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="number" min="1" max="100" name="module_reklam_karti_{{ page_tab.key }}[position]" value="{{ card.position }}" placeholder="6" id="input-position-{{ page_tab.key }}" class="form-control" />
+                    <span class="help-block"><small class="text-muted">Örnek: <b>6</b> yazarsanız reklam kartı 6. ürün kartından sonra yerleşir.</small></span>
+                  </div>
+                </div>
+
+                <!-- Görsel -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{ entry_image }}</label>
+                  <div class="col-sm-9">
+                    <a href="" id="thumb-image-{{ page_tab.key }}" data-toggle="image" class="img-thumbnail">
+                      <img src="{{ card.thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" />
+                    </a>
+                    <input type="hidden" name="module_reklam_karti_{{ page_tab.key }}[image]" value="{{ card.image }}" id="input-image-{{ page_tab.key }}" />
+                  </div>
+                </div>
+
+                <!-- Üst Başlık (Eyebrow) -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-eyebrow-{{ page_tab.key }}">{{ entry_eyebrow }}</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="module_reklam_karti_{{ page_tab.key }}[eyebrow]" value="{{ card.eyebrow }}" placeholder="UANNES" id="input-eyebrow-{{ page_tab.key }}" class="form-control" />
+                  </div>
+                </div>
+
+                <!-- Ana Başlık -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-title-{{ page_tab.key }}">{{ entry_title }}</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="module_reklam_karti_{{ page_tab.key }}[title]" value="{{ card.title }}" placeholder="YENİ SEZON" id="input-title-{{ page_tab.key }}" class="form-control" />
+                  </div>
+                </div>
+
+                <!-- Açıklama Metni -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-text-{{ page_tab.key }}">{{ entry_text }}</label>
+                  <div class="col-sm-9">
+                    <textarea name="module_reklam_karti_{{ page_tab.key }}[text]" rows="3" placeholder="Zamansız silüetler, özenle seçilmiş dokular." id="input-text-{{ page_tab.key }}" class="form-control">{{ card.text }}</textarea>
+                  </div>
+                </div>
+
+                <!-- Bağlantı Linki -->
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input-link-{{ page_tab.key }}">
+                    <span data-toggle="tooltip" title="{{ help_link }}">{{ entry_link }}</span>
+                  </label>
+                  <div class="col-sm-9">
+                    <input type="text" name="module_reklam_karti_{{ page_tab.key }}[link]" value="{{ card.link }}" placeholder="index.php?route=product/giyim" id="input-link-{{ page_tab.key }}" class="form-control" />
+                  </div>
+                </div>
+
+              </div>
+            {% endfor %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

@@ -139,6 +139,14 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
+			if ($this->user->hasPermission('access', 'extension/module/reklam_karti')) {
+				$catalog[] = array(
+					'name'	   => 'Reklam Kartları',
+					'href'     => $this->url->link('extension/module/reklam_karti', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
 			if ($this->user->hasPermission('access', 'design/banner')) {
 				$homepage_banner_id = 7;
 
@@ -232,6 +240,24 @@ class ControllerCommonColumnLeft extends Controller {
 				$marketplace[] = array(
 					'name'	   => $this->language->get('text_extension'),
 					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+
+				$marketplace[] = array(
+					'name'	   => $this->language->get('text_shipping'),
+					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=shipping', true),
+					'children' => array()
+				);
+
+				$marketplace[] = array(
+					'name'	   => $this->language->get('text_payment'),
+					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true),
+					'children' => array()
+				);
+
+				$marketplace[] = array(
+					'name'	   => $this->language->get('text_module'),
+					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true),
 					'children' => array()
 				);
 			}

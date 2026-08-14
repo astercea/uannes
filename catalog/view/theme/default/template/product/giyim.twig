@@ -88,13 +88,14 @@
       {% endfor %}
 
       {% set product_groups = [
-        {'items': giyim_products, 'show_ad': true},
-        {'items': esarp_products, 'show_ad': false}
+        {'items': giyim_products, 'type': 'giyim'},
+        {'items': esarp_products, 'type': 'esarp'}
       ] %}
 
       {% for group in product_groups %}
         {% if group.items %}
         <div class="uannes-row-grid"{% if not loop.first %} style="margin-top: 60px;"{% endif %}>
+          {% set should_show_ad = ad_card and ad_card.status and (catalogue_key == group.type or (catalogue_key == 'tum_urunler' and loop.first)) %}
           {% for product in group.items %}
           <a href="{{ product.href }}" class="uannes-row-card">
             <div class="uannes-row-media{% if product.is_esarp is defined and product.is_esarp %} uannes-row-media--square{% endif %}">
@@ -113,14 +114,16 @@
             </div>
             <div class="uannes-row-info"><span class="uannes-row-name">{{ product.name }}</span></div>
           </a>
-          {% if group.show_ad and loop.index == 6 %}
-          <article class="uannes-row-ad-card" aria-label="Yeni sezon duyurusu">
-            <img src="image/catalog/uannes-banner-new-season.webp" alt="Uannes yeni sezon seçkisi" class="uannes-row-ad-card__image" />
+          {% if should_show_ad and (loop.index == ad_card.position or (loop.last and loop.index < ad_card.position)) %}
+          <article class="uannes-row-ad-card" aria-label="{{ ad_card.title|default('Uannes') }}">
+            {% if ad_card.link %}<a href="{{ ad_card.link }}" class="uannes-row-ad-card__link">{% endif %}
+            <img src="{{ ad_card.image }}" alt="{{ ad_card.title|default('Uannes') }}" class="uannes-row-ad-card__image" />
             <div class="uannes-row-ad-card__content">
-              <span class="uannes-row-ad-card__eyebrow">UANNES</span>
-              <h2>YENİ SEZON</h2>
-              <p>Zamansız silüetler, özenle seçilmiş dokular.</p>
+              {% if ad_card.eyebrow %}<span class="uannes-row-ad-card__eyebrow">{{ ad_card.eyebrow }}</span>{% endif %}
+              {% if ad_card.title %}<h2>{{ ad_card.title }}</h2>{% endif %}
+              {% if ad_card.text %}<p>{{ ad_card.text }}</p>{% endif %}
             </div>
+            {% if ad_card.link %}</a>{% endif %}
           </article>
           {% endif %}
           {% endfor %}

@@ -2,6 +2,223 @@
 <style>
   body { background-color: #f8f6f2; }
   footer { margin-top: 0; }
+  
+  .login-page {
+    padding-top: 60px;
+    padding-bottom: 100px;
+    min-height: calc(100vh - 80px);
+  }
+  .login-page__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .login-field {
+    position: relative;
+    margin-bottom: 24px;
+    background: transparent;
+  }
+  .login-field__input {
+    width: 100%;
+    height: 46px;
+    border: none !important;
+    border-bottom: 1px solid #c8c8c8 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 22px 8px 4px 8px !important;
+    font-family: 'Open Sans', 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #1a1a50 !important;
+    outline: none !important;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    line-height: 1.4;
+    transition: border-color 0.3s ease;
+  }
+  .login-field__input:focus {
+    border-bottom-color: #1a1a50 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    outline: none !important;
+  }
+  .login-field__input:-webkit-autofill,
+  .login-field__input:-webkit-autofill:hover,
+  .login-field__input:-webkit-autofill:focus,
+  .login-field__input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+    box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+    -webkit-text-fill-color: #1a1a50 !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+  .login-field__label {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Open Sans', 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+    margin: 0;
+    transition: top 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      font-size 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+      transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: left top;
+  }
+  .login-field.required > .login-field__label::after {
+    content: ' *';
+    color: #c53030;
+  }
+  #account-login .login-page__title {
+    font-size: calc(clamp(1.6rem, 2.5vw, 2.25rem) + 2px);
+    margin-top: 2rem;
+  }
+  .login-page__submit {
+    display: block;
+    width: 100%;
+    padding: 11px 20px !important;
+    background-color: #1a1a50 !important;
+    background-image: none !important;
+    color: #fff !important;
+    border: 1.5px solid #1a1a50 !important;
+    font-family: 'Open Sans', 'DM Sans', sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    cursor: pointer;
+    transition: background 0.35s ease, color 0.35s ease;
+    -webkit-appearance: none;
+    border-radius: 0 !important;
+  }
+  .login-page__submit:hover {
+    background-color: #fff !important;
+    color: #1a1a50 !important;
+  }
+  .login-page__register-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10.5px 20px !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    color: #1a1a50 !important;
+    border: 1.5px solid #1a1a50 !important;
+    font-family: 'Open Sans', 'DM Sans', sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    border-radius: 0 !important;
+    box-sizing: border-box;
+    transition: color 0.3s ease;
+  }
+  .login-page__register-link span {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+  }
+  .login-page__register-link span::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #1a1a50;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+  .login-page__register-link:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    color: #1a1a50 !important;
+    text-decoration: none !important;
+  }
+  .login-page__register-link:hover span::after {
+    transform: scaleX(1);
+  }
+  .login-field__input:focus + .login-field__label,
+  .login-field__input:not(:placeholder-shown) + .login-field__label {
+    top: 0px;
+    transform: translateY(0);
+    font-size: 9.5px;
+    color: #999;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 575.98px) {
+    .login-page {
+      padding-top: 35px;
+      padding-bottom: 70px;
+      min-height: calc(100vh - 60px);
+    }
+    .login-page__container {
+      padding: 0 15px;
+      max-width: 100%;
+    }
+    #account-login .login-page__title {
+      font-size: 24px !important;
+      margin-top: 1.25rem !important;
+      margin-bottom: 0.6rem !important;
+      letter-spacing: 0.12em;
+    }
+    .login-page__subtitle {
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 1.75rem !important;
+    }
+    .login-field {
+      margin-bottom: 20px;
+    }
+    .login-field__input {
+      height: 44px;
+      padding: 20px 6px 3px 6px !important;
+      font-size: 13px !important;
+    }
+    .login-field__label {
+      left: 6px;
+      font-size: 11.5px;
+    }
+    .login-field__input:focus + .login-field__label,
+    .login-field__input:not(:placeholder-shown) + .login-field__label {
+      font-size: 9px;
+    }
+    .login-page__submit {
+      padding: 10px 16px !important;
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+    }
+    .login-page__register-link {
+      padding: 9.5px 16px !important;
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+    }
+    .login-page__forgot {
+      margin-top: -0.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .login-page__forgot-link {
+      font-size: 12.5px;
+    }
+    .login-page__divider {
+      margin: 1rem 0;
+    }
+  }
 </style>
 <div id="account-login" class="login-page">
   <div class="container">
@@ -25,16 +242,14 @@
     <p class="login-page__subtitle">Hesabınıza erişmek veya yeni bir hesap<br>oluşturmak için lütfen e-posta adresinizi girin.</p>
 
     <form action="{{ action }}" method="post" enctype="multipart/form-data" class="login-page__form" autocomplete="off">
-      <div class="login-field">
+      <div class="login-field required">
         <input type="email" name="email" value="{{ email }}" id="input-email" class="login-field__input" placeholder=" " required autocomplete="email" />
-        <label for="input-email" class="login-field__label">E-posta *</label>
-        <span class="login-field__line"></span>
+        <label for="input-email" class="login-field__label">{{ entry_email }}</label>
       </div>
 
-      <div class="login-field">
+      <div class="login-field required">
         <input type="password" name="password" value="{{ password }}" id="input-password" class="login-field__input" placeholder=" " required autocomplete="current-password" />
-        <label for="input-password" class="login-field__label">Şifre *</label>
-        <span class="login-field__line"></span>
+        <label for="input-password" class="login-field__label">{{ entry_password }}</label>
       </div>
 
       <div class="login-page__forgot">

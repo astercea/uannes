@@ -25,17 +25,17 @@
   </div>
   <div class="col-sm-6" style="text-align: left;">
     <h2 style="margin-top: 0; text-align: left;">{{ text_returning_customer }}</h2>
-    <div class="form-group" style="margin-top: -5px; text-align: left;">
-      <label class="control-label" for="input-email" style="text-align: left; display: block;">{{ entry_email }}</label>
-      <input type="text" name="email" value="" placeholder="{{ entry_email }}" id="input-email" class="form-control" style="text-align: left; padding-left: 0;" />
+    <div class="login-field">
+      <input type="text" name="email" value="" placeholder=" " id="input-email" class="login-field__input" autocomplete="email" />
+      <label class="login-field__label" for="input-email">{{ entry_email }}</label>
     </div>
-    <div class="form-group" style="text-align: left;">
-      <label class="control-label" for="input-password" style="text-align: left; display: block;">{{ entry_password }}</label>
-      <input type="password" name="password" value="" placeholder="{{ entry_password }}" id="input-password" class="form-control" style="text-align: left; padding-left: 0;" />
-      <div class="login-page__forgot" style="margin-top: 8px; text-align: left;">
-        <a href="{{ forgotten }}" class="login-page__forgot-link">Şifremi unuttum</a>
-      </div>
+    <div class="login-field">
+      <input type="password" name="password" value="" placeholder=" " id="input-password" class="login-field__input" autocomplete="current-password" />
+      <label class="login-field__label" for="input-password">{{ entry_password }}</label>
     </div>
-    <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="" class="btn btn-primary" style="margin-top: 20px;" />
+    <div class="login-page__forgot" style="margin-top: -4px; margin-bottom: 20px; text-align: left;">
+      <a href="{{ forgotten }}" class="login-page__forgot-link">Şifremi unuttum</a>
+    </div>
+    <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="" class="btn btn-primary" style="margin-top: 10px;" />
   </div>
 </div>

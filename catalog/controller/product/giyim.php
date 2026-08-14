@@ -213,6 +213,38 @@ class ControllerProductGiyim extends Controller {
 		);
 		$data['active_filter_count'] = ($selected_category ? 1 : 0) + ($selected_color ? 1 : 0) + ($selected_size ? 1 : 0) + ($selected_stock !== 'all' ? 1 : 0);
 
+		// Reklam Kartı (Promo Card) Configuration
+		$ad_setting = $this->config->get('module_reklam_karti_' . $data['catalogue_key']);
+		if ($ad_setting === null) {
+			$ad_defaults = array(
+				'giyim' => array('status' => '1', 'position' => '6', 'image' => 'catalog/uannes-banner-new-season.webp', 'eyebrow' => 'UANNES', 'title' => 'YENİ SEZON', 'text' => 'Zamansız silüetler, özenle seçilmiş dokular.', 'link' => ''),
+				'esarp' => array('status' => '0', 'position' => '6', 'image' => 'catalog/uannes-banner-new-season.webp', 'eyebrow' => 'UANNES', 'title' => 'EŞARP KOLEKSİYONU', 'text' => 'İpeğin zarafeti, eşsiz desenlerle buluşuyor.', 'link' => ''),
+				'tum_urunler' => array('status' => '1', 'position' => '6', 'image' => 'catalog/uannes-banner-new-season.webp', 'eyebrow' => 'UANNES', 'title' => 'YENİ SEZON', 'text' => 'Zamansız silüetler, özenle seçilmiş dokular.', 'link' => '')
+			);
+			$ad_setting = isset($ad_defaults[$data['catalogue_key']]) ? $ad_defaults[$data['catalogue_key']] : null;
+		}
+
+		if (!empty($ad_setting) && !empty($ad_setting['status']) && (string)$ad_setting['status'] === '1') {
+			$ad_image_rel = !empty($ad_setting['image']) ? $ad_setting['image'] : 'catalog/uannes-banner-new-season.webp';
+			if (is_file(DIR_IMAGE . $ad_image_rel)) {
+				$ad_image_url = 'image/' . $ad_image_rel;
+			} else {
+				$ad_image_url = 'image/catalog/uannes-banner-new-season.webp';
+			}
+
+			$data['ad_card'] = array(
+				'status'   => true,
+				'position' => !empty($ad_setting['position']) ? (int)$ad_setting['position'] : 6,
+				'image'    => $ad_image_url,
+				'eyebrow'  => !empty($ad_setting['eyebrow']) ? $ad_setting['eyebrow'] : '',
+				'title'    => !empty($ad_setting['title']) ? $ad_setting['title'] : '',
+				'text'     => !empty($ad_setting['text']) ? $ad_setting['text'] : '',
+				'link'     => !empty($ad_setting['link']) ? $ad_setting['link'] : ''
+			);
+		} else {
+			$data['ad_card'] = false;
+		}
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

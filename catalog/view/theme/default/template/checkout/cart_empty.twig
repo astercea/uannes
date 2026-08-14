@@ -1,4 +1,48 @@
 {{ header }}
+<style>
+@media (max-width: 767px) {
+  #checkout-cart-empty.cart-empty-page {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+  .cart-empty-page__message h1 {
+    font-size: 22px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a50;
+  }
+  .cart-empty-page__message p {
+    font-size: 13.5px;
+    color: #666;
+    margin: 12px 0 24px;
+  }
+  .cart-empty-page__action {
+    width: 100% !important;
+    max-width: 280px;
+    min-height: 44px;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background-color: #1a1a50;
+    border: 1.5px solid #1a1a50;
+    color: #fff;
+    border-radius: 0;
+    display: inline-block;
+  }
+  .cart-empty-page__recent {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(26, 26, 80, 0.1);
+  }
+  .cart-empty-page__recent .cart-page__recent-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+</style>
 <main id="checkout-cart-empty" class="container cart-empty-page">
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}

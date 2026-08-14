@@ -16,3 +16,4 @@ $_['text_account']      = 'Hesabım';
 $_['text_order']        = 'Siparişlerim';
 $_['text_wishlist']     = 'Alışveriş Listem';
 $_['text_newsletter']   = 'Bülten Aboneliği';
+$_['text_powered']      = 'Powered by <a href="https://www.dijicrea.com" target="_blank" rel="noopener noreferrer">DIJICREA</a><br />&copy; %2$s %1$s';

@@ -18,9 +18,111 @@ body.checkout-mode { background-color: #f8f6f2; }
 
 .uannes-checkout-page .panel-body { border-top: none !important; padding: 0 0 30px 0 !important; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; color: #1a1a50; }
 
-.uannes-checkout-page .form-control { border: none !important; border-bottom: 1px solid #1a1a50 !important; border-radius: 0 !important; box-shadow: none !important; background-color: transparent !important; padding: 10px 0; height: auto; font-size: 13.5px; font-family: 'DM Sans', sans-serif; color: #1a1a50; }
-.uannes-checkout-page .form-control:focus { border-color: #d1bfae !important; }
-.uannes-checkout-page .control-label { font-weight: 400; margin-top: 10px; color: #1a1a50; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'DM Sans', sans-serif; }
+/* Floating Label Form Fields Matching Admin Login */
+.uannes-checkout-page .form-group,
+.uannes-checkout-page .login-field {
+  position: relative;
+  margin-bottom: 24px;
+  background: transparent;
+}
+
+.uannes-checkout-page .form-control,
+.uannes-checkout-page .login-field__input {
+  width: 100%;
+  height: 46px;
+  border: none !important;
+  border-bottom: 1px solid #c8c8c8 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 22px 8px 4px 8px !important;
+  font-family: 'Open Sans', 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #1a1a50;
+  outline: none !important;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  line-height: 1.4;
+  transition: border-color 0.3s ease;
+}
+
+.uannes-checkout-page .form-control:focus,
+.uannes-checkout-page .login-field__input:focus {
+  border-bottom-color: #1a1a50 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+.uannes-checkout-page .form-control:-webkit-autofill,
+.uannes-checkout-page .form-control:-webkit-autofill:hover,
+.uannes-checkout-page .form-control:-webkit-autofill:focus,
+.uannes-checkout-page .form-control:-webkit-autofill:active,
+.uannes-checkout-page .login-field__input:-webkit-autofill,
+.uannes-checkout-page .login-field__input:-webkit-autofill:hover,
+.uannes-checkout-page .login-field__input:-webkit-autofill:focus,
+.uannes-checkout-page .login-field__input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+  box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+  -webkit-text-fill-color: #1a1a50 !important;
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.uannes-checkout-page .control-label,
+.uannes-checkout-page .login-field__label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Open Sans', 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  pointer-events: none;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: top 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    font-size 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: left top;
+}
+
+.uannes-checkout-page .form-group.required .control-label::after,
+.uannes-checkout-page .login-field.required .login-field__label::after {
+  content: ' *';
+  color: #c53030;
+}
+
+.uannes-checkout-page .form-control:focus + .control-label,
+.uannes-checkout-page .form-control:not(:placeholder-shown) + .control-label,
+.uannes-checkout-page select.form-control:focus + .control-label,
+.uannes-checkout-page select.form-control:not([value=""]) + .control-label,
+.uannes-checkout-page .login-field__input:focus + .login-field__label,
+.uannes-checkout-page .login-field__input:not(:placeholder-shown) + .login-field__label {
+  top: 0px;
+  transform: translateY(0);
+  font-size: 9.5px;
+  color: #999;
+  letter-spacing: 0.04em;
+}
+
+/* Horizontal Form Reset */
+.uannes-checkout-page .form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.uannes-checkout-page .form-horizontal .col-sm-10,
+.uannes-checkout-page .form-horizontal .col-sm-2 {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  float: none;
+}
 
 /* Butonlar */
 .uannes-checkout-page .buttons { display: flex !important; align-items: center; margin-top: 30px; flex-direction: row; }
@@ -40,11 +142,52 @@ body.checkout-mode { background-color: #f8f6f2; }
 .uannes-checkout-page input[type="checkbox"]:checked { background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='10' viewBox='0 0 24 24' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>") !important; background-position: center !important; background-repeat: no-repeat !important; }
 .uannes-checkout-page input[type="radio"]:checked { box-shadow: inset 0 0 0 3px #f8f6f2 !important; }
 
-/* Select Box Ozel Tasarimi (Hover Efekti Kaldirildi) */
-.uannes-checkout-page select.form-control { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: transparent url("data:image/svg+xml;utf8,<svg fill='%231a1a50' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 10px center; background-size: 20px; padding-right: 30px; }
-.uannes-checkout-page select.form-control:hover, .uannes-checkout-page select.form-control:focus { background-color: transparent !important; outline: none !important; box-shadow: none !important; border-color: #1a1a50 !important; }
-.uannes-checkout-page select.form-control option { background-color: #ffffff; color: #1a1a50; }
-.uannes-checkout-page select.form-control option:checked, .uannes-checkout-page select.form-control option:hover, .uannes-checkout-page select.form-control option:focus { background-color: #1a1a50 !important; color: #ffffff !important; box-shadow: 0 0 10px 100px #1a1a50 inset !important; }
+/* Select Box Ozel Tasarimi Matching Input Fields */
+.uannes-checkout-page select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent url("data:image/svg+xml;utf8,<svg fill='%23999999' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 8px center !important;
+  background-size: 18px !important;
+  padding: 22px 30px 4px 8px !important;
+  font-family: 'Open Sans', 'DM Sans', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #999 !important;
+  height: 46px !important;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.3s ease;
+}
+.uannes-checkout-page select.form-control.has-value {
+  color: #1a1a50 !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%231a1a50' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") !important;
+}
+.uannes-checkout-page select.form-control:hover,
+.uannes-checkout-page select.form-control:focus {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-bottom-color: #1a1a50 !important;
+}
+.uannes-checkout-page select.form-control option {
+  background-color: #ffffff;
+  color: #1a1a50;
+  font-family: 'Open Sans', 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 8px 10px;
+}
+.uannes-checkout-page select.form-control option[value=""],
+.uannes-checkout-page select.form-control option:first-child {
+  color: #999 !important;
+}
+.uannes-checkout-page select.form-control option:checked,
+.uannes-checkout-page select.form-control option:hover,
+.uannes-checkout-page select.form-control option:focus {
+  background-color: #1a1a50 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px 100px #1a1a50 inset !important;
+}
 
 /* Sipariş Onayla Tablosu */
 .uannes-checkout-page #collapse-checkout-confirm .table { border: 1px solid rgba(26,26,80,0.2) !important; margin-bottom: 0; }
@@ -1015,6 +1158,28 @@ $(document).ready(function() {
             confirmObserver.observe(accordionElement, { childList: true, subtree: true });
         }
     }
+
+    // 6. Synchronize Select Box Colors with Input Placeholder Color
+    function updateSelectColors() {
+        $('.uannes-checkout-page select.form-control').each(function() {
+            var val = $(this).val();
+            if (val && val !== '0' && val !== '') {
+                $(this).addClass('has-value');
+            } else {
+                $(this).removeClass('has-value');
+            }
+        });
+    }
+
+    $(document).on('change', '.uannes-checkout-page select.form-control', function() {
+        updateSelectColors();
+    });
+
+    $(document).ajaxComplete(function() {
+        setTimeout(updateSelectColors, 50);
+    });
+
+    updateSelectColors();
 });
 //--></script>
 {{ footer }}
