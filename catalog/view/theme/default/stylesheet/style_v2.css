@@ -626,19 +626,20 @@ input[type="radio"] {
 
 @media (max-width: 767px) {
   .home-banner-stack__media {
-    aspect-ratio: 16 / 11;
-    max-height: 420px;
+    aspect-ratio: 16 / 12.5;
+    min-height: 295px;
+    max-height: 380px;
     border-radius: 0;
   }
 
   .home-banner-stack__overlay {
     padding-top: 1.5rem;
-    width: 80%;
+    width: 85%;
   }
 
   .home-banner-stack__title {
-    font-size: 1.5rem;
-    letter-spacing: -0.01em;
+    font-size: 1.55rem;
+    letter-spacing: 0.02em;
   }
 
   .home-banner-stack__desc {
@@ -647,9 +648,9 @@ input[type="radio"] {
   }
 
   .home-banner-stack__btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.6rem;
     min-height: 2.875rem;
-    font-size: 0.93rem;
+    font-size: 0.95rem;
   }
 }
 

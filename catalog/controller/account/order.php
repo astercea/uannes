@@ -51,33 +51,42 @@ class ControllerAccountOrder extends Controller {
 		$results = $this->model_account_order->getOrders(($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
-    $product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
-    $voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
+			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
+			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
 
-    // Görsel için ekleme
-    $this->load->model('tool/image');
-    $this->load->model('catalog/product');
+			// Görsel ve ürün detayları
+			$this->load->model('tool/image');
+			$this->load->model('catalog/product');
 
-    $products = $this->model_account_order->getOrderProducts($result['order_id']);
-    $first_image = '';
-    if ($products) {
-        $product_info = $this->model_catalog_product->getProduct($products[0]['product_id']);
-        if ($product_info && is_file(DIR_IMAGE . $product_info['image'])) {
-            $first_image = $this->model_tool_image->resize($product_info['image'], 80, 80);
-        }
-    }
+			$products = $this->model_account_order->getOrderProducts($result['order_id']);
+			$first_image = '';
+			$first_product_name = '';
+			$extra_products = 0;
 
-    $data['orders'][] = array(
-        'order_id'   => $result['order_id'],
-        'name'       => $result['firstname'] . ' ' . $result['lastname'],
-        'status'     => $result['status'],
-        'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-        'products'   => ($product_total + $voucher_total),
-        'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
-        'thumb'      => $first_image, // ✅ Görsel eklendi
-        'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
-    );
-}
+			if ($products) {
+				$first_product_name = $products[0]['name'];
+				if (count($products) > 1) {
+					$extra_products = count($products) - 1;
+				}
+				$product_info = $this->model_catalog_product->getProduct($products[0]['product_id']);
+				if ($product_info && is_file(DIR_IMAGE . $product_info['image'])) {
+					$first_image = $this->model_tool_image->resize($product_info['image'], 120, 120);
+				}
+			}
+
+			$data['orders'][] = array(
+				'order_id'       => $result['order_id'],
+				'name'           => $result['firstname'] . ' ' . $result['lastname'],
+				'status'         => $result['status'],
+				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+				'products'       => ($product_total + $voucher_total),
+				'product_name'   => $first_product_name,
+				'extra_products' => $extra_products,
+				'total'          => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+				'thumb'          => $first_image,
+				'view'           => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
+			);
+		}
 
 
 		$pagination = new Pagination();
@@ -281,23 +290,35 @@ class ControllerAccountOrder extends Controller {
 					);
 				}
 
+				$this->load->model('tool/image');
 				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
+
+				if ($product_info && is_file(DIR_IMAGE . $product_info['image'])) {
+					$image = $this->model_tool_image->resize($product_info['image'], 160, 160);
+				} else {
+					$image = '';
+				}
 
 				if ($product_info) {
 					$reorder = $this->url->link('account/order/reorder', 'order_id=' . $order_id . '&order_product_id=' . $product['order_product_id'], true);
+					$href = $this->url->link('product/product', 'product_id=' . $product['product_id']);
 				} else {
 					$reorder = '';
+					$href = '';
 				}
 
 				$data['products'][] = array(
-					'name'     => $product['name'],
-					'model'    => $product['model'],
-					'option'   => $option_data,
-					'quantity' => $product['quantity'],
-					'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
-					'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
-					'reorder'  => $reorder,
-					'return'   => $this->url->link('account/return/add', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], true)
+					'product_id' => $product['product_id'],
+					'name'       => $product['name'],
+					'model'      => $product['model'],
+					'option'     => $option_data,
+					'quantity'   => $product['quantity'],
+					'thumb'      => $image,
+					'href'       => $href,
+					'price'      => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
+					'total'      => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
+					'reorder'    => $reorder,
+					'return'     => $this->url->link('account/return/add', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], true)
 				);
 			}
 

@@ -29,7 +29,7 @@
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
-<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=204" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style_v2.css?v=206" rel="stylesheet">
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
@@ -51,14 +51,12 @@ document.addEventListener('click', function(e) {
 });
 </script>
 <style>
-/* === MOVED FROM HEADER.TWIG === */
-
   .modal { z-index: 10600; top: 80px; bottom: 0; height: auto; padding-top: 0; }
   .modal.in, .modal.show { display: flex; align-items: center; justify-content: center; }
   .modal-dialog { margin: 0 auto; max-width: 800px; width: 90%; min-height: auto; transform: translateY(0); }
   .modal-content { max-height: 75vh; overflow-y: auto; }
 
-  /* Modal Ãst BaÅlÄ±k (Modal Header Title) */
+  /* Modal Üst Başlık */
   .modal-title,
   #modal-agree .modal-title,
   #modal-agree .modal-header h4 {
@@ -70,16 +68,16 @@ document.addEventListener('click', function(e) {
     color: #1a1a50;
   }
 
-  /* Modal GÃ¶vdesindeki Ä°lk BaÅlÄ±ÄÄ± ve Breadcrumb'Ä± Gizle */
+  /* Modal Gövdesindeki İlk Başlığı ve Breadcrumb'ı Gizle */
   .modal-body .breadcrumb,
   .modal-body > h1:first-child,
   .modal-body #content > h1:first-child,
   .modal-body h1:first-of-type,
-  .kvkk-cookies-container h1 {
+  .kvkk-cookies-container > h1:first-child {
     display: none;
   }
 
-  /* Metin Ä°Ã§indeki Kalan BaÅlÄ±klar (BÃ¼yÃ¼tÃ¼lmÃ¼Å ve Tam Boyut Rakamlar) */
+  /* Metin İçindeki Kalan Başlıklar */
   .modal-body h2,
   .modal-body h3,
   .modal-body h4,
@@ -106,7 +104,7 @@ document.addEventListener('click', function(e) {
     font-feature-settings: "lnum" 1, "tnum" 1;
   }
 
-  /* Metin Ä°Ã§indeki BaÅlÄ±k Olmayan DÃ¼z YazÄ±lar (DM Sans, 13.5px, #1a1a50) */
+  /* Metin İçindeki Başlık Olmayan Düz Yazılar */
   .modal-body,
   .modal-body p,
   .modal-body div:not(.row):not([class*="col-"]),
@@ -125,7 +123,7 @@ document.addEventListener('click', function(e) {
     text-align: left;
   }
 
-  /* DÃ¼zen & SÃ¼tun SÄ±fÄ±rlama (Maddelerin saÄa kaymasÄ±nÄ± Ã¶nleme) */
+  /* Düzen & Sütun Sıfırlama */
   .modal-body .row,
   .modal-body [class*="col-"] {
     display: block;
@@ -135,7 +133,7 @@ document.addEventListener('click', function(e) {
     padding: 0;
   }
 
-  /* Alt Alta SÄ±ralanan Maddeler (Listeler) - Sol tarafa hizalÄ± */
+  /* Alt Alta Sıralanan Maddeler (Listeler) */
   .modal-body ul,
   .modal-body ol {
     display: block;
@@ -163,7 +161,8 @@ document.addEventListener('click', function(e) {
     letter-spacing: normal;
     line-height: 1.6;
   }
-/* Kesin Header Sabitleme (Scroll sorunu iin) - Sticky ile doYal akY */
+
+/* Kesin Header Sabitleme */
 html, body {
   overflow-x: clip;
 }
@@ -621,16 +620,16 @@ body.is-product-page #header-area.is-scrolled {
       <input type="text" name="search" value="" placeholder="Search..." class="mega-search-input" autocomplete="off" style="flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;" />
     </div>
     
-    <div class="mega-search-links" style="display: flex; flex-direction: column; gap: 10px; padding-left: 0;">
-      <a href="index.php?route=product/search&search=Yenidoğan" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Yenidoğan Bebek</a>
-      <a href="index.php?route=product/search&search=Kız+Bebek" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Kız Bebek Koleksiyonu</a>
-      <a href="index.php?route=product/search&search=Erkek+Bebek" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Erkek Bebek Koleksiyonu</a>
-      <a href="index.php?route=product/search&search=Aksesuarlar" style="font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;">Aksesuarlar</a>
+    <div class="mega-search-links" style="display: flex; flex-direction: column; gap: 12px; padding-left: 0;">
+      {% if search_suggestions %}
+        {% for item in search_suggestions %}
+          <a href="{{ item.href }}" class="mega-search-item" style="font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #1a1a50; text-decoration: none; opacity: 0.85; transition: all 0.2s ease; display: inline-block;">{{ item.name }}</a>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </div>
 <div id="header-search-backdrop" class="header-search-backdrop" aria-hidden="true"></div>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

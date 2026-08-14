@@ -114,7 +114,7 @@ class __TwigTemplate_0b58743317210b5427240baa93dd9c9a extends Template
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['style'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 32
-        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=204\" rel=\"stylesheet\">
+        echo "<link href=\"catalog/view/theme/default/stylesheet/style_v2.css?v=206\" rel=\"stylesheet\">
 ";
         // line 33
         $context['_parent'] = $context;
@@ -171,14 +171,12 @@ document.addEventListener('click', function(e) {
 });
 </script>
 <style>
-/* === MOVED FROM HEADER.TWIG === */
-
   .modal { z-index: 10600; top: 80px; bottom: 0; height: auto; padding-top: 0; }
   .modal.in, .modal.show { display: flex; align-items: center; justify-content: center; }
   .modal-dialog { margin: 0 auto; max-width: 800px; width: 90%; min-height: auto; transform: translateY(0); }
   .modal-content { max-height: 75vh; overflow-y: auto; }
 
-  /* Modal Ãst BaÅlÄ±k (Modal Header Title) */
+  /* Modal Üst Başlık */
   .modal-title,
   #modal-agree .modal-title,
   #modal-agree .modal-header h4 {
@@ -190,16 +188,16 @@ document.addEventListener('click', function(e) {
     color: #1a1a50;
   }
 
-  /* Modal GÃ¶vdesindeki Ä°lk BaÅlÄ±ÄÄ± ve Breadcrumb'Ä± Gizle */
+  /* Modal Gövdesindeki İlk Başlığı ve Breadcrumb'ı Gizle */
   .modal-body .breadcrumb,
   .modal-body > h1:first-child,
   .modal-body #content > h1:first-child,
   .modal-body h1:first-of-type,
-  .kvkk-cookies-container h1 {
+  .kvkk-cookies-container > h1:first-child {
     display: none;
   }
 
-  /* Metin Ä°Ã§indeki Kalan BaÅlÄ±klar (BÃ¼yÃ¼tÃ¼lmÃ¼Å ve Tam Boyut Rakamlar) */
+  /* Metin İçindeki Kalan Başlıklar */
   .modal-body h2,
   .modal-body h3,
   .modal-body h4,
@@ -226,7 +224,7 @@ document.addEventListener('click', function(e) {
     font-feature-settings: \"lnum\" 1, \"tnum\" 1;
   }
 
-  /* Metin Ä°Ã§indeki BaÅlÄ±k Olmayan DÃ¼z YazÄ±lar (DM Sans, 13.5px, #1a1a50) */
+  /* Metin İçindeki Başlık Olmayan Düz Yazılar */
   .modal-body,
   .modal-body p,
   .modal-body div:not(.row):not([class*=\"col-\"]),
@@ -245,7 +243,7 @@ document.addEventListener('click', function(e) {
     text-align: left;
   }
 
-  /* DÃ¼zen & SÃ¼tun SÄ±fÄ±rlama (Maddelerin saÄa kaymasÄ±nÄ± Ã¶nleme) */
+  /* Düzen & Sütun Sıfırlama */
   .modal-body .row,
   .modal-body [class*=\"col-\"] {
     display: block;
@@ -255,7 +253,7 @@ document.addEventListener('click', function(e) {
     padding: 0;
   }
 
-  /* Alt Alta SÄ±ralanan Maddeler (Listeler) - Sol tarafa hizalÄ± */
+  /* Alt Alta Sıralanan Maddeler (Listeler) */
   .modal-body ul,
   .modal-body ol {
     display: block;
@@ -283,7 +281,8 @@ document.addEventListener('click', function(e) {
     letter-spacing: normal;
     line-height: 1.6;
   }
-/* Kesin Header Sabitleme (Scroll sorunu iin) - Sticky ile doYal akY */
+
+/* Kesin Header Sabitleme */
 html, body {
   overflow-x: clip;
 }
@@ -437,31 +436,31 @@ body.is-product-page #header-area.is-scrolled {
 </style>
 </head>
 ";
-        // line 319
+        // line 318
         $context["body_classes"] = ($context["class"] ?? null);
-        // line 320
+        // line 319
         if (((($context["route"] ?? null) == "common/home") || (($context["route"] ?? null) == ""))) {
-            // line 321
+            // line 320
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " is-homepage");
         } else {
-            // line 323
+            // line 322
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " not-homepage");
         }
-        // line 325
+        // line 324
         if ((($context["route"] ?? null) == "product/product")) {
-            // line 326
+            // line 325
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " is-product-page");
         }
-        // line 328
+        // line 327
         if ((array_key_exists("landing_code", $context) && (($context["landing_code"] ?? null) == "made_to_order"))) {
-            // line 329
+            // line 328
             echo "  ";
             $context["body_classes"] = (($context["body_classes"] ?? null) . " is-made-to-order-page");
         }
-        // line 331
+        // line 330
         echo "<body class=\"";
         echo ($context["body_classes"] ?? null);
         if (($context["is_checkout"] ?? null)) {
@@ -491,14 +490,14 @@ body.is-product-page #header-area.is-scrolled {
       <!-- Orta: Logo + arama paneli -->
       <div id=\"logo\" class=\"header-center\">
         ";
-        // line 354
+        // line 353
         if (($context["logo"] ?? null)) {
-            // line 355
+            // line 354
             echo "          <a href=\"";
             echo ($context["home"] ?? null);
             echo "\" class=\"header-logo-link\">
             <img src=\"";
-            // line 356
+            // line 355
             echo ($context["logo"] ?? null);
             echo "\" title=\"";
             echo ($context["name"] ?? null);
@@ -508,7 +507,7 @@ body.is-product-page #header-area.is-scrolled {
           </a>
         ";
         } else {
-            // line 359
+            // line 358
             echo "          <h1><a href=\"";
             echo ($context["home"] ?? null);
             echo "\">";
@@ -516,7 +515,7 @@ body.is-product-page #header-area.is-scrolled {
             echo "</a></h1>
         ";
         }
-        // line 361
+        // line 360
         echo "      </div>
 
       <!-- Sağ: Arama, Giriş Yap, Sepet -->
@@ -526,9 +525,9 @@ body.is-product-page #header-area.is-scrolled {
         </button>
 
         ";
-        // line 369
+        // line 368
         if (($context["logged"] ?? null)) {
-            // line 370
+            // line 369
             echo "          <div class=\"header-account-menu\">
             <button type=\"button\" class=\"header-nav-link header-account-toggle\" aria-expanded=\"false\" aria-haspopup=\"true\" aria-controls=\"account-dropdown\">
               <span>Hesabım</span>
@@ -536,38 +535,38 @@ body.is-product-page #header-area.is-scrolled {
             <div id=\"account-dropdown\" class=\"account-dropdown\" aria-hidden=\"true\" hidden>
               <div class=\"account-dropdown__intro\">
                 Merhaba";
-            // line 376
+            // line 375
             if (($context["customer_name"] ?? null)) {
                 echo ", ";
                 echo ($context["customer_name"] ?? null);
             }
-            // line 377
+            // line 376
             echo "              </div>
               <div class=\"account-dropdown__links\">
                 <a href=\"";
-            // line 379
+            // line 378
             echo ($context["account_edit"] ?? null);
             echo "\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i>Bilgilerim</a>
                 <a href=\"";
-            // line 380
+            // line 379
             echo ($context["account_password"] ?? null);
             echo "\"><i class=\"fa fa-lock\" aria-hidden=\"true\"></i>Şifre</a>
                 <a href=\"";
-            // line 381
+            // line 380
             echo ($context["account_address"] ?? null);
             echo "\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>Adreslerim</a>
                 <a href=\"";
-            // line 382
+            // line 381
             echo ($context["order"] ?? null);
             echo "\"><i class=\"fa fa-shopping-bag\" aria-hidden=\"true\"></i>Siparişlerim</a>
                 <a href=\"";
-            // line 383
+            // line 382
             echo ($context["account_newsletter"] ?? null);
             echo "\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i>Bülten aboneliği</a>
               </div>
               <div class=\"account-dropdown__footer\">
                 <a href=\"";
-            // line 386
+            // line 385
             echo ($context["logout"] ?? null);
             echo "\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Oturumu kapat</a>
               </div>
@@ -575,7 +574,7 @@ body.is-product-page #header-area.is-scrolled {
           </div>
         ";
         } else {
-            // line 391
+            // line 390
             echo "          <a href=\"";
             echo ($context["login"] ?? null);
             echo "\" class=\"header-nav-link\">
@@ -583,10 +582,10 @@ body.is-product-page #header-area.is-scrolled {
           </a>
         ";
         }
-        // line 395
+        // line 394
         echo "
         <div class=\"header-cart\">";
-        // line 396
+        // line 395
         echo ($context["cart"] ?? null);
         echo "</div>
       </div>
@@ -816,16 +815,34 @@ body.is-product-page #header-area.is-scrolled {
       <input type=\"text\" name=\"search\" value=\"\" placeholder=\"Search...\" class=\"mega-search-input\" autocomplete=\"off\" style=\"flex: 1; border: none; background: transparent; padding: 8px 0; font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.05em; color: #1a1a50; outline: none; box-shadow: none;\" />
     </div>
     
-    <div class=\"mega-search-links\" style=\"display: flex; flex-direction: column; gap: 10px; padding-left: 0;\">
-      <a href=\"index.php?route=product/search&search=Yenidoğan\" style=\"font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;\">Yenidoğan Bebek</a>
-      <a href=\"index.php?route=product/search&search=Kız+Bebek\" style=\"font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;\">Kız Bebek Koleksiyonu</a>
-      <a href=\"index.php?route=product/search&search=Erkek+Bebek\" style=\"font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;\">Erkek Bebek Koleksiyonu</a>
-      <a href=\"index.php?route=product/search&search=Aksesuarlar\" style=\"font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: none;\">Aksesuarlar</a>
-    </div>
+    <div class=\"mega-search-links\" style=\"display: flex; flex-direction: column; gap: 12px; padding-left: 0;\">
+      ";
+        // line 624
+        if (($context["search_suggestions"] ?? null)) {
+            // line 625
+            echo "        ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["search_suggestions"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
+                // line 626
+                echo "          <a href=\"";
+                echo twig_get_attribute($this->env, $this->source, $context["item"], "href", [], "any", false, false, false, 626);
+                echo "\" class=\"mega-search-item\" style=\"font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #1a1a50; text-decoration: none; opacity: 0.85; transition: all 0.2s ease; display: inline-block;\">";
+                echo twig_get_attribute($this->env, $this->source, $context["item"], "name", [], "any", false, false, false, 626);
+                echo "</a>
+        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 628
+            echo "      ";
+        }
+        // line 629
+        echo "    </div>
   </div>
 </div>
 <div id=\"header-search-backdrop\" class=\"header-search-backdrop\" aria-hidden=\"true\"></div>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1193,7 +1210,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  590 => 396,  587 => 395,  579 => 391,  571 => 386,  565 => 383,  561 => 382,  557 => 381,  553 => 380,  549 => 379,  545 => 377,  540 => 376,  532 => 370,  530 => 369,  520 => 361,  512 => 359,  502 => 356,  497 => 355,  495 => 354,  465 => 331,  461 => 329,  459 => 328,  455 => 326,  453 => 325,  449 => 323,  445 => 321,  443 => 320,  441 => 319,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
+        return array (  842 => 629,  839 => 628,  828 => 626,  823 => 625,  821 => 624,  589 => 395,  586 => 394,  578 => 390,  570 => 385,  564 => 382,  560 => 381,  556 => 380,  552 => 379,  548 => 378,  544 => 376,  539 => 375,  531 => 369,  529 => 368,  519 => 360,  511 => 358,  501 => 355,  496 => 354,  494 => 353,  464 => 330,  460 => 328,  458 => 327,  454 => 325,  452 => 324,  448 => 322,  444 => 320,  442 => 319,  440 => 318,  163 => 43,  155 => 41,  151 => 40,  140 => 38,  136 => 37,  133 => 36,  124 => 34,  120 => 33,  117 => 32,  104 => 30,  100 => 29,  89 => 20,  83 => 18,  81 => 17,  75 => 15,  73 => 14,  69 => 13,  65 => 12,  54 => 6,  47 => 4,  41 => 3,  37 => 1,);
     }
 
     public function getSourceContext()

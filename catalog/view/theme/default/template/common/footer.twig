@@ -209,8 +209,8 @@
         {{ powered }}
       </div>
       <div class="site-footer__legal">
-        <a href="{{ home }}" class="site-footer__legal-link">KVKK</a>
-        <a href="{{ home }}" class="site-footer__legal-link">Gizlilik ve Çerez Politikası</a>
+        <a href="{{ privacy|default('index.php?route=information/information&information_id=3') }}#kvkk" class="site-footer__legal-link">KVKK</a>
+        <a href="{{ privacy|default('index.php?route=information/information&information_id=3') }}" class="site-footer__legal-link">Gizlilik ve Çerez Politikası</a>
       </div>
     </div>
   </div>

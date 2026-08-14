@@ -3,26 +3,50 @@
 
   <style>
     /* ==========================================================================
-       SIPARISLERIM / MY ORDERS TABLE REDESIGN
+       SIPARISLERIM / MY ORDERS RESPONSIVE DESIGN (DESKTOP + MOBILE SPECIAL)
        ========================================================================== */
+    #account-order {
+      padding-top: 30px;
+      padding-bottom: 70px;
+    }
+
     #account-order #content {
       max-width: 1320px !important;
       width: 100% !important;
     }
 
+    .account-order-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(24px, 3.2vw, 32px);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1a1a50;
+      margin: 0 0 25px 0;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(26, 26, 80, 0.12);
+    }
+
+    /* --------------------------------------------------------------------------
+       DESKTOP TABLE DESIGN (min-width: 769px)
+       -------------------------------------------------------------------------- */
+    .account-orders-desktop {
+      display: block;
+    }
+
+    .account-orders-mobile {
+      display: none;
+    }
+
     .account-orders-table-wrap {
       border: none;
-      background: transparent;
+      background: #ffffff;
       margin-bottom: 28px;
       overflow-x: visible;
       border-radius: 0;
       width: 100%;
-    }
-
-    @media (max-width: 991px) {
-      .account-orders-table-wrap {
-        overflow-x: auto;
-      }
+      box-shadow: 0 4px 20px rgba(26, 26, 80, 0.03);
+      border: 1px solid rgba(26, 26, 80, 0.08);
     }
 
     .account-orders-table {
@@ -42,7 +66,6 @@
 
     .account-orders-table thead th,
     .account-orders-table thead td {
-      width: 11.111% !important;
       padding: 14px 12px !important;
       font-family: 'DM Sans', sans-serif !important;
       font-size: 11px !important;
@@ -74,11 +97,10 @@
     }
 
     .account-orders-table tbody tr:hover {
-      background-color: transparent !important;
+      background-color: #faf8f5 !important;
     }
 
     .account-orders-table tbody td {
-      width: 11.111% !important;
       padding: 16px 12px !important;
       font-family: 'DM Sans', sans-serif !important;
       font-size: 13.5px !important;
@@ -96,7 +118,7 @@
     }
 
     .account-order-id {
-      font-weight: 500;
+      font-weight: 600;
       color: #1a1a50;
     }
 
@@ -111,20 +133,72 @@
       border-radius: 0;
     }
 
-    /* Plain Text Status (No Box / No Orange Background) */
+    /* Status Badges */
     .status-badge {
-      display: inline-block;
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px !important;
       font-family: 'DM Sans', sans-serif !important;
-      font-size: 13.5px !important;
-      font-weight: 400 !important;
-      color: #1a1a50 !important;
-      line-height: inherit;
+      font-size: 11.5px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.03em;
+      border-radius: 0;
+      border: 1px solid transparent;
+      line-height: 1.2;
+      white-space: nowrap;
     }
 
-    /* Actions: Incele & Iptal Link with center-expanding thin underline animation */
+    .status-pending {
+      background-color: #fdf9ee !important;
+      color: #925f0a !important;
+      border-color: rgba(146, 95, 10, 0.25) !important;
+    }
+
+    .status-processing {
+      background-color: #eff5fc !important;
+      color: #1a498c !important;
+      border-color: rgba(26, 73, 140, 0.25) !important;
+    }
+
+    .status-shipped {
+      background-color: #eef8f3 !important;
+      color: #136a3e !important;
+      border-color: rgba(19, 106, 62, 0.25) !important;
+    }
+
+    .status-delivered,
+    .status-complete {
+      background-color: #edf7ee !important;
+      color: #166534 !important;
+      border-color: rgba(22, 101, 52, 0.25) !important;
+    }
+
+    .status-canceled {
+      background-color: #fdf1f1 !important;
+      color: #a31e20 !important;
+      border-color: rgba(163, 30, 32, 0.25) !important;
+    }
+
+    .status-refunded {
+      background-color: #fcf1fc !important;
+      color: #86198f !important;
+      border-color: rgba(134, 25, 143, 0.25) !important;
+    }
+
+    .status-hold {
+      background-color: #fef8f0 !important;
+      color: #a05e03 !important;
+      border-color: rgba(160, 94, 3, 0.25) !important;
+    }
+
+    .status-default {
+      background-color: #f2f2f5 !important;
+      color: #1a1a50 !important;
+      border-color: rgba(26, 26, 80, 0.15) !important;
+    }
+
+    /* Actions: Incele & Iptal Link */
     .order-action-link, .order-cancel-link {
       position: relative;
       display: inline-block;
@@ -164,6 +238,284 @@
       color: #1a1a50 !important;
       text-decoration: none !important;
     }
+
+    /* --------------------------------------------------------------------------
+       MOBILE SPECIAL CARD DESIGN (max-width: 768px)
+       -------------------------------------------------------------------------- */
+    @media (max-width: 768px) {
+      #account-order {
+        padding-top: 15px;
+        padding-bottom: 50px;
+      }
+
+      .account-order-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+      }
+
+      .account-orders-desktop {
+        display: none !important;
+      }
+
+      .account-orders-mobile {
+        display: flex !important;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Mobile Order Card */
+      .order-mobile-card {
+        background: #ffffff;
+        border: 1px solid rgba(26, 26, 80, 0.09);
+        border-radius: 0;
+        box-shadow: 0 3px 14px rgba(26, 26, 80, 0.035);
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .order-mobile-card__header {
+        background-color: #fbf9f5;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(26, 26, 80, 0.07);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .order-mobile-card__id-box {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .order-mobile-card__order-id {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #1a1a50;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+      }
+
+      .order-mobile-card__date {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 11.5px;
+        color: rgba(26, 26, 80, 0.55);
+        line-height: 1.2;
+      }
+
+      .order-mobile-card__body {
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .order-mobile-card__thumb-link {
+        flex-shrink: 0;
+        display: block;
+      }
+
+      .order-mobile-card__thumb {
+        width: 72px;
+        height: 72px;
+        object-fit: cover;
+        background: #f8f6f2;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        border-radius: 0;
+        display: block;
+      }
+
+      .order-mobile-card__thumb-placeholder {
+        width: 72px;
+        height: 72px;
+        background: #f5f2eb;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(26, 26, 80, 0.35);
+        font-size: 24px;
+      }
+
+      .order-mobile-card__details {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .order-mobile-card__prod-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #1a1a50;
+        line-height: 1.35;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .order-mobile-card__extra {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 11.5px;
+        color: rgba(26, 26, 80, 0.6);
+        font-style: italic;
+      }
+
+      .order-mobile-card__meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 4px;
+        gap: 6px;
+      }
+
+      .order-mobile-card__item-count {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 12px;
+        color: rgba(26, 26, 80, 0.7);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .order-mobile-card__total {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #1a1a50;
+        letter-spacing: 0.01em;
+      }
+
+      .order-mobile-card__footer {
+        padding: 10px 14px;
+        background-color: #faf8f5;
+        border-top: 1px solid rgba(26, 26, 80, 0.06);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .order-mobile-btn-detail {
+        flex: 1;
+        height: 38px;
+        background-color: #1a1a50;
+        color: #ffffff !important;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        transition: background-color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .order-mobile-btn-detail:hover,
+      .order-mobile-btn-detail:focus {
+        background-color: #272766;
+        color: #ffffff !important;
+      }
+
+      .order-mobile-btn-cancel {
+        padding: 0 14px;
+        height: 38px;
+        background: #ffffff !important;
+        border: 1px solid rgba(26, 26, 80, 0.2);
+        color: rgba(26, 26, 80, 0.85) !important;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 11.5px;
+        font-weight: 500;
+        text-decoration: none !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        border-radius: 0;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .order-mobile-btn-cancel:hover,
+      .order-mobile-btn-cancel:focus {
+        background-color: #fdf2f2 !important;
+        border-color: rgba(163, 30, 32, 0.4);
+        color: #a31e20 !important;
+      }
+    }
+
+    /* Empty State */
+    .account-orders-empty-wrap {
+      background: #ffffff;
+      padding: 50px 24px;
+      text-align: center;
+      border: 1px solid rgba(26, 26, 80, 0.08);
+      margin-bottom: 25px;
+    }
+
+    .account-orders-empty-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #f8f6f2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #1a1a50;
+      font-size: 26px;
+    }
+
+    .account-orders-empty-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #1a1a50;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.04em;
+    }
+
+    .account-orders-empty-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(26, 26, 80, 0.65);
+      max-width: 440px;
+      margin: 0 auto 24px auto;
+      line-height: 1.6;
+    }
+
+    .btn-shop-now {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 32px;
+      background-color: #1a1a50;
+      color: #ffffff !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      border-radius: 0;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-shop-now:hover,
+    .btn-shop-now:focus {
+      background-color: #272766;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+    }
   </style>
 
   <div class="row">{{ column_left }}
@@ -176,93 +528,189 @@
     {% endif %}
 
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
+      <h1 class="account-order-title">{{ heading_title }}</h1>
 
       {% if orders %}
-      <div class="table-responsive account-orders-table-wrap">
-        <table class="table account-orders-table">
-          <thead>
-            <tr>
-              <th class="text-left col-order-id">{{ column_order_id }}</th>
-              <th class="text-center col-thumb">ÜRÜN</th>
-              <th class="text-left col-customer">{{ column_customer }}</th>
-              <th class="text-center col-products">{{ column_product }}</th>
-              <th class="text-left col-status">{{ column_status }}</th>
-              <th class="text-left col-total">{{ column_total }}</th>
-              <th class="text-left col-date">{{ column_date_added }}</th>
-              <th class="text-center col-action">DETAY</th>
-              <th class="text-center col-cancel"></th>
-            </tr>
-          </thead>
-          <tbody>
-          {% for order in orders %}
-            {% set status_tr = order.status %}
-            {% set status_class = 'status-default' %}
 
-            {% if order.status in ['Pending','Beklemede','On Hold','Bekliyor','Pending Payment','Pending Verification'] %}
-              {% set status_tr = 'Beklemede' %}
-              {% set status_class = 'status-pending' %}
-            {% elseif order.status in ['Processing','Processed','Processing Payment','İşleniyor','Hazırlanıyor'] %}
-              {% set status_tr = 'İşleniyor' %}
-              {% set status_class = 'status-processing' %}
-            {% elseif order.status in ['Shipped','Kargoda','Gönderildi','Kargoya Verildi'] %}
-              {% set status_tr = 'Kargoya Verildi' %}
-              {% set status_class = 'status-shipped' %}
-            {% elseif order.status in ['Delivered','Teslim Edildi'] %}
-              {% set status_tr = 'Teslim Edildi' %}
-              {% set status_class = 'status-shipped' %}
-            {% elseif order.status in ['Completed','Complete','Tamamlandı','Bitti'] %}
-              {% set status_tr = 'Tamamlandı' %}
-              {% set status_class = 'status-complete' %}
-            {% elseif order.status in ['Canceled','Cancelled','İptal Edildi','İptal'] %}
-              {% set status_tr = 'İptal Edildi' %}
-              {% set status_class = 'status-canceled' %}
-            {% elseif order.status in ['Refunded','İade Edildi','Returned'] %}
-              {% set status_tr = 'İade Edildi' %}
-              {% set status_class = 'status-refunded' %}
-            {% elseif order.status in ['On Hold','Hold','Bekletiliyor'] %}
-              {% set status_tr = 'Bekletiliyor' %}
-              {% set status_class = 'status-hold' %}
-            {% endif %}
+      <!-- 1) DESKTOP TABLE VIEW (Visible on >= 769px) -->
+      <div class="account-orders-desktop">
+        <div class="table-responsive account-orders-table-wrap">
+          <table class="table account-orders-table">
+            <thead>
+              <tr>
+                <th class="text-left col-order-id">{{ column_order_id }}</th>
+                <th class="text-center col-thumb">ÜRÜN</th>
+                <th class="text-left col-customer">{{ column_customer }}</th>
+                <th class="text-center col-products">{{ column_product }}</th>
+                <th class="text-left col-status">{{ column_status }}</th>
+                <th class="text-left col-total">{{ column_total }}</th>
+                <th class="text-left col-date">{{ column_date_added }}</th>
+                <th class="text-center col-action">DETAY</th>
+                <th class="text-center col-cancel"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+              {% set status_tr = order.status %}
+              {% set status_class = 'status-default' %}
 
-            <tr>
-              <td class="text-left col-order-id account-order-id">#{{ order.order_id }}</td>
+              {% if order.status in ['Pending','Beklemede','On Hold','Bekliyor','Pending Payment','Pending Verification'] %}
+                {% set status_tr = 'Beklemede' %}
+                {% set status_class = 'status-pending' %}
+              {% elseif order.status in ['Processing','Processed','Processing Payment','İşleniyor','Hazırlanıyor'] %}
+                {% set status_tr = 'Hazırlanıyor' %}
+                {% set status_class = 'status-processing' %}
+              {% elseif order.status in ['Shipped','Kargoda','Gönderildi','Kargoya Verildi'] %}
+                {% set status_tr = 'Kargoya Verildi' %}
+                {% set status_class = 'status-shipped' %}
+              {% elseif order.status in ['Delivered','Teslim Edildi'] %}
+                {% set status_tr = 'Teslim Edildi' %}
+                {% set status_class = 'status-delivered' %}
+              {% elseif order.status in ['Completed','Complete','Tamamlandı','Bitti'] %}
+                {% set status_tr = 'Tamamlandı' %}
+                {% set status_class = 'status-complete' %}
+              {% elseif order.status in ['Canceled','Cancelled','İptal Edildi','İptal'] %}
+                {% set status_tr = 'İptal Edildi' %}
+                {% set status_class = 'status-canceled' %}
+              {% elseif order.status in ['Refunded','İade Edildi','Returned'] %}
+                {% set status_tr = 'İade Edildi' %}
+                {% set status_class = 'status-refunded' %}
+              {% elseif order.status in ['On Hold','Hold','Bekletiliyor'] %}
+                {% set status_tr = 'Bekletiliyor' %}
+                {% set status_class = 'status-hold' %}
+              {% endif %}
 
-              <td class="text-center col-thumb">
-                {% if order.thumb %}
-                  <img src="{{ order.thumb }}" alt="{{ order.name }}" class="account-order-thumb">
-                {% endif %}
-              </td>
+              <tr>
+                <td class="text-left col-order-id account-order-id">#{{ order.order_id }}</td>
 
-              <td class="text-left col-customer">{{ order.name }}</td>
-              <td class="text-center col-products">{{ order.products }}</td>
+                <td class="text-center col-thumb">
+                  {% if order.thumb %}
+                    <a href="{{ order.view }}" title="Sipariş Detayı">
+                      <img src="{{ order.thumb }}" alt="{{ order.product_name|default(order.name) }}" class="account-order-thumb">
+                    </a>
+                  {% endif %}
+                </td>
 
-              <td class="text-left col-status">
-                <span class="status-badge {{ status_class }}">{{ status_tr }}</span>
-              </td>
+                <td class="text-left col-customer">{{ order.name }}</td>
+                <td class="text-center col-products">{{ order.products }}</td>
 
-              <td class="text-left col-total">{{ order.total }}</td>
-              <td class="text-left col-date">{{ order.date_added }}</td>
-              <td class="text-center col-action">
-                <a href="{{ order.view }}" class="order-action-link" title="{{ button_view }}">
-                  İncele
-                </a>
-              </td>
-              <td class="text-center col-cancel">
-                <a href="#" class="order-cancel-link" onclick="event.preventDefault(); alert('Sipariş iptali için müşteri hizmetleriyle iletişime geçiniz.');">Siparişi İptal Et</a>
-              </td>
-            </tr>
-          {% endfor %}
-          </tbody>
-        </table>
+                <td class="text-left col-status">
+                  <span class="status-badge {{ status_class }}">{{ status_tr }}</span>
+                </td>
+
+                <td class="text-left col-total" style="font-weight: 600;">{{ order.total }}</td>
+                <td class="text-left col-date">{{ order.date_added }}</td>
+                <td class="text-center col-action">
+                  <a href="{{ order.view }}" class="order-action-link" title="{{ button_view }}">
+                    İncele
+                  </a>
+                </td>
+                <td class="text-center col-cancel">
+                  <a href="#" class="order-cancel-link" onclick="event.preventDefault(); alert('Sipariş iptali için müşteri hizmetleriyle iletişime geçiniz.');">Siparişi İptal Et</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div class="row" style="margin-top: 15px;">
+      <!-- 2) MOBILE CARDS VIEW (Visible on <= 768px) -->
+      <div class="account-orders-mobile">
+        {% for order in orders %}
+          {% set status_tr = order.status %}
+          {% set status_class = 'status-default' %}
+
+          {% if order.status in ['Pending','Beklemede','On Hold','Bekliyor','Pending Payment','Pending Verification'] %}
+            {% set status_tr = 'Beklemede' %}
+            {% set status_class = 'status-pending' %}
+          {% elseif order.status in ['Processing','Processed','Processing Payment','İşleniyor','Hazırlanıyor'] %}
+            {% set status_tr = 'Hazırlanıyor' %}
+            {% set status_class = 'status-processing' %}
+          {% elseif order.status in ['Shipped','Kargoda','Gönderildi','Kargoya Verildi'] %}
+            {% set status_tr = 'Kargoya Verildi' %}
+            {% set status_class = 'status-shipped' %}
+          {% elseif order.status in ['Delivered','Teslim Edildi'] %}
+            {% set status_tr = 'Teslim Edildi' %}
+            {% set status_class = 'status-delivered' %}
+          {% elseif order.status in ['Completed','Complete','Tamamlandı','Bitti'] %}
+            {% set status_tr = 'Tamamlandı' %}
+            {% set status_class = 'status-complete' %}
+          {% elseif order.status in ['Canceled','Cancelled','İptal Edildi','İptal'] %}
+            {% set status_tr = 'İptal Edildi' %}
+            {% set status_class = 'status-canceled' %}
+          {% elseif order.status in ['Refunded','İade Edildi','Returned'] %}
+            {% set status_tr = 'İade Edildi' %}
+            {% set status_class = 'status-refunded' %}
+          {% elseif order.status in ['On Hold','Hold','Bekletiliyor'] %}
+            {% set status_tr = 'Bekletiliyor' %}
+            {% set status_class = 'status-hold' %}
+          {% endif %}
+
+          <article class="order-mobile-card">
+            <!-- Header: Order ID, Date & Status -->
+            <div class="order-mobile-card__header">
+              <div class="order-mobile-card__id-box">
+                <span class="order-mobile-card__order-id">Sipariş #{{ order.order_id }}</span>
+                <span class="order-mobile-card__date">{{ order.date_added }}</span>
+              </div>
+              <span class="status-badge {{ status_class }}">{{ status_tr }}</span>
+            </div>
+
+            <!-- Body: Image + Product Details & Total -->
+            <div class="order-mobile-card__body">
+              {% if order.thumb %}
+                <a href="{{ order.view }}" class="order-mobile-card__thumb-link">
+                  <img src="{{ order.thumb }}" alt="{{ order.product_name|default(order.name) }}" class="order-mobile-card__thumb">
+                </a>
+              {% else %}
+                <div class="order-mobile-card__thumb-placeholder">
+                  <i class="fa fa-shopping-bag"></i>
+                </div>
+              {% endif %}
+
+              <div class="order-mobile-card__details">
+                <h4 class="order-mobile-card__prod-title">{{ order.product_name|default('Sipariş Ürünleri') }}</h4>
+                {% if order.extra_products and order.extra_products > 0 %}
+                  <span class="order-mobile-card__extra">+{{ order.extra_products }} diğer ürün</span>
+                {% endif %}
+
+                <div class="order-mobile-card__meta-row">
+                  <span class="order-mobile-card__item-count">
+                    <i class="fa fa-cubes"></i> {{ order.products }} Adet
+                  </span>
+                  <span class="order-mobile-card__total">{{ order.total }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer: Actions (Detail & Cancel) -->
+            <div class="order-mobile-card__footer">
+              <a href="{{ order.view }}" class="order-mobile-btn-detail">
+                <span>Sipariş Detayı</span>
+              </a>
+              <a href="#" class="order-mobile-btn-cancel" onclick="event.preventDefault(); alert('Sipariş iptali için müşteri hizmetleriyle iletişime geçiniz.');">
+                İptal Et
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+
+      <div class="row" style="margin-top: 25px;">
         <div class="col-sm-12 text-center">{{ pagination }}</div>
       </div>
 
       {% else %}
-        <p>{{ text_empty }}</p>
+      <!-- EMPTY STATE -->
+      <div class="account-orders-empty-wrap">
+        <div class="account-orders-empty-icon">
+          <i class="fa fa-shopping-bag"></i>
+        </div>
+        <h2 class="account-orders-empty-title">Henüz Bir Siparişiniz Yok</h2>
+        <p class="account-orders-empty-text">Verdiğiniz tüm siparişleri, kargo durumlarını ve geçmiş sipariş detaylarınızı bu sayfadan kolayca takip edebilirsiniz.</p>
+        <a href="{{ continue }}" class="btn-shop-now">Alışverişe Başla</a>
+      </div>
       {% endif %}
 
       {{ content_bottom }}

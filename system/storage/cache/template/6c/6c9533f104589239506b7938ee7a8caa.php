@@ -270,11 +270,11 @@ class __TwigTemplate_0fee49dc0b4c5fa7acf2d4f408fc5c22 extends Template
       <div class=\"site-footer__legal\">
         <a href=\"";
         // line 212
-        echo ($context["home"] ?? null);
-        echo "\" class=\"site-footer__legal-link\">KVKK</a>
+        echo ((array_key_exists("privacy", $context)) ? (_twig_default_filter(($context["privacy"] ?? null), "index.php?route=information/information&information_id=3")) : ("index.php?route=information/information&information_id=3"));
+        echo "#kvkk\" class=\"site-footer__legal-link\">KVKK</a>
         <a href=\"";
         // line 213
-        echo ($context["home"] ?? null);
+        echo ((array_key_exists("privacy", $context)) ? (_twig_default_filter(($context["privacy"] ?? null), "index.php?route=information/information&information_id=3")) : ("index.php?route=information/information&information_id=3"));
         echo "\" class=\"site-footer__legal-link\">Gizlilik ve Çerez Politikası</a>
       </div>
     </div>

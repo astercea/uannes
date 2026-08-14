@@ -80,6 +80,60 @@ class ControllerCommonHeader extends Controller {
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
 		$data['cart'] = $this->load->controller('common/cart');
+
+		// Popüler Arama Önerileri (En çok satan / en çok ziyaret edilen 4 popüler ürün)
+		$this->load->model('catalog/product');
+		$data['search_suggestions'] = array();
+		$suggested_products = array();
+
+		// 1. En çok satanları al
+		$bestsellers = $this->model_catalog_product->getBestSellerProducts(4);
+		if ($bestsellers) {
+			foreach ($bestsellers as $b_prod) {
+				if ($b_prod && !empty($b_prod['product_id']) && !isset($suggested_products[$b_prod['product_id']])) {
+					$suggested_products[$b_prod['product_id']] = $b_prod;
+				}
+			}
+		}
+
+		// 2. 4'ten azsa en çok görüntülenen (popüler) ürünlerle tamamla
+		if (count($suggested_products) < 4) {
+			$populars = $this->model_catalog_product->getPopularProducts(4);
+			if ($populars) {
+				foreach ($populars as $p_prod) {
+					if ($p_prod && !empty($p_prod['product_id']) && !isset($suggested_products[$p_prod['product_id']])) {
+						$suggested_products[$p_prod['product_id']] = $p_prod;
+						if (count($suggested_products) >= 4) {
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		// 3. Hala 4'ten azsa en son eklenen aktif ürünlerle tamamla
+		if (count($suggested_products) < 4) {
+			$latests = $this->model_catalog_product->getLatestProducts(4);
+			if ($latests) {
+				foreach ($latests as $l_prod) {
+					if ($l_prod && !empty($l_prod['product_id']) && !isset($suggested_products[$l_prod['product_id']])) {
+						$suggested_products[$l_prod['product_id']] = $l_prod;
+						if (count($suggested_products) >= 4) {
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		foreach ($suggested_products as $prod) {
+			$data['search_suggestions'][] = array(
+				'product_id'  => $prod['product_id'],
+				'name'        => $prod['name'],
+				'href'        => $this->url->link('product/product', 'product_id=' . $prod['product_id']),
+				'search_href' => $this->url->link('product/search', 'search=' . urlencode($prod['name']))
+			);
+		}
 		if (isset($this->request->get['route'])) {
 			$data['route'] = (string)$this->request->get['route'];
 		} else {

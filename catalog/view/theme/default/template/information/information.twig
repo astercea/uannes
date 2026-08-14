@@ -218,6 +218,125 @@
       margin-bottom: 22px !important;
     }
   }
+
+  /* ==========================================================================
+     GİZLİLİK VE ÇEREZ POLİTİKASI / PRIVACY POLICY (Luxury Minimalist Design)
+     ========================================================================== */
+  .vannes-policy-page {
+    background-color: #f8f6f2;
+    min-height: calc(100vh - var(--header-height, 80px) - 200px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 70px 24px 110px;
+    width: 100%;
+  }
+
+  .vannes-policy-container {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 50px 55px;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(26, 26, 80, 0.04);
+  }
+
+  .vannes-policy-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a1a50;
+    margin: 0 0 35px 0;
+    line-height: 1.25;
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(26, 26, 80, 0.12);
+  }
+
+  .vannes-policy-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.85;
+    color: #33334d;
+    text-align: left;
+  }
+
+  .vannes-policy-content h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a50;
+    margin: 34px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(184, 146, 91, 0.35);
+  }
+
+  .vannes-policy-content h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a50;
+    margin: 22px 0 8px;
+  }
+
+  .vannes-policy-content p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.85;
+    color: #33334d;
+    margin-bottom: 14px;
+  }
+
+  .vannes-policy-content ul {
+    margin: 10px 0 18px 22px;
+    padding: 0;
+    list-style-type: disc;
+  }
+
+  .vannes-policy-content li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #33334d;
+    margin-bottom: 6px;
+  }
+
+  .vannes-policy-content hr.policy-divider {
+    margin: 40px 0 30px;
+    border: 0;
+    height: 1px;
+    background: rgba(26, 26, 80, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .vannes-policy-page {
+      padding: 40px 16px 70px;
+    }
+    .vannes-policy-container {
+      padding: 30px 20px;
+    }
+    .vannes-policy-title {
+      font-size: 22px;
+      margin-bottom: 25px;
+      padding-bottom: 18px;
+    }
+    .vannes-policy-content h2 {
+      font-size: 19px;
+      margin: 26px 0 12px;
+    }
+    .vannes-policy-content p,
+    .vannes-policy-content li {
+      font-size: 13.5px;
+      line-height: 1.75;
+    }
+  }
 </style>
 {{ header }}
 {% if information_id == 4 %}
@@ -226,6 +345,17 @@
     {{ content_top }}
     <h1 class="vannes-about-title">UANNES HAKKINDA</h1>
     <div class="vannes-about-content">
+      {{ description }}
+    </div>
+    {{ content_bottom }}
+  </div>
+</div>
+{% elseif information_id == 3 %}
+<div id="information-policy" class="vannes-policy-page">
+  <div class="vannes-policy-container">
+    {{ content_top }}
+    <h1 class="vannes-policy-title">{{ heading_title }}</h1>
+    <div class="vannes-policy-content">
       {{ description }}
     </div>
     {{ content_bottom }}

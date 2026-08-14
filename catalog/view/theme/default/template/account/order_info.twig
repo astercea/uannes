@@ -62,7 +62,15 @@
       }
     }
 
-    /* Products Table */
+    /* Products Table (Desktop) */
+    .order-info-products-desktop {
+      display: block;
+    }
+
+    .order-info-products-mobile {
+      display: none;
+    }
+
     .order-info-table-wrap {
       border: none;
       background: transparent;
@@ -202,6 +210,151 @@
     .btn-back-custom:hover {
       opacity: 0.85;
     }
+
+    .order-info-prod-flex {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .order-info-prod-thumb {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      background: #f8f6f2;
+      border: 1px solid rgba(26, 26, 80, 0.08);
+      border-radius: 0;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .order-info-prod-title-link {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 13.5px;
+      color: #1a1a50 !important;
+      text-decoration: none !important;
+      display: block;
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
+
+    .order-info-prod-title-link:hover {
+      color: #725838 !important;
+    }
+
+    .order-info-prod-opt {
+      font-size: 12px;
+      color: rgba(26, 26, 80, 0.7);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .order-info-products-desktop {
+        display: none !important;
+      }
+      .order-info-products-mobile {
+        display: flex !important;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .order-info-mobile-product-card {
+        background: #ffffff;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .order-info-mobile-product-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .order-info-mobile-thumb {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        background: #f8f6f2;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        display: block;
+        flex-shrink: 0;
+      }
+      .order-info-mobile-thumb-placeholder {
+        width: 70px;
+        height: 70px;
+        background: #f5f2eb;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(26, 26, 80, 0.35);
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+      .order-info-mobile-details {
+        flex: 1;
+        min-width: 0;
+      }
+      .order-info-mobile-product-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #1a1a50 !important;
+        text-decoration: none !important;
+        display: block;
+        line-height: 1.35;
+        margin-bottom: 2px;
+      }
+      .order-info-mobile-model {
+        font-size: 11.5px;
+        color: rgba(26, 26, 80, 0.55);
+        margin-top: 1px;
+      }
+      .order-info-mobile-product-options {
+        font-size: 12px;
+        color: rgba(26, 26, 80, 0.65);
+        margin-top: 2px;
+      }
+      .order-info-mobile-product-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 10px;
+        border-top: 1px solid rgba(26, 26, 80, 0.06);
+      }
+      .order-info-mobile-unit-qty {
+        font-size: 12.5px;
+        color: rgba(26, 26, 80, 0.7);
+      }
+      .order-info-mobile-item-total {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: #1a1a50;
+      }
+      .order-info-mobile-totals-card {
+        background: #fbf9f5;
+        border: 1px solid rgba(26, 26, 80, 0.08);
+        padding: 14px 16px;
+        margin-top: 14px;
+      }
+      .order-info-mobile-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0;
+        font-size: 13px;
+        color: #1a1a50;
+      }
+      .order-info-mobile-total-row:last-child {
+        padding-top: 8px;
+        margin-top: 6px;
+        border-top: 1px solid rgba(26, 26, 80, 0.12);
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
   </style>
 
   <div class="row">{{ column_left }}
@@ -213,7 +366,6 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      {# <h1 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 400; color: #1a1a50; margin-bottom: 25px; text-align: center;">{{ heading_title }}</h1> #}
       
       <!-- Order Summary Card -->
       <div class="order-info-card">
@@ -257,72 +409,150 @@
         {% endif %}
       </div>
 
-      <!-- Products Table -->
-      <div class="order-info-table-wrap">
-        <table class="table order-info-table">
-          <thead>
+      <!-- 1) Products Table (Desktop) -->
+      <div class="order-info-products-desktop">
+        <div class="order-info-table-wrap">
+          <table class="table order-info-table">
+            <thead>
+              <tr>
+                <th class="text-left">{{ column_name }}</th>
+                <th class="text-left">{{ column_model }}</th>
+                <th class="text-center">{{ column_quantity }}</th>
+                <th class="text-right">{{ column_price }}</th>
+                <th class="text-right">{{ column_total }}</th>
+                {% if products %}
+                <th class="text-center" style="width: 110px;"></th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
             <tr>
-              <th class="text-left">{{ column_name }}</th>
-              <th class="text-left">{{ column_model }}</th>
-              <th class="text-center">{{ column_quantity }}</th>
-              <th class="text-right">{{ column_price }}</th>
-              <th class="text-right">{{ column_total }}</th>
+              <td class="text-left">
+                <div class="order-info-prod-flex">
+                  {% if product.thumb %}
+                    <a href="{{ product.href|default('#') }}">
+                      <img src="{{ product.thumb }}" alt="{{ product.name }}" class="order-info-prod-thumb">
+                    </a>
+                  {% endif %}
+                  <div>
+                    {% if product.href %}
+                      <a href="{{ product.href }}" class="order-info-prod-title-link">{{ product.name }}</a>
+                    {% else %}
+                      <div class="order-info-prod-title-link">{{ product.name }}</div>
+                    {% endif %}
+                    {% for option in product.option %}
+                      <div class="order-info-prod-opt">{{ option.name }}: {{ option.value }}</div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </td>
+              <td class="text-left">
+                {% if product.model %}
+                  {% if product.model starts with '#' %}{{ product.model }}{% else %}#{{ product.model }}{% endif %}
+                {% endif %}
+              </td>
+              <td class="text-center">{{ product.quantity }}</td>
+              <td class="text-right">{{ product.price }}</td>
+              <td class="text-right">{{ product.total }}</td>
+              <td class="text-center" style="white-space: nowrap;">
+                {% if product.return %}
+                  <a href="{{ product.return }}" class="order-item-action" title="{{ button_return }}">İade Et</a>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+            {% for voucher in vouchers %}
+            <tr>
+              <td class="text-left">{{ voucher.description }}</td>
+              <td class="text-left"></td>
+              <td class="text-center">1</td>
+              <td class="text-right">{{ voucher.amount }}</td>
+              <td class="text-right">{{ voucher.amount }}</td>
               {% if products %}
-              <th class="text-center" style="width: 110px;"></th>
+              <td></td>
               {% endif %}
             </tr>
-          </thead>
-          <tbody>
-          {% for product in products %}
-          <tr>
-            <td class="text-left">
-              <div style="font-weight: 500; color: #1a1a50;">{{ product.name }}</div>
-              {% for option in product.option %}
-                <div style="font-size: 12.5px; color: #1a1a50; opacity: 0.75; margin-top: 3px;">{{ option.name }}: {{ option.value }}</div>
-              {% endfor %}
-            </td>
-            <td class="text-left">
+            {% endfor %}
+            </tbody>
+            
+            <tfoot>
+            {% for total in totals %}
+            <tr>
+              <td colspan="3"></td>
+              <td class="text-right"><b>{{ total.title }}:</b></td>
+              <td class="text-right"><b>{{ total.text }}</b></td>
+              {% if products %}
+              <td></td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2) Products Cards (Mobile) -->
+      <div class="order-info-products-mobile">
+        <div class="order-info-card__header" style="margin-bottom: 4px;">ÜRÜNLER</div>
+        {% for product in products %}
+        <div class="order-info-mobile-product-card">
+          <div class="order-info-mobile-product-top">
+            {% if product.thumb %}
+              <a href="{{ product.href|default('#') }}">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" class="order-info-mobile-thumb">
+              </a>
+            {% else %}
+              <div class="order-info-mobile-thumb-placeholder">
+                <i class="fa fa-shopping-bag"></i>
+              </div>
+            {% endif %}
+
+            <div class="order-info-mobile-details">
+              {% if product.href %}
+                <a href="{{ product.href }}" class="order-info-mobile-product-title">{{ product.name }}</a>
+              {% else %}
+                <div class="order-info-mobile-product-title">{{ product.name }}</div>
+              {% endif %}
               {% if product.model %}
-                {% if product.model starts with '#' %}{{ product.model }}{% else %}#{{ product.model }}{% endif %}
+                <div class="order-info-mobile-model">Kod: {% if product.model starts with '#' %}{{ product.model }}{% else %}#{{ product.model }}{% endif %}</div>
               {% endif %}
-            </td>
-            <td class="text-center">{{ product.quantity }}</td>
-            <td class="text-right">{{ product.price }}</td>
-            <td class="text-right">{{ product.total }}</td>
-            <td class="text-center" style="white-space: nowrap;">
+              {% for option in product.option %}
+                <div class="order-info-mobile-product-options">{{ option.name }}: {{ option.value }}</div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="order-info-mobile-product-bottom">
+            <span class="order-info-mobile-unit-qty">{{ product.quantity }} Adet × {{ product.price }}</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="order-info-mobile-item-total">{{ product.total }}</span>
               {% if product.return %}
-                <a href="{{ product.return }}" class="order-item-action" title="{{ button_return }}">İade Et</a>
+                <a href="{{ product.return }}" class="btn-back-custom" style="padding: 5px 10px; font-size: 10.5px;">İade Et</a>
               {% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-          {% for voucher in vouchers %}
-          <tr>
-            <td class="text-left">{{ voucher.description }}</td>
-            <td class="text-left"></td>
-            <td class="text-center">1</td>
-            <td class="text-right">{{ voucher.amount }}</td>
-            <td class="text-right">{{ voucher.amount }}</td>
-            {% if products %}
-            <td></td>
-            {% endif %}
-          </tr>
-          {% endfor %}
-          </tbody>
-          
-          <tfoot>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% for voucher in vouchers %}
+        <div class="order-info-mobile-product-card">
+          <div class="order-info-mobile-product-title">{{ voucher.description }}</div>
+          <div class="order-info-mobile-product-bottom">
+            <span class="order-info-mobile-unit-qty">1 Adet</span>
+            <span class="order-info-mobile-item-total">{{ voucher.amount }}</span>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Mobile Totals -->
+        <div class="order-info-mobile-totals-card">
           {% for total in totals %}
-          <tr>
-            <td colspan="3"></td>
-            <td class="text-right"><b>{{ total.title }}:</b></td>
-            <td class="text-right"><b>{{ total.text }}</b></td>
-            {% if products %}
-            <td></td>
-            {% endif %}
-          </tr>
+          <div class="order-info-mobile-total-row">
+            <span>{{ total.title }}</span>
+            <span style="font-weight: 600;">{{ total.text }}</span>
+          </div>
           {% endfor %}
-          </tfoot>
-        </table>
+        </div>
       </div>
 
       {% if comment %}
