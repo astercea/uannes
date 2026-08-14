@@ -12051,6 +12051,21 @@ body:has(.account-page) {
   caret-color: #000000;
 }
 
+/* Remove autofill background on checkout page */
+.uannes-checkout-page input:-webkit-autofill,
+.uannes-checkout-page input:-webkit-autofill:hover, 
+.uannes-checkout-page input:-webkit-autofill:focus, 
+.uannes-checkout-page input:-webkit-autofill:active,
+.uannes-checkout-page input.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+    box-shadow: 0 0 0px 1000px #f8f6f2 inset !important;
+    -webkit-text-fill-color: #1a1a50 !important;
+    background-color: #f8f6f2 !important;
+    background-image: none !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+
 /* Login and registration actions follow the lighter, shared button weight. */
 .login-page__submit,
 .login-page__register-link {
@@ -12669,12 +12684,23 @@ html.uannes-cart-mobile #cartSidebar .cart-sidebar-footer {
   object-fit: cover;
 }
 
-/* Recommendation and recently-viewed cards for scarves */
-#product-product .product-page__recommendations .uannes-row-media,
+/* Default ratio for clothing items (4:5) */
 #checkout-cart .cart-page__recent .uannes-row-media,
 #checkout-cart-empty .cart-page__recent .uannes-row-media {
+  width: 100%;
+  padding-bottom: 125%;
+  aspect-ratio: 4 / 5;
+  position: relative;
+}
+
+/* Square aspect ratio (1:1) for scarf products and scarf recommendations */
+#product-product .product-page__recommendations .uannes-row-media,
+#checkout-cart .cart-page__recent .is-scarf .uannes-row-media,
+#checkout-cart-empty .cart-page__recent .is-scarf .uannes-row-media {
+  width: 100%;
+  padding-bottom: 100%;
   aspect-ratio: 1 / 1;
-  padding-bottom: 0;
+  position: relative;
 }
 
 #product-product .product-page__recommendations .uannes-row-card__swatches,
@@ -15133,17 +15159,29 @@ body.checkout-mode {
 .uannes-checkout-page #button-confirm:hover,
 .uannes-checkout-page input[type="button"].btn-primary:hover,
 .uannes-checkout-page input[type="submit"].btn-primary:hover,
-.uannes-checkout-page button.btn-primary:hover {
+.uannes-checkout-page button.btn-primary:hover,
+.uannes-checkout-page .btn-continue-custom:hover {
   background-color: #ffffff;
   color: #1a1a50;
+  border: 1px solid #1a1a50 !important;
+  text-decoration: none !important;
 }
 
-/* Geri Butonu */
-.uannes-checkout-page .btn-back {
-  background-color: transparent;
-  color: #1a1a50;
-  border: none;
-  padding: 12px 0;
+.uannes-checkout-page .btn-primary::after,
+.uannes-checkout-page .btn-continue-custom::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Şeffaf/Beyaz Butonlar (Geri Butonu ve Yeni Müşteri Devam) */
+.uannes-checkout-page .btn-back,
+.uannes-checkout-page #button-account,
+.uannes-checkout-page .btn-back:hover,
+.uannes-checkout-page #button-account:hover {
+  background-color: #ffffff !important;
+  color: #1a1a50 !important;
+  border: 1px solid #1a1a50 !important;
+  padding: 12px 24px !important;
   font-family: 'DM Sans', sans-serif;
   font-size: 13.5px;
   font-weight: 400;
@@ -15151,21 +15189,30 @@ body.checkout-mode {
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
   position: relative;
+  min-width: 140px !important;
+  display: inline-block;
+  text-decoration: none !important;
+  text-align: center;
+  transform: translateZ(0);
 }
 
-.uannes-checkout-page .btn-back::after {
-  content: '';
+.uannes-checkout-page .btn-back::after,
+.uannes-checkout-page #button-account::after {
+  content: '' !important;
+  display: block !important;
   position: absolute;
   bottom: 8px;
-  left: 0;
-  width: 0;
+  left: 50%;
+  width: calc(100% - 48px);
   height: 1px;
   background-color: #1a1a50;
-  transition: width 0.3s ease;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-.uannes-checkout-page .btn-back:hover::after {
-  width: 100%;
+.uannes-checkout-page .btn-back:hover::after,
+.uannes-checkout-page #button-account:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .uannes-checkout-page .radio label,
@@ -15173,4 +15220,88 @@ body.checkout-mode {
   font-family: 'DM Sans', sans-serif;
   font-size: 13.5px;
   color: #1a1a50;
+}
+
+/* ==========================================================================
+   CHECKOUT MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* Add elegant separator between stacked columns */
+  .uannes-checkout-page .row > .col-sm-6:nth-child(2) {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(26, 26, 80, 0.1);
+  }
+  
+  /* Checkout page navigation buttons (Geri and Devam Et) */
+  .uannes-checkout-page .buttons {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    gap: 4% !important;
+    margin-top: 20px !important;
+    display: flex !important;
+  }
+  
+  .uannes-checkout-page .buttons > .pull-right,
+  .uannes-checkout-page .buttons > .pull-left {
+    width: 48% !important;
+    flex: 1 !important;
+    display: block !important;
+    float: none !important;
+  }
+
+  .uannes-checkout-page .buttons .btn-primary,
+  .uannes-checkout-page .buttons .btn-back {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 48px !important; /* Ensure same thickness */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    font-size: 12px !important; /* Make font slightly smaller to fit text side-by-side */
+  }
+  
+  /* btn-back is appended directly to .buttons */
+  .uannes-checkout-page .buttons > .btn-back {
+    width: 48% !important;
+    flex: 1 !important;
+  }
+
+  /* Single buttons (like login buttons) that are not in .buttons */
+  .uannes-checkout-page #button-account,
+  .uannes-checkout-page #button-login {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 48px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 15px !important;
+  }
+  
+  /* Remove negative margins that might cause overlap on mobile */
+  .uannes-checkout-page .col-sm-6 > p,
+  .uannes-checkout-page .col-sm-6 > .form-group {
+    margin-top: 10px !important;
+  }
+  
+  .uannes-checkout-page h2 {
+    text-align: left !important;
+    margin-bottom: 20px !important;
+  }
+  
+  /* Left align radio texts and paragraphs */
+  .uannes-checkout-page .radio,
+  .uannes-checkout-page p {
+    text-align: left !important;
+  }
+  
+  .uannes-checkout-page .form-control {
+    text-align: left !important;
+  }
 }

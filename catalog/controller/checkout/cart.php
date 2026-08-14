@@ -277,15 +277,24 @@ class ControllerCheckoutCart extends Controller {
 				continue;
 			}
 
-			$thumb = $product_info['image'] ? $this->model_tool_image->resizeCover($product_info['image'], 400, 500) : $this->model_tool_image->resizeCover('placeholder.png', 400, 500);
+			$is_scarf = false;
+			$scarf_query = $this->db->query("SELECT cp.path_id FROM " . DB_PREFIX . "product_to_category p2c JOIN " . DB_PREFIX . "category_path cp ON (p2c.category_id = cp.category_id) WHERE p2c.product_id = '" . (int)$product_id . "' AND cp.path_id = 66");
+			if ($scarf_query->num_rows) {
+				$is_scarf = true;
+			}
+			$img_w = $is_scarf ? 500 : 400;
+			$img_h = 500;
+
+			$thumb = $product_info['image'] ? $this->model_tool_image->resizeCover($product_info['image'], $img_w, $img_h) : $this->model_tool_image->resizeCover('placeholder.png', $img_w, $img_h);
 			$product_images = $this->model_catalog_product->getProductImages($product_info['product_id']);
-			$thumb2 = $product_images ? $this->model_tool_image->resizeCover($product_images[0]['image'], 400, 500) : false;
+			$thumb2 = $product_images ? $this->model_tool_image->resizeCover($product_images[0]['image'], $img_w, $img_h) : false;
 
 			$recent_products[] = array(
-				'name'   => $product_info['name'],
-				'thumb'  => $thumb,
-				'thumb2' => $thumb2,
-				'href'   => $this->url->link('product/product', 'product_id=' . $product_id)
+				'name'     => $product_info['name'],
+				'thumb'    => $thumb,
+				'thumb2'   => $thumb2,
+				'href'     => $this->url->link('product/product', 'product_id=' . $product_id),
+				'is_scarf' => $is_scarf
 			);
 			$included_product_ids[] = $product_id;
 		}
@@ -308,15 +317,24 @@ class ControllerCheckoutCart extends Controller {
 					continue;
 				}
 
-				$thumb = $product_info['image'] ? $this->model_tool_image->resizeCover($product_info['image'], 400, 500) : $this->model_tool_image->resizeCover('placeholder.png', 400, 500);
+				$is_scarf = false;
+				$scarf_query = $this->db->query("SELECT cp.path_id FROM " . DB_PREFIX . "product_to_category p2c JOIN " . DB_PREFIX . "category_path cp ON (p2c.category_id = cp.category_id) WHERE p2c.product_id = '" . (int)$product_id . "' AND cp.path_id = 66");
+				if ($scarf_query->num_rows) {
+					$is_scarf = true;
+				}
+				$img_w = $is_scarf ? 500 : 400;
+				$img_h = 500;
+
+				$thumb = $product_info['image'] ? $this->model_tool_image->resizeCover($product_info['image'], $img_w, $img_h) : $this->model_tool_image->resizeCover('placeholder.png', $img_w, $img_h);
 				$product_images = $this->model_catalog_product->getProductImages($product_id);
-				$thumb2 = $product_images ? $this->model_tool_image->resizeCover($product_images[0]['image'], 400, 500) : false;
+				$thumb2 = $product_images ? $this->model_tool_image->resizeCover($product_images[0]['image'], $img_w, $img_h) : false;
 
 				$recent_products[] = array(
-					'name'   => $product_info['name'],
-					'thumb'  => $thumb,
-					'thumb2' => $thumb2,
-					'href'   => $this->url->link('product/product', 'product_id=' . $product_id)
+					'name'     => $product_info['name'],
+					'thumb'    => $thumb,
+					'thumb2'   => $thumb2,
+					'href'     => $this->url->link('product/product', 'product_id=' . $product_id),
+					'is_scarf' => $is_scarf
 				);
 				$included_product_ids[] = $product_id;
 			}

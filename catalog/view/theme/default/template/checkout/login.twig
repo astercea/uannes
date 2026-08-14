@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-sm-6">
-    <h2>{{ text_new_customer }}</h2>
-    <p>{{ text_checkout }}</p>
-    <div class="radio">
+  <div class="col-sm-6" style="text-align: left;">
+    <h2 style="margin-top: 0; text-align: left;">{{ text_new_customer }}</h2>
+    <p style="margin-top: -5px; text-align: left;">{{ text_checkout }}</p>
+    <div class="radio" style="text-align: left;">
       <label> {% if account == 'register' %}
         <input type="radio" name="account" value="register" checked="checked" />
         {% else %}
@@ -11,7 +11,7 @@
         {{ text_register }}</label>
     </div>
     {% if checkout_guest %}
-    <div class="radio">
+    <div class="radio" style="text-align: left;">
       <label> {% if account == 'guest' %}
         <input type="radio" name="account" value="guest" checked="checked" />
         {% else %}
@@ -20,20 +20,22 @@
         {{ text_guest }}</label>
     </div>
     {% endif %}
-    <p>{{ text_register_account }}</p>
-    <button type="button" id="button-account" data-loading-text="" class="btn btn-primary btn-continue-custom">{{ button_continue }}</button>
+    <p style="text-align: left;">{{ text_register_account }}</p>
+    <button type="button" id="button-account" data-loading-text="" class="btn btn-primary btn-continue-custom" style="margin-top: 20px;">{{ button_continue }}</button>
   </div>
-  <div class="col-sm-6">
-    <h2>{{ text_returning_customer }}</h2>
-    <p>{{ text_i_am_returning_customer }}</p>
-    <div class="form-group">
-      <label class="control-label" for="input-email">{{ entry_email }}</label>
-      <input type="text" name="email" value="" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+  <div class="col-sm-6" style="text-align: left;">
+    <h2 style="margin-top: 0; text-align: left;">{{ text_returning_customer }}</h2>
+    <div class="form-group" style="margin-top: -5px; text-align: left;">
+      <label class="control-label" for="input-email" style="text-align: left; display: block;">{{ entry_email }}</label>
+      <input type="text" name="email" value="" placeholder="{{ entry_email }}" id="input-email" class="form-control" style="text-align: left; padding-left: 0;" />
     </div>
-    <div class="form-group">
-      <label class="control-label" for="input-password">{{ entry_password }}</label>
-      <input type="password" name="password" value="" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
-      <a href="{{ forgotten }}">{{ text_forgotten }}</a></div>
-    <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="" class="btn btn-primary" />
+    <div class="form-group" style="text-align: left;">
+      <label class="control-label" for="input-password" style="text-align: left; display: block;">{{ entry_password }}</label>
+      <input type="password" name="password" value="" placeholder="{{ entry_password }}" id="input-password" class="form-control" style="text-align: left; padding-left: 0;" />
+      <div class="login-page__forgot" style="margin-top: 8px; text-align: left;">
+        <a href="{{ forgotten }}" class="login-page__forgot-link">Şifremi unuttum</a>
+      </div>
+    </div>
+    <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="" class="btn btn-primary" style="margin-top: 20px;" />
   </div>
 </div>

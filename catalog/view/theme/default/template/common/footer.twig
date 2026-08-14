@@ -42,6 +42,16 @@
 .site-footer__newsletter-text { margin: 0 0 1.5rem; color: rgba(255,255,255,.88); font-size: 13.5px; line-height: 1.65; }
 .site-footer__newsletter-form { display: flex; padding-bottom: .25rem; border-bottom: 1px solid rgba(255,255,255,.25); }
 .site-footer__newsletter-input { flex: 1 1 auto; min-width: 0; padding: 0; color: #fff; background: transparent; border: 0; outline: 0; }
+.site-footer__newsletter-input:-webkit-autofill,
+.site-footer__newsletter-input:-webkit-autofill:hover,
+.site-footer__newsletter-input:-webkit-autofill:focus,
+.site-footer__newsletter-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a50 inset !important;
+  box-shadow: 0 0 0px 1000px #1a1a50 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  background-color: #1a1a50 !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
 .site-footer__newsletter-btn { padding: 0; color: #fff; background: transparent; border: 0; cursor: pointer; }
 .site-footer__newsletter-message { margin-top: 10px; font-size: 14.5px; }
 .site-footer__divider { display: block; width: 100%; height: 1px; margin: 40px 0; border: 0; background: rgba(255,255,255,.15); }
