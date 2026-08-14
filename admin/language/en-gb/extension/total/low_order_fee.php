@@ -1,21 +1,23 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Low Order Fee';
+$_['heading_title']    = 'Düşük Sipariş Fiyatı';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified low order fee total!';
-$_['text_edit']        = 'Edit Low Order Fee Total';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Düşük sipariş fiyat toplamı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Düşük Sipariş Fiyatını Düzenle';
 
 // Entry
-$_['entry_total']      = 'Order Total';
-$_['entry_fee']        = 'Fee';
-$_['entry_tax_class']  = 'Tax Class';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_total']      = 'Sipariş Toplamı';
+$_['entry_fee']        = 'Fiyatı';
+$_['entry_tax_class']  = 'Vergi Oranı';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_total']       = 'The checkout total the order must reach before this order total is deactivated.';
+$_['help_total']       = 'Devre dışı bırakılması için sipariş tutarının sipariş toplamına ulaşılması gerekir.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify low order fee total!';
+$_['error_permission'] = 'Uyarı: Düşük sipariş fiyat toplamını düzenleme iznine sahip değilsiniz!!';

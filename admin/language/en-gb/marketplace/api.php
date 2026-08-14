@@ -1,16 +1,18 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'OpenCart Marketplace API';
+$_['heading_title']    = 'OpenCart Pazaryeri API';
 
 // Text
-$_['text_success']     = 'Success: You have modified your API information!';
-$_['text_signup']      = 'Please enter your OpenCart API information which you can obtain <a href="https://www.opencart.com/index.php?route=account/store" target="_blank" class="alert-link">here</a>.';
+$_['text_success']     = 'Başarılı: API bilgileri başarılı bir şekilde değiştirildi!!';
+$_['text_signup']      = 'Lütfen <a href="https://www.opencart.com/index.php?route=account/store" target="_blank" class="alert-link">buradan</a> edinebileceğiniz OpenCart API bilgisini giriniz.';
 
 // Entry
-$_['entry_username']   = 'Username';
-$_['entry_secret']     = 'Secret';
+$_['entry_username']   = 'Kullanıcı Adı';
+$_['entry_secret']     = 'Gizli Anahtar';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify marketplace API!';
-$_['error_username']   = 'Username required!';
-$_['error_secret']     = 'Secret required!';
+$_['error_permission'] = 'Uyarı: Pazaryeri API düzenleme iznine sahip değilsiniz!';
+$_['error_username']   = 'Kullanıcı adı gerekli!';
+$_['error_secret']     = 'Gizli anahtar gerekli!';

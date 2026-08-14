@@ -3,11 +3,8 @@ class ControllerAccountReturn extends Controller {
 	private $error = array();
 
 	public function index() {
-		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/return', '', true);
-
-			$this->response->redirect($this->url->link('account/login', '', true));
-		}
+		$this->response->redirect($this->url->link('account/order', '', true));
+		return;
 
 		$this->load->language('account/return');
 
@@ -538,6 +535,6 @@ class ControllerAccountReturn extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('common/success', $data));
+		$this->response->setOutput($this->load->view('account/return_success', $data));
 	}
 }

@@ -1,25 +1,27 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Featured';
+$_['heading_title']    = 'Öne Çıkan Ürünler';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified featured module!';
-$_['text_edit']        = 'Edit Featured Module';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Seçtiklerimiz modülü güncellendi!';
+$_['text_edit']        = 'Seçtiklerimiz Modülünü Düzenle';
 
 // Entry
-$_['entry_name']       = 'Module Name';
-$_['entry_product']    = 'Products';
+$_['entry_name']       = 'Modül Adı';
+$_['entry_product']    = 'Ürünler';
 $_['entry_limit']      = 'Limit';
-$_['entry_width']      = 'Width';
-$_['entry_height']     = 'Height';
-$_['entry_status']     = 'Status';
+$_['entry_width']      = 'Genişlik';
+$_['entry_height']     = 'Yükseklik';
+$_['entry_status']     = 'Durumu';
 
 // Help
-$_['help_product']     = '(Autocomplete)';
+$_['help_product']     = '(Otomatik Tamamlama)';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify featured module!';
-$_['error_name']       = 'Module Name must be between 3 and 64 characters!';
-$_['error_width']      = 'Width required!';
-$_['error_height']     = 'Height required!';
+$_['error_permission'] = 'Uyarı: Seçtiklerimiz modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
+$_['error_width']      = 'Genişlik gerekli!';
+$_['error_height']     = 'Yükseklik gerekli!';

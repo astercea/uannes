@@ -1,20 +1,22 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Free Shipping';
+$_['heading_title']    = 'Ücretsiz Kargo';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified free shipping!';
-$_['text_edit']        = 'Edit Free Shipping';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Ücretsiz Kargo başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Ücretsiz Kargo Düzenle';
 
 // Entry
-$_['entry_total']      = 'Total';
-$_['entry_geo_zone']   = 'Geo Zone';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_total']      = 'Toplam';
+$_['entry_geo_zone']   = 'Bölge';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_total']       = 'Sub-Total amount needed before the free shipping module becomes available.';
+$_['help_total']       = 'Ücretsiz kargo modülünü kullanılabilir duruma getirmek için Alt-Toplam tutarını giriniz.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify free shipping!';
+$_['error_permission'] = 'Uyarı: Ücretsiz kargoyu düzenleme iznine sahip değilsiniz!';

@@ -1,24 +1,26 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Attribute Groups';
+$_['heading_title']     = 'Özellik Grupları';
 
 // Text
-$_['text_success']      = 'Success: You have modified attribute groups!';
-$_['text_list']         = 'Attribute Group List';
-$_['text_add']          = 'Add Attribute Group';
-$_['text_edit']         = 'Edit Attribute Group';
+$_['text_success']      = 'Başarılı: Özellik Grupları başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Özellik Grup Listesi';
+$_['text_add']          = 'Özellik Grubu Ekle';
+$_['text_edit']         = 'Özellik Grubunu Düzenle';
 
 // Column
-$_['column_name']       = 'Attribute Group Name';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'Özellik Grup Adı';
+$_['column_sort_order'] = 'Sıralama';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Attribute Group Name';
-$_['entry_sort_order']  = 'Sort Order';
+$_['entry_name']        = 'Özellik Grup Adı';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify attribute groups!';
-$_['error_name']        = 'Attribute Group Name must be between 1 and 64 characters!';
-$_['error_attribute']   = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s attributes!';
-$_['error_product']     = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']  = 'Uyarı: Özellik Gruplarını düzenleme iznine sahip değilsiniz!';
+$_['error_name']        = 'Özellik Grup Adı 1 ile 64 karakter arasında olmalı!';
+$_['error_attribute']   = 'Uyarı: Bu özellik grubunu silemezsiniz, %s özellik tarafından kullanılıyor!';
+$_['error_product']     = 'Uyarı: Bu özellik grubunu silemezsiniz, %s ürün tarafından kullanılıyor!';

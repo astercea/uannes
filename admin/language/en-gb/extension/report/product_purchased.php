@@ -1,28 +1,29 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Products Purchased Report';
+$_['heading_title']     = 'Satılan Ürünler Raporu';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_edit']         = 'Edit Products Purchased Report';
-$_['text_success']      = 'Success: You have modified products purchased report!';
-$_['text_filter']       = 'Filter';
-$_['text_all_status']   = 'All Statuses';
+$_['text_extension']    = 'Eklentiler';
+$_['text_edit']         = 'Satılan Ürünler Raporu Düzenle';
+$_['text_success']      = 'Başarılı: Satılan ürünler raporu güncellendi!';
+$_['text_filter']       = 'Filtre';
+$_['text_all_status']   = 'Tüm Durumlar';
 
 // Column
-$_['column_date_start'] = 'Date Start';
-$_['column_date_end']   = 'Date End';
-$_['column_name']       = 'Product Name';
-$_['column_model']      = 'Model';
-$_['column_quantity']   = 'Quantity';
-$_['column_total']      = 'Total';
+$_['column_date_start'] = 'Başlangıç';
+$_['column_date_end']   = 'Bitiş';
+$_['column_name']       = 'Ürün Adı';
+$_['column_model']      = 'Ürün Kodu';
+$_['column_quantity']   = 'Adet';
+$_['column_total']      = 'Toplam';
 
 // Entry
-$_['entry_date_start']  = 'Date Start';
-$_['entry_date_end']    = 'Date End';
-$_['entry_status']      = 'Order Status';
-$_['entry_status']      = 'Status';
-$_['entry_sort_order']  = 'Sort Order';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify products purchased report!';
+$_['error_permission']  = 'Uyarı: Satılan ürünler raporunu değiştirme iznine sahip değilsiniz!';

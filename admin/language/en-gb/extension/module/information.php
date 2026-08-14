@@ -1,14 +1,16 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Information';
+$_['heading_title']    = 'Bilgiler';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified information module!';
-$_['text_edit']        = 'Edit Information Module';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Bilgiler modülü güncellendi!';
+$_['text_edit']        = 'Bilgiler Modülünü Düzenle';
 
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify information module!';
+$_['error_permission'] = 'Uyarı: Bilgiler modülünü değiştirme iznine sahip değilsiniz!';

@@ -1,48 +1,50 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']                    = 'Default Store Theme';
+$_['heading_title']                    = 'Varsayılan Mağaza Teması';
 
 // Text
-$_['text_extension']                   = 'Extensions';
-$_['text_success']                     = 'Success: You have modified the default store theme!';
-$_['text_edit']                        = 'Edit Default Store Theme';
-$_['text_general']                     = 'General';
-$_['text_product']                     = 'Products';
-$_['text_image']                       = 'Images';
+$_['text_theme']                       = 'Temalar';
+$_['text_success']                     = 'Başarılı: Varsayılan mağaza teması başarılı bir şekilde değiştirildi!';
+$_['text_edit']                        = 'Varsayılan Mağaza Temasını Düzenle';
+$_['text_general']                     = 'Genel';
+$_['text_product']                     = 'Ürünler';
+$_['text_image']                       = 'Resimler';
 
 // Entry
-$_['entry_directory']                  = 'Theme Directory';
-$_['entry_status']                     = 'Status';
-$_['entry_product_limit']              = 'Default Items Per Page';
-$_['entry_product_description_length'] = 'List Description Limit';
-$_['entry_image_category']             = 'Category Image Size (W x H)';
-$_['entry_image_thumb']                = 'Product Image Thumb Size (W x H)';
-$_['entry_image_popup']                = 'Product Image Popup Size (W x H)';
-$_['entry_image_product']              = 'Product Image List Size (W x H)';
-$_['entry_image_additional']           = 'Additional Product Image Size (W x H)';
-$_['entry_image_related']              = 'Related Product Image Size (W x H)';
-$_['entry_image_compare']              = 'Compare Image Size (W x H)';
-$_['entry_image_wishlist']             = 'Wish List Image Size (W x H)';
-$_['entry_image_cart']                 = 'Cart Image Size (W x H)';
-$_['entry_image_location']             = 'Store Image Size (W x H)';
-$_['entry_width']                      = 'Width';
-$_['entry_height']                     = 'Height';
+$_['entry_directory']                  = 'Tema Dizini';
+$_['entry_status']                     = 'Durumu';
+$_['entry_product_limit']              = 'Sayfa Başına Ürün';
+$_['entry_product_description_length'] = 'Liste Açıklama Limiti';
+$_['entry_image_category']             = 'Kategori Açıklama Resim Boyutu (G x Y)';
+$_['entry_image_thumb']                = 'Ürün Sayfası Büyük Resim Boyutu (G x Y)';
+$_['entry_image_popup']                = 'Ürün Sayfası Colorbox Boyutu (G x Y)';
+$_['entry_image_product']              = 'Liste Resim Boyutu (G x Y)';
+$_['entry_image_additional']           = 'Ürün Sayfası Ek Resim Boyutu (G x Y)';
+$_['entry_image_related']              = 'Benzer Ürünler Resim Boyutu (G x Y)';
+$_['entry_image_compare']              = 'Karşılaştırma Resim Boyutu (G x Y)';
+$_['entry_image_wishlist']             = 'Alışveriş Listem Resim Boyutu (G x Y)';
+$_['entry_image_cart']                 = 'Sepetim Sayfası Resim Boyutu (G x Y)';
+$_['entry_image_location']             = 'Mağaza Resim Boyutu (G x Y)';
+$_['entry_width']                      = 'Genişlik';
+$_['entry_height']                     = 'Yükseklik';
 
 // Help
-$_['help_directory']                   = 'This field is only to enable older themes to be compatible with the new theme system. You can set the theme directory to use on the image size settings defined here.';
-$_['help_product_limit']               = 'Determines how many catalog items are shown per page (products, categories, etc)';
-$_['help_product_description_length']  = 'In the list view, short description character limit (categories, special etc)';
+$_['help_directory']                   = 'Bu alan yalnızca yeni tema sistemi ile uyumlu olması için eski temalarda aktif edilir. Burada tanımlanan görüntü boyutu ayarlarını kullanmak için tema dizinini ayarlayabilirsiniz.';
+$_['help_product_limit']               = 'Mağazanızın sayfalarında, sayfa başına kaç ürün gösterileceğini seçin (ürünler, kategoriler vb).';
+$_['help_product_description_length']  = 'Liste görünümde kısa açıklama karakter limiti. (kategoriler, kampanya sayfaları vb).';
 
 // Error
-$_['error_permission']                 = 'Warning: You do not have permission to modify the default store theme!';
-$_['error_limit']                      = 'Product Limit required!';
-$_['error_image_thumb']                = 'Product Image Thumb Size dimensions required!';
-$_['error_image_popup']                = 'Product Image Popup Size dimensions required!';
-$_['error_image_product']              = 'Product List Size dimensions required!';
-$_['error_image_category']             = 'Category List Size dimensions required!';
-$_['error_image_additional']           = 'Additional Product Image Size dimensions required!';
-$_['error_image_related']              = 'Related Product Image Size dimensions required!';
-$_['error_image_compare']              = 'Compare Image Size dimensions required!';
-$_['error_image_wishlist']             = 'Wish List Image Size dimensions required!';
-$_['error_image_cart']                 = 'Cart Image Size dimensions required!';
-$_['error_image_location']             = 'Store Image Size dimensions required!';
+$_['error_permission']                 = 'Uyarı: Mağaza temasını düzenleme iznine sahip değilsiniz!';
+$_['error_limit']                      = 'Limit gerekli!';
+$_['error_image_thumb']                = 'Ürün sayfası küçük resim için boyutları gerekli!';
+$_['error_image_popup']                = 'Ürün sayfası açılır pencere için resim boyutları gerekli!';
+$_['error_image_product']              = 'Ürün listesi için resim boyutları gerekli!';
+$_['error_image_category']             = 'Kategori listesi için resim boyutları gerekli!';
+$_['error_image_additional']           = 'Ürün sayfası ek resimler için resim boyutları gerekli!';
+$_['error_image_related']              = 'Benzer ürün için resim boyutları gerekli!';
+$_['error_image_compare']              = 'Karşılaştırma için resim boyutları gerekli!';
+$_['error_image_wishlist']             = 'Alışveriş listesi için resim boyutları gerekli!';
+$_['error_image_cart']                 = 'Sepetim sayfası için resim boyutları gerekli!';
+$_['error_image_location']             = 'Mağaza resim boyutları gerekli!';

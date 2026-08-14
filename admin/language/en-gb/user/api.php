@@ -1,32 +1,32 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']        = 'APIs';
+$_['heading_title']        = 'APIler';
 
 // Text
-$_['text_success']         = 'Success: You have modified APIs!';
-$_['text_list']            = 'API List';
-$_['text_add']             = 'Add API';
-$_['text_edit']            = 'Edit API';
-$_['text_ip']              = 'Below you can create a list of IP\'s allowed to access the API. Your current IP is %s';
+$_['text_success']         = 'Başarılı: APIler başarıyla değiştirildi!';
+$_['text_list']            = 'API Listesi';
+$_['text_add']             = 'API Ekle';
+$_['text_edit']            = 'API Düzenle';
 
 // Column
-$_['column_username']      = 'API Username';
-$_['column_status']        = 'Status';
-$_['column_token']         = 'Token';
+$_['column_username']      = 'API Kullanıcı Adı';
+$_['column_status']        = 'Durumu';
+$_['column_token']         = 'Simge';
 $_['column_ip']            = 'IP';
-$_['column_date_added']    = 'Date Added';
-$_['column_date_modified'] = 'Date Modified';
-
-$_['column_action']        = 'Action';
+$_['column_date_added']    = 'Ekleme Tarihi';
+$_['column_date_modified'] = 'Değiştirme Tarihi';
+$_['column_action']        = 'Eylem';
 
 // Entry
-$_['entry_username']       = 'API Username';
-$_['entry_key']            = 'API Key';
-$_['entry_status']         = 'Status';
+$_['entry_username']       = 'API Kullanıcı Adı';
+$_['entry_key']            = 'Anahtar';
+$_['entry_status']         = 'Durumu';
 $_['entry_ip']             = 'IP';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modified APIs!';
-$_['error_username']       = 'API USername must be between 3 and 20 characters!';
-$_['error_key']            = 'API Key must be between 64 and 256 characters!';
-$_['error_ip']             = 'You must have at least one IP added to the allowed list!';
+$_['error_permission']     = 'Uyarı: APIleri düzenleme iznine sahip değilsiniz!';
+$_['error_name']           = 'API kullanıcı adı 3 ile 20 karakter arasında olmalı!';
+$_['error_key']            = 'API anahtarı 64 ile 256 karakter arasında olmalı!';
+$_['error_ip']             = 'İzin verilen listeye en az bir IP adresi eklemelisiniz!';

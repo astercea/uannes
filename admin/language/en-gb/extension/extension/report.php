@@ -1,16 +1,17 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Reports';
+$_['heading_title']    = 'Raporlar';
 
 // Text
-$_['text_success']      = 'Success: You have modified reports!';
-$_['text_list']         = 'Reports List';
+$_['text_success']     = 'Başarılı: Raporlar güncellendi!';
+$_['text_list']        = 'Raporlar Listesi';
 
 // Column
-$_['column_name']       = 'Report Name';
-$_['column_status']     = 'Status';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']      = 'Raporlar Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify reports!';
+$_['error_permission'] = 'Uyarı: Raporları değiştirme iznine sahip değilsiniz!';

@@ -1,41 +1,43 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']      = 'Options';
+$_['heading_title']       = 'Seçenekler';
 
 // Text
-$_['text_success']       = 'Success: You have modified options!';
-$_['text_list']          = 'Option List';
-$_['text_add']           = 'Add Option';
-$_['text_edit']          = 'Edit Option';
-$_['text_choose']        = 'Choose';
-$_['text_select']        = 'Select';
-$_['text_radio']         = 'Radio';
-$_['text_checkbox']      = 'Checkbox';
-$_['text_input']         = 'Input';
-$_['text_text']          = 'Text';
-$_['text_textarea']      = 'Textarea';
-$_['text_file']          = 'File';
-$_['text_date']          = 'Date';
-$_['text_datetime']      = 'Date &amp; Time';
-$_['text_time']          = 'Time';
-$_['text_option']        = 'Option';
-$_['text_value']         = 'Option Values';
+$_['text_success']        = 'Başarılı: Seçenekler başarılı bir şekilde değiştirildi!';
+$_['text_list']           = 'Seçenek Listesi';
+$_['text_add']            = 'Seçenek Ekle';
+$_['text_edit']           = 'Seçenek Düzenle';
+$_['text_choose']         = 'Seçiniz';
+$_['text_select']         = 'Seçenek';
+$_['text_radio']          = 'Radyo Düğmesi';
+$_['text_checkbox']       = 'Onay Kutusu';
+$_['text_input']          = 'Veri Girişi';
+$_['text_text']           = 'Metin';
+$_['text_textarea']       = 'Metin Alanı';
+$_['text_file']           = 'Dosya';
+$_['text_date']           = 'Tarih';
+$_['text_datetime']       = 'Tarih &amp; Zaman';
+$_['text_time']           = 'Zaman';
+$_['text_option']         = 'Seçenek';
+$_['text_value']          = 'Seçenek Değeri';
 
 // Column
-$_['column_name']        = 'Option Name';
-$_['column_sort_order']  = 'Sort Order';
-$_['column_action']      = 'Action';
+$_['column_name']         = 'Seçenek Adı';
+$_['column_sort_order']   = 'Sıralama';
+$_['column_action']       = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Option Name';
-$_['entry_type']         = 'Type';
-$_['entry_option_value'] = 'Option Value Name';
-$_['entry_image']        = 'Image';
-$_['entry_sort_order']   = 'Sort Order';
+$_['entry_name']         = 'Seçenek Adı';
+$_['entry_type']         = 'Türü';
+$_['entry_option_value'] = 'Seçenek Değer Adı';
+$_['entry_image']        = 'Resim';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify options!';
-$_['error_name']         = 'Option Name must be between 1 and 128 characters!';
-$_['error_type']         = 'Warning: Option Values required!';
-$_['error_option_value'] = 'Option Value Name must be between 1 and 128 characters!';
-$_['error_product']      = 'Warning: This option cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']   = 'Uyarı: Seçenekleri düzenleme iznine sahip değilsiniz!';
+$_['error_name']         = 'Seçenek Adı 1 ile 128 karakter arasında olmalı!';
+$_['error_type']         = 'Uyarı: Seçenek Değeri gerekli!';
+$_['error_option_value'] = 'Seçenek Değer Adı 1 ile 128 karakter arasında olmalı!';
+$_['error_product']      = 'Uyarı: Bu seçeneği silemezsiniz, %s ürün tarafından kullanılıyor!';

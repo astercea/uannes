@@ -1,6 +1,8 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title'] = 'Dashboard';
+$_['heading_title']       = 'Yönetim Paneli';
 
 // Error
-$_['error_install'] = 'Warning: Install folder still exists and should be deleted for security reasons!';
+$_['error_install']       = 'UYARI: INSTALL DİZİNİ HALA MEVCUT VE GÜVENLİK NEDENİ İLE SİLMENİZ TAVSİYE EDİLİR!';

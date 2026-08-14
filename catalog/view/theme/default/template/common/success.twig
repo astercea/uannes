@@ -1,11 +1,90 @@
 {{ header }}
-<div id="common-success" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
+<style>
+#common-success {
+  padding: 60px 15px 90px;
+  background-color: transparent;
+  font-family: 'DM Sans', sans-serif;
+}
 
+.uannes-common-success-card {
+  max-width: 620px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 80, 0.08);
+  border-radius: 12px;
+  padding: 50px 35px 45px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(26, 26, 80, 0.04);
+}
+
+.uannes-success-badge-wrap {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  background-color: #fbf9f4;
+  border: 1.5px solid #c5a059;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(197, 160, 89, 0.15);
+}
+
+.uannes-success-badge-wrap svg {
+  width: 32px;
+  height: 32px;
+  color: #1a1a50;
+}
+
+.uannes-common-success-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.2vw, 34px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a50;
+  margin: 0 0 14px;
+  line-height: 1.25;
+}
+
+.uannes-common-success-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: rgba(26, 26, 80, 0.78);
+  line-height: 1.75;
+  margin: 0 auto 30px;
+  max-width: 480px;
+}
+
+.uannes-btn-continue {
+  display: inline-block;
+  background-color: #1a1a50;
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 42px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid #1a1a50;
+  box-shadow: 0 4px 14px rgba(26, 26, 80, 0.12);
+}
+
+.uannes-btn-continue:hover {
+  background-color: #c5a059;
+  border-color: #c5a059;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.25);
+  text-decoration: none;
+}
+</style>
+
+<div id="common-success" class="container">
   <div class="row">
     {{ column_left }}
     {% if column_left and column_right %}
@@ -16,20 +95,24 @@
       {% set class = 'col-sm-12' %}
     {% endif %}
     
-    <div id="content" class="{{ class }} text-center">
+    <div id="content" class="{{ class }}">
       {{ content_top }}
 
-      <div class="success-icon mb-4">
-        <i style="font-size:110px;" class="fa fa-check-circle"></i>
-      </div>
+      <div class="uannes-common-success-card">
+        <div class="uannes-success-badge-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13L9 17L19 7" stroke="#1a1a50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-      <h1 class="fw-bold mb-3">{{ heading_title }}</h1>
-      <p class="lead text-muted mb-4">{{ text_message }}</p>
+        <h1 class="uannes-common-success-title">{{ heading_title }}</h1>
+        <div class="uannes-common-success-desc">{{ text_message }}</div>
 
-      <div class="buttons mt-4">
-        <a href="{{ continue }}" class="btn btn-primary px-5 py-2 rounded-pill fw-semibold">
-          {{ button_continue }}
-        </a>
+        <div>
+          <a href="{{ continue }}" class="uannes-btn-continue">
+            {{ button_continue }}
+          </a>
+        </div>
       </div>
 
       {{ content_bottom }}
@@ -38,4 +121,3 @@
   </div>
 </div>
 {{ footer }}
-

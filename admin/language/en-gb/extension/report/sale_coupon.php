@@ -1,25 +1,27 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Coupons Report';
+$_['heading_title']    = 'Kupon Raporu';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_edit']        = 'Edit Coupons Report';
-$_['text_success']     = 'Success: You have modified coupon report!';
-$_['text_filter']      = 'Filter';
+$_['text_extension']   = 'Eklentiler';
+$_['text_edit']        = 'Kupon Raporu Düzenle';
+$_['text_success']     = 'Başarılı: Kupon raporu güncellendi!';
+$_['text_filter']      = 'Filtre';
 
 // Column
-$_['column_name']      = 'Coupon Name';
-$_['column_code']      = 'Code';
-$_['column_orders']    = 'Orders';
-$_['column_total']     = 'Total';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Kupon Adı';
+$_['column_code']      = 'Kupon Kodu';
+$_['column_orders']    = 'Siparişler';
+$_['column_total']     = 'Toplam';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_date_start'] = 'Date Start';
-$_['entry_date_end']   = 'Date End';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_date_start'] = 'Başlangıç';
+$_['entry_date_end']   = 'Bitiş';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify coupon report!';
+$_['error_permission'] = 'Uyarı: Kupon raporunu düzenleme iznine sahip değilsiniz!';

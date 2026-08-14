@@ -1,2 +1,57 @@
+<style>
+  .uannes-admin-footer {
+    text-align: center;
+    padding: 28px 20px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #1a1a50;
+    background: transparent;
+    border-top: 1px solid rgba(26, 26, 80, 0.08);
+  }
+  .uannes-admin-footer p {
+    margin: 0 0 5px;
+    color: #1a1a50;
+    line-height: 1.5;
+  }
+  .uannes-admin-footer .uannes-dijicrea-link,
+  .uannes-admin-footer .uannes-dijicrea-link:link,
+  .uannes-admin-footer .uannes-dijicrea-link:visited {
+    color: #1a1a50;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    padding-bottom: 1px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .uannes-admin-footer .uannes-dijicrea-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #1a1a50;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  .uannes-admin-footer .uannes-dijicrea-link:hover::after,
+  .uannes-admin-footer .uannes-dijicrea-link:focus::after,
+  .uannes-admin-footer .uannes-dijicrea-link:active::after {
+    transform: scaleX(1);
+  }
+</style>
+
+  <footer id="footer" class="uannes-admin-footer">
+    <p>Powered by <a href="https://www.dijicrea.com" target="_blank" rel="noopener noreferrer" class="uannes-dijicrea-link">DIJICREA</a></p>
+    <p>&copy; {{ "now"|date("Y") }} UANNES</p>
+  </footer>
 </div>
 </body></html>

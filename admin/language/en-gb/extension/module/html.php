@@ -1,18 +1,20 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'HTML Content';
+$_['heading_title']     = 'HTML İçerik';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: You have modified HTML Content module!';
-$_['text_edit']         = 'Edit HTML Content Module';
+$_['text_extension']    = 'Eklentiler';
+$_['text_success']      = 'Başarılı: HTML İçerik modülü güncellendi!';
+$_['text_edit']         = 'HTML İçerik Modülünü Düzenle';
 
 // Entry
-$_['entry_name']        = 'Module Name';
-$_['entry_title']       = 'Heading Title';
-$_['entry_description'] = 'Description';
-$_['entry_status']      = 'Status';
+$_['entry_name']        = 'Modül Adı';
+$_['entry_title']       = 'Başlık';
+$_['entry_description'] = 'Açıklama';
+$_['entry_status']      = 'Durumu';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify HTML Content module!';
-$_['error_name']        = 'Module Name must be between 3 and 64 characters!';
+$_['error_permission']  = 'Uyarı: HTML İçerik modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_name']        = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';

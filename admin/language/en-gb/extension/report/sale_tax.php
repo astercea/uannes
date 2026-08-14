@@ -1,31 +1,33 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Tax Report';
+$_['heading_title']     = 'Vergi Raporu';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_edit']         = 'Edit Tax Report';
-$_['text_success']      = 'Success: You have modified tax report!';
-$_['text_filter']       = 'Filter';
-$_['text_year']         = 'Years';
-$_['text_month']        = 'Months';
-$_['text_week']         = 'Weeks';
-$_['text_day']          = 'Days';
-$_['text_all_status']   = 'All Statuses';
+$_['text_extension']    = 'Eklentiler';
+$_['text_edit']         = 'Vergi Raporu Düzenle';
+$_['text_success']      = 'Başarılı: Vergi raporu güncellendi!';
+$_['text_filter']       = 'Filtre';
+$_['text_year']         = 'Yıllar';
+$_['text_month']        = 'Aylar';
+$_['text_week']         = 'Haftalar';
+$_['text_day']          = 'Günler';
+$_['text_all_status']   = 'Tüm Durumlar';
 
 // Column
-$_['column_date_start'] = 'Date Start';
-$_['column_date_end']   = 'Date End';
-$_['column_title']      = 'Tax Title';
-$_['column_orders']     = 'No. Orders';
-$_['column_total']      = 'Total';
+$_['column_date_start'] = 'Başlangıç';
+$_['column_date_end']   = 'Bitiş';
+$_['column_title']      = 'Vergi Başlığı';
+$_['column_orders']     = 'Sipariş Sayısı';
+$_['column_total']      = 'Toplam';
 
 // Entry
-$_['entry_date_start']  = 'Date Start';
-$_['entry_date_end']    = 'Date End';
-$_['entry_group']       = 'Group By';
-$_['entry_status']      = 'Status';
-$_['entry_sort_order']  = 'Sort Order';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
+$_['entry_group']       = 'Zaman';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify tax report!';
+$_['error_permission']  = 'Uyarı: Vergi raporunu düzenleme iznine sahip değilsiniz!';

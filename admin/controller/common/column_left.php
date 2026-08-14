@@ -448,6 +448,26 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
+			// Contact Messages
+			$unread_msg_count = 0;
+			try {
+				$msg_q = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "contact_message` WHERE status = '0'");
+				if ($msg_q->num_rows) {
+					$unread_msg_count = (int)$msg_q->row['total'];
+				}
+			} catch (\Exception $e) {}
+
+			$msg_title = 'İletişim Mesajları';
+			if ($unread_msg_count > 0) {
+				$msg_title .= ' <span class="label label-warning" style="background-color: #c5a059; color: #fff; font-size: 10px; margin-left: 4px; padding: 2px 6px;">' . $unread_msg_count . '</span>';
+			}
+
+			$customer[] = array(
+				'name'	   => $msg_title,
+				'href'     => $this->url->link('extension/module/contact_messages', 'user_token=' . $this->session->data['user_token'], true),
+				'children' => array()
+			);
+
 			if ($customer) {
 				$data['menus'][] = array(
 					'id'       => 'menu-customer',
@@ -747,6 +767,16 @@ class ControllerCommonColumnLeft extends Controller {
 				$report[] = array(
 					'name'	   => $this->language->get('text_reports'),
 					'href'     => $this->url->link('report/report', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+				$report[] = array(
+					'name'	   => 'İade Raporları',
+					'href'     => $this->url->link('report/report', 'user_token=' . $this->session->data['user_token'] . '&code=sale_return', true),
+					'children' => array()
+				);
+				$report[] = array(
+					'name'	   => 'Satış Raporları',
+					'href'     => $this->url->link('report/report', 'user_token=' . $this->session->data['user_token'] . '&code=sale_order', true),
 					'children' => array()
 				);
 			}

@@ -1,24 +1,26 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Order Statuses';
+$_['heading_title']    = 'Sipariş Durumları';
 
 // Text
-$_['text_success']     = 'Success: You have modified order statuses!';
-$_['text_list']        = 'Order Status List';
-$_['text_add']         = 'Add Order Status';
-$_['text_edit']        = 'Edit Order Status';
+$_['text_success']     = 'Başarılı: Sipariş durumu başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Sipariş Durumu Listesi';
+$_['text_add']         = 'Sipariş Durumu Ekle';
+$_['text_edit']        = 'Sipariş Durumu Düzenle';
 
 // Column
-$_['column_name']      = 'Order Status Name';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Sipariş Durum Adı';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Order Status Name';
+$_['entry_name']       = 'Sipariş Durum Adı';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify order statuses!';
-$_['error_name']       = 'Order Status Name must be between 3 and 32 characters!';
-$_['error_default']    = 'Warning: This order status cannot be deleted as it is currently assigned as the default store order status!';
-$_['error_download']   = 'Warning: This order status cannot be deleted as it is currently assigned as the default download status!';
-$_['error_store']      = 'Warning: This order status cannot be deleted as it is currently assigned to %s stores!';
-$_['error_order']      = 'Warning: This order status cannot be deleted as it is currently assigned to %s orders!';
+$_['error_permission'] = 'Uyarı: Sipariş Durumlarını düzenleme iznine sahip değilsiniz!';
+$_['error_name']       = 'Sipariş Durum Adı 3 ile 32 karakter arasında olmalı!';
+$_['error_default']    = 'Uyarı: Bu sipariş durumunu silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_download']   = 'Uyarı: Bu sipariş durumunu silemezsiniz, varsayılan indirme durumu tarafından kullanılıyor!';
+$_['error_store']      = 'Uyarı: Bu sipariş durumunu silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_order']      = 'Uyarı: Bu sipariş durumunu silemezsiniz, %s sipariş tarafından kullanılıyor!';

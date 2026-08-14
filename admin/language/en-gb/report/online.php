@@ -1,27 +1,29 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Online Report';
+$_['heading_title']     = 'Çevrimiçi Müşteri Raporu';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: You have modified customers online report!';
-$_['text_list']         = 'Online List';
-$_['text_filter']       = 'Filter';
-$_['text_guest']        = 'Guest';
+$_['text_extension']    = 'Eklentiler';
+$_['text_success']      = 'Başarılı: Çevrimiçi müşteri raporu başarılı bir şekilde değiştirildi!';
+$_['text_edit']         = 'Çevrimiçi Listesi';
+$_['text_filter']       = 'Filtre';
+$_['text_guest']        = 'Misafir';
 
 // Column
 $_['column_ip']         = 'IP';
-$_['column_customer']   = 'Customer';
-$_['column_url']        = 'Last Page Visited';
-$_['column_referer']    = 'Referer';
-$_['column_date_added'] = 'Last Click';
-$_['column_action']     = 'Action';
+$_['column_customer']   = 'Müşteri';
+$_['column_url']        = 'Son Sayfa Ziyareti';
+$_['column_referer']    = 'Referans';
+$_['column_date_added'] = 'Son Tıklama';
+$_['column_action']     = 'Eylem';
 
 // Entry
 $_['entry_ip']          = 'IP';
-$_['entry_customer']    = 'Customer';
-$_['entry_status']      = 'Status';
-$_['entry_sort_order']  = 'Sort Order';
+$_['entry_customer']    = 'Müşteri';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify customers online report!';
+$_['error_permission']  = 'Uyarı: Çevrimiçi müşteri raporunu düzenleme iznine sahip değilsiniz!';

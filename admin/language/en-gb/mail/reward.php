@@ -1,5 +1,7 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Text
-$_['text_subject']  = '%s - Reward Points';
-$_['text_received'] = 'You have received %s Reward Points!';
-$_['text_total']    = 'Your total number of reward points is now %s.';
+$_['text_subject']  = '%s - Puan';
+$_['text_received'] = '%s Puan Kazandınız!';
+$_['text_total']    = 'Şu anki toplam puanınız %s.';

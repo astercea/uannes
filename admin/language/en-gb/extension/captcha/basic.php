@@ -1,14 +1,16 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Basic Captcha';
+$_['heading_title']    = 'Basit Doğrulama';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified Basic Captcha!';
-$_['text_edit']        = 'Edit Basic Captcha';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Basit Doğrulama başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Basit Doğrulama Düzenle';
 
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Basic Captcha!';
+$_['error_permission'] = 'Uyarı: Basit Doğrulamayı düzenleme iznine sahip değilsiniz!';

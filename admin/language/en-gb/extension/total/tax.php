@@ -1,15 +1,17 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Taxes';
+$_['heading_title']    = 'Vergiler';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified taxes total!';
-$_['text_edit']        = 'Edit Tax Total';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Vergiler toplamı vergiler başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Vergi Toplamını Düzenle';
 
 // Entry
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify taxes total!';
+$_['error_permission'] = 'Uyarı: Vergi toplamını düzenleme iznine sahip değilsiniz!!';

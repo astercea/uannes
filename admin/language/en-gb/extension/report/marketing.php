@@ -1,26 +1,28 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Marketing Report';
+$_['heading_title']    = 'Pazarlama Takip Raporu';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_edit']        = 'Edit Marketing Report';
-$_['text_success']     = 'Success: You have modified marketing report!';
-$_['text_filter']      = 'Filter';
-$_['text_all_status']  = 'All Statuses';
+$_['text_extension']   = 'Eklentiler';
+$_['text_edit']        = 'Pazarlama Takip Raporu Düzenle';
+$_['text_success']     = 'Başarılı: Pazarlama takip raporu güncellendi!';
+$_['text_filter']      = 'Filtre';
+$_['text_all_status']  = 'Tüm Durumlar';
 
 // Column
-$_['column_campaign']  = 'Campaign Name';
-$_['column_code']      = 'Code';
-$_['column_clicks']    = 'Clicks';
-$_['column_orders']    = 'No. Orders';
-$_['column_total']     = 'Total';
+$_['column_campaign']  = 'Kampanya Adı';
+$_['column_code']      = 'Kod';
+$_['column_clicks']    = 'Tıklamalar';
+$_['column_orders']    = 'Sipariş Sayısı';
+$_['column_total']     = 'Toplam';
 
 // Entry
-$_['entry_date_start'] = 'Date Start';
-$_['entry_date_end']   = 'Date End';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_date_start'] = 'Başlangıç';
+$_['entry_date_end']   = 'Bitiş';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify marketing report!';
+$_['error_permission'] = 'Uyarı: Pazarlama takip raporunu değiştirme iznine sahip değilsiniz!';

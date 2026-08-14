@@ -1,34 +1,36 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Downloads';
+$_['heading_title']     = 'Dosyalar';
 
 // Text
-$_['text_success']      = 'Success: You have modified downloads!';
-$_['text_list']         = 'Download List';
-$_['text_add']          = 'Add Download';
-$_['text_edit']         = 'Edit Download';
-$_['text_upload']       = 'Your file was successfully uploaded!';
+$_['text_success']      = 'Başarılı: Dosya başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Dosya Listesi';
+$_['text_add']          = 'Dosya Ekle';
+$_['text_edit']         = 'Dosya Düzenle';
+$_['text_upload']       = 'Dosyanız başarılı bir şekilde yüklendi!';
 
 // Column
-$_['column_name']       = 'Download Name';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'İndirme Adı';
+$_['column_date_added'] = 'Ekleme Tarihi';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Download Name';
-$_['entry_filename']    = 'Filename';
-$_['entry_mask']        = 'Mask';
+$_['entry_name']        = 'İndirme Adı';
+$_['entry_filename']    = 'Dosya Adı';
+$_['entry_mask']        = 'Maske';
 
 // Help
-$_['help_filename']     = 'You can upload via the upload button or use FTP to upload to the download directory and enter the details below.';
-$_['help_mask']         = 'It is recommended that the filename and the mask are different to stop people trying to directly link to your downloads.';
+$_['help_filename']     = 'Download dizinine dosya yüklemek için "Yükle" butonuyla ya da FTP kullanarak yükleyebilir ve aşağıda maske adını girebilirsiniz.';
+$_['help_mask']         = 'Ayrıca tavsiye edilir, dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify downloads!';
-$_['error_name']        = 'Download Name must be between 3 and 64 characters!';
-$_['error_upload']      = 'Upload required!';
-$_['error_filename']    = 'Filename must be between 3 and 128 characters!';
-$_['error_exists']      = 'File does not exist!';
-$_['error_mask']        = 'Mask must be between 3 and 128 characters!';
-$_['error_filetype']    = 'Invalid file type!';
-$_['error_product']     = 'Warning: This download cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']  = 'Uyarı: Dosyaları düzenleme iznine sahip değilsiniz!';
+$_['error_name']        = 'İndirme Adı 3 ile 64 karakter arasında olmalı!';
+$_['error_upload']      = 'Yükleme gerekli!';
+$_['error_filename']    = 'Dosya Adı 3 ile 128 karakter arasında olmalı!';
+$_['error_exists']      = 'Dosya mevcut değil!';
+$_['error_mask']        = 'Maske Adı 3 ile 128 karakter arasında olmalı!';
+$_['error_filetype']    = 'Geçersiz dosya türü!';
+$_['error_product']     = 'Uyarı: Bu dosyayı silemezsiniz, %s ürün tarafından kullanılıyor!';

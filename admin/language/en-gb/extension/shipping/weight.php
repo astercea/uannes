@@ -1,21 +1,23 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Weight Based Shipping';
+$_['heading_title']    = 'Ağırlık Orantılı Kargo';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified weight based shipping!';
-$_['text_edit']        = 'Edit Weight Based Shipping';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Ağırlık orantılı kargo başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Ağırlık Orantılı Kargo Düzenle';
 
 // Entry
-$_['entry_rate']       = 'Rates';
-$_['entry_tax_class']  = 'Tax Class';
-$_['entry_geo_zone']   = 'Geo Zone';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_rate']       = 'Değer';
+$_['entry_tax_class']  = 'Vergi Oranı';
+$_['entry_geo_zone']   = 'Bölge';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_rate']        = 'Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..';
+$_['help_rate']        = 'Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fiyat, gibi.. En yüksek ağırlığı ayarlamayı unutmayınız.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify weight based shipping!';
+$_['error_permission'] = 'Uyarı: Ağırlık orantılı kargo düzenleme iznine sahip değilsiniz!';

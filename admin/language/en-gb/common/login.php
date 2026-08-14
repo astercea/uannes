@@ -1,20 +1,22 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']  = 'Administration';
+$_['heading_title']  = 'Kontrol Paneli';
 
 // Text
-$_['text_heading']   = 'Administration';
-$_['text_login']     = 'Please enter your login details.';
-$_['text_forgotten'] = 'Forgotten Password';
+$_['text_heading']   = 'Kontrol Paneli';
+$_['text_login']     = 'Lütfen bilgilerinizi giriniz.';
+$_['text_forgotten'] = 'Şifremi unuttum';
 
 // Entry
-$_['entry_username'] = 'Username';
-$_['entry_password'] = 'Password';
+$_['entry_username'] = 'Kullanıcı Adınız';
+$_['entry_password'] = 'Parolanız';
 
 // Button
-$_['button_login']   = 'Login';
+$_['button_login']   = 'Oturum Aç';
 
 // Error
-$_['error_login']    = 'No match for Username and/or Password.';
-$_['error_token']    = 'Invalid token session. Please login again.';
-$_['error_attempts'] = 'Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour or reset password.';
+$_['error_login']    = 'Kullanıcı adı ya da parola yanlış!';
+$_['error_token']    = 'Geçersiz oturum. Lütfen tekrar oturum açın!';
+$_['error_attempts'] = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';

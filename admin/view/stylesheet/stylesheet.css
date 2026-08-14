@@ -398,10 +398,8 @@ div.required .control-label:not(span):before, td.required:before {
 }
 
 .table thead td span[data-toggle="tooltip"]:after, label.control-label span:after {
-    font-family: FontAwesome;
-    color: #1E91CF;
-    content: "\f059";
-    margin-left: 4px;
+    content: none;
+    display: none;
 }
 
 fieldset legend {

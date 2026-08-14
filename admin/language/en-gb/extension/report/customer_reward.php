@@ -1,29 +1,31 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']         = 'Customer Reward Points Report';
+$_['heading_title']         = 'Müşteri Puan Raporu';
 
 // Text
-$_['text_extension']        = 'Extensions';
-$_['text_edit']             = 'Edit Customer Reward Points Report';
-$_['text_success']          = 'Success: You have modified customer reward points report!';
-$_['text_filter']           = 'Filter';
+$_['text_extension']        = 'Eklentiler';
+$_['text_edit']             = 'Müşteri Puan Raporu Düzenle';
+$_['text_success']          = 'Başarılı: Müşteri puan raporu güncellendi!';
+$_['text_filter']           = 'Filtre';
 
 // Column
-$_['column_customer']       = 'Customer Name';
-$_['column_email']          = 'E-Mail';
-$_['column_customer_group'] = 'Customer Group';
-$_['column_status']         = 'Status';
-$_['column_points']         = 'Reward Points';
-$_['column_orders']         = 'No. Orders';
-$_['column_total']          = 'Total';
-$_['column_action']         = 'Action';
+$_['column_customer']       = 'Müşteri Adı';
+$_['column_email']          = 'E-Posta';
+$_['column_customer_group'] = 'Müşteri Grubu';
+$_['column_status']         = 'Durumu';
+$_['column_points']         = 'Puanlar';
+$_['column_orders']         = 'Sipariş Sayısı';
+$_['column_total']          = 'Toplam';
+$_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_date_start']      = 'Date Start';
-$_['entry_date_end']        = 'Date End';
-$_['entry_customer']        = 'Customer';
-$_['entry_status']          = 'Status';
-$_['entry_sort_order']      = 'Sort Order';
+$_['entry_date_start']      = 'Başlangıç';
+$_['entry_date_end']        = 'Bitiş';
+$_['entry_customer']        = 'Müşteri';
+$_['entry_status']          = 'Durumu';
+$_['entry_sort_order']      = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify customer reward points report!';
+$_['error_permission']      = 'Uyarı: Müşteri puan raporunu değiştirme iznine sahip değilsiniz!';

@@ -1,38 +1,40 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Store Locations';
+$_['heading_title']    = 'Mağaza Konumları';
 
 // Text
-$_['text_success']     = 'Success: You have modified store locations!';
-$_['text_list']        = 'Store Location List';
-$_['text_add']         = 'Add Store Location';
-$_['text_edit']        = 'Edit Store Location';
-$_['text_default']     = 'Default';
-$_['text_time']        = 'Opening Times';
-$_['text_geocode']     = 'Geocode was not successful for the following reason:';
+$_['text_success']     = 'Başarılı: Mağaza konumu başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Mağaza Konum Listesi';
+$_['text_add']         = 'Mağaza Konum Ekle';
+$_['text_edit']        = 'Mağaza Konum Düzenle';
+$_['text_default']     = 'Varsayılan';
+$_['text_time']        = 'Çalışma Saatleri';
+$_['text_geocode']     = 'Coğrafi kod aşağıdaki nedenden dolayı başarısız oldu';
 
 // Column
-$_['column_name']      = 'Store Name';
-$_['column_address']   = 'Address';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Mağaza Adı';
+$_['column_address']   = 'Adres';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Store Name';
-$_['entry_address']    = 'Address';
-$_['entry_geocode']    = 'Geocode';
-$_['entry_telephone']  = 'Telephone';
-$_['entry_fax']        = 'Fax';
-$_['entry_image']      = 'Image';
-$_['entry_open']       = 'Opening Times';
-$_['entry_comment']    = 'Comment';
+$_['entry_name']       = 'Mağaza Adı';
+$_['entry_address']    = 'Adres';
+$_['entry_geocode']    = 'Çoğrafi Kod';
+$_['entry_telephone']  = 'Telefon';
+$_['entry_fax']        = 'Faks';
+$_['entry_image']      = 'Resim';
+$_['entry_open']       = 'Çalışma Saatleri';
+$_['entry_comment']    = 'Açıklama';
 
 // Help
-$_['help_geocode']     = 'Please enter your store location geocode manually.';
-$_['help_open']        = 'Fill in your stores opening times.';
-$_['help_comment']     = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';
+$_['help_geocode']     = 'Mağazanızın çoğrafi konum kodunu elle giriniz.';
+$_['help_open']        = 'Mağazanızın çalışma saatlerini yazınız.';
+$_['help_comment']     = 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilir gibi.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify store locations!';
-$_['error_name']       = 'Store name must be between 3 and 32 characters!';
-$_['error_address']    = 'Address must be between 3 and 128 characters!';
-$_['error_telephone']  = 'Telephone must be between 3 and 32 characters!';
+$_['error_permission'] = 'Uyarı: Mağaza konumlarını düzenleme iznine sahip değilsiniz!';
+$_['error_name']       = 'Mağaza adı 3 ile 32 karakter arasında olmalıdır!';
+$_['error_address']    = 'Adres alanı 3 ile 128 karakter arasında olmalıdır!';
+$_['error_telephone']  = 'Telefon alanı 3 ile 32 karakter arasında olmalıdır!';

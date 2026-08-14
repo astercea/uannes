@@ -1,33 +1,35 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Manufacturers';
+$_['heading_title']     = 'Üreticiler';
 
 // Text
-$_['text_success']      = 'Success: You have modified manufacturers!';
-$_['text_list']         = 'Manufacturer List';
-$_['text_add']          = 'Add Manufacturer';
-$_['text_edit']         = 'Edit Manufacturer';
-$_['text_default']      = 'Default';
-$_['text_percent']      = 'Percentage';
-$_['text_amount']       = 'Fixed Amount';
-$_['text_keyword']      = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$_['text_success']      = 'Başarılı: Üretici başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Üretici Listesi';
+$_['text_add']          = 'Üretici Ekle';
+$_['text_edit']         = 'Üretici Düzenle';
+$_['text_default']      = 'Varsayılan Mağaza';
+$_['text_percent']      = 'Yüzde';
+$_['text_amount']       = 'Sabit Tutar';
+$_['text_keyword']      = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';
 
 // Column
-$_['column_name']       = 'Manufacturer Name';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'Üretici Adı';
+$_['column_sort_order'] = 'Sıralama';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Manufacturer Name';
-$_['entry_store']       = 'Stores';
-$_['entry_keyword']     = 'Keyword';
-$_['entry_image']       = 'Image';
-$_['entry_sort_order']  = 'Sort Order';
-$_['entry_type']        = 'Type';
+$_['entry_name']        = 'Üretici Adı';
+$_['entry_store']       = 'Mağazalar';
+$_['entry_keyword']     = 'SEO Bağlantısı';
+$_['entry_image']       = 'Resim';
+$_['entry_sort_order']  = 'Sıralama';
+$_['entry_type']        = 'Türü';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify manufacturers!';
-$_['error_name']        = 'Manufacturer Name must be between 1 and 64 characters!';
-$_['error_keyword']     = 'SEO URL already in use!';
-$_['error_unique']      = 'SEO URL must be unique!';
-$_['error_product']     = 'Warning: This manufacturer cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']  = 'Uyarı: Üreticileri düzenleme iznine sahip değilsiniz!';
+$_['error_name']        = 'Üretici Adı 1 ile 64 karakter arasında olmalı!';
+$_['error_keyword']     = 'SEO Bağlantısı zaten kullanılıyor!';
+$_['error_unique']      = 'SEO Bağlantısı benzersiz olmalı!';
+$_['error_product']     = 'Uyarı: Bu üreticiyi silemezsiniz, %s ürün tarafından kullanılıyor!';

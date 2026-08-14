@@ -54,17 +54,18 @@
   </div>
   <div class="col-md-9 col-md-pull-3 col-sm-12">
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-bar-chart"></i> {{ heading_title }}</h3>
+      <div class="panel-heading" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="panel-title" style="margin: 0;"><i class="fa fa-bar-chart"></i> {{ heading_title }}</h3>
+        <a href="index.php?route=sale/return&user_token={{ user_token }}" class="btn btn-primary btn-sm"><i class="fa fa-list"></i> İade Başvurularını &amp; Formlarını İncele</a>
       </div>
       <div class="panel-body">
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered table-hover">
             <thead>
               <tr>
                 <td class="text-left">{{ column_date_start }}</td>
                 <td class="text-left">{{ column_date_end }}</td>
-                <td class="text-right">{{ column_returns }}</td>
+                <td class="text-right" style="width: 260px;">{{ column_returns }}</td>
               </tr>
             </thead>
             <tbody>
@@ -74,7 +75,11 @@
             <tr>
               <td class="text-left">{{ return.date_start }}</td>
               <td class="text-left">{{ return.date_end }}</td>
-              <td class="text-right">{{ return.returns }}</td>
+              <td class="text-right">
+                <a href="index.php?route=sale/return&user_token={{ user_token }}" class="btn btn-default btn-sm" style="font-weight: 700; color: #1a1a50;">
+                  <strong style="color: #c5a059;">{{ return.returns }} İade</strong> — Formları İncele <i class="fa fa-arrow-right"></i>
+                </a>
+              </td>
             </tr>
             {% endfor %}
             {% else %}

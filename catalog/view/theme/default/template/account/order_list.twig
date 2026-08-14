@@ -15,6 +15,21 @@
       width: 100% !important;
     }
 
+    .account-order-header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 0 0 25px 0;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(26, 26, 80, 0.12);
+    }
+
+    .account-order-header-wrap .account-order-title {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
     .account-order-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(24px, 3.2vw, 32px);
@@ -25,6 +40,51 @@
       margin: 0 0 25px 0;
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(26, 26, 80, 0.12);
+    }
+
+    .account-order-return-shortcut,
+    .account-order-return-shortcut:link,
+    .account-order-return-shortcut:visited {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(26, 26, 80, 0.7);
+      text-decoration: none !important;
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      padding-bottom: 2px;
+      line-height: 1.2;
+      outline: none;
+      transition: color 0.3s ease;
+    }
+
+    .account-order-return-shortcut::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #1a1a50;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .account-order-return-shortcut:hover,
+    .account-order-return-shortcut:focus,
+    .account-order-return-shortcut:active {
+      color: #1a1a50;
+      text-decoration: none !important;
+    }
+
+    .account-order-return-shortcut:hover::after,
+    .account-order-return-shortcut:focus::after,
+    .account-order-return-shortcut:active::after {
+      transform: scaleX(1);
     }
 
     /* --------------------------------------------------------------------------
@@ -528,7 +588,10 @@
     {% endif %}
 
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1 class="account-order-title">{{ heading_title }}</h1>
+      <div class="account-order-header-wrap">
+        <h1 class="account-order-title">{{ heading_title }}</h1>
+        {# <a href="index.php?route=account/return" class="account-order-return-shortcut">İade Taleplerim</a> #}
+      </div>
 
       {% if orders %}
 

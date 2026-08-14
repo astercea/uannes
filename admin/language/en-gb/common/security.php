@@ -1,29 +1,30 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Important Security Notification!';
+$_['heading_title']    = 'Önemli Güvenlik Bildirimi!';
 
 // Text
-$_['text_success']     = 'Success: You have modified the storage folder!';
-$_['text_admin']       = 'Edit admin/config.php and change';
-$_['text_security']    = 'It is very important that you move the storage directory outside of the web directory (e.g. public_html, www or htdocs).';
-$_['text_choose']      = 'Choose how to move the storage directory';
-$_['text_automatic']   = 'Automatically Move';
-$_['text_manual']      = 'Manually Move';
-$_['text_move']        = 'Move';
+$_['text_success']     = 'Başarılı: Depolama başarılı bir şekilde değiştirildi!';
+$_['text_security']    = 'Depolama dizinini web dizininin dışına taşmanız çok önemlidir. (örn. public_html, www ya da htdocs).';
+$_['text_choose']      = 'Depolama dizini nasıl taşınacağını seçin';
+$_['text_automatic']   = 'Otomatik Taşı';
+$_['text_manual']      = 'Elle Taşı';
+$_['text_move']        = 'Taşı';
 $_['text_to']          = 'to';
-$_['text_config']      = 'Edit config.php change';
-$_['text_admin']       = 'Edit admin/config.php and change';
+$_['text_config']      = 'Düzenle ve Değiştir (config.php)';
+$_['text_admin']       = 'Düzenle ve Değiştir (admin/config.php)';
 
 // Entry
-$_['entry_directory']  = 'Directory';
+$_['entry_directory']  = 'Dizin';
 
 // Button
-$_['button_move']      = 'Move';
-$_['button_manual']    = 'Manual';
+$_['button_move']      = 'Taşı';
+$_['button_manual']    = 'Elle';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify the storage directory!';
-$_['error_path']       = 'Warning: Invalid path!';
-$_['error_directory']  = 'Warning: Invalid directory!';
-$_['error_exists']     = 'Warning: Directory already exists!';
-$_['error_writable']   = 'Warning: config.php and admin/config.php need to be made writable!';
+$_['error_permission'] = 'Uyarı: Depolama dizinin düzenleme iznine sahip değilsiniz!';
+$_['error_path']       = 'Uyarı: Geçersiz yol!';
+$_['error_directory']  = 'Uyarı: Geçersiz dizin!';
+$_['error_exists']     = 'Uyarı: Dizin zaten var!';
+$_['error_writable']   = 'Uyarı: config.php ve admin/config.php yazılabilir olmalıdır!';

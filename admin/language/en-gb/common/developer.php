@@ -1,25 +1,27 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Developer Settings';
+$_['heading_title']    = 'Geliştirici Ayarları';
 
 // Text
-$_['text_success']     = 'Success: You have modified developer settings!';
-$_['text_theme']       = 'theme';
+$_['text_success']     = 'Başarılı: Geliştirici ayarları başarılı bir şekilde değiştirildi!';
+$_['text_theme']       = 'tema';
 $_['text_sass']        = 'SASS';
-$_['text_cache']       = 'Success: You have cleared the %s cache!';
+$_['text_cache']       = 'Başarılı: %s önbelleği temizlendi!';
 
 // Column
-$_['column_component'] = 'Component';
-$_['column_action']    = 'Action';
+$_['column_component'] = 'Bileşen';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_theme']      = 'Theme';
+$_['entry_theme']      = 'Tema';
 $_['entry_sass']       = 'SASS';
-$_['entry_cache']      = 'Cache';
+$_['entry_cache']      = 'Önbellek';
 
 // Button
-$_['button_on']        = 'On';
-$_['button_off']       = 'Off';
+$_['button_on']        = 'Açık';
+$_['button_off']       = 'Kapalı';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify developer settings!';
+$_['error_permission'] = 'Uyarı: Geliştirici ayarlarını düzenleme iznine sahip değilsiniz!';

@@ -4,8 +4,8 @@
     <div class="container-fluid">
       <div class="pull-right">
         <button type="button" data-toggle="tooltip" title="{{ button_filter }}" onclick="$('#filter-return').toggleClass('hidden-sm hidden-xs');" class="btn btn-default hidden-md hidden-lg"><i class="fa fa-filter"></i></button>
-        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
-        <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-return').submit() : false;"><i class="fa fa-trash-o"></i></button>
+        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i> İade Ekle</a>
+        <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-return').submit() : false;"><i class="fa fa-trash-o"></i> Sil</button>
       </div>
       <h1>{{ heading_title }}</h1>
       <ul class="breadcrumb">
@@ -15,7 +15,8 @@
       </ul>
     </div>
   </div>
-  <div class="container-fluid">{% if error_warning %}
+  <div class="container-fluid">
+    {% if error_warning %}
     <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
@@ -26,186 +27,324 @@
     </div>
     {% endif %}
     <div class="row">
+      <!-- Filter Sidebar -->
       <div id="filter-return" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
+        <div class="panel panel-default" style="box-shadow: 0 4px 16px rgba(0,0,0,0.04); border-radius: 8px;">
+          <div class="panel-heading" style="background-color: #f8f6f2; padding: 14px 18px;">
+            <h3 class="panel-title" style="font-weight: 700; color: #1a1a50; font-size: 14px;"><i class="fa fa-filter" style="color: #c5a059; margin-right: 6px;"></i> {{ text_filter }}</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="padding: 18px;">
             <div class="form-group">
-              <label class="control-label" for="input-return-id">{{ entry_return_id }}</label>
+              <label class="control-label" for="input-return-id" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_return_id }}</label>
               <input type="text" name="filter_return_id" value="{{ filter_return_id }}" placeholder="{{ entry_return_id }}" id="input-return-id" class="form-control" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-order-id">{{ entry_order_id }}</label>
+              <label class="control-label" for="input-order-id" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_order_id }}</label>
               <input type="text" name="filter_order_id" value="{{ filter_order_id }}" placeholder="{{ entry_order_id }}" id="input-order-id" class="form-control" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-customer">{{ entry_customer }}</label>
+              <label class="control-label" for="input-customer" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_customer }}</label>
               <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="{{ entry_customer }}" id="input-customer" class="form-control" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-product">{{ entry_product }}</label>
+              <label class="control-label" for="input-product" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_product }}</label>
               <input type="text" name="filter_product" value="{{ filter_product }}" placeholder="{{ entry_product }}" id="input-product" class="form-control" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-model">{{ entry_model }}</label>
+              <label class="control-label" for="input-model" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_model }}</label>
               <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-return-status">{{ entry_return_status }}</label>
+              <label class="control-label" for="input-return-status" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_return_status }}</label>
               <select name="filter_return_status_id" id="input-return-status" class="form-control">
-                <option value=""></option>
-                  {% for return_status in return_statuses %}
-                  {% if return_status.return_status_id == filter_return_status_id %}
-                  <option value="{{ return_status.return_status_id }}" selected="selected">{{ return_status.name }}</option>
-                  {% else %}
-                  <option value="{{ return_status.return_status_id }}">{{ return_status.name }}</option>
-                  {% endif %}
-                  {% endfor %}
+                <option value="">-- Tümü --</option>
+                {% for return_status in return_statuses %}
+                {% if return_status.return_status_id == filter_return_status_id %}
+                <option value="{{ return_status.return_status_id }}" selected="selected">{{ return_status.name }}</option>
+                {% else %}
+                <option value="{{ return_status.return_status_id }}">{{ return_status.name }}</option>
+                {% endif %}
+                {% endfor %}
               </select>
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-date-added">{{ entry_date_added }}</label>
+              <label class="control-label" for="input-date-added" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_date_added }}</label>
               <div class="input-group date">
                 <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                </span></div>
+                </span>
+              </div>
             </div>
             <div class="form-group">
-              <label class="control-label" for="input-date-modified">{{ entry_date_modified }}</label>
+              <label class="control-label" for="input-date-modified" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #777;">{{ entry_date_modified }}</label>
               <div class="input-group date">
                 <input type="text" name="filter_date_modified" value="{{ filter_date_modified }}" placeholder="{{ entry_date_modified }}" data-date-format="YYYY-MM-DD" id="input-date-modified" class="form-control" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                </span></div>
+                </span>
+              </div>
             </div>
-            <div class="form-group text-right">
-              <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+            <div class="form-group text-right" style="margin-top: 20px; margin-bottom: 0;">
+              <button type="button" id="button-filter" class="btn btn-primary btn-block"><i class="fa fa-filter"></i> {{ button_filter }}</button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Main Returns Table List -->
       <div class="col-md-9 col-md-pull-3 col-sm-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+        <div class="panel panel-default" style="box-shadow: 0 4px 16px rgba(0,0,0,0.04); border-radius: 8px;">
+          <div class="panel-heading" style="background-color: #f8f6f2; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="panel-title" style="font-weight: 700; color: #1a1a50; font-size: 15px;">
+              <i class="fa fa-refresh" style="color: #c5a059; margin-right: 6px;"></i> {{ text_list }}
+            </h3>
+            <span style="font-size: 12px; color: #777;">Satırlara tıklayarak detayları hızlıca inceleyebilirsiniz</span>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="padding: 0;">
             <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-return">
               <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" style="margin-bottom: 0;">
                   <thead>
-                    <tr>
-                      <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
-                      <td class="text-right">{% if sort == 'r.return_id' %} <a href="{{ sort_return_id }}" class="{{ order|lower }}">{{ column_return_id }}</a> {% else %} <a href="{{ sort_return_id }}">{{ column_return_id }}</a> {% endif %}</td>
-                      <td class="text-right">{% if sort == 'r.order_id' %} <a href="{{ sort_order_id }}" class="{{ order|lower }}">{{ column_order_id }}</a> {% else %} <a href="{{ sort_order_id }}">{{ column_order_id }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'customer' %} <a href="{{ sort_customer }}" class="{{ order|lower }}">{{ column_customer }}</a> {% else %} <a href="{{ sort_customer }}">{{ column_customer }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'r.product' %} <a href="{{ sort_product }}" class="{{ order|lower }}">{{ column_product }}</a> {% else %} <a href="{{ sort_product }}">{{ column_product }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'r.model' %} <a href="{{ sort_model }}" class="{{ order|lower }}">{{ column_model }}</a> {% else %} <a href="{{ sort_model }}">{{ column_model }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'status' %} <a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a> {% else %} <a href="{{ sort_status }}">{{ column_status }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'r.date_added' %} <a href="{{ sort_date_added }}" class="{{ order|lower }}">{{ column_date_added }}</a> {% else %} <a href="{{ sort_date_added }}">{{ column_date_added }}</a> {% endif %}</td>
-                      <td class="text-left">{% if sort == 'r.date_modified' %} <a href="{{ sort_date_modified }}" class="{{ order|lower }}">{{ column_date_modified }}</a> {% else %} <a href="{{ sort_date_modified }}">{{ column_date_modified }}</a> {% endif %}</td>
-                      <td class="text-right">{{ column_action }}</td>
+                    <tr style="background-color: #fcfbfa;">
+                      <td style="width: 40px;" class="text-center">
+                        <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" />
+                      </td>
+                      <td class="text-left" style="width: 140px;">
+                        {% if sort == 'r.return_id' %}
+                        <a href="{{ sort_return_id }}" class="{{ order|lower }}" style="color: #1a1a50; font-weight: 700;">İade &amp; Sipariş No</a>
+                        {% else %}
+                        <a href="{{ sort_return_id }}" style="color: #1a1a50; font-weight: 700;">İade &amp; Sipariş No</a>
+                        {% endif %}
+                      </td>
+                      <td class="text-left" style="width: 180px;">
+                        {% if sort == 'customer' %}
+                        <a href="{{ sort_customer }}" class="{{ order|lower }}" style="color: #1a1a50; font-weight: 700;">{{ column_customer }}</a>
+                        {% else %}
+                        <a href="{{ sort_customer }}" style="color: #1a1a50; font-weight: 700;">{{ column_customer }}</a>
+                        {% endif %}
+                      </td>
+                      <td class="text-left">
+                        {% if sort == 'r.product' %}
+                        <a href="{{ sort_product }}" class="{{ order|lower }}" style="color: #1a1a50; font-weight: 700;">{{ column_product }} / Model</a>
+                        {% else %}
+                        <a href="{{ sort_product }}" style="color: #1a1a50; font-weight: 700;">{{ column_product }} / Model</a>
+                        {% endif %}
+                      </td>
+                      <td class="text-center" style="width: 130px;">
+                        {% if sort == 'status' %}
+                        <a href="{{ sort_status }}" class="{{ order|lower }}" style="color: #1a1a50; font-weight: 700;">{{ column_status }}</a>
+                        {% else %}
+                        <a href="{{ sort_status }}" style="color: #1a1a50; font-weight: 700;">{{ column_status }}</a>
+                        {% endif %}
+                      </td>
+                      <td class="text-left" style="width: 120px;">
+                        {% if sort == 'r.date_added' %}
+                        <a href="{{ sort_date_added }}" class="{{ order|lower }}" style="color: #1a1a50; font-weight: 700;">Tarih</a>
+                        {% else %}
+                        <a href="{{ sort_date_added }}" style="color: #1a1a50; font-weight: 700;">Tarih</a>
+                        {% endif %}
+                      </td>
+                      <td class="text-right" style="width: 180px; color: #1a1a50; font-weight: 700;">İşlemler</td>
                     </tr>
                   </thead>
                   <tbody>
-                  
-                  {% if returns %}
-                  {% for return in returns %}
-                  <tr>
-                    <td class="text-center">{% if return.return_id in selected %}
-                      <input type="checkbox" name="selected[]" value="{{ return.return_id }}" checked="checked" />
-                      {% else %}
-                      <input type="checkbox" name="selected[]" value="{{ return.return_id }}" />
-                      {% endif %}</td>
-                    <td class="text-right">{{ return.return_id }}</td>
-                    <td class="text-right">{{ return.order_id }}</td>
-                    <td class="text-left">{{ return.customer }}</td>
-                    <td class="text-left">{{ return.product }}</td>
-                    <td class="text-left">{{ return.model }}</td>
-                    <td class="text-left">{{ return.return_status }}</td>
-                    <td class="text-left">{{ return.date_added }}</td>
-                    <td class="text-left">{{ return.date_modified }}</td>
-                    <td class="text-right"><a href="{{ return.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
-                  </tr>
-                  {% endfor %}
-                  {% else %}
-                  <tr>
-                    <td class="text-center" colspan="10">{{ text_no_results }}</td>
-                  </tr>
-                  {% endif %}
-                    </tbody>
-                  
+                    {% if returns %}
+                    {% for return in returns %}
+                    <tr style="cursor: pointer; transition: background 0.15s ease;">
+                      <td class="text-center" onclick="event.stopPropagation();" style="vertical-align: middle;">
+                        {% if return.return_id in selected %}
+                        <input type="checkbox" name="selected[]" value="{{ return.return_id }}" checked="checked" />
+                        {% else %}
+                        <input type="checkbox" name="selected[]" value="{{ return.return_id }}" />
+                        {% endif %}
+                      </td>
+                      <td class="text-left" onclick="viewReturnModal({{ return.return_id }});" style="vertical-align: middle;">
+                        <div style="font-weight: 700; color: #1a1a50; font-size: 14px;">#{{ return.return_id }}</div>
+                        <div style="font-size: 12px; color: #c5a059; font-weight: 600;">Sipariş: #{{ return.order_id }}</div>
+                      </td>
+                      <td class="text-left" onclick="viewReturnModal({{ return.return_id }});" style="vertical-align: middle;">
+                        <div style="font-weight: 600; color: #1a1a50; font-size: 13.5px;"><i class="fa fa-user-circle-o" style="color: #c5a059; margin-right: 4px;"></i> {{ return.customer }}</div>
+                      </td>
+                      <td class="text-left" onclick="viewReturnModal({{ return.return_id }});" style="vertical-align: middle;">
+                        <div style="font-weight: 600; color: #1a1a50; font-size: 13.5px; margin-bottom: 3px;">{{ return.product }}</div>
+                        <span class="badge" style="background-color: #1a1a50; color: #fff; font-size: 10.5px; font-weight: 500; padding: 2px 7px; border-radius: 4px;">{{ return.model }}</span>
+                      </td>
+                      <td class="text-center" onclick="viewReturnModal({{ return.return_id }});" style="vertical-align: middle;">
+                        <span class="label" style="display: inline-block; padding: 5px 10px; border-radius: 4px; font-size: 11.5px; font-weight: 600; background-color: #1a1a50; color: #ffffff;">
+                          {{ return.return_status }}
+                        </span>
+                      </td>
+                      <td class="text-left" onclick="viewReturnModal({{ return.return_id }});" style="vertical-align: middle; font-size: 12px; color: #666;">
+                        <div><i class="fa fa-calendar-o" style="margin-right: 3px;"></i> {{ return.date_added }}</div>
+                      </td>
+                      <td class="text-right" onclick="event.stopPropagation();" style="vertical-align: middle; white-space: nowrap;">
+                        <button type="button" onclick="viewReturnModal({{ return.return_id }});" data-toggle="tooltip" title="Hızlı İncele (Açıklama &amp; Form)" class="btn btn-default btn-sm" style="border-color: #ddd; color: #1a1a50; font-weight: 600;">
+                          <i class="fa fa-search" style="color: #c5a059;"></i> İncele
+                        </button>
+                        <a href="{{ return.view }}" data-toggle="tooltip" title="Detaylı İncele &amp; İşlem Yap" class="btn btn-primary btn-sm" style="background-color: #1a1a50; border-color: #1a1a50; font-weight: 600;">
+                          <i class="fa fa-eye"></i> Detay
+                        </a>
+                        <a href="{{ return.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-default btn-sm" style="border-color: #ddd;">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                      <td class="text-center" colspan="7" style="padding: 30px; color: #888;">{{ text_no_results }}</td>
+                    </tr>
+                    {% endif %}
+                  </tbody>
                 </table>
               </div>
             </form>
-            <div class="row">
-              <div class="col-sm-6 text-left">{{ pagination }}</div>
-              <div class="col-sm-6 text-right">{{ results }}</div>
+            <div style="padding: 16px 20px; border-top: 1px solid #eeeae0;">
+              <div class="row">
+                <div class="col-sm-6 text-left">{{ pagination }}</div>
+                <div class="col-sm-6 text-right">{{ results }}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script type="text/javascript"><!--
+</div>
+
+<!-- Return Quick View Modal -->
+<div class="modal fade" id="modal-return-view" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="border-radius: 12px; border: 1px solid var(--uannes-border, #e5dfd5); box-shadow: 0 10px 40px rgba(0,0,0,0.12);">
+      <div class="modal-header" style="background-color: #f8f6f2; border-bottom: 1px solid #eeeae0; border-top-left-radius: 12px; border-top-right-radius: 12px; padding: 18px 24px;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-return-title" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; color: #1a1a50; letter-spacing: 0.05em; text-transform: uppercase;">
+          <i class="fa fa-refresh" style="color: #c5a059;"></i> İade Başvurusu İnceleme
+        </h4>
+      </div>
+      <div class="modal-body" style="padding: 24px; background-color: #fff;">
+        <div class="row" style="margin-bottom: 16px;">
+          <div class="col-sm-4">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">Müşteri</label>
+            <div id="modal-return-customer" style="font-size: 15px; font-weight: 700; color: #1a1a50;">-</div>
+          </div>
+          <div class="col-sm-4">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">E-Posta</label>
+            <div><a id="modal-return-email" href="#" style="font-size: 14px; color: #1a1a50; font-weight: 600; text-decoration: underline;">-</a></div>
+          </div>
+          <div class="col-sm-4">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">Telefon</label>
+            <div><a id="modal-return-phone" href="#" style="font-size: 14px; color: #1a1a50;">-</a></div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 16px; background-color: #f8f6f2; padding: 14px 10px; border-radius: 8px; border: 1px solid #eeeae0;">
+          <div class="col-sm-3">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">Sipariş No</label>
+            <div id="modal-return-order" style="font-size: 14px; font-weight: 700; color: #c5a059;">-</div>
+          </div>
+          <div class="col-sm-3">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">Ürün</label>
+            <div id="modal-return-product" style="font-size: 14px; font-weight: 600; color: #1a1a50;">-</div>
+          </div>
+          <div class="col-sm-3">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">Model / Adet</label>
+            <div id="modal-return-model" style="font-size: 13px; color: #555;">-</div>
+          </div>
+          <div class="col-sm-3">
+            <label style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px;">İade Nedeni</label>
+            <div id="modal-return-reason" style="font-size: 13px; font-weight: 600; color: #8b263e;">-</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <label style="color: #1a1a50; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">
+            <i class="fa fa-commenting" style="color: #c5a059;"></i> Müşterinin Formda Yazdığı İade Açıklaması
+          </label>
+          <div id="modal-return-comment" style="background-color: #fbf9f4; border: 1px solid #eeeae0; border-radius: 8px; padding: 20px; font-size: 14.5px; line-height: 1.7; color: #1a1a50; white-space: pre-wrap; word-break: break-word; min-height: 90px;">
+            Yükleniyor...
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="background-color: #f8f6f2; border-top: 1px solid #eeeae0; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; padding: 16px 24px;">
+        <a id="modal-return-mailto" href="#" class="btn btn-primary"><i class="fa fa-envelope"></i> E-Posta Gönder</a>
+        <a id="modal-return-full" href="#" class="btn btn-info" style="background-color: #1a1a50; border-color: #1a1a50;"><i class="fa fa-eye"></i> Detaylı İncele &amp; İşlem Yap</a>
+        <a id="modal-return-edit" href="#" class="btn btn-default"><i class="fa fa-pencil"></i> Düzenle</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function viewReturnModal(return_id) {
+  $('#modal-return-comment').html('<i class="fa fa-spinner fa-spin"></i> Yükleniyor...');
+  $('#modal-return-view').modal('show');
+
+  $.ajax({
+    url: 'index.php?route=sale/return/getJson&user_token={{ user_token }}&return_id=' + return_id,
+    type: 'GET',
+    dataType: 'json',
+    success: function(json) {
+      if (json && json.success) {
+        $('#modal-return-customer').text(json.customer);
+        $('#modal-return-email').text(json.email).attr('href', 'mailto:' + json.email + '?subject=UANNES - İade Talebiniz (#' + json.return_id + ') Hakkında');
+        $('#modal-return-phone').text(json.telephone).attr('href', 'tel:' + json.telephone);
+        $('#modal-return-order').text('#' + json.order_id);
+        $('#modal-return-product').text(json.product);
+        $('#modal-return-model').text(json.model + ' (' + json.quantity + ' Adet)');
+        $('#modal-return-reason').text(json.return_reason);
+        $('#modal-return-comment').html(json.comment);
+        $('#modal-return-mailto').attr('href', 'mailto:' + json.email + '?subject=UANNES - İade Talebiniz (#' + json.return_id + ') Hakkında');
+        $('#modal-return-full').attr('href', json.info_url ? json.info_url.replace(/&amp;/g, '&') : 'index.php?route=sale/return/info&user_token={{ user_token }}&return_id=' + return_id);
+        $('#modal-return-edit').attr('href', json.edit_url ? json.edit_url.replace(/&amp;/g, '&') : 'index.php?route=sale/return/edit&user_token={{ user_token }}&return_id=' + return_id);
+      }
+    }
+  });
+}
+</script>
+
+<script type="text/javascript"><!--
 $('#button-filter').on('click', function() {
 	url = 'index.php?route=sale/return&user_token={{ user_token }}';
 	
 	var filter_return_id = $('input[name=\'filter_return_id\']').val();
-	
 	if (filter_return_id) {
 		url += '&filter_return_id=' + encodeURIComponent(filter_return_id);
 	}
-	
 	var filter_order_id = $('input[name=\'filter_order_id\']').val();
-	
 	if (filter_order_id) {
 		url += '&filter_order_id=' + encodeURIComponent(filter_order_id);
 	}	
-		
 	var filter_customer = $('input[name=\'filter_customer\']').val();
-	
 	if (filter_customer) {
 		url += '&filter_customer=' + encodeURIComponent(filter_customer);
 	}
-	
 	var filter_product = $('input[name=\'filter_product\']').val();
-	
 	if (filter_product) {
 		url += '&filter_product=' + encodeURIComponent(filter_product);
 	}
-
 	var filter_model = $('input[name=\'filter_model\']').val();
-	
 	if (filter_model) {
 		url += '&filter_model=' + encodeURIComponent(filter_model);
 	}
-		
 	var filter_return_status_id = $('select[name=\'filter_return_status_id\']').val();
-	
 	if (filter_return_status_id !== '') {
 		url += '&filter_return_status_id=' + encodeURIComponent(filter_return_status_id);
 	}	
-	
 	var filter_date_added = $('input[name=\'filter_date_added\']').val();
-	
 	if (filter_date_added) {
 		url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
 	}
-
 	var filter_date_modified = $('input[name=\'filter_date_modified\']').val();
-	
 	if (filter_date_modified) {
 		url += '&filter_date_modified=' + encodeURIComponent(filter_date_modified);
 	}
-			
 	location = url;
 });
 //--></script> 
-  <script type="text/javascript"><!--
+<script type="text/javascript"><!--
 $('input[name=\'filter_customer\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
@@ -266,11 +405,10 @@ $('input[name=\'filter_model\']').autocomplete({
 	}	
 });
 //--></script> 
-  <script type="text/javascript"><!--
+<script type="text/javascript"><!--
 $('.date').datetimepicker({
 	language: '{{ datepicker }}',
 	pickTime: false
 });
 //--></script> 
-</div>
-{{ footer }} 
+{{ footer }}

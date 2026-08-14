@@ -1,11 +1,13 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
 $_['heading_title']      = 'Australia Post';
 
 // Text
-$_['text_extension']     = 'Extensions';
+$_['text_extension']     = 'Eklentiler';
 $_['text_success']       = 'Success: You have modified Australia Post shipping!';
-$_['text_edit']          = 'Edit Australia Post Shipping';
+$_['text_edit']          = 'Australia Post Düzenle';
 
 // Entry
 $_['entry_api']          = 'API Key';

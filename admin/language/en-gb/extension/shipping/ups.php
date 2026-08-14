@@ -1,9 +1,11 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
 $_['heading_title']                = 'UPS';
 
 // Text
-$_['text_extension']               = 'Extensions';
+$_['text_extension']               = 'Eklentiler';
 $_['text_success']                 = 'Success: You have modified UPS shipping!';
 $_['text_edit']                    = 'Edit UPS Shipping';
 $_['text_regular_daily_pickup']    = 'Regular Daily Pickup';
@@ -74,7 +76,6 @@ $_['entry_weight_class']           = 'Weight Class';
 $_['entry_length_class']           = 'Length Class';
 $_['entry_dimension']              = 'Dimensions (L x W x H)';
 $_['entry_length']                 = 'Length';
-$_['entry_height']                 = 'Height';
 $_['entry_width']                  = 'Width';
 $_['entry_tax_class']              = 'Tax Class';
 $_['entry_geo_zone']               = 'Geo Zone';

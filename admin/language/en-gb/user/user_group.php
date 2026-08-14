@@ -1,23 +1,25 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'User Groups';
+$_['heading_title']    = 'Kullanıcı Grupları';
 
 // Text
-$_['text_success']     = 'Success: You have modified user groups!';
-$_['text_list']        = 'User Group';
-$_['text_add']         = 'Add User Group';
-$_['text_edit']        = 'Edit User Group';
+$_['text_success']     = 'Başarılı: Kullanıcı grupları değiştirildi!';
+$_['text_list']        = 'Kullanıcı Grup Listesi';
+$_['text_add']         = 'Kullanıcı Grubu Ekle';
+$_['text_edit']        = 'Kullanıcı Grubu Düzenle';
 
 // Column
-$_['column_name']      = 'User Group Name';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Kullanıcı Grup Adı';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'User Group Name';
-$_['entry_access']     = 'Access Permission';
-$_['entry_modify']     = 'Modify Permission';
+$_['entry_name']       = 'Kullanıcı Grup Adı';
+$_['entry_access']     = 'Erişim İzinleri';
+$_['entry_modify']     = 'Değiştirme İzinleri';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify user groups!';
-$_['error_name']       = 'User Group Name must be between 3 and 64 characters!';
-$_['error_user']       = 'Warning: This user group cannot be deleted as it is currently assigned to %s users!';
+$_['error_permission'] = 'Uyarı: Kullanıcı Gruplarını düzenleme iznine sahip değilsiniz!';
+$_['error_name']       = 'Kullanıcı Grup Adı 3 ile 64 karakter arasında olmalı!';
+$_['error_user']       = 'Uyarı: Bu kullanıcı grubunu silemezsiniz, %s kullanıcı tarafından kullanılıyor!';

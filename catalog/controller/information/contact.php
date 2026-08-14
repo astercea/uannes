@@ -8,21 +8,42 @@ class ControllerInformationContact extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+			// Save to Database
+			$this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "contact_message` (
+			  `contact_message_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `name` varchar(128) NOT NULL,
+			  `email` varchar(128) NOT NULL,
+			  `enquiry` text NOT NULL,
+			  `ip` varchar(40) NOT NULL,
+			  `status` tinyint(1) NOT NULL DEFAULT '0',
+			  `date_added` datetime NOT NULL,
+			  PRIMARY KEY (`contact_message_id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
 
-			$mail->setTo($this->config->get('config_email'));
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setReplyTo($this->request->post['email']);
-			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
-			$mail->send();
+			$ip_address = isset($this->request->server['REMOTE_ADDR']) ? $this->request->server['REMOTE_ADDR'] : '';
+
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "contact_message` SET name = '" . $this->db->escape($this->request->post['name']) . "', email = '" . $this->db->escape($this->request->post['email']) . "', enquiry = '" . $this->db->escape($this->request->post['enquiry']) . "', ip = '" . $this->db->escape($ip_address) . "', status = '0', date_added = NOW()");
+
+			// Send Email if configured
+			try {
+				$mail = new Mail($this->config->get('config_mail_engine'));
+				$mail->parameter = $this->config->get('config_mail_parameter');
+				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
+				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
+				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+				$mail->setTo($this->config->get('config_email'));
+				$mail->setFrom($this->config->get('config_email'));
+				$mail->setReplyTo($this->request->post['email']);
+				$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
+				$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+				$mail->setText($this->request->post['enquiry']);
+				$mail->send();
+			} catch (\Exception $e) {
+				// Continue even if mail server fails, since it is safely stored in database
+			}
 
 			$this->response->redirect($this->url->link('information/contact/success'));
 		}

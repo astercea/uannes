@@ -1,32 +1,34 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Language Editor';
+$_['heading_title']    = 'Dil Editörü';
 
 // Text
-$_['text_success']     = 'Success: You have modified language editor!';
-$_['text_list']        = 'Translation List';
-$_['text_edit']        = 'Edit Translation';
-$_['text_add']         = 'Add Translation';
-$_['text_default']     = 'Default';
-$_['text_store']       = 'Store';
-$_['text_language']    = 'Language';
+$_['text_success']     = 'Başarılı: Dil çevirisi başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Çeviri Listesi';
+$_['text_add']         = 'Çeviri Ekle';
+$_['text_edit']        = 'Çeviriyi Düzenle';
+$_['text_default']     = 'Varsayılan';
+$_['text_store']       = 'Mağaza';
+$_['text_language']    = 'Dil';
 
 // Column
-$_['column_store']     = 'Store';
-$_['column_language']  = 'Language';
-$_['column_route']     = 'Route';
-$_['column_key']       = 'Key';
-$_['column_value']     = 'Value';
-$_['column_action']    = 'Action';
+$_['column_store']     = 'Mağaza';
+$_['column_language']  = 'Dil';
+$_['column_route']     = 'Yol';
+$_['column_key']       = 'Anahtar';
+$_['column_value']     = 'Değer';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_store']      = 'Store';
-$_['entry_language']   = 'Language';
-$_['entry_route']      = 'Route';
-$_['entry_key']        = 'Key';
-$_['entry_default']    = 'Default';
-$_['entry_value']      = 'Value';
+$_['entry_store']      = 'Mağaza';
+$_['entry_language']   = 'Dil';
+$_['entry_route']      = 'Yol';
+$_['entry_key']        = 'Anahtar';
+$_['entry_default']    = 'Varsayılan';
+$_['entry_value']      = 'Değer';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify language editor!';
-$_['error_key']        = 'Key must be between 3 and 64 characters!';
+$_['error_permission'] = 'Warning: Dil editörünü düzenleme iznine sahip değilsiniz!';
+$_['error_key']        = 'Anahtar 3 ile 64 karakter arasında olmalı!';

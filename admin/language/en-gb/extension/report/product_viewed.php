@@ -1,21 +1,23 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Products Viewed Report';
+$_['heading_title']    = 'Ürün Görüntüleme Raporu';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_edit']        = 'Edit Products Viewed Report';
-$_['text_success']     = 'Success: You have reset the products viewed report!';
+$_['text_extension']   = 'Eklentiler';
+$_['text_edit']        = 'Ürün Görüntüleme Raporu Düzenle';
+$_['text_filter']      = 'Filtre';
 
 // Column
-$_['column_name']      = 'Product Name';
-$_['column_model']     = 'Model';
-$_['column_viewed']    = 'Viewed';
-$_['column_percent']   = 'Percent';
+$_['column_name']      = 'Ürün Adı';
+$_['column_model']     = 'Ürün Kodu';
+$_['column_viewed']    = 'Görüntüleme';
+$_['column_percent']   = 'Yüzde';
 
 // Entry
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify products viewed report!';
+$_['error_permission'] = 'Uyarı: Ürün görüntüleme raporunu düzenleme iznine sahip değilsiniz!';

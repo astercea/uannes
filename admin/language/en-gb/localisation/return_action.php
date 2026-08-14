@@ -1,21 +1,23 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Return Actions';
+$_['heading_title']    = 'İade Eylemleri';
 
 // Text
-$_['text_success']     = 'Success: You have modified return actions!';
-$_['text_list']        = 'Return Action List';
-$_['text_add']         = 'Add Return Action';
-$_['text_edit']        = 'Edit Return Action';
+$_['text_success']     = 'Başarılı: İade eylemi başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'İade Eylemi Listesi';
+$_['text_add']         = 'İade Eylemi Ekle';
+$_['text_edit']        = 'İade Eylemi Düzenle';
 
 // Column
-$_['column_name']      = 'Return Action Name';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'İade Eylem Adı';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Return Action Name';
+$_['entry_name']       = 'İade Eylem Adı';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify return actions!';
-$_['error_name']       = 'Return Action Name must be between 3 and 64 characters!';
-$_['error_return']     = 'Warning: This return action cannot be deleted as it is currently assigned to %s returned products!';
+$_['error_permission'] = 'Uyarı: İade eylemlerini düzenleme iznine sahip değilsiniz!';
+$_['error_name']       = 'İade Eylem Adı 3 ile 64 karakter arasında olmalı!';
+$_['error_return']     = 'Uyarı: Bu geri İade eylemini silemezsiniz, %s iadeli ürün tarafından kullanılıyor!';

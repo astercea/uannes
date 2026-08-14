@@ -1,17 +1,18 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Payments';
+$_['heading_title']     = 'Ödeme Metodları';
 
 // Text
-$_['text_success']      = 'Success: You have modified payments!';
-$_['text_list']         = 'Payment List';
-
+$_['text_success']      = 'Başarılı: Ödeme metodları güncellendi!';
+$_['text_list']         = 'Ödeme Metod Listesi';
 
 // Column
-$_['column_name']       = 'Payment Method';
-$_['column_status']     = 'Status';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'Ödeme Metodu';
+$_['column_status']     = 'Durum';
+$_['column_sort_order'] = 'Sıralama';
+$_['column_action']     = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify payments!';
+$_['error_permission']  = 'Uyarı: Ödeme Metodlarını değiştirme iznine sahip değilsiniz!';

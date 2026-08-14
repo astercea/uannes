@@ -1,19 +1,21 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
 $_['heading_title']    = 'Google Hangouts';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified Google Hangouts module!';
-$_['text_edit']        = 'Edit Google Hangouts Module';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Canlı Sohbet modülü güncellendi!';
+$_['text_edit']        = 'Google Hangouts Modülünü Düzenle';
 
 // Entry
-$_['entry_code']       = 'Google Talk Code';
-$_['entry_status']     = 'Status';
+$_['entry_code']       = 'Sohbet Kodu';
+$_['entry_status']     = 'Durumu';
 
 // Help
-$_['help_code']        = 'Goto <a href="https://developers.google.com/+/hangouts/button" target="_blank">Create a Google Hangout chatback badge</a> and copy &amp; paste the generated code into the text box.';
+$_['help_code']        = 'Google Hangout sohbet rozetini <a href="https://developers.google.com/+/hangouts/button" target="_blank">buradan</a> oluşturun ve buraya yapıştırın.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Google Hangouts module!';
-$_['error_code']       = 'Code Required';
+$_['error_permission'] = 'Uyarı: Google Hangout modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_code']       = 'Kod gerekli!';

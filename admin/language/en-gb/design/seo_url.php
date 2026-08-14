@@ -1,31 +1,33 @@
 <?php
+// Turkceye Ceviren eka7a - http://e-piksel.com
+
 // Heading
-$_['heading_title']    = 'SEO URL';
+$_['heading_title']      = 'SEO Bağlantıları';
 
 // Text
-$_['text_success']     = 'Success: You have modified SEO URL!';
-$_['text_list']        = 'SEO URL List';
-$_['text_add']         = 'Add SEO URL';
-$_['text_edit']        = 'Edit SEO URL';
-$_['text_filter']      = 'Filter';
-$_['text_default']     = 'Default';
+$_['text_success']       = 'Başarılı: SEO Bağlantıları başarılı bir şekilde değiştirildi!';
+$_['text_list']          = 'SEO Bağlantı Listesi';
+$_['text_add']           = 'SEO Bağlantı Ekle';
+$_['text_edit']          = 'SEO Bağlantı Düzenle';
+$_['text_filter']        = 'Filtre';
+$_['text_default']       = 'Varsayılan';
 
 // Column
-$_['column_query']     = 'Query';
-$_['column_keyword']   = 'Keyword';
-$_['column_store']     = 'Store';
-$_['column_language']  = 'Language';
-$_['column_action']    = 'Action';
+$_['column_query']       = 'Sorgu';
+$_['column_keyword']     = 'Anahtar Kelime';
+$_['column_store']       = 'Mağaza';
+$_['column_language']    = 'Dil';
+$_['column_action']      = 'Eylem';
 
 // Entry
-$_['entry_query']        = 'Query';
-$_['entry_keyword']      = 'Keyword';
-$_['entry_store']        = 'Store';
-$_['entry_language']     = 'Language';
+$_['entry_query']        = 'Sorgu';
+$_['entry_keyword']      = 'Anahtar Kelime';
+$_['entry_store']        = 'Mağaza';
+$_['entry_language']     = 'Dil';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify SEO URL!';
-$_['error_query']        = 'Query must be between 3 and 64 characters!';
-$_['error_keyword']      = 'Keyword must be between 3 and 64 characters!';
-$_['error_exists']       = 'Keyword already in use!';
-$_['error_query_exists'] = 'Query already in use!';
+$_['error_permission']   = 'Uyarı: SEO Bağlantılarını düzenleme iznine sahip değilsiniz!';
+$_['error_query']        = 'Sorgu 3 ile 64 karakter arasında olmalı!';
+$_['error_keyword']      = 'Anahtar Kelime 3 ile 64 karakter arasında olmalı!';
+$_['error_exists']       = 'Anahtar Kelime zaten kullanılıyor!';
+$_['error_query_exists'] = 'Sorgu zaten kullanımda!';

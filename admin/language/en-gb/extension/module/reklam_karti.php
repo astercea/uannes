@@ -1,31 +1,31 @@
 <?php
 // Heading
-$_['heading_title']     = 'Category Promo Cards';
+$_['heading_title']     = 'Kategori Reklam Kartları';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: Promo card settings modified!';
-$_['text_edit']         = 'Edit Category Promo Cards';
-$_['text_enabled']      = 'Enabled';
-$_['text_disabled']     = 'Disabled';
+$_['text_extension']    = 'Eklentiler';
+$_['text_success']      = 'Başarılı: Reklam kartı ayarları güncellendi!';
+$_['text_edit']         = 'Reklam Kartlarını Düzenle';
+$_['text_enabled']      = 'Açık';
+$_['text_disabled']     = 'Kapalı';
 
 // Tabs
-$_['tab_giyim']         = 'Clothing Page';
-$_['tab_esarp']         = 'Scarf Page';
-$_['tab_tum_urunler']   = 'All Products Page';
+$_['tab_giyim']         = 'Giyim Sayfası';
+$_['tab_esarp']         = 'Eşarp Sayfası';
+$_['tab_tum_urunler']   = 'Tüm Ürünler Sayfası';
 
 // Entry
-$_['entry_status']      = 'Status';
-$_['entry_position']    = 'Position (After Nth Product)';
-$_['entry_image']       = 'Image';
-$_['entry_eyebrow']     = 'Eyebrow (Subtitle)';
-$_['entry_title']       = 'Title';
-$_['entry_text']        = 'Description Text';
-$_['entry_link']        = 'Link URL (Optional)';
+$_['entry_status']      = 'Durum';
+$_['entry_position']    = 'Konum (Kaçıncı Üründen Sonra)';
+$_['entry_image']       = 'Görsel';
+$_['entry_eyebrow']     = 'Üst Başlık (Küçük Yazı)';
+$_['entry_title']       = 'Ana Başlık';
+$_['entry_text']        = 'Açıklama Metni';
+$_['entry_link']        = 'Bağlantı Linki (İsteğe Bağlı)';
 
 // Help
-$_['help_position']     = 'Specifies after which product card the promo card should appear (e.g. 6).';
-$_['help_link']         = 'URL to navigate when clicked (e.g. index.php?route=product/giyim).';
+$_['help_position']     = 'Reklam kartının ürün listesinde kaçıncı üründen sonra yerleşeceğini belirtir (Örn: 6).';
+$_['help_link']         = 'Karta tıklandığında gidilecek sayfa bağlantısı (Örn: index.php?route=product/giyim).';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify promo card settings!';
+$_['error_permission']  = 'Uyarı: Reklam kartı ayarlarını düzenleme izniniz yok!';

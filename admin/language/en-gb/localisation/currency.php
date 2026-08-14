@@ -1,39 +1,41 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']        = 'Currencies';
+$_['heading_title']         = 'Para Birimleri';
 
 // Text
-$_['text_success']         = 'Success: You have modified currencies!';
-$_['text_list']            = 'Currency List';
-$_['text_add']             = 'Add Currency';
-$_['text_edit']            = 'Edit Currency';
-$_['text_iso']             = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank" class="alert-link">here</a>.';
+$_['text_success']          = 'Başarılı: Para birimi başarılı bir şekilde değiştirildi!';
+$_['text_list']             = 'Para Birimi Listesi';
+$_['text_add']              = 'Para Birimi Ekle';
+$_['text_edit']             = 'Para Birimi Düzenle';
+$_['text_iso']              = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank" class="alert-link">here</a>.';
 
 // Column
-$_['column_title']         = 'Currency Title';
-$_['column_code']          = 'Code';
-$_['column_value']         = 'Value';
-$_['column_date_modified'] = 'Last Updated';
-$_['column_action']        = 'Action';
+$_['column_title']          = 'Para Birimi Adı';
+$_['column_code']           = 'Kodu';
+$_['column_value']          = 'Değeri';
+$_['column_date_modified']  = 'Son Güncelleme';
+$_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_title']          = 'Currency Title';
-$_['entry_code']           = 'Code';
-$_['entry_value']          = 'Value';
-$_['entry_symbol_left']    = 'Symbol Left';
-$_['entry_symbol_right']   = 'Symbol Right';
-$_['entry_decimal_place']  = 'Decimal Places';
-$_['entry_status']         = 'Status';
+$_['entry_title']           = 'Para Birimi Adı';
+$_['entry_code']            = 'Kodu';
+$_['entry_value']           = 'Birim Değeri';
+$_['entry_symbol_left']     = 'Sol Sembol';
+$_['entry_symbol_right']    = 'Sağ Sembol';
+$_['entry_decimal_place']   = 'Basamak Ayırıcı';
+$_['entry_status']          = 'Durumu';
 
 // Help
-$_['help_code']            = 'Do not change if this is your default currency.';
-$_['help_value']           = 'Set to 1.00000 if this is your default currency.';
+$_['help_code']             = 'Bu varsayılan para biriminiz ise değiştirmeyiniz.';
+$_['help_value']            = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify currencies!';
-$_['error_title']          = 'Currency Title must be between 3 and 32 characters!';
-$_['error_code']           = 'Currency Code must contain 3 characters!';
-$_['error_default']        = 'Warning: This currency cannot be deleted as it is currently assigned as the default store currency!';
-$_['error_store']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s stores!';
-$_['error_order']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s orders!';
-$_['error_currency_engine'] = 'Warning: No active Currency Rate Engine found!';
+$_['error_permission']      = 'Uyarı: Para birimlerini düzenleme iznine sahip değilsiniz!';
+$_['error_title']           = 'Para Birimi Adı 3 ile 32 karakter arasında olmalı!';
+$_['error_code']            = 'Para Birim Kodu en fazla 3 karakter olmalı!';
+$_['error_default']         = 'Uyarı: Bu para birimini silemezsiniz, varsayılan para birimi olarak kullanılıyor!';
+$_['error_store']           = 'Uyarı: Bu para birimini silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_order']           = 'Uyarı: Bu para birimini silemezsiniz, %s sipariş tarafından kullanılıyor!';
+$_['error_currency_engine'] = 'Uyarı: Aktif Döviz Kuru Motoru bulunamadı!';

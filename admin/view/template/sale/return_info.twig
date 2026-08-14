@@ -1,0 +1,222 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <a href="{{ edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Düzenle</a>
+        <a href="{{ back }}" data-toggle="tooltip" title="Geri Dön" class="btn btn-default"><i class="fa fa-reply"></i> Geri Dön</a>
+      </div>
+      <h1>{{ heading_title }} — İade #{{ return_id }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left Column: Return & Customer Details -->
+      <div class="col-md-7">
+        <!-- Customer & Order Summary -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> Müşteri & Sipariş Bilgileri</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-bordered">
+              <tr>
+                <td style="width: 30%; font-weight: 600;">Müşteri Adı</td>
+                <td>
+                  <strong style="color: #1a1a50;">{{ firstname }} {{ lastname }}</strong>
+                  {% if customer_id %}
+                    <span class="label label-info" style="margin-left: 5px;">Kayıtlı Müşteri</span>
+                  {% else %}
+                    <span class="label label-default" style="margin-left: 5px;">Misafir Müşteri</span>
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">E-Posta</td>
+                <td><a href="mailto:{{ email }}?subject=UANNES - İade Talebiniz (#{{ return_id }}) Hakkında" style="font-weight: 600; color: #1a1a50; text-decoration: underline;"><i class="fa fa-envelope"></i> {{ email }}</a></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Telefon</td>
+                <td><a href="tel:{{ telephone }}" style="color: #1a1a50;"><i class="fa fa-phone"></i> {{ telephone }}</a></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Sipariş No</td>
+                <td><strong style="color: #c5a059;">#{{ order_id }}</strong></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Sipariş Tarihi</td>
+                <td>{{ date_ordered }}</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">İade Talep Tarihi</td>
+                <td>{{ date_added }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-tag"></i> İade Edilen Ürün Bilgileri</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-bordered">
+              <tr>
+                <td style="width: 30%; font-weight: 600;">Ürün Adı</td>
+                <td><strong style="font-size: 15px; color: #1a1a50;">{{ product }}</strong></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Ürün Kodu / Modeli</td>
+                <td><span class="badge" style="background-color: #1a1a50; color: #fff; padding: 4px 8px;">{{ model }}</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">İade Edilen Miktar</td>
+                <td><strong>{{ quantity }} Adet</strong></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Ambalajı Açıldı Mı?</td>
+                <td>
+                  {% if opened == 'Açıldı' or opened == 'Opened' %}
+                    <span class="label label-warning" style="background-color: #c5a059; color: #fff; font-size: 12px; padding: 3px 8px;">Açıldı</span>
+                  {% else %}
+                    <span class="label label-success" style="background-color: #23633e; color: #fff; font-size: 12px; padding: 3px 8px;">Açılmadı (Orijinal)</span>
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">İade Nedeni</td>
+                <td><strong style="color: #8b263e;">{{ return_reason }}</strong></td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">İade Eylemi</td>
+                <td>{{ return_action }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Customer Comment & Return Status History -->
+      <div class="col-md-5">
+        <!-- Customer Written Comment Box (Crucial!) -->
+        <div class="panel panel-default" style="border-left: 4px solid var(--uannes-gold, #c5a059);">
+          <div class="panel-heading" style="background-color: #f8f6f2;">
+            <h3 class="panel-title" style="color: #1a1a50; font-weight: 700;">
+              <i class="fa fa-commenting"></i> Müşterinin Formda Yazdığı Açıklama
+            </h3>
+          </div>
+          <div class="panel-body" style="padding: 22px;">
+            {% if comment %}
+              <div style="background-color: #fbf9f4; border: 1px solid #eeeae0; border-radius: 8px; padding: 18px; font-size: 14.5px; line-height: 1.7; color: #1a1a50; white-space: pre-wrap; word-break: break-word;">
+                {{ comment|raw }}
+              </div>
+            {% else %}
+              <div class="alert alert-info" style="margin: 0; background-color: #f8f6f2; border-color: #eeeae0; color: #777;">
+                <em>Müşteri form gönderirken ek bir açıklama metni yazmadı.</em>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Current Status & History Management -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-history"></i> İade Durumu & Geçmiş</h3>
+          </div>
+          <div class="panel-body">
+            <div style="margin-bottom: 20px; padding: 14px 18px; background-color: #f8f6f2; border-radius: 8px; border: 1px solid #eeeae0; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; font-weight: 600;">Mevcut Durum:</span>
+              <span class="label label-primary" style="background-color: #1a1a50; color: #fff; font-size: 13px; padding: 5px 12px; border-radius: 4px;">{{ return_status }}</span>
+            </div>
+
+            <div id="history"></div>
+
+            <fieldset style="margin-top: 20px; border-top: 1px solid #eeeae0; padding-top: 16px;">
+              <legend style="font-size: 15px; font-weight: 700; color: #1a1a50; margin-bottom: 12px;">Yeni Durum Ekle / Güncelle</legend>
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-return-status-id">İade Durumu</label>
+                  <div class="col-sm-8">
+                    <select name="return_status_id" id="input-return-status-id" class="form-control">
+                      {% for rs in return_statuses %}
+                      {% if rs.return_status_id == return_status_id %}
+                      <option value="{{ rs.return_status_id }}" selected="selected">{{ rs.name }}</option>
+                      {% else %}
+                      <option value="{{ rs.return_status_id }}">{{ rs.name }}</option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-notify">Müşteriye Bildir</label>
+                  <div class="col-sm-8">
+                    <input type="checkbox" name="notify" value="1" id="input-notify" checked="checked" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="input-history-comment">Not / Açıklama</label>
+                  <div class="col-sm-8">
+                    <textarea name="comment" rows="4" placeholder="Müşteriye iletilecek veya yönetici notu..." id="input-history-comment" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="button-history" data-loading-text="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Durumu Güncelle</button>
+                </div>
+              </form>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"><!--
+$('#history').delegate('.pagination a', 'click', function(e) {
+	e.preventDefault();
+	$('#history').load(this.href);
+});
+
+$('#history').load('index.php?route=sale/return/history&user_token={{ user_token }}&return_id={{ return_id }}');
+
+$('#button-history').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/return/addHistory&user_token={{ user_token }}&return_id={{ return_id }}',
+		type: 'post',
+		dataType: 'json',
+		data: 'return_status_id=' + encodeURIComponent($('select[name=\'return_status_id\']').val()) + '&notify=' + ($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+		beforeSend: function() {
+			$('#button-history').button('loading');
+		},
+		complete: function() {
+			$('#button-history').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				 $('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+			}
+
+			if (json['success']) {
+				$('#history').load('index.php?route=sale/return/history&user_token={{ user_token }}&return_id={{ return_id }}');
+
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+				$('textarea[name=\'comment\']').val('');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+//--></script>
+{{ footer }}

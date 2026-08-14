@@ -1,36 +1,38 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Reviews';
+$_['heading_title']     = 'Yorumlar';
 
 // Text
-$_['text_success']      = 'Success: You have modified reviews!';
-$_['text_list']         = 'Review List';
-$_['text_add']          = 'Add Review';
-$_['text_edit']         = 'Edit Review';
-$_['text_filter']       = 'Filter';
+$_['text_success']      = 'Başarılı: Yorumlar başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Yorum Listesi';
+$_['text_add']          = 'Yorum Ekle';
+$_['text_edit']         = 'Yorum Düzenle';
+$_['text_filter']       = 'Filtre';
 
 // Column
-$_['column_product']    = 'Product';
-$_['column_author']     = 'Author';
-$_['column_rating']     = 'Rating';
-$_['column_status']     = 'Status';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_product']    = 'Ürün';
+$_['column_author']     = 'Ekleyen';
+$_['column_rating']     = 'Oylama';
+$_['column_status']     = 'Durumu';
+$_['column_date_added'] = 'Ekleme Tarihi';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_product']     = 'Product';
-$_['entry_author']      = 'Author';
-$_['entry_rating']      = 'Rating';
-$_['entry_status']      = 'Status';
-$_['entry_text']        = 'Text';
-$_['entry_date_added']  = 'Date Added';
+$_['entry_product']     = 'Ürün';
+$_['entry_author']      = 'Ekleyen';
+$_['entry_rating']      = 'Oylama';
+$_['entry_status']      = 'Durumu';
+$_['entry_text']        = 'Metin';
+$_['entry_date_added']  = 'Ekleme Tarihi';
 
 // Help
-$_['help_product']      = '(Autocomplete)';
+$_['help_product']      = '(Otomatik Tamamlama)';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify reviews!';
-$_['error_product']     = 'Product required!';
-$_['error_author']      = 'Author must be between 3 and 64 characters!';
-$_['error_text']        = 'Review Text must be at least 1 character!';
-$_['error_rating']      = 'Review rating required!';
+$_['error_permission']  = 'Uyarı: Yorumları düzenleme iznine sahip değilsiniz!';
+$_['error_product']     = 'Ürün gerekli!';
+$_['error_author']      = 'Ekleyen adı 3 ile 64 karakter arasında olmalı!';
+$_['error_text']        = 'Yorum metin alanı en az 1 karakter olmalı!';
+$_['error_rating']      = 'İnceleme değerlendirmesi gerekli!';

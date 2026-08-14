@@ -1,23 +1,25 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Theme Editor';
+$_['heading_title']     = 'Tema Editörü';
 
 // Text
-$_['text_success']      = 'Success: You have modified themes!';
-$_['text_edit']         = 'Edit Theme';
-$_['text_store']        = 'Choose your store';
-$_['text_template']     = 'Choose a template';
-$_['text_default']      = 'Default';
-$_['text_history']      = 'Theme History';
-$_['text_twig']         = 'The theme editor uses the template language Twig. You can read about <a href="https://twig.symfony.com/doc/" target="_blank" class="alert-link">Twig syntax here</a>.';
+$_['text_success']      = 'Başarılı: Temalar başarılı bir şekilde değiştirildi!';
+$_['text_edit']         = 'Tema Düzenle';
+$_['text_store']        = 'Mağaza Seçin';
+$_['text_template']     = 'Şablon Seçin';
+$_['text_default']      = 'Varsayılan';
+$_['text_history']      = 'Tema Geçmişi';
+$_['text_twig']         = 'Tema editörü twig şablon dilini kullanır. You can read about <a href="https://twig.symfony.com/doc/" target="_blank" class="alert-link">Buradan</a> Twig sözdizimini okuyabilirsiniz.';
 
 // Column
-$_['column_store']      = 'Store';
-$_['column_route']      = 'Route';
-$_['column_theme']      = 'Theme';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_store']      = 'Mağaza';
+$_['column_route']      = 'Yol';
+$_['column_theme']      = 'Tema';
+$_['column_date_added'] = 'Ekleme Tarihi';
+$_['column_action']     = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify the theme editor!';
-$_['error_twig']        = 'Warning: You can only save .twig files!';
+$_['error_permission']  = 'Uyarı: Tema editörünü düzenleme iznine sahip değilsiniz!';
+$_['error_twig']        = 'Uyarı: Sadece .twig dosyalarını kayıt edebilirsiniz!';

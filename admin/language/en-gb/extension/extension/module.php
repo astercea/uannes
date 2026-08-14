@@ -1,24 +1,25 @@
 <?php
+
 // Heading
-$_['heading_title']    = 'Modules';
+$_['heading_title']    = 'Modüller';
 
 // Text
-$_['text_success']     = 'Success: You have modified modules!';
-$_['text_layout']      = 'After you have installed and configured a module you can add it to a layout <a href="%s" class="alert-link">here</a>!';
-$_['text_add']         = 'Add Module';
-$_['text_list']        = 'Module List';
+$_['text_success']     = 'Başarılı: Modüller güncellendi!';
+$_['text_layout']      = 'Modülleri kurduktan sonra <a href="%s" class="alert-link">buradan</a> bölümlere modül ekleyebilirsiniz!';
+$_['text_add']         = 'Modül Ekle';
+$_['text_list']        = 'Modül Listesi';
 
 // Column
-$_['column_name']      = 'Module Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Modül Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_code']       = 'Module';
-$_['entry_name']       = 'Module Name';
+$_['entry_code']       = 'Modül';
+$_['entry_name']       = 'Modül Adı';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify modules!';
-$_['error_name']       = 'Module Name must be between 3 and 64 characters!';
-$_['error_code_name']  = 'Module Code must be between 3 and 32 characters!';
-$_['error_code']       = 'Extension required!';
+$_['error_permission'] = 'Uyarı: Modülleri değiştirme iznine sahip değilsiniz!';
+$_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
+$_['error_code_name']  = 'Modül Kodu 3 ile 32 karakter arasında olmalıdır!';
+$_['error_code']       = 'Eklenti gerekli!';

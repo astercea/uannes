@@ -1,25 +1,24 @@
 <?php
 // Heading
-$_['heading_title']     = 'Latest Orders';
+$_['heading_title']     = 'Son Siparişler';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: You have modified dashboard recent orders!';
-$_['text_edit']         = 'Edit Dashboard Recent Orders';
+$_['text_extension']    = 'Eklentiler';
+$_['text_success']      = 'Başarılı: Son siparişler gösterge paneli başarılı bir şekilde değiştirildi!';
+$_['text_edit']         = 'Son Siparişleri Düzenle';
 
 // Column
-$_['column_order_id']   = 'Order ID';
-$_['column_customer']   = 'Customer';
-$_['column_status']     = 'Status';
-$_['column_total']      = 'Total';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
-
+$_['column_order_id']   = 'Sipariş No';
+$_['column_customer']   = 'Müşteri';
+$_['column_status']     = 'Durumu';
+$_['column_total']      = 'Toplam';
+$_['column_date_added'] = 'Ekleme Tarihi';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_status']      = 'Status';
-$_['entry_sort_order']  = 'Sort Order';
-$_['entry_width']       = 'Width';
+$_['entry_width']       = 'Genişlik';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify dashboard recent orders!';
+$_['error_permission']  = 'Uyarı: Son siparişler gösterge panelini düzenleme iznine sahip değilsiniz!';

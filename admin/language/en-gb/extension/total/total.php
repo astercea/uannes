@@ -1,15 +1,17 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Total';
+$_['heading_title']    = 'Toplam';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified total totals!';
-$_['text_edit']        = 'Edit Total Total';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Sipariş toplamı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Toplamı Düzenle';
 
 // Entry
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify total totals!';
+$_['error_permission'] = 'Uyarı: Sipariş toplamını düzenleme iznine sahip değilsiniz!';

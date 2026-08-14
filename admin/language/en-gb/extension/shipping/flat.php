@@ -1,18 +1,20 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Flat Rate';
+$_['heading_title']    = 'Sabit Kargo Fiyatı';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified flat rate shipping!';
-$_['text_edit']        = 'Edit Flat Rate Shipping';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Sabit Kargo Fiyatı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Sabit Kargo Fiyatını Düzenle';
 
 // Entry
-$_['entry_cost']       = 'Cost';
-$_['entry_tax_class']  = 'Tax Class';
-$_['entry_geo_zone']   = 'Geo Zone';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_cost']       = 'Fiyatı';
+$_['entry_tax_class']  = 'Vergi Oranı';
+$_['entry_geo_zone']   = 'Bölge';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify flat rate shipping!';
+$_['error_permission'] = 'Uyarı: Sabit kargo fiyatı düzenleme iznine sahip değilsiniz!';

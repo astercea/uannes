@@ -1,14 +1,16 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Account';
+$_['heading_title']    = 'Hesabım';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified account module!';
-$_['text_edit']        = 'Edit Account Module';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Hesabım modülü güncellendi!';
+$_['text_edit']        = 'Hesabım Modülünü Düzenle';
 
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify account module!';
+$_['error_permission'] = 'Uyarı: Hesabım modülünü değiştirme iznine sahip değilsiniz!';

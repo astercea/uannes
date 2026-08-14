@@ -1,21 +1,23 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Handling Fee';
+$_['heading_title']    = 'Hizmet Bedeli';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified handling fee total!';
-$_['text_edit']        = 'Edit Handling Fee Total';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Hizmet bedeli başarılı bir şekilde değiştirildi';
+$_['text_edit']        = 'Hizmet Bedelini Düzenle';
 
 // Entry
-$_['entry_total']      = 'Order Total';
-$_['entry_fee']        = 'Fee';
-$_['entry_tax_class']  = 'Tax Class';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_total']      = 'Sipariş Toplamı';
+$_['entry_fee']        = 'Ücreti';
+$_['entry_tax_class']  = 'Vergi Oranı';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_total']       = 'The checkout total the order must reach before this order total becomes active.';
+$_['help_total']       = 'Bu sipariş toplamı aktif olmadan önce sipariş toplamına ulaşılması gerekir.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify handling fee total!';
+$_['error_permission'] = 'Uyarı: Hizmet bedeli toplamını düzenleme iznine sahip değilsiniz!';

@@ -1,17 +1,20 @@
 <?php
-$_['heading_title']    = 'Google Analytics';
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
+// Heading
+$_['heading_title']    = 'Google Analitik';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']	   = 'Success: You have modified Google Analytics!';
-$_['text_edit']        = 'Edit Google Analytics';
-$_['text_signup']      = 'Login to your <a href="http://www.google.com/analytics/" target="_blank"><u>Google Analytics</u></a> account and after creating your website profile copy and paste the analytics code into this field.';
-$_['text_default']     = 'Default';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Google Analitik başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Google Analitik Düzenle';
+$_['text_signup']      = '<a href="http://www.google.com/analytics/" target="_blank"><u>Google Analitik</u></a> hesabınızda oturum açın ve mağazanız için bir profil oluşturun. Oluşturduğunuz profile ait kodu buraya yapıştırın.';
+$_['text_default']     = 'Varsayılan';
 
 // Entry
-$_['entry_code']       = 'Google Analytics Code';
-$_['entry_status']     = 'Status';
+$_['entry_code']       = 'Google Analitik Kodu';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Google Analytics!';
-$_['error_code']	   = 'Code required!';
+$_['error_permission'] = 'Uyarı: Google Analitiği düzenleme iznine sahip değilsiniz!';
+$_['error_code']       = 'Kod gerekli!';

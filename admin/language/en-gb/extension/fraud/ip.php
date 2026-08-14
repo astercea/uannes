@@ -1,27 +1,29 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']      = 'Anti-Fraud IP';
+$_['heading_title']      = 'Engelli IP\'ler';
 
 // Text
-$_['text_extension']     = 'Extensions';
-$_['text_success']       = 'Success: You have modified Anti-Fraud IP!';
-$_['text_edit']          = 'Edit Anti-Fraud IP';
-$_['text_ip_add']        = 'Add IP Address';
-$_['text_ip_list']       = 'Fraud IP Address List';
+$_['text_extension']     = 'Eklentiler';
+$_['text_success']       = 'Başarılı: Engelli IP\'ler güncellendi!';
+$_['text_edit']          = 'Engelli IP\'leri Düzenle';
+$_['text_ip_add']        = 'IP Adresi Ekle';
+$_['text_ip_list']       = 'Sahte IP Adres Listesi';
 
 // Column
 $_['column_ip']          = 'IP';
-$_['column_total']       = 'Total Accounts';
-$_['column_date_added']  = 'Date Added';
-$_['column_action']      = 'Action';
+$_['column_total']       = 'Toplam Hesap';
+$_['column_date_added']  = 'Ekleme Tarihi';
+$_['column_action']      = 'Eylem';
 
 // Entry
 $_['entry_ip']           = 'IP';
-$_['entry_status']       = 'Status';
-$_['entry_order_status'] = 'Order Status';
+$_['entry_status']       = 'Durumu';
+$_['entry_order_status'] = 'Sipariş Durumu';
 
 // Help
-$_['help_order_status']  = 'Customers that have a banned IP on their accounts will be assigned this order status and will not be allowed to reach the complete status automatically.';
+$_['help_order_status']  = 'Engelli IP adresine sahip müşteri hesapları sipariş oluşturduklarında bu sipariş durumuna atanacak ve otomatik olarak tamamlandı durumuna ulaşmasına izin verilmeyecektir.';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify Anti-Fraud IP!';
+$_['error_permission']   = 'Uyarı: Engelli IP\'leri düzenleme iznine sahip değilsiniz!';

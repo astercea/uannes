@@ -1,33 +1,33 @@
 <?php
 // Heading
-$_['heading_title']    = 'Image Gallery';
+$_['heading_title']    = 'İmaj Görselleri';
 
 // Text
-$_['text_extension']      = 'Extensions';
-$_['text_success']        = 'Success: You have modified image gallery module!';
-$_['text_success_images'] = 'Success: Image gallery images have been updated!';
-$_['text_edit']           = 'Edit Image Gallery Module';
-$_['text_images']         = 'Manage Images';
-$_['text_home']           = 'Home';
+$_['text_extension']      = 'Eklentiler';
+$_['text_success']        = 'Başarılı: İmaj Görselleri modülü güncellendi!';
+$_['text_success_images'] = 'Başarılı: İmaj görselleri güncellendi!';
+$_['text_edit']           = 'İmaj Görselleri Modülünü Düzenle';
+$_['text_images']         = 'Görselleri Yönet';
+$_['text_home']           = 'Ana Sayfa';
 
 // Entry
-$_['entry_name']       = 'Module Name';
-$_['entry_banner']     = 'Banner';
-$_['entry_width']      = 'Width';
-$_['entry_height']     = 'Height';
-$_['entry_status']     = 'Status';
-$_['entry_image']      = 'Image';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_name']       = 'Modül Adı';
+$_['entry_banner']     = 'Afiş';
+$_['entry_width']      = 'Genişlik';
+$_['entry_height']     = 'Yükseklik';
+$_['entry_status']     = 'Durum';
+$_['entry_image']      = 'Görsel';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Button
-$_['button_image_add'] = 'Add Image';
-$_['button_remove']    = 'Remove';
-$_['button_save']      = 'Save';
-$_['button_cancel']    = 'Cancel';
+$_['button_image_add'] = 'Görsel Ekle';
+$_['button_remove']    = 'Kaldır';
+$_['button_save']      = 'Kaydet';
+$_['button_cancel']    = 'İptal';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify image gallery module!';
-$_['error_name']       = 'Module Name must be between 3 and 64 characters!';
-$_['error_width']      = 'Width required!';
-$_['error_height']     = 'Height required!';
-$_['error_banner']     = 'Image gallery banner was not found!';
+$_['error_permission'] = 'Uyarı: İmaj Görselleri modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
+$_['error_width']      = 'Genişlik gerekli!';
+$_['error_height']     = 'Yükseklik gerekli!';
+$_['error_banner']     = 'İmaj Görselleri afişi bulunamadı!';

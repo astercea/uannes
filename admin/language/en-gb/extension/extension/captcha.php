@@ -1,15 +1,15 @@
 <?php
 // Heading
-$_['heading_title']    = 'Captchas';
+$_['heading_title']    = 'Doğrulamalar';
 
 // Text
-$_['text_success']     = 'Success: You have modified captchas!';
-$_['text_list']        = 'Captcha List';
+$_['text_success']     = 'Başarılı: Doğrulamalar başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Doğrulama Listesi';
 
 // Column
-$_['column_name']      = 'Captcha Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Doğrulama Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify captchas!';
+$_['error_permission'] = 'Uyarı: Doğrulamaları düzenleme iznine sahip değilsiniz!';

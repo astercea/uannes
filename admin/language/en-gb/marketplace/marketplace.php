@@ -1,74 +1,75 @@
 <?php
+
 // Heading
-$_['heading_title']      = 'Extension Marketplace';
+$_['heading_title']      = 'Pazaryeri';
 
 // Text
-$_['text_success']       = 'Success: You have modified extensions!';
-$_['text_list']          = 'Extension List';
-$_['text_filter']        = 'Filter';
-$_['text_search']        = 'Search for extensions and themes';
-$_['text_category']      = 'Categories';
-$_['text_all']           = 'All';
-$_['text_theme']         = 'Themes';
-$_['text_marketplace']   = 'Marketplaces';
-$_['text_language']      = 'Languages';
-$_['text_payment']       = 'Payment';
-$_['text_shipping']      = 'Shipping';
-$_['text_module']        = 'Modules';
-$_['text_total']         = 'Order Totals';
-$_['text_feed']          = 'Feeds';
-$_['text_report']        = 'Reports';
-$_['text_other']         = 'Other';
-$_['text_free']          = 'Free';
-$_['text_paid']          = 'Paid';
-$_['text_purchased']     = 'Purchased';
-$_['text_date_modified'] = 'Date Modified';
-$_['text_date_added']    = 'Date Added';
-$_['text_rating']        = 'Rating';
-$_['text_reviews']       = 'reviews';
-$_['text_compatibility'] = 'Compatibility';
-$_['text_downloaded']    = 'Downloaded';
-$_['text_member_since']  = 'Member since:';
-$_['text_price']         = 'Price';
-$_['text_partner']       = 'Developed by OpenCart Partner';
-$_['text_support']       = '12 Months free support';
-$_['text_documentation'] = 'Documentation Included';
-$_['text_sales']         = 'Sales';
-$_['text_comment']       = 'Comments';
-$_['text_download']      = 'Downloading';
-$_['text_install']       = 'Installing';
-$_['text_comment_add']   = 'Leave your comment';
-$_['text_write']         = 'Write your comment here..';
-$_['text_purchase']      = 'Please confirm who you are!';
-$_['text_pin']           = 'Please enter your 4 digit PIN number. This PIN number is to protect your account.';
-$_['text_secure']        = 'Do not give your PIN to any one including developers. If you require an extension seller to install an extension for you then you should email them the required extension.';
-$_['text_name']          = 'Download Name';
-$_['text_progress']      = 'Progress';
-$_['text_available']     = 'Available Installs';
-$_['text_action']        = 'Action';
-$_['text_see_more']      = 'see more replies...';
+$_['text_success']       = 'Başarılı: Eklentiler başarılı bir şekilde değiştirildi!';
+$_['text_list']          = 'Eklenti Listesi';
+$_['text_filter']        = 'Filtre';
+$_['text_search']        = 'Uzantıları ve temaları ara';
+$_['text_category']      = 'Kategoriler';
+$_['text_all']           = 'Tümü';
+$_['text_theme']         = 'Temalar';
+$_['text_marketplace']   = 'Pazaryerleri';
+$_['text_language']      = 'Diller';
+$_['text_payment']       = 'Ödeme Methodları';
+$_['text_shipping']      = 'Kargo Methodları';
+$_['text_module']        = 'Modüller';
+$_['text_total']         = 'Sipariş Toplamları';
+$_['text_feed']          = 'Beslemeler';
+$_['text_report']        = 'Raporlar';
+$_['text_other']         = 'Diğerleri';
+$_['text_free']          = 'Ücretsiz';
+$_['text_paid']          = 'Ücretli';
+$_['text_purchased']     = 'Satın Alındı';
+$_['text_date_modified'] = 'Güncelleme Tarihi';
+$_['text_date_added']    = 'Ekleme Tarihi';
+$_['text_rating']        = 'Oylama';
+$_['text_reviews']       = 'yorum';
+$_['text_compatibility'] = 'Uyumluluk';
+$_['text_downloaded']    = 'İndirildi';
+$_['text_member_since']  = 'Üyelik tarihi:';
+$_['text_price']         = 'Fiyatı';
+$_['text_partner']       = 'OpenCart Ortağı tarafından geliştirildi';
+$_['text_support']       = '12 Ay Ücretsiz Destek';
+$_['text_documentation'] = 'Dokümantasyon Eklendi';
+$_['text_sales']         = 'Satışlar';
+$_['text_comment']       = 'Yorumlar';
+$_['text_download']      = 'İndiriliyor';
+$_['text_install']       = 'Kuruluyor';
+$_['text_comment_add']   = 'Yorum yazın';
+$_['text_write']         = 'Yorumunuzu buraya yazınız..';
+$_['text_purchase']      = 'Lütfen kim olduğunuzu teyit edin!';
+$_['text_pin']           = 'Lütfen 4 basamaklı PIN numaranızı giriniz. Bu PIN numarası, hesabınızı korumak içindir.';
+$_['text_secure']        = 'PINi geliştiriciler dahil herhangi biriyle paylaşmayın. Bir geliştiricinin sizin için bir uzantı kurmasını istiyorsanız, onlara gerekli uzantıyı e-postayla göndermelisin.';
+$_['text_name']          = 'Dosya Adı';
+$_['text_progress']      = 'İlerleme';
+$_['text_available']     = 'Mevcut Dosyalar';
+$_['text_action']        = 'Eylem';
+$_['text_see_more']      = 'daha fazla yanıt gör...';
 
 // Entry
 $_['entry_pin']          = 'PIN';
 
 // Tab
-$_['tab_description']    = 'Description';
-$_['tab_documentation']  = 'Documentation';
-$_['tab_download']       = 'Download';
-$_['tab_comment']        = 'Comment';
+$_['tab_description']    = 'Açıklama';
+$_['tab_documentation']  = 'Dokümantasyon';
+$_['tab_download']       = 'Dosyalar';
+$_['tab_comment']        = 'Yorum';
 
 // Button
-$_['button_opencart']    = 'Marketplace API';
-$_['button_purchase']    = 'Purchase';
-$_['button_view_all']    = 'View all extensions';
-$_['button_get_support'] = 'Get Support';
-$_['button_comment']     = 'Comment';
-$_['button_reply']       = 'Reply';
-$_['button_refresh']     = 'Refresh';
+$_['button_opencart']    = 'Pazaryeri API';
+$_['button_purchase']    = 'Satın Al';
+$_['button_view_all']    = 'Tüm Uzantıları Göster';
+$_['button_get_support'] = 'Destek Al';
+$_['button_comment']     = 'Yorum';
+$_['button_reply']       = 'Cevapla';
+$_['button_refresh']     = 'Yenile';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify extensions!';
-$_['error_opencart']     = 'Warning: You must enter your OpenCart API information before you can make any purchases!';
-$_['error_install']      = 'Extension installation taking place please wait a few seconds before trying to install!';
-$_['error_purchase']     = 'Extension could not be purchased!';
-$_['error_download']     = 'Extension could not be downloaded!';
+$_['error_permission']   = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
+$_['error_opencart']     = 'Uyarı: Satın alma işlemi yapabilmek için OpenCart API bilgilerinizi girmelisiniz!';
+$_['error_install']      = 'Uzantı kurulumu gerçekleşiyor. Lütfen yüklemeye çalışmadan önce birkaç saniye bekleyin!';
+$_['error_purchase']     = 'Uzantı satın alınamadı!';
+$_['error_download']     = 'Uzantı indirilemedi!';

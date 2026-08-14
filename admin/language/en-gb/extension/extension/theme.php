@@ -1,15 +1,15 @@
 <?php
 // Heading
-$_['heading_title']    = 'Themes';
+$_['heading_title']    = 'Temalar';
 
 // Text
-$_['text_success']     = 'Success: You have modified themes!';
-$_['text_list']        = 'Theme List';
+$_['text_success']     = 'Başarılı: Temalar başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Tema Listesi';
 
 // Column
-$_['column_name']      = 'Theme Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Tema Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify themes!';
+$_['error_permission'] = 'Uyarı: Temaları düzenleme iznine sahip değilsiniz!';

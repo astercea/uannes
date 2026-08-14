@@ -18,7 +18,7 @@ $_['text_no']               = 'Hayır';
 $_['text_none']             = ' --- Yok --- ';
 $_['text_select']           = 'Seçiniz';
 $_['text_all_zones']        = 'Tüm Şehirler';
-$_['text_pagination']       = 'Gösterilen: %d ile %d arası, toplam: %d (%d Sayfa)';
+$_['text_pagination']       = '%d / %d';
 $_['text_loading']          = 'Yükleniyor...';
 $_['text_no_results']       = 'Gösterilecek sonuç yok!';
 

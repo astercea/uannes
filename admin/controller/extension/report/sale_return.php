@@ -189,6 +189,7 @@ class ControllerExtensionReportSaleReturn extends Controller {
 		$data['filter_date_end'] = $filter_date_end;
 		$data['filter_group'] = $filter_group;
 		$data['filter_return_status_id'] = $filter_return_status_id;
+		$data['user_token'] = $this->session->data['user_token'];
 		
 		return $this->load->view('extension/report/sale_return_info', $data);
 	}

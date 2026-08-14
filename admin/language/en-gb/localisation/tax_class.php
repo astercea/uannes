@@ -1,32 +1,34 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Tax Classes';
+$_['heading_title']     = 'Vergi Sınıfları';
 
 // Text
-$_['text_success']      = 'Success: You have modified tax classes!';
-$_['text_list']         = 'Tax Class List';
-$_['text_add']          = 'Add Tax Class';
-$_['text_edit']         = 'Edit Tax Class';
-$_['text_tax_class']    = 'Tax Class';
-$_['text_tax_rate']     = 'Tax Rates';
-$_['text_shipping']     = 'Shipping Address';
-$_['text_payment']      = 'Payment Address';
-$_['text_store']        = 'Store Address';
+$_['text_success']      = 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Vergi Sınıfı Listesi';
+$_['text_add']          = 'Vergi Sınıfı Ekle';
+$_['text_edit']         = 'Vergi Sınıfı Düzenle';
+$_['text_tax_class']    = 'Vergi Sınıfları';
+$_['text_tax_rate']     = 'Vergi Oranları';
+$_['text_shipping']     = 'Teslimat Adresi';
+$_['text_payment']      = 'Fatura Adresi';
+$_['text_store']        = 'Mağaza Adresi';
 
 // Column
-$_['column_title']      = 'Tax Class Title';
-$_['column_action']     = 'Action';
+$_['column_title']      = 'Vergi Sınıfı Başlığı';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_title']       = 'Tax Class Title';
-$_['entry_description'] = 'Description';
-$_['entry_rate']        = 'Tax Rate';
-$_['entry_based']       = 'Based On';
-$_['entry_geo_zone']    = 'Geo Zone';
-$_['entry_priority']    = 'Priority';
+$_['entry_title']       = 'Vergi Sınıfı Başlığı';
+$_['entry_description'] = 'Açıklama';
+$_['entry_rate']        = 'Vergi Oranı';
+$_['entry_based']       = 'Temel';
+$_['entry_geo_zone']    = 'Bölge';
+$_['entry_priority']    = 'Öncelik';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify tax classes!';
-$_['error_title']       = 'Tax Class Title must be between 3 and 32 characters!';
-$_['error_description'] = 'Description must be between 3 and 255 characters!';
-$_['error_product']     = 'Warning: This tax class cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']  = 'Uyarı: Vergi sınıflarını düzenleme iznine sahip değilsiniz!';
+$_['error_title']       = 'Vergi sınıf başlığı 3 ile 32 karakter arasında olmalı!';
+$_['error_description'] = 'Açıklama 3 ile 255 karakter arasında olmalı!';
+$_['error_product']     = 'Uyarı: Bu vergi oranını silemezsiniz, %s ürün tarafından kullanılıyor!';

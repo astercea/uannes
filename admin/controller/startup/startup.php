@@ -24,15 +24,18 @@ class ControllerStartupStartup extends Controller {
 		$this->config->set('template_cache', $this->config->get('developer_theme'));
 				
 		// Language
-		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE code = '" . $this->db->escape($this->config->get('config_admin_language')) . "'");
+		$admin_language = $this->config->get('config_admin_language') ? $this->config->get('config_admin_language') : 'tr-tr';
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE code = '" . $this->db->escape($admin_language) . "'");
 		
 		if ($query->num_rows) {
 			$this->config->set('config_language_id', $query->row['language_id']);
+		} else {
+			$this->config->set('config_language_id', 2);
 		}
 		
 		// Language
-		$language = new Language($this->config->get('config_admin_language'));
-		$language->load($this->config->get('config_admin_language'));
+		$language = new Language($admin_language);
+		$language->load($admin_language);
 		$this->registry->set('language', $language);
 		
 		// Customer

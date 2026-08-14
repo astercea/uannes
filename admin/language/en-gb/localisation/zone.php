@@ -1,30 +1,32 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']          = 'Zones';
+$_['heading_title']          = 'Şehirler';
 
 // Text
-$_['text_success']           = 'Success: You have modified zones!';
-$_['text_list']              = 'Zone List';
-$_['text_add']               = 'Add Zone';
-$_['text_edit']              = 'Edit Zone';
+$_['text_success']           = 'Başarılı: Şehir başarılı bir şekilde değiştirildi!';
+$_['text_list']              = 'Şehir Listesi';
+$_['text_add']               = 'Şehir Ekle';
+$_['text_edit']              = 'Şehir Düzenle';
 
 // Column
-$_['column_name']            = 'Zone Name';
-$_['column_code']            = 'Zone Code';
-$_['column_country']         = 'Country';
-$_['column_action']          = 'Action';
+$_['column_name']            = 'Şehir Adı';
+$_['column_code']            = 'Şehir Kodu';
+$_['column_country']         = 'Ülke';
+$_['column_action']          = 'Eylem';
 
 // Entry
-$_['entry_name']             = 'Zone Name';
-$_['entry_code']             = 'Zone Code';
-$_['entry_country']          = 'Country';
-$_['entry_status']           = 'Status';
+$_['entry_name']             = 'Şehir Adı';
+$_['entry_code']             = 'Şehir Kodu';
+$_['entry_country']          = 'Ülke';
+$_['entry_status']           = 'Durumu';
 
 // Error
-$_['error_permission']       = 'Warning: You do not have permission to modify zones!';
-$_['error_name']             = 'Zone Name must be between 1 and 128 characters!';
-$_['error_default']          = 'Warning: This zone cannot be deleted as it is currently assigned as the default store zone!';
-$_['error_store']            = 'Warning: This zone cannot be deleted as it is currently assigned to %s stores!';
-$_['error_address']          = 'Warning: This zone cannot be deleted as it is currently assigned to %s address book entries!';
-$_['error_affiliate']        = 'Warning: This zone cannot be deleted as it is currently assigned to %s affiliates!';
-$_['error_zone_to_geo_zone'] = 'Warning: This zone cannot be deleted as it is currently assigned to %s zones to geo zones!';
+$_['error_permission']       = 'Uyarı: Şehirleri düzenleme iznine sahip değilsiniz!';
+$_['error_name']             = 'Şehir Adı 1 ile 128 karakter arasında olmalı!';
+$_['error_default']          = 'Uyarı: Bu şehri silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_store']            = 'Uyarı: Bu şehri silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_address']          = 'Uyarı: Bu şehri silemezsiniz, %s adres defteri tarafından kullanılıyor!';
+$_['error_affiliate']        = 'Uyarı: Bu şehri silemezsiniz, %s ortak tarafından kullanılıyor!';
+$_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz, %s bölge tarafından kullanılıyor!';

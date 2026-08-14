@@ -1,0 +1,999 @@
+/* ==========================================================================
+   UANNES LUXURY ADMIN THEME — FULL WARM CREAM & MIDNIGHT NAVY
+   Modern, elegant, high-end dashboard design matching Uannes brand identity.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --uannes-navy: #1a1a50;
+  --uannes-navy-light: #2c2c78;
+  --uannes-navy-subtle: rgba(26, 26, 80, 0.04);
+  
+  --uannes-cream: #f8f6f2;
+  --uannes-cream-card: #fbf9f4;
+  --uannes-cream-subtle: #fcfaf7;
+  --uannes-cream-dark: #eeeae0;
+  --uannes-cream-border: rgba(26, 26, 80, 0.1);
+  
+  --uannes-gold: #c5a059;
+  --uannes-gold-hover: #b88f44;
+  
+  --uannes-text: #1a1a50;
+  --uannes-text-muted: #6e6e87;
+  --uannes-border: rgba(26, 26, 80, 0.1);
+  
+  --uannes-radius: 8px;
+  --uannes-radius-lg: 12px;
+  --uannes-radius-sm: 6px;
+  
+  --uannes-shadow-sm: 0 2px 8px rgba(26, 26, 80, 0.03);
+  --uannes-shadow: 0 4px 20px rgba(26, 26, 80, 0.04), 0 1px 3px rgba(26, 26, 80, 0.02);
+  --uannes-shadow-lg: 0 8px 30px rgba(26, 26, 80, 0.08);
+}
+
+/* Base & Typography */
+html, body {
+  background-color: var(--uannes-cream) !important;
+  color: var(--uannes-text);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#container {
+  background-color: var(--uannes-cream) !important;
+}
+
+h1, h2, h3, h4, h5, h6, .page-header h1 {
+  color: var(--uannes-navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--uannes-navy);
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+a:hover, a:focus {
+  color: var(--uannes-navy-light);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HEADER (CREAM & CENTERED LOGO)
+   ========================================================================== */
+#header {
+  background: var(--uannes-cream) !important;
+  background-color: var(--uannes-cream) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  min-height: 64px !important;
+  height: 64px !important;
+  box-shadow: 0 2px 10px rgba(26, 26, 80, 0.03) !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.uannes-header-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  height: 64px !important;
+  min-height: 64px !important;
+  padding: 0 24px !important;
+  background: var(--uannes-cream) !important;
+}
+
+.uannes-header-left {
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+}
+
+.uannes-header-center {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  width: auto !important;
+}
+
+.uannes-header-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 1 !important;
+}
+
+.uannes-brand-wrap {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+}
+
+.uannes-brand-title {
+  color: var(--uannes-navy) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.28em !important;
+  text-indent: 0.28em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  display: block !important;
+}
+
+.uannes-brand-subtitle {
+  color: var(--uannes-gold) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 9.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  text-indent: 0.2em !important;
+  text-transform: uppercase !important;
+  margin-top: 3px !important;
+  opacity: 0.9 !important;
+}
+
+#button-menu {
+  display: none !important;
+}
+
+#header .navbar-nav {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#header .navbar-right {
+  float: none !important;
+  margin: 0 !important;
+}
+
+#header .navbar-right > li {
+  border: none !important;
+  margin-left: 6px;
+}
+
+#header .nav > li > a {
+  color: var(--uannes-navy) !important;
+  padding: 8px 14px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+  border-radius: var(--uannes-radius-sm) !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+#header .nav > li > a:hover,
+#header .nav > li > a:focus,
+#header .nav > li.open > a {
+  background: rgba(26, 26, 80, 0.06) !important;
+  color: var(--uannes-navy) !important;
+}
+
+#header #user-profile {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  margin-right: 8px !important;
+  border: 1px solid var(--uannes-border) !important;
+}
+
+#header .dropdown-menu {
+  background: #ffffff !important;
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius) !important;
+  box-shadow: var(--uannes-shadow-lg) !important;
+  padding: 8px 0 !important;
+  min-width: 200px !important;
+}
+
+#header .dropdown-menu > li > a {
+  color: var(--uannes-navy) !important;
+  padding: 8px 18px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+#header .dropdown-menu > li > a:hover {
+  background: var(--uannes-navy-subtle) !important;
+  color: var(--uannes-navy) !important;
+}
+
+#header .dropdown-header {
+  color: var(--uannes-gold) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 6px 18px !important;
+}
+
+/* ==========================================================================
+   SIDEBAR (COLUMN-LEFT — FULL WARM CREAM)
+   ========================================================================== */
+#column-left {
+  background: var(--uannes-cream) !important;
+  background-color: var(--uannes-cream) !important;
+  width: 235px !important;
+  border-right: 1px solid var(--uannes-border) !important;
+  padding-top: 64px !important;
+  z-index: 99 !important;
+}
+
+#column-left #navigation,
+#navigation {
+  background: var(--uannes-cream-dark) !important;
+  background-color: var(--uannes-cream-dark) !important;
+  color: var(--uannes-navy) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.14em !important;
+  padding: 14px 18px !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  display: block !important;
+}
+
+#menu {
+  margin-bottom: 20px !important;
+}
+
+#menu > li {
+  border-bottom: 1px solid rgba(26, 26, 80, 0.06) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#menu > li > a {
+  color: var(--uannes-navy) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  padding: 12px 18px !important;
+  border-left: 3px solid transparent !important;
+  border-bottom: none !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#menu > li > a i,
+#menu > li > a > i {
+  color: var(--uannes-navy) !important;
+  font-size: 15px !important;
+  width: 22px !important;
+  margin-right: 8px !important;
+  opacity: 0.8 !important;
+}
+
+#menu > li > a:hover {
+  background: rgba(26, 26, 80, 0.04) !important;
+  background-color: rgba(26, 26, 80, 0.04) !important;
+  color: var(--uannes-navy) !important;
+}
+
+#menu > li.active > a,
+#menu > li > a.parent:not(.collapsed) {
+  background: rgba(26, 26, 80, 0.07) !important;
+  background-color: rgba(26, 26, 80, 0.07) !important;
+  color: var(--uannes-navy) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--uannes-navy) !important;
+}
+
+#menu li a.parent:after,
+#menu li a.collapsed:after {
+  color: var(--uannes-navy) !important;
+  opacity: 0.5 !important;
+  margin-left: auto !important;
+}
+
+#menu > li > ul {
+  background: var(--uannes-cream-dark) !important;
+  background-color: var(--uannes-cream-dark) !important;
+  padding: 4px 0 !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+}
+
+#menu li li a {
+  color: #444460 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 8px 18px 8px 42px !important;
+  font-size: 12.5px !important;
+  transition: all 0.15s ease !important;
+}
+
+#menu li li a:before {
+  color: rgba(26, 26, 80, 0.4) !important;
+}
+
+#menu li li a:hover {
+  color: var(--uannes-navy) !important;
+  background: rgba(26, 26, 80, 0.05) !important;
+  background-color: rgba(26, 26, 80, 0.05) !important;
+  padding-left: 46px !important;
+  font-weight: 600 !important;
+}
+
+#menu li li.active > a {
+  color: var(--uannes-navy) !important;
+  font-weight: 700 !important;
+  background: rgba(26, 26, 80, 0.08) !important;
+  background-color: rgba(26, 26, 80, 0.08) !important;
+}
+
+/* Sidebar Stats Section (Cream Theme) */
+#column-left #stats,
+#stats {
+  background: var(--uannes-cream-dark) !important;
+  background-color: var(--uannes-cream-dark) !important;
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius) !important;
+  margin: 15px !important;
+  padding: 14px 16px !important;
+}
+
+#column-left #stats ul,
+#stats ul {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+#column-left #stats li,
+#stats li {
+  margin-bottom: 10px !important;
+  color: var(--uannes-navy) !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+}
+
+#column-left #stats li > div,
+#stats li > div {
+  color: var(--uannes-navy) !important;
+  font-weight: 600 !important;
+}
+
+#column-left #stats .progress,
+#stats .progress {
+  height: 6px !important;
+  background: rgba(26, 26, 80, 0.1) !important;
+  background-color: rgba(26, 26, 80, 0.1) !important;
+  border-radius: 3px !important;
+  margin-top: 5px !important;
+  margin-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+#stats .progress-bar-success {
+  background-color: #23633e !important;
+}
+
+#stats .progress-bar-warning {
+  background-color: #c5a059 !important;
+}
+
+#stats .progress-bar-danger {
+  background-color: #8b263e !important;
+}
+
+/* ==========================================================================
+   CONTENT AREA & PAGE HEADERS
+   ========================================================================== */
+#content {
+  padding-bottom: 50px !important;
+  background-color: var(--uannes-cream) !important;
+}
+
+.page-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  margin: 0 0 24px 0 !important;
+  padding: 24px 0 16px 0 !important;
+}
+
+.page-header h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #1a1a50 !important;
+  font-size: 26px !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+ul.breadcrumb {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 0 0 24px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+ul.breadcrumb > li {
+  font-size: 12px !important;
+  color: var(--uannes-text-muted) !important;
+  font-weight: 400 !important;
+  display: inline-block !important;
+}
+
+ul.breadcrumb > li a {
+  position: relative !important;
+  display: inline-block !important;
+  color: var(--uannes-text-muted) !important;
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: color 0.25s ease !important;
+}
+
+ul.breadcrumb > li a:focus,
+ul.breadcrumb > li a:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+ul.breadcrumb > li a::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 1px !important;
+  background-color: var(--uannes-navy) !important;
+  transition: width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transform: translateX(-50%) !important;
+}
+
+ul.breadcrumb > li a:hover {
+  color: var(--uannes-navy) !important;
+  text-decoration: none !important;
+}
+
+ul.breadcrumb > li a:hover::after {
+  width: 100% !important;
+}
+
+ul.breadcrumb > li + li:before {
+  color: rgba(26, 26, 80, 0.35) !important;
+  content: "›" !important;
+  padding: 0 8px !important;
+  font-size: 13px !important;
+}
+
+/* ==========================================================================
+   PANELS & CARDS (CREAM & WHITE)
+   ========================================================================== */
+.panel {
+  background: #ffffff !important;
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-lg) !important;
+  box-shadow: var(--uannes-shadow) !important;
+  margin-bottom: 24px !important;
+}
+
+.panel-default {
+  border-color: var(--uannes-border) !important;
+}
+
+.panel-heading {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  border-top-left-radius: var(--uannes-radius-lg) !important;
+  border-top-right-radius: var(--uannes-radius-lg) !important;
+  padding: 16px 20px !important;
+}
+
+.panel-title {
+  color: var(--uannes-navy) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.panel-title i {
+  color: var(--uannes-gold) !important;
+  margin-right: 6px !important;
+}
+
+.panel-body {
+  padding: 22px 24px !important;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  border-radius: var(--uannes-radius-sm) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  padding: 7px 14px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--uannes-shadow-sm) !important;
+}
+
+.btn-primary {
+  background-color: var(--uannes-navy) !important;
+  border-color: var(--uannes-navy) !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: var(--uannes-navy-light) !important;
+  border-color: var(--uannes-navy-light) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 26, 80, 0.2) !important;
+}
+
+.btn-default {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(26, 26, 80, 0.2) !important;
+  color: var(--uannes-navy) !important;
+}
+
+.btn-default:hover, .btn-default:focus {
+  background-color: var(--uannes-cream) !important;
+  border-color: var(--uannes-navy) !important;
+  color: var(--uannes-navy) !important;
+}
+
+.btn-success {
+  background-color: #23633e !important;
+  border-color: #23633e !important;
+  color: #ffffff !important;
+}
+
+.btn-success:hover {
+  background-color: #1a4f31 !important;
+}
+
+.btn-danger {
+  background-color: #8b263e !important;
+  border-color: #8b263e !important;
+  color: #ffffff !important;
+}
+
+.btn-danger:hover {
+  background-color: #721c30 !important;
+}
+
+.btn-info {
+  background-color: #2c4c64 !important;
+  border-color: #2c4c64 !important;
+  color: #ffffff !important;
+}
+
+.btn-warning {
+  background-color: var(--uannes-gold) !important;
+  border-color: var(--uannes-gold) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+.form-control {
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-sm) !important;
+  background-color: #ffffff !important;
+  color: var(--uannes-navy) !important;
+  font-size: 13px !important;
+  height: 36px !important;
+  padding: 6px 12px !important;
+  box-shadow: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.form-control:focus {
+  border-color: var(--uannes-navy) !important;
+  box-shadow: 0 0 0 3px rgba(26, 26, 80, 0.08) !important;
+  outline: none !important;
+}
+
+textarea.form-control {
+  height: auto !important;
+}
+
+.control-label {
+  color: var(--uannes-navy) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding-top: 8px !important;
+}
+
+.help-block {
+  color: var(--uannes-text-muted) !important;
+  font-size: 11.5px !important;
+  margin-top: 4px !important;
+}
+
+.input-group-addon {
+  background-color: var(--uannes-cream) !important;
+  border: 1px solid var(--uannes-border) !important;
+  color: var(--uannes-navy) !important;
+  border-radius: var(--uannes-radius-sm) !important;
+}
+
+.well {
+  background-color: var(--uannes-cream-card) !important;
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-sm) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ==========================================================================
+   TABS
+   ========================================================================== */
+.nav-tabs {
+  border-bottom: 2px solid rgba(26, 26, 80, 0.08) !important;
+  margin-bottom: 20px !important;
+}
+
+.nav-tabs > li > a {
+  border: none !important;
+  color: var(--uannes-text-muted) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 10px 18px !important;
+  border-radius: 0 !important;
+  position: relative !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-tabs > li > a i {
+  margin-right: 6px !important;
+}
+
+.nav-tabs > li > a:hover {
+  background: transparent !important;
+  color: var(--uannes-navy) !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  background: transparent !important;
+  color: var(--uannes-navy) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--uannes-navy) !important;
+  margin-bottom: -2px !important;
+}
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+.table-responsive {
+  border-radius: var(--uannes-radius) !important;
+  border: 1px solid var(--uannes-border) !important;
+  background: #ffffff !important;
+}
+
+.table {
+  margin-bottom: 0 !important;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td {
+  background-color: var(--uannes-cream) !important;
+  border-bottom: 2px solid var(--uannes-border) !important;
+  color: var(--uannes-navy) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 12px 14px !important;
+}
+
+.table > thead > tr > th a,
+.table > thead > tr > td a {
+  color: var(--uannes-navy) !important;
+}
+
+.table > tbody > tr > td {
+  border-top: 1px solid rgba(26, 26, 80, 0.05) !important;
+  padding: 12px 14px !important;
+  vertical-align: middle !important;
+  color: #2b2b3d !important;
+  font-size: 13px !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(247, 245, 240, 0.4) !important;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: rgba(26, 26, 80, 0.03) !important;
+}
+
+/* Status Badges */
+.label {
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 4px 10px !important;
+  letter-spacing: 0.02em !important;
+}
+
+.label-success {
+  background-color: rgba(35, 99, 62, 0.12) !important;
+  color: #23633e !important;
+  border: 1px solid rgba(35, 99, 62, 0.25) !important;
+}
+
+.label-danger {
+  background-color: rgba(139, 38, 62, 0.12) !important;
+  color: #8b263e !important;
+  border: 1px solid rgba(139, 38, 62, 0.25) !important;
+}
+
+.label-warning {
+  background-color: rgba(197, 160, 89, 0.15) !important;
+  color: #9c7832 !important;
+  border: 1px solid rgba(197, 160, 89, 0.3) !important;
+}
+
+/* ==========================================================================
+   DASHBOARD TILES (CREAM LUXURY PANELS)
+   ========================================================================== */
+.tile {
+  background: #ffffff !important;
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-lg) !important;
+  box-shadow: var(--uannes-shadow) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+}
+
+.tile-heading {
+  background: var(--uannes-cream) !important;
+  color: var(--uannes-navy) !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 12px 18px !important;
+}
+
+.tile-heading span {
+  color: var(--uannes-gold) !important;
+}
+
+.tile-body {
+  background: #ffffff !important;
+  padding: 18px 20px !important;
+}
+
+.tile-body h2 {
+  color: var(--uannes-navy) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.tile-body i {
+  color: var(--uannes-gold) !important;
+  font-size: 38px !important;
+  opacity: 0.8 !important;
+}
+
+.tile-footer {
+  padding: 9px 18px !important;
+  background: var(--uannes-cream) !important;
+  border-top: 1px solid var(--uannes-border) !important;
+  font-size: 11.5px !important;
+}
+
+.tile-footer a {
+  color: var(--uannes-navy) !important;
+  font-weight: 600 !important;
+}
+
+.tile-footer a:hover {
+  color: var(--uannes-gold) !important;
+}
+
+.tile-primary, .tile-success, .tile-warning, .tile-danger {
+  background: #ffffff !important;
+}
+
+/* ==========================================================================
+   ALERTS & MISC
+   ========================================================================== */
+.alert {
+  border-radius: var(--uannes-radius) !important;
+  font-size: 13px !important;
+  padding: 12px 18px !important;
+  border-width: 1px !important;
+}
+
+.alert-success {
+  background-color: #edf7f0 !important;
+  border-color: #b7e4c7 !important;
+  color: #1e5e38 !important;
+}
+
+.alert-danger {
+  background-color: #fdf0f2 !important;
+  border-color: #f5c2cb !important;
+  color: #842034 !important;
+}
+
+.alert-info {
+  background-color: #edf3f8 !important;
+  border-color: #bee0ec !important;
+  color: #1c4b66 !important;
+}
+
+.img-thumbnail {
+  border-radius: var(--uannes-radius) !important;
+  border: 1px solid var(--uannes-border) !important;
+  padding: 4px !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+.img-thumbnail:hover {
+  border-color: var(--uannes-navy) !important;
+  box-shadow: 0 4px 12px rgba(26, 26, 80, 0.12) !important;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: var(--uannes-navy) !important;
+  border-color: var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-sm) !important;
+  margin: 0 2px !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span {
+  background-color: var(--uannes-navy) !important;
+  border-color: var(--uannes-navy) !important;
+  color: #ffffff !important;
+}
+
+/* Autocomplete Dropdown */
+.dropdown-menu {
+  border-radius: var(--uannes-radius) !important;
+  border: 1px solid var(--uannes-border) !important;
+  box-shadow: var(--uannes-shadow-lg) !important;
+  padding: 6px 0 !important;
+}
+
+.dropdown-menu > li > a {
+  padding: 8px 16px !important;
+  color: var(--uannes-navy) !important;
+  font-size: 12.5px !important;
+  transition: all 0.15s ease !important;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a {
+  background-color: var(--uannes-navy-subtle) !important;
+  color: var(--uannes-navy) !important;
+}
+
+/* Summernote Editor */
+.note-editor.note-frame {
+  border: 1px solid var(--uannes-border) !important;
+  border-radius: var(--uannes-radius-sm) !important;
+  box-shadow: none !important;
+}
+
+.note-editor.note-frame .note-toolbar {
+  background-color: var(--uannes-cream) !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  border-top-left-radius: var(--uannes-radius-sm) !important;
+  border-top-right-radius: var(--uannes-radius-sm) !important;
+  padding: 6px !important;
+}
+
+.note-editor.note-frame .note-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(26, 26, 80, 0.15) !important;
+  color: var(--uannes-navy) !important;
+  border-radius: 4px !important;
+}
+
+/* Modals & Filemanager Popup */
+.modal-content {
+  border-radius: var(--uannes-radius-lg) !important;
+  border: 1px solid var(--uannes-border) !important;
+  box-shadow: var(--uannes-shadow-lg) !important;
+}
+
+.modal-header,
+#modal-image .modal-header,
+#modal-developer .modal-header {
+  background: var(--uannes-cream) !important;
+  color: var(--uannes-navy) !important;
+  border-bottom: 1px solid var(--uannes-border) !important;
+  border-top-left-radius: var(--uannes-radius-lg) !important;
+  border-top-right-radius: var(--uannes-radius-lg) !important;
+  padding: 14px 20px !important;
+}
+
+.modal-title,
+#modal-image .modal-header .modal-title,
+#modal-developer .modal-header .modal-title {
+  color: var(--uannes-navy) !important;
+  font-weight: 600 !important;
+}
+
+.modal-header .close,
+#modal-image .modal-header .close,
+#modal-developer .modal-header .close {
+  color: var(--uannes-navy) !important;
+  opacity: 0.7 !important;
+  text-shadow: none !important;
+}
+
+/* Datetimepicker */
+.bootstrap-datetimepicker-widget {
+  border-radius: var(--uannes-radius) !important;
+  border: 1px solid var(--uannes-border) !important;
+  box-shadow: var(--uannes-shadow-lg) !important;
+  padding: 12px !important;
+}
+
+.bootstrap-datetimepicker-widget table thead th {
+  color: var(--uannes-navy) !important;
+  font-weight: 700 !important;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: var(--uannes-navy) !important;
+  color: #ffffff !important;
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+  border-bottom-color: var(--uannes-gold) !important;
+}
+
+/* Remove Question Mark Tooltip Icons */
+.table thead td span[data-toggle="tooltip"]:after,
+.table thead th span[data-toggle="tooltip"]:after,
+label.control-label span:after,
+label.control-label span[data-toggle="tooltip"]:after,
+.control-label span[data-toggle="tooltip"]:after,
+span[data-toggle="tooltip"]:after {
+  content: none !important;
+  display: none !important;
+}

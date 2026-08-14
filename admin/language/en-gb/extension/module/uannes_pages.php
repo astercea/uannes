@@ -1,55 +1,55 @@
 <?php
 // Heading
-$_['heading_title']          = 'Page & Banner Images';
+$_['heading_title']          = 'Sayfa ve Banner Görselleri';
 
 // Text
-$_['text_extension']         = 'Extensions';
-$_['text_success']           = 'Success: You have modified page & banner images!';
-$_['text_edit']              = 'Manage Page & Banner Images';
+$_['text_extension']         = 'Eklentiler';
+$_['text_success']           = 'Başarılı: Sayfa ve banner görselleri güncellendi!';
+$_['text_edit']              = 'Sayfa ve Banner Görsellerini Yönet';
 
 // Tabs
-$_['tab_home']               = 'Home Banner & Modules';
-$_['tab_hikaye']             = 'Uannes Story';
-$_['tab_kumas']              = 'Fabrics & Textures';
-$_['tab_ozel_uretim']        = 'Custom Production & Bespoke';
+$_['tab_home']               = 'Ana Sayfa Banner & Modüller';
+$_['tab_hikaye']             = 'Uannes\'in Hikayesi';
+$_['tab_kumas']              = 'Kumaş Sanatı & Dokular';
+$_['tab_ozel_uretim']        = 'Özel Üretim & Bespoke';
 
 // Section Titles
-$_['text_section_slider']    = 'Home Model Slider (5 Images)';
-$_['text_section_discover']  = 'Discover Uannes 3-Card Group';
-$_['text_section_hikaye']    = 'Uannes Story Page Images';
-$_['text_section_kumas']     = 'Fabrics Page Images';
-$_['text_section_ozel']      = 'Custom Production Page & Portfolio Images';
+$_['text_section_slider']    = 'Ana Sayfa Model Sliderı (5 Görsel)';
+$_['text_section_discover']  = 'Uannes\'i Keşfet 3\'lü Kart Grubu';
+$_['text_section_hikaye']    = 'Uannes\'in Hikayesi Sayfa Görselleri';
+$_['text_section_kumas']     = 'Kumaş Korpusu Sayfa Görselleri';
+$_['text_section_ozel']      = 'Özel Üretim Sayfa & Portfolyo Görselleri';
 
 // Entry Home
-$_['entry_home_slide_1']     = 'Slider Model Image 1';
-$_['entry_home_slide_2']     = 'Slider Model Image 2';
-$_['entry_home_slide_3']     = 'Slider Model Image 3';
-$_['entry_home_slide_4']     = 'Slider Model Image 4';
-$_['entry_home_slide_5']     = 'Slider Model Image 5';
-$_['entry_discover_hikaye']  = 'Discover: Story Card Image';
-$_['entry_discover_ozel']    = 'Discover: Bespoke Card Image';
-$_['entry_discover_kumas']   = 'Discover: Fabrics Card Image';
+$_['entry_home_slide_1']     = 'Slider Model Görseli 1';
+$_['entry_home_slide_2']     = 'Slider Model Görseli 2';
+$_['entry_home_slide_3']     = 'Slider Model Görseli 3';
+$_['entry_home_slide_4']     = 'Slider Model Görseli 4';
+$_['entry_home_slide_5']     = 'Slider Model Görseli 5';
+$_['entry_discover_hikaye']  = 'Keşfet: Hikaye Kartı Görseli';
+$_['entry_discover_ozel']    = 'Keşfet: Özel Üretim Kartı Görseli';
+$_['entry_discover_kumas']   = 'Keşfet: Kumaş Kartı Görseli';
 
 // Entry Hikaye
-$_['entry_hikaye_hero']      = 'Top Hero Banner Image';
-$_['entry_hikaye_atelier']   = 'Atelier Craftsmanship Image';
-$_['entry_hikaye_cta']       = 'Bottom CTA Banner Image';
+$_['entry_hikaye_hero']      = 'Üst Hero Banner Görseli';
+$_['entry_hikaye_atelier']   = 'Atölyede İpek İşçiliği Görseli';
+$_['entry_hikaye_cta']       = 'Alt CTA Koleksiyon Banner Görseli';
 
 // Entry Kumas
-$_['entry_kumas_hero']       = 'Top Hero Banner Image';
-$_['entry_kumas_twill']      = 'Silk Twill Card Image';
-$_['entry_kumas_satin']      = 'Silk Satin Card Image';
-$_['entry_kumas_linen']      = 'Linen-Silk Card Image';
-$_['entry_kumas_cta']        = 'Bottom CTA Banner Image';
+$_['entry_kumas_hero']       = 'Üst Hero Banner Görseli';
+$_['entry_kumas_twill']      = 'İpek Twill Kart Görseli';
+$_['entry_kumas_satin']      = 'İpek Saten Kart Görseli';
+$_['entry_kumas_linen']      = 'Doğal Keten-İpek Kart Görseli';
+$_['entry_kumas_cta']        = 'Alt CTA Banner Görseli';
 
 // Entry Ozel Uretim
-$_['entry_ozel_hero']        = 'Top Hero Banner Image';
-$_['entry_ozel_bespoke']     = 'Atelier Bespoke Craftsmanship Image';
-$_['entry_ozel_gallery_1']   = 'Portfolio 1: Monogram Silk Scarf';
-$_['entry_ozel_gallery_2']   = 'Portfolio 2: Corporate VIP Collection';
-$_['entry_ozel_gallery_3']   = 'Portfolio 3: Bespoke Couture Garment';
-$_['entry_ozel_gallery_4']   = 'Portfolio 4: Hand-rolled Silk Scarf';
-$_['entry_ozel_cta']         = 'Bottom CTA Contact Banner Image';
+$_['entry_ozel_hero']        = 'Üst Hero Banner Görseli';
+$_['entry_ozel_bespoke']     = 'Atölye Zanaatkar İşçilik Görseli';
+$_['entry_ozel_gallery_1']   = 'Portfolyo 1: Monogram İpek Eşarp';
+$_['entry_ozel_gallery_2']   = 'Portfolyo 2: Kurumsal VIP Koleksiyonu';
+$_['entry_ozel_gallery_3']   = 'Portfolyo 3: Özel Dikim Couture Garment';
+$_['entry_ozel_gallery_4']   = 'Portfolyo 4: Limitli Seri Fular';
+$_['entry_ozel_cta']         = 'Alt CTA İletişim Banner Görseli';
 
 // Error
-$_['error_permission']       = 'Warning: You do not have permission to modify page images!';
+$_['error_permission']       = 'Uyarı: Sayfa görsellerini değiştirme yetkiniz yok!';

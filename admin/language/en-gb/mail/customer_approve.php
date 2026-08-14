@@ -1,7 +1,9 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Text
-$_['text_subject'] = '%s - Your Account has been activated!';
-$_['text_welcome'] = 'Welcome and thank you for registering at %s!';
-$_['text_login']   = 'Your account has now been created and you can log in by using your email address and password by visiting our website or at the following URL:';
-$_['text_service'] = 'Upon logging in, you will be able to access other services including reviewing past orders, printing invoices and editing your account information.';
-$_['text_thanks']  = 'Thanks,';
+$_['text_subject']  = '%s - Hesabınız Etkinleştirildi!';
+$_['text_welcome']  = '%s sitemize kayıt olduğunuz için teşekkür ederiz!';
+$_['text_login']    = 'Hesabınız onaylanmıştır. Aşağıdaki adres üzerinden, sitemize kayıtlı e-posta ve şifrenizi kullanarak giriş yapabilirsiniz:';
+$_['text_services'] = 'Giriş yaptıktan sonra, hesap bilgilerinizi düzenleyebilir veya geçmiş siparişlerinizi inceleyebilirsiniz';
+$_['text_thanks']   = 'Teşekkürler,';

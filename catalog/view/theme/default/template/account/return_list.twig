@@ -1,11 +1,180 @@
 {{ header }}
-<div id="account-return" class="container return-page return-page--list">
-  <ul class="breadcrumb return-breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
+<style>
+/* UANNES Customer Return List Page */
+#account-return {
+  margin-top: 30px;
+  margin-bottom: 70px;
+  font-family: 'DM Sans', sans-serif;
+}
 
+.uannes-return-header {
+  text-align: left;
+  border-bottom: 1px solid rgba(26, 26, 80, 0.15);
+  padding-bottom: 18px;
+  margin-bottom: 32px;
+}
+
+.uannes-return-header__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(22px, 2.5vw, 26px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a50;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+}
+
+.uannes-return-header__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(26, 26, 80, 0.7);
+  margin: 0;
+}
+
+/* Empty State Card */
+.uannes-return-empty-card {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 80, 0.08);
+  border-radius: 10px;
+  padding: 55px 25px;
+  text-align: center;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 24px rgba(26, 26, 80, 0.03);
+}
+
+.uannes-return-empty-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #fbf9f4;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a50;
+  font-size: 20px;
+}
+
+.uannes-return-empty-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1a50;
+  margin: 0 0 8px;
+}
+
+.uannes-return-empty-desc {
+  font-size: 13.5px;
+  color: rgba(26, 26, 80, 0.65);
+  margin: 0;
+}
+
+/* Populated Table Card */
+.uannes-return-table-card {
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 80, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 24px rgba(26, 26, 80, 0.03);
+}
+
+.uannes-return-table-card .table {
+  margin-bottom: 0;
+}
+
+.uannes-return-table-card thead th {
+  background: #f8f6f2;
+  color: #1a1a50;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(26, 26, 80, 0.1);
+  padding: 14px 18px;
+}
+
+.uannes-return-table-card tbody td {
+  padding: 16px 18px;
+  vertical-align: middle;
+  font-size: 13.5px;
+  color: #1a1a50;
+  border-top: 1px solid rgba(26, 26, 80, 0.06);
+}
+
+.uannes-return-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background-color: #1a1a50;
+  color: #ffffff;
+}
+
+.uannes-btn-return-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: #f8f6f2;
+  color: #1a1a50;
+  border: 1px solid rgba(26, 26, 80, 0.12);
+  transition: all 0.2s ease;
+}
+
+.uannes-btn-return-view:hover {
+  background: #1a1a50;
+  color: #ffffff;
+  border-color: #1a1a50;
+}
+
+/* Actions */
+.uannes-return-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.uannes-btn-return-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1a1a50;
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 12px 34px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid #1a1a50;
+  box-shadow: 0 4px 14px rgba(26, 26, 80, 0.12);
+}
+
+.uannes-btn-return-continue:hover {
+  background-color: #c5a059;
+  border-color: #c5a059;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.25);
+  text-decoration: none;
+}
+</style>
+
+<div id="account-return" class="container">
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -16,26 +185,17 @@
     {% endif %}
 
     <div id="content" class="{{ class }}">{{ content_top }}
-      <section class="return-hero return-hero--compact">
-        <div class="return-hero__content">
-          <span class="return-eyebrow">Uannes Care</span>
-          <h1>{{ heading_title }}</h1>
-          <p>İade ve değişim taleplerinizi tek ekrandan takip edin.</p>
-        </div>
-      </section>
+      
+      <!-- Left-Aligned, Elegant Title with Divider -->
+      <div class="uannes-return-header">
+        <h1 class="uannes-return-header__title">{{ heading_title }}</h1>
+        <p class="uannes-return-header__subtitle">İade ve değişim taleplerinizi bu ekrandan takip edin.</p>
+      </div>
 
       {% if returns %}
-      <section class="return-panel">
-        <div class="return-panel__head">
-          <span class="return-panel__icon"><i class="fa fa-list-ul"></i></span>
-          <div>
-            <h2>{{ heading_title }}</h2>
-            <p>{{ results }}</p>
-          </div>
-        </div>
-
-        <div class="return-table-wrap">
-          <table class="table return-table">
+      <div class="uannes-return-table-card">
+        <div class="table-responsive">
+          <table class="table">
             <thead>
               <tr>
                 <th class="text-left">{{ column_return_id }}</th>
@@ -43,43 +203,49 @@
                 <th class="text-left">{{ column_date_added }}</th>
                 <th class="text-left">{{ column_order_id }}</th>
                 <th class="text-left">{{ column_customer }}</th>
-                <th class="text-right"></th>
+                <th class="text-right">İşlem</th>
               </tr>
             </thead>
             <tbody>
             {% for return in returns %}
               <tr>
-                <td data-label="{{ column_return_id }}"><strong>#{{ return.return_id }}</strong></td>
-                <td data-label="{{ column_status }}"><span class="return-status">{{ return.status }}</span></td>
-                <td data-label="{{ column_date_added }}">{{ return.date_added }}</td>
-                <td data-label="{{ column_order_id }}">#{{ return.order_id }}</td>
-                <td data-label="{{ column_customer }}">{{ return.name }}</td>
-                <td class="text-right return-table__action">
-                  <a href="{{ return.href }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info return-icon-btn"><i class="fa fa-eye"></i></a>
+                <td class="text-left"><strong style="color: #1a1a50;">#{{ return.return_id }}</strong></td>
+                <td class="text-left"><span class="uannes-return-status-badge">{{ return.status }}</span></td>
+                <td class="text-left" style="color: #666; font-size: 12.5px;">{{ return.date_added }}</td>
+                <td class="text-left"><strong style="color: #c5a059;">#{{ return.order_id }}</strong></td>
+                <td class="text-left">{{ return.name }}</td>
+                <td class="text-right">
+                  <a href="{{ return.href }}" data-toggle="tooltip" title="{{ button_view }}" class="uannes-btn-return-view"><i class="fa fa-eye"></i></a>
                 </td>
               </tr>
             {% endfor %}
             </tbody>
           </table>
         </div>
-      </section>
+      </div>
 
-      <div class="return-pagination">
-        <div>{{ pagination }}</div>
-        <div>{{ results }}</div>
+      <div class="row" style="margin-bottom: 24px;">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+        <div class="col-sm-6 text-right" style="font-size: 13px; color: #777; padding-top: 6px;">{{ results }}</div>
       </div>
       {% else %}
-      <section class="return-empty">
-        <span class="return-empty__icon"><i class="fa fa-refresh"></i></span>
-        <h2>{{ text_empty }}</h2>
-        <p>İade veya değişim talebiniz oluştuğunda burada görünecek.</p>
-      </section>
+      <!-- Minimalist Luxury Empty State Card -->
+      <div class="uannes-return-empty-card">
+        <div class="uannes-return-empty-icon">
+          <i class="fa fa-refresh"></i>
+        </div>
+        <h2 class="uannes-return-empty-title">{{ text_empty }}</h2>
+        <p class="uannes-return-empty-desc">İade veya değişim talebiniz oluştuğunda burada listelenecektir.</p>
+      </div>
       {% endif %}
 
-      <div class="return-actions return-actions--right">
-        <a href="{{ continue }}" class="btn btn-primary">{{ button_continue }} <i class="fa fa-angle-right"></i></a>
+      <div class="uannes-return-footer-actions">
+        <a href="{{ continue }}" class="uannes-btn-return-continue">{{ button_continue }} <i class="fa fa-angle-right"></i></a>
       </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
 </div>
 {{ footer }}

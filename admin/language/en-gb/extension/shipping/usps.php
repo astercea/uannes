@@ -1,9 +1,11 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
 $_['heading_title']         = 'United States Postal Service';
 
 // Text
-$_['text_extension']        = 'Extensions';
+$_['text_extension']        = 'Eklentiler';
 $_['text_success']          = 'Success: You have modified United States Postal Service!';
 $_['text_edit']             = 'Edit United States Postal Service Shipping';
 $_['text_domestic_00']      = 'First-Class Mail Parcel';

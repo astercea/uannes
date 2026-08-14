@@ -365,6 +365,7 @@ class ControllerSaleReturn extends Controller {
 				'return_status' => $result['return_status'],
 				'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
+				'view'          => $this->url->link('sale/return/info', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $result['return_id'] . $url, true),
 				'edit'          => $this->url->link('sale/return/edit', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $result['return_id'] . $url, true)
 			);
 		}
@@ -915,5 +916,130 @@ class ControllerSaleReturn extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
-	}	
+	}
+
+	public function info() {
+		$this->load->language('sale/return');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('sale/return');
+
+		if (isset($this->request->get['return_id'])) {
+			$return_id = (int)$this->request->get['return_id'];
+		} else {
+			$return_id = 0;
+		}
+
+		$return_info = $this->model_sale_return->getReturn($return_id);
+
+		if ($return_info) {
+			$this->load->model('localisation/return_reason');
+			$this->load->model('localisation/return_action');
+			$this->load->model('localisation/return_status');
+
+			$return_reason_info = $this->model_localisation_return_reason->getReturnReason($return_info['return_reason_id']);
+			$return_action_info = $this->model_localisation_return_action->getReturnAction($return_info['return_action_id']);
+			$return_status_info = $this->model_localisation_return_status->getReturnStatus($return_info['return_status_id']);
+
+			$data['return_id'] = $return_info['return_id'];
+			$data['order_id'] = $return_info['order_id'];
+			$data['date_ordered'] = ($return_info['date_ordered'] != '0000-00-00') ? date($this->language->get('date_format_short'), strtotime($return_info['date_ordered'])) : '-';
+			$data['customer'] = $return_info['customer'];
+			$data['customer_id'] = $return_info['customer_id'];
+			$data['firstname'] = $return_info['firstname'];
+			$data['lastname'] = $return_info['lastname'];
+			$data['email'] = $return_info['email'];
+			$data['telephone'] = $return_info['telephone'];
+			$data['product'] = $return_info['product'];
+			$data['product_id'] = $return_info['product_id'];
+			$data['model'] = $return_info['model'];
+			$data['quantity'] = $return_info['quantity'];
+			$data['opened'] = $return_info['opened'] ? $this->language->get('text_opened') : $this->language->get('text_unopened');
+			$data['return_reason'] = $return_reason_info ? $return_reason_info['name'] : '-';
+			$data['return_action'] = $return_action_info ? $return_action_info['name'] : '-';
+			$data['return_status'] = $return_status_info ? $return_status_info['name'] : '-';
+			$data['return_status_id'] = $return_info['return_status_id'];
+			$data['comment'] = nl2br(htmlspecialchars($return_info['comment'], ENT_QUOTES, 'UTF-8'));
+			$data['date_added'] = date($this->language->get('date_format_short'), strtotime($return_info['date_added']));
+			$data['date_modified'] = date($this->language->get('date_format_short'), strtotime($return_info['date_modified']));
+
+			$data['breadcrumbs'] = array();
+
+			$data['breadcrumbs'][] = array(
+				'text' => $this->language->get('text_home'),
+				'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+			);
+
+			$data['breadcrumbs'][] = array(
+				'text' => $this->language->get('heading_title'),
+				'href' => $this->url->link('sale/return', 'user_token=' . $this->session->data['user_token'], true)
+			);
+
+			$data['breadcrumbs'][] = array(
+				'text' => 'İade #' . $return_id . ' Detayı',
+				'href' => $this->url->link('sale/return/info', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $return_id, true)
+			);
+
+			$data['edit'] = $this->url->link('sale/return/edit', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $return_id, true);
+			$data['back'] = $this->url->link('sale/return', 'user_token=' . $this->session->data['user_token'], true);
+			$data['user_token'] = $this->session->data['user_token'];
+
+			$data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();
+
+			$data['header'] = $this->load->controller('common/header');
+			$data['column_left'] = $this->load->controller('common/column_left');
+			$data['footer'] = $this->load->controller('common/footer');
+
+			$this->response->setOutput($this->load->view('sale/return_info', $data));
+		} else {
+			$this->response->redirect($this->url->link('sale/return', 'user_token=' . $this->session->data['user_token'], true));
+		}
+	}
+
+	public function getJson() {
+		$json = array();
+
+		if (isset($this->request->get['return_id'])) {
+			$return_id = (int)$this->request->get['return_id'];
+
+			$this->load->model('sale/return');
+			$return_info = $this->model_sale_return->getReturn($return_id);
+
+			if ($return_info) {
+				$this->load->language('sale/return');
+				$this->load->model('localisation/return_reason');
+				$this->load->model('localisation/return_action');
+				$this->load->model('localisation/return_status');
+
+				$return_reason_info = $this->model_localisation_return_reason->getReturnReason($return_info['return_reason_id']);
+				$return_action_info = $this->model_localisation_return_action->getReturnAction($return_info['return_action_id']);
+				$return_status_info = $this->model_localisation_return_status->getReturnStatus($return_info['return_status_id']);
+
+				$json = array(
+					'success'       => true,
+					'return_id'     => $return_info['return_id'],
+					'order_id'      => $return_info['order_id'],
+					'date_ordered'  => ($return_info['date_ordered'] != '0000-00-00') ? date($this->language->get('date_format_short'), strtotime($return_info['date_ordered'])) : '-',
+					'customer'      => $return_info['firstname'] . ' ' . $return_info['lastname'],
+					'email'         => $return_info['email'],
+					'telephone'     => $return_info['telephone'],
+					'product'       => $return_info['product'],
+					'model'         => $return_info['model'],
+					'quantity'      => $return_info['quantity'],
+					'opened'        => $return_info['opened'] ? $this->language->get('text_opened') : $this->language->get('text_unopened'),
+					'return_reason' => $return_reason_info ? $return_reason_info['name'] : '-',
+					'return_action' => $return_action_info ? $return_action_info['name'] : '-',
+					'return_status' => $return_status_info ? $return_status_info['name'] : '-',
+					'comment'       => !empty($return_info['comment']) ? nl2br(htmlspecialchars($return_info['comment'], ENT_QUOTES, 'UTF-8')) : '<em>(Müşteri ek açıklama belirtmedi)</em>',
+					'date_added'    => date($this->language->get('date_format_short'), strtotime($return_info['date_added'])),
+					'info_url'      => str_replace('&amp;', '&', $this->url->link('sale/return/info', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $return_id, true)),
+					'edit_url'      => str_replace('&amp;', '&', $this->url->link('sale/return/edit', 'user_token=' . $this->session->data['user_token'] . '&return_id=' . $return_id, true))
+				);
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 }

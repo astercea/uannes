@@ -1,6 +1,8 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']  = 'Page Not Found!';
+$_['heading_title']  = 'Aradığınız Sayfa Bulunamadı!';
 
 // Text
-$_['text_not_found'] = 'The page you are looking for could not be found! Please contact your administrator if the problem persists.';
+$_['text_not_found'] = 'Aradığınız sayfa bulunamadı! Eğer sorun devam ederse lütfen yöneticiniz ile irtibata geçiniz';

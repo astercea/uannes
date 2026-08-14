@@ -1,26 +1,28 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']          = 'Attributes';
+$_['heading_title']          = 'Özellikler';
 
 // Text
-$_['text_success']           = 'Success: You have modified attributes!';
-$_['text_list']              = 'Attribute List';
-$_['text_add']               = 'Add Attribute';
-$_['text_edit']              = 'Edit Attribute';
+$_['text_success']           = 'Başarılı: Özellikler başarılı bir şekilde değiştirildi!';
+$_['text_list']              = 'Özellik Listesi';
+$_['text_add']               = 'Özellik Ekle';
+$_['text_edit']              = 'Özellik Düzenle';
 
 // Column
-$_['column_name']            = 'Attribute Name';
-$_['column_attribute_group'] = 'Attribute Group';
-$_['column_sort_order']      = 'Sort Order';
-$_['column_action']          = 'Action';
+$_['column_name']            = 'Özellik Adı';
+$_['column_attribute_group'] = 'Özellik Grubu';
+$_['column_sort_order']      = 'Sıralama';
+$_['column_action']          = 'Eylem';
 
 // Entry
-$_['entry_name']             = 'Attribute Name';
-$_['entry_attribute_group']  = 'Attribute Group';
-$_['entry_sort_order']       = 'Sort Order';
+$_['entry_name']             = 'Özellik Adı';
+$_['entry_attribute_group']  = 'Özellik Grubu';
+$_['entry_sort_order']       = 'Sıralama';
 
 // Error
-$_['error_permission']       = 'Warning: You do not have permission to modify attributes!';
-$_['error_attribute_group']  = 'Attribute Group Required!';
-$_['error_name']             = 'Attribute Name must be between 1 and 64 characters!';
-$_['error_product']          = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']       = 'Uyarı: Özellikleri düzenleme iznine sahip değilsiniz!';
+$_['error_attribute_group']  = 'Özellik grubu gerekli!';
+$_['error_name']             = 'Özellik adı 1 ile 64 karakter arasında olmalı!';
+$_['error_product']          = 'Uyarı: Bu özelliği silemezsiniz, %s ürün tarafından kullanılıyor!';

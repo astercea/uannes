@@ -1,15 +1,17 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']    = 'Anti-Fraud';
+$_['heading_title']    = 'Sahtekârlık Araçları';
 
 // Text
-$_['text_success']     = 'Success: You have modified anti-fraud!';
-$_['text_list']        = 'Anti-Fraud List';
+$_['text_success']     = 'Başarılı: Sahtekârlık araçları güncellendi!';
+$_['text_list']        = 'Sahtekârlık Araçlar Listesi';
 
 // Column
-$_['column_name']      = 'Anti-Fraud Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Araç Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify anti-fraud!';
+$_['error_permission'] = 'Uyarı: Sahtekârlık araçlarını değiştirme iznine sahip değilsiniz!';

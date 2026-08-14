@@ -1,16 +1,18 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']      = 'Free Checkout';
+$_['heading_title']      = 'Ücretsiz Ödeme';
 
 // Text
-$_['text_extension']     = 'Extensions';
-$_['text_success']       = 'Success: You have modified Free Checkout payment module!';
-$_['text_edit']          = 'Edit Free Checkout';
+$_['text_extension']     = 'Eklentiler';
+$_['text_success']       = 'Başarılı: Ücretsiz Ödeme başarılı bir şekilde değiştirildi!';
+$_['text_edit']          = 'Ücretsiz Ödeme Düzenle';
 
 // Entry
-$_['entry_order_status'] = 'Order Status';
-$_['entry_status']       = 'Status';
-$_['entry_sort_order']   = 'Sort Order';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify payment Free Checkout!';
+$_['error_permission']   = 'Uyarı: Ücretsiz ödeme metodunu düzenleme iznine sahip değilsiniz!';

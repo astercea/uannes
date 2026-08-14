@@ -1,6 +1,8 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Text
-$_['text_subject'] = '%s - Your Account has been denied!';
-$_['text_welcome'] = 'Welcome and thank you for registering at %s!';
-$_['text_denied']  = 'Unfortunately your request has been denied. For more information you can contact the store owner here:';
-$_['text_thanks']  = 'Thanks,';
+$_['text_subject'] = '%s - Hesabınız Reddedildi!';
+$_['text_welcome'] = '%s sitemize kayıt olduğunuz için teşekkür ederiz!';
+$_['text_denied']  = 'Maalesef isteğiniz reddedildi. Daha fazla bilgi için iletişime geçebilirsiniz:';
+$_['text_thanks']  = 'Teşekkürler,';

@@ -1,18 +1,18 @@
 <?php
 // Heading
-$_['heading_title']    = 'World Map';
+$_['heading_title']    = 'Dünya Haritası';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified dashboard map!';
-$_['text_edit']        = 'Edit Dashboard Map';
-$_['text_order']       = 'Orders';
-$_['text_sale']        = 'Sales';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Dünya haritası gösterge paneli başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Dünya Haritasını Düzenle';
+$_['text_order']       = 'Siparişler';
+$_['text_sale']        = 'Satışlar';
 
 // Entry
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
-$_['entry_width']      = 'Width';
+$_['entry_width']      = 'Genişlik';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify dashboard map!';
+$_['error_permission'] = 'Uyarı: Dünya haritası gösterge panelini düzenleme iznine sahip değilsiniz!';

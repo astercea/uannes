@@ -1,37 +1,39 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']        = 'Mail';
+$_['heading_title']        = 'Toplu E-Posta';
 
 // Text
-$_['text_success']         = 'Your message has been successfully sent!';
-$_['text_sent']            = 'Your message has been successfully sent to %s - %s recipients!';
-$_['text_list']            = 'Mail List';
-$_['text_default']         = 'Default';
-$_['text_newsletter']      = 'All Newsletter Subscribers';
-$_['text_customer_all']    = 'All Customers';
-$_['text_customer_group']  = 'Customer Group';
-$_['text_customer']        = 'Customers';
-$_['text_affiliate_all']   = 'All Affiliates';
-$_['text_affiliate']       = 'Affiliates';
-$_['text_product']         = 'Products';
+$_['text_success']         = 'Mesaj başarılı bir şekilde gönderildi!';
+$_['text_sent']            = 'Mesajınız başarılı bir şekilde %s ile %s arasında alıcıya gönderildi!';
+$_['text_list']            = 'Toplu E-Posta';
+$_['text_default']         = 'Varsayılan';
+$_['text_newsletter']      = 'Tüm Bülten Aboneleri';
+$_['text_customer_all']    = 'Tüm Müşteriler';
+$_['text_customer_group']  = 'Müşteri Grubu';
+$_['text_customer']        = 'Müşteriler';
+$_['text_affiliate_all']   = 'Tüm Ortaklar';
+$_['text_affiliate']       = 'Ortaklar';
+$_['text_product']         = 'Ürünler';
 
 // Entry
-$_['entry_store']          = 'From';
-$_['entry_to']             = 'To';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_customer']       = 'Customer';
-$_['entry_affiliate']      = 'Affiliate';
-$_['entry_product']        = 'Products';
-$_['entry_subject']        = 'Subject';
-$_['entry_message']        = 'Message';
+$_['entry_store']          = 'Kimden';
+$_['entry_to']             = 'Kime';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_customer']       = 'Müşteri';
+$_['entry_affiliate']      = 'Ortak';
+$_['entry_product']        = 'Ürünler';
+$_['entry_subject']        = 'Konu';
+$_['entry_message']        = 'Mesaj';
 
 // Help
-$_['help_customer']        = '(Autocomplete)';
-$_['help_affiliate']       = '(Autocomplete)';
-$_['help_product']         = 'Send only to customers who have ordered products in the list. (Autocomplete)';
+$_['help_customer']        = '(Otomatik Tamamlama)';
+$_['help_affiliate']       = '(Otomatik Tamamlama)';
+$_['help_product']         = 'Sadece listedeki ürünleri sipariş veren müşterilere gönder. (Otomatik Tamamlama)';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to send E-Mails!';
-$_['error_subject']        = 'E-Mail Subject required!';
-$_['error_message']        = 'E-Mail Message required!';
-$_['error_email']          = 'E-Mail required!';
+$_['error_permission']     = 'Uyarı: E-Posta gönderme iznine sahip değilsiniz!';
+$_['error_subject']        = 'E-Posta Konusu gerekli!';
+$_['error_message']        = 'E-Posta Mesajı gerekli!';
+$_['error_email']          = 'E-Posta Adresi gerekli!';

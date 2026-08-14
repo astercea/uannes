@@ -1,24 +1,26 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
-$_['heading_title']     = 'Voucher Themes';
+$_['heading_title']     = 'Hediye Çeki Temaları';
 
 // Text
-$_['text_success']      = 'Success: You have modified voucher themes!';
-$_['text_list']         = 'Voucher Theme List';
-$_['text_add']          = 'Add Voucher Theme';
-$_['text_edit']         = 'Edit Voucher Theme';
+$_['text_success']      = 'Başarılı: Hediye çeki teması başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Hediye Çeki Tema Listesi';
+$_['text_add']          = 'Hediye Çeki Teması Ekle';
+$_['text_edit']         = 'Hediye Çeki Teması Düzenle';
 
 // Column
-$_['column_name']       = 'Voucher Theme Name';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'Tema Adı';
+$_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Voucher Theme Name';
-$_['entry_description'] = 'Voucher Theme Description';
-$_['entry_image']       = 'Image';
+$_['entry_name']        = 'Tema Adı';
+$_['entry_description'] = 'Tema Açıklaması';
+$_['entry_image']       = 'Resim';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify voucher themes!';
-$_['error_name']        = 'Voucher Theme Name must be between 3 and 32 characters!';
-$_['error_image']       = 'Image required!';
-$_['error_voucher']     = 'Warning: This voucher theme cannot be deleted as it is currently assigned to %s vouchers!';
+$_['error_permission']  = 'Uyarı: Hediye çeki temalarını düzenleme iznine sahip değilsiniz!';
+$_['error_name']        = 'Tema adı 3 ile 32 karakter arasında olmalıdır!';
+$_['error_image']       = 'Resim gerekli!';
+$_['error_voucher']     = 'Uyarı: Bu hediye çeki temasını silemezsiniz %s hediye çeki tarafından kullanılıyor!';
