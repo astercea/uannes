@@ -1132,6 +1132,28 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		// Color Variants
+		if (isset($this->request->post['product_color_variant'])) {
+			$color_variants = $this->request->post['product_color_variant'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$color_variants = $this->model_catalog_product->getProductColorVariants($this->request->get['product_id']);
+		} else {
+			$color_variants = array();
+		}
+
+		$data['product_color_variants'] = array();
+
+		foreach ($color_variants as $variant_id) {
+			$variant_info = $this->model_catalog_product->getProduct($variant_id);
+
+			if ($variant_info) {
+				$data['product_color_variants'][] = array(
+					'product_id' => $variant_info['product_id'],
+					'name'       => $variant_info['name']
+				);
+			}
+		}
+
 		if (isset($this->request->post['points'])) {
 			$data['points'] = $this->request->post['points'];
 		} elseif (!empty($product_info)) {

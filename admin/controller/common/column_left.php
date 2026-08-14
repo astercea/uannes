@@ -323,6 +323,14 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
+			if ($this->user->hasPermission('access', 'extension/module/uannes_pages') || $this->user->hasPermission('access', 'design/banner')) {
+				$design[] = array(
+					'name'	   => 'Sayfa & Banner Görselleri',
+					'href'     => $this->url->link('extension/module/uannes_pages', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
 			if ($this->user->hasPermission('access', 'design/seo_url')) {
 				$design[] = array(
 					'name'	   => $this->language->get('text_seo_url'),

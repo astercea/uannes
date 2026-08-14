@@ -407,6 +407,42 @@ class ControllerProductProduct extends Controller {
 
 			$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
+			// Linked Color Variants
+			$data['color_variants'] = array();
+			$data['current_product_color'] = '';
+			$color_variants_raw = $this->model_catalog_product->getProductColorVariants($this->request->get['product_id']);
+
+			if (!empty($color_variants_raw)) {
+				$all_variants = array_merge(array(array(
+					'product_id' => (int)$product_info['product_id'],
+					'name'       => $product_info['name'],
+					'image'      => $product_info['image']
+				)), $color_variants_raw);
+
+				$seen = array();
+				foreach ($all_variants as $vp) {
+					$vid = (int)$vp['product_id'];
+					if (isset($seen[$vid])) continue;
+					$seen[$vid] = true;
+
+					$color_name = $this->detectProductColor($vid, $vp['name']);
+					$is_current = ($vid === (int)$this->request->get['product_id']);
+
+					if ($is_current) {
+						$data['current_product_color'] = $color_name;
+					}
+
+					$data['color_variants'][] = array(
+						'product_id' => $vid,
+						'name'       => $vp['name'],
+						'color_name' => $color_name,
+						'image'      => (!empty($vp['image']) && is_file(DIR_IMAGE . $vp['image'])) ? $this->model_tool_image->resize($vp['image'], 50, 50) : '',
+						'href'       => $this->url->link('product/product', 'product_id=' . $vid),
+						'is_current' => $is_current
+					);
+				}
+			}
+
 			$data['attribute_groups'] = array();
 			foreach ($this->model_catalog_product->getProductAttributes($this->request->get['product_id']) as $attribute_group) {
 				$group_name = utf8_strtolower(trim($attribute_group['name']));
@@ -770,5 +806,64 @@ class ControllerProductProduct extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+
+	private function detectProductColor($product_id, $product_name) {
+		// 1. Check if product has an Option with name containing "Renk" / "Color"
+		$options = $this->model_catalog_product->getProductOptions($product_id);
+		foreach ($options as $opt) {
+			$opt_name = utf8_strtolower(trim($opt['name']));
+			if (strpos($opt_name, 'renk') !== false || strpos($opt_name, 'color') !== false || strpos($opt_name, 'colour') !== false) {
+				if (!empty($opt['product_option_value'])) {
+					$first_val = reset($opt['product_option_value']);
+					if (!empty($first_val['name'])) {
+						return trim($first_val['name']);
+					}
+				}
+			}
+		}
+
+		// 2. Check if product has an Attribute with name containing "Renk" / "Color"
+		$attributes = $this->model_catalog_product->getProductAttributes($product_id);
+		foreach ($attributes as $ag) {
+			if (!empty($ag['attribute'])) {
+				foreach ($ag['attribute'] as $attr) {
+					$attr_name = utf8_strtolower(trim($attr['name']));
+					if (strpos($attr_name, 'renk') !== false || strpos($attr_name, 'color') !== false) {
+						if (!empty($attr['text'])) {
+							return trim($attr['text']);
+						}
+					}
+				}
+			}
+		}
+
+		// 3. Check product name for known color terms / suffix
+		$known_colors = array(
+			'siyah' => 'Siyah', 'black' => 'Siyah',
+			'beyaz' => 'Beyaz', 'white' => 'Beyaz',
+			'krem' => 'Krem', 'cream' => 'Krem', 'ekru' => 'Ekru', 'ecru' => 'Ekru',
+			'bej' => 'Bej', 'beige' => 'Bej', 'vizon' => 'Vizon',
+			'bordo' => 'Bordo', 'burgundy' => 'Bordo', 'kırmızı' => 'Kırmızı', 'kirmizi' => 'Kırmızı', 'red' => 'Kırmızı',
+			'lacivert' => 'Lacivert', 'navy' => 'Lacivert',
+			'mavi' => 'Mavi', 'blue' => 'Mavi',
+			'haki' => 'Haki', 'khaki' => 'Haki', 'yeşil' => 'Yeşil', 'yesil' => 'Yeşil', 'green' => 'Yeşil',
+			'kahve' => 'Kahverengi', 'kahverengi' => 'Kahverengi', 'brown' => 'Kahverengi', 'taba' => 'Taba', 'camel' => 'Camel',
+			'gri' => 'Gri', 'grey' => 'Gri', 'gray' => 'Gri', 'füme' => 'Füme', 'fume' => 'Füme', 'antrasit' => 'Antrasit',
+			'pembe' => 'Pembe', 'pink' => 'Pembe', 'pudra' => 'Pudra',
+			'sarı' => 'Sarı', 'sari' => 'Sarı', 'yellow' => 'Sarı', 'hardal' => 'Hardal', 'gold' => 'Gold', 'altın' => 'Altın',
+			'turuncu' => 'Turuncu', 'orange' => 'Turuncu', 'kiremit' => 'Kiremit',
+			'mor' => 'Mor', 'purple' => 'Mor', 'lila' => 'Lila',
+			'gümüş' => 'Gümüş', 'gumus' => 'Gümüş', 'silver' => 'Gümüş'
+		);
+
+		$name_lower = utf8_strtolower($product_name);
+		foreach ($known_colors as $slug => $label) {
+			if (preg_match('/(?:^|[\s\-\_\/])' . preg_quote($slug, '/') . '(?:$|[\s\-\_\/])/u', $name_lower)) {
+				return $label;
+			}
+		}
+
+		return $product_name;
 	}
 }

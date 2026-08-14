@@ -13573,11 +13573,15 @@ body.is-product-page #header-area.is-scrolled {
 
 #product-product .right-sidebar .product-option__colour {
   position: relative;
-  display: inline-block;
-  width: 22px;
-  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   border: 1px solid transparent;
+  border-radius: 50%;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #product-product .right-sidebar .product-option__colour .visually-hidden {
@@ -13594,28 +13598,139 @@ body.is-product-page #header-area.is-scrolled {
 #product-product .right-sidebar .product-option__colour::after {
   position: absolute;
   inset: 3px;
-  background: #777;
+  border-radius: 50%;
+  background: #999;
+  background-size: cover;
+  background-position: center;
   content: '';
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
 }
 
-#product-product .right-sidebar .product-option__colour[data-colour*="bordo"]::after,
-#product-product .right-sidebar .product-option__colour[data-colour*="kırmızı"]::after,
-#product-product .right-sidebar .product-option__colour[data-colour*="kirmizi"]::after,
-#product-product .right-sidebar .product-option__colour[data-colour*="red"]::after {
-  background: #7d1f2b;
+/* Custom Image Swatch Uploaded in OpenCart Admin */
+#product-product .right-sidebar .product-option__colour[style*="--swatch-img"]::after {
+  background-image: var(--swatch-img) !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
+/* Automatic Color Palette based on Database Color Names */
 #product-product .right-sidebar .product-option__colour[data-colour*="siyah"]::after,
 #product-product .right-sidebar .product-option__colour[data-colour*="black"]::after {
-  background: #202027;
+  background-color: #1b1b1f;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="beyaz"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="white"]::after {
+  background-color: #fdfdfd;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18);
 }
 
 #product-product .right-sidebar .product-option__colour[data-colour*="krem"]::after,
-#product-product .right-sidebar .product-option__colour[data-colour*="cream"]::after {
-  background: #ded4c4;
+#product-product .right-sidebar .product-option__colour[data-colour*="cream"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="ekru"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="ecru"]::after {
+  background-color: #eadecd;
 }
 
-#product-product .right-sidebar .product-option__input:checked + .product-option__colour {
+#product-product .right-sidebar .product-option__colour[data-colour*="bej"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="beige"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="vizon"]::after {
+  background-color: #cbb89d;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="bordo"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="burgundy"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="kırmızı"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="kirmizi"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="red"]::after {
+  background-color: #721c24;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="lacivert"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="navy"]::after {
+  background-color: #1a1a50;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="mavi"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="blue"]::after {
+  background-color: #4682b4;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="haki"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="khaki"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="yeşil"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="yesil"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="green"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="zeytin"]::after {
+  background-color: #4b5d43;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="kahve"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="brown"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="taba"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="camel"]::after {
+  background-color: #6e4a30;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="gri"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="grey"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="gray"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="füme"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="fume"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="antrasit"]::after {
+  background-color: #5a5f66;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="pembe"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="pink"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="pudra"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="rose"]::after {
+  background-color: #df9ba5;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="sarı"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="sari"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="yellow"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="hardal"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="gold"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="altın"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="altin"]::after {
+  background-color: #cda851;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="turuncu"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="orange"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="kiremit"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="terracotta"]::after {
+  background-color: #ba5736;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="mor"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="purple"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="lila"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="lilac"]::after {
+  background-color: #6c4b78;
+}
+
+#product-product .right-sidebar .product-option__colour[data-colour*="gümüş"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="gumus"]::after,
+#product-product .right-sidebar .product-option__colour[data-colour*="silver"]::after {
+  background-color: #b0b4b8;
+}
+
+#product-product .right-sidebar .product-option__input:checked + .product-option__colour,
+#product-product .right-sidebar .product-option__colour.is-selected {
+  border-color: #1a1a50;
+  outline: 1px solid #1a1a50;
+  outline-offset: 2px;
+}
+
+#product-product .right-sidebar a.product-option__colour {
+  text-decoration: none;
+}
+
+#product-product .right-sidebar a.product-option__colour:hover {
+  transform: scale(1.18);
   border-color: #1a1a50;
 }
 

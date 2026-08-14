@@ -134,6 +134,23 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 							</div>
 						</fieldset>
 					{% endif %}
+					{% if color_variants is defined and color_variants|length > 1 %}
+						<fieldset class="product-option-set product-option-set--colours">
+							<div class="product-option-set__heading">
+								<legend>Renk</legend>
+								<span class="product-option-set__selected-colour">{{ current_product_color }}</span>
+							</div>
+							<div class="product-option-set__choices">
+								{% for variant in color_variants %}
+									{% if variant.is_current %}
+										<span class="product-option__colour is-selected" data-colour="{{ variant.color_name|lower }}" title="{{ variant.color_name }} (Mevcut Renk)" style="{% if variant.image and 'placeholder' not in variant.image and 'no_image' not in variant.image %}--swatch-img: url('{{ variant.image }}');{% endif %}"><span class="visually-hidden">{{ variant.color_name }}</span></span>
+									{% else %}
+										<a href="{{ variant.href }}" class="product-option__colour" data-colour="{{ variant.color_name|lower }}" title="{{ variant.color_name }}" style="{% if variant.image and 'placeholder' not in variant.image and 'no_image' not in variant.image %}--swatch-img: url('{{ variant.image }}');{% endif %}"><span class="visually-hidden">{{ variant.color_name }}</span></a>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</fieldset>
+					{% endif %}
 						{% for option in options|default([]) %}
 							{% set option_name = option.name|lower %}
 							{% set is_size_option = 'beden' in option_name or 'size' in option_name %}
@@ -169,7 +186,7 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 										{% endfor %}
 									</div>
 								</fieldset>
-							{% elseif is_colour_option %}
+							{% elseif is_colour_option and (color_variants is not defined or color_variants|length <= 1) %}
 								{% set first_colour = option.product_option_value|first %}
 								<fieldset class="product-option-set product-option-set--colours">
 									<div class="product-option-set__heading">
@@ -179,7 +196,7 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4
 									<div class="product-option-set__choices">
 										{% for value in option.product_option_value %}
 											<input class="product-option__input" type="radio" id="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" name="option[{{ option.product_option_id }}]" value="{{ value.product_option_value_id }}" data-option-label="{{ value.name }}"{% if loop.first %} checked{% endif %}>
-											<label class="product-option__colour" for="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" data-colour="{{ value.name|lower }}"><span class="visually-hidden">{{ value.name }}</span></label>
+											<label class="product-option__colour" for="option-{{ option.product_option_id }}-{{ value.product_option_value_id }}" data-colour="{{ value.name|lower }}" title="{{ value.name }}" style="{% if value.image and 'no_image' not in value.image and 'placeholder' not in value.image %}--swatch-img: url('{{ value.image }}');{% endif %}"><span class="visually-hidden">{{ value.name }}</span></label>
 										{% endfor %}
 									</div>
 								</fieldset>
@@ -646,12 +663,20 @@ $(document).ready(function() {
 //--></script> 
 <script>
 	$(document).ready(function(){
-	$('.custom-accordion-header').on('click', function(){
-		var $content = $(this).next('.custom-accordion-content');
-		$(this).toggleClass('active');
-		$content.slideToggle(250);
-		$(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
-	});
+		$('.custom-accordion-header').on('click', function(){
+			var $content = $(this).next('.custom-accordion-content');
+			$(this).toggleClass('active');
+			$content.slideToggle(250);
+			$(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+		});
+
+		// Dynamic color option selection label update
+		$(document).on('change', '.product-option-set--colours input[type="radio"]', function() {
+			var label = $(this).attr('data-option-label') || '';
+			if (label) {
+				$(this).closest('.product-option-set--colours').find('[data-selected-colour]').text(label);
+			}
+		});
 	});
 </script>
 <script>

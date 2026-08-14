@@ -402,6 +402,24 @@ class ModelCatalogProduct extends Model {
 		return $product_data;
 	}
 
+	public function getProductColorVariants($product_id) {
+		$product_data = array();
+
+		$this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "product_color_variant` (
+		  `product_id` int(11) NOT NULL,
+		  `variant_id` int(11) NOT NULL,
+		  PRIMARY KEY (`product_id`,`variant_id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
+
+		$query = $this->db->query("SELECT pcv.variant_id FROM " . DB_PREFIX . "product_color_variant pcv LEFT JOIN " . DB_PREFIX . "product p ON (pcv.variant_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pcv.product_id = '" . (int)$product_id . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
+
+		foreach ($query->rows as $result) {
+			$product_data[$result['variant_id']] = $this->getProduct($result['variant_id']);
+		}
+
+		return $product_data;
+	}
+
 	public function getProductLayoutId($product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
 

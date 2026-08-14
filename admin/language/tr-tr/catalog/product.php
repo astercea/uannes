@@ -80,6 +80,7 @@ $_['entry_category']         = 'Kategoriler';
 $_['entry_filter']           = 'Filtreler';
 $_['entry_download']         = 'Dosyalar';
 $_['entry_related']          = 'Benzer Ürünler';
+$_['entry_color_variant']    = 'Renk Varyantları (Diğer Renkler)';
 $_['entry_tag']              = 'Ürün Etiketleri';
 $_['entry_reward']           = 'Puanlar';
 $_['entry_layout']           = 'Bu Bölüm Gibi Davran';
@@ -100,6 +101,7 @@ $_['help_category']          = '(Otomatik Tamamlama)';
 $_['help_filter']            = '(Otomatik Tamamlama)';
 $_['help_download']          = '(Otomatik Tamamlama)';
 $_['help_related']           = '(Otomatik Tamamlama)';
+$_['help_color_variant']     = 'Aynı modelin diğer renklerdeki ürünlerini seçiniz. Müşteri ürün sayfasında renklere tıkladığında seçilen ürün açılır. (Otomatik Tamamlama)';
 $_['help_tag']               = 'Virgül ile ayrınız';
 
 // Error

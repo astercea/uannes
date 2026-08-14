@@ -119,6 +119,21 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		// Color Variants
+		$this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "product_color_variant` (
+		  `product_id` int(11) NOT NULL,
+		  `variant_id` int(11) NOT NULL,
+		  PRIMARY KEY (`product_id`,`variant_id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
+
+		if (isset($data['product_color_variant'])) {
+			foreach ($data['product_color_variant'] as $variant_id) {
+				if ((int)$variant_id == (int)$product_id) continue;
+				$this->db->query("INSERT IGNORE INTO " . DB_PREFIX . "product_color_variant SET product_id = '" . (int)$product_id . "', variant_id = '" . (int)$variant_id . "'");
+				$this->db->query("INSERT IGNORE INTO " . DB_PREFIX . "product_color_variant SET product_id = '" . (int)$variant_id . "', variant_id = '" . (int)$product_id . "'");
+			}
+		}
+
 		if (isset($data['product_reward'])) {
 			foreach ($data['product_reward'] as $customer_group_id => $product_reward) {
 				if ((int)$product_reward['points'] > 0) {
@@ -290,6 +305,23 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		// Color Variants
+		$this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "product_color_variant` (
+		  `product_id` int(11) NOT NULL,
+		  `variant_id` int(11) NOT NULL,
+		  PRIMARY KEY (`product_id`,`variant_id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_color_variant WHERE product_id = '" . (int)$product_id . "' OR variant_id = '" . (int)$product_id . "'");
+
+		if (isset($data['product_color_variant'])) {
+			foreach ($data['product_color_variant'] as $variant_id) {
+				if ((int)$variant_id == (int)$product_id) continue;
+				$this->db->query("INSERT IGNORE INTO " . DB_PREFIX . "product_color_variant SET product_id = '" . (int)$product_id . "', variant_id = '" . (int)$variant_id . "'");
+				$this->db->query("INSERT IGNORE INTO " . DB_PREFIX . "product_color_variant SET product_id = '" . (int)$variant_id . "', variant_id = '" . (int)$product_id . "'");
+			}
+		}
+
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_reward WHERE product_id = '" . (int)$product_id . "'");
 
 		if (isset($data['product_reward'])) {
@@ -366,6 +398,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_related WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_related WHERE related_id = '" . (int)$product_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_color_variant WHERE product_id = '" . (int)$product_id . "' OR variant_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_reward WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
@@ -656,6 +689,24 @@ class ModelCatalogProduct extends Model {
 		}
 
 		return $product_related_data;
+	}
+
+	public function getProductColorVariants($product_id) {
+		$product_color_variant_data = array();
+
+		$this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "product_color_variant` (
+		  `product_id` int(11) NOT NULL,
+		  `variant_id` int(11) NOT NULL,
+		  PRIMARY KEY (`product_id`,`variant_id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_color_variant WHERE product_id = '" . (int)$product_id . "'");
+
+		foreach ($query->rows as $result) {
+			$product_color_variant_data[] = $result['variant_id'];
+		}
+
+		return $product_color_variant_data;
 	}
 
 	public function getRecurrings($product_id) {
