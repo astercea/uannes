@@ -10,6 +10,7 @@
             <span>Tüm Ürünler</span> &middot; <span>{{ catalogue_name }}</span>
           {% endif %}
         </div>
+        {# Filtre paneli — geçici kapalı
         <div class="giyim-filter" data-giyim-filter>
           <button type="button" class="giyim-filter-link" aria-expanded="false" aria-controls="giyim-filter-menu">
             Filtrele <span aria-hidden="true">{{ active_filter_count ? '(' ~ active_filter_count ~ ')' : '+' }}</span>
@@ -72,6 +73,7 @@
             </form>
           </aside>
         </div>
+        #}
       </div>
 
       {% if products %}

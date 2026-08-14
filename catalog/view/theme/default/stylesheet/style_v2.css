@@ -12684,16 +12684,16 @@ html.uannes-cart-mobile #cartSidebar .cart-sidebar-footer {
   object-fit: cover;
 }
 
-/* Default ratio for clothing items (4:5) */
+/* Square aspect ratio (1:1) for all recent products */
 #checkout-cart .cart-page__recent .uannes-row-media,
 #checkout-cart-empty .cart-page__recent .uannes-row-media {
   width: 100%;
-  padding-bottom: 125%;
-  aspect-ratio: 4 / 5;
+  padding-bottom: 100%;
+  aspect-ratio: 1 / 1;
   position: relative;
 }
 
-/* Square aspect ratio (1:1) for scarf products and scarf recommendations */
+/* Square aspect ratio (1:1) for scarf recommendations */
 #product-product .product-page__recommendations .uannes-row-media,
 #checkout-cart .cart-page__recent .is-scarf .uannes-row-media,
 #checkout-cart-empty .cart-page__recent .is-scarf .uannes-row-media {
@@ -13622,28 +13622,29 @@ body.is-product-page #header-area.is-scrolled {
   #product-product .carousel-section {
     grid-column: 1;
     grid-row: 1;
-    height: min(78svh, 760px);
-    min-height: 420px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    min-height: unset;
   }
 
   #product-product .content-section {
     grid-column: 1;
     grid-row: 2;
-    margin: 42px 24px 16px;
+    margin: 32px 16px 16px;
   }
 
   #product-product .right-sidebar {
     grid-column: 1;
     grid-row: 3;
-    margin: 28px 24px 58px;
+    margin: 24px 16px 48px;
   }
 
   #product-product .product-page__recommendations {
     grid-column: 1;
     grid-row: 4;
-    width: calc(100% - 48px);
+    width: calc(100% - 32px);
     justify-self: center;
-    margin: 0 0 58px;
+    margin: 0 0 48px;
   }
 
   #product-product .product-details-sticky {
@@ -15235,7 +15236,7 @@ body.checkout-mode {
   
   /* Checkout page navigation buttons (Geri and Devam Et) */
   .uannes-checkout-page .buttons {
-    flex-direction: row-reverse !important;
+    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: stretch !important;
     gap: 4% !important;
@@ -15303,5 +15304,95 @@ body.checkout-mode {
   
   .uannes-checkout-page .form-control {
     text-align: left !important;
+  }
+
+  /* Elegant Mobile Table for Checkout Confirm */
+  .uannes-checkout-page #collapse-checkout-confirm .table-responsive {
+    border: none !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table {
+    border: none !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table thead {
+    display: none !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody tr {
+    display: grid !important;
+    grid-template-columns: 80px minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "img name name"
+      "img qty total";
+    align-items: center;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid rgba(26,26,80,0.1) !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td {
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  /* Image */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(1) {
+    grid-area: img;
+    text-align: center !important;
+  }
+  /* Product Name */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(2) {
+    grid-area: name;
+    text-align: left !important;
+    padding-left: 15px !important;
+    margin-bottom: 8px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+  }
+  /* Model (Hide) */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(3) {
+    display: none !important; 
+  }
+  /* Quantity */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(4) {
+    grid-area: qty;
+    text-align: left !important;
+    padding-left: 15px !important;
+    color: #555 !important;
+    font-size: 13px !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(4)::before {
+    content: 'Adet: ';
+  }
+  /* Unit Price (Hide on mobile to save space) */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(5) {
+    display: none !important;
+  }
+  /* Total */
+  .uannes-checkout-page #collapse-checkout-confirm .table tbody td:nth-child(6) {
+    grid-area: total;
+    text-align: right !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+  }
+  
+  /* Totals Footer */
+  .uannes-checkout-page #collapse-checkout-confirm .table tfoot tr {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgba(26,26,80,0.05) !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tfoot td {
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tfoot td:first-child {
+    text-align: left !important;
+    font-weight: 400 !important;
+    color: #555 !important;
+  }
+  .uannes-checkout-page #collapse-checkout-confirm .table tfoot td:last-child {
+    text-align: right !important;
+    font-weight: 600 !important;
   }
 }

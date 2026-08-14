@@ -79,6 +79,7 @@ footer { margin-top: 0; }
   <div class="container-fluid blog-page__content" style="max-width: 1400px; width: 100%; padding-left: 0; padding-right: 0;">
     {{ content_top }}
 
+    {# Filtre paneli — geçici kapalı
     <div class="blog-filter-wrapper">
       <div class="giyim-filter" data-giyim-filter>
         <button class="giyim-filter-link" type="button" id="blogFilterMenu" aria-expanded="false" aria-controls="giyim-filter-menu">
@@ -114,6 +115,7 @@ footer { margin-top: 0; }
         </aside>
       </div>
     </div>
+    #}
 
     {% if articles %}
       <div class="row g-4 blog-cards-row">

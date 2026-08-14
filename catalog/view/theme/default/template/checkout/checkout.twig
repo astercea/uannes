@@ -1002,6 +1002,19 @@ $(document).ready(function() {
             $prevPanel.find('.accordion-toggle').trigger('click');
         }
     });
+
+    // 5. Shorten confirm button text on mobile
+    if (window.innerWidth <= 767) {
+        var confirmObserver = new MutationObserver(function() {
+            var $btn = $('#button-confirm');
+            if ($btn.length && $btn.val() !== 'Onaylıyorum') {
+                $btn.val('Onaylıyorum');
+            }
+        });
+        if (accordionElement) {
+            confirmObserver.observe(accordionElement, { childList: true, subtree: true });
+        }
+    }
 });
 //--></script>
 {{ footer }}
